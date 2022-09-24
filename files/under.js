@@ -1,8 +1,8 @@
 document.write("<br>");
 document.write("    <div class=\"foot\">");
 document.write("        <div class=\"footbg\">");
-document.write("           <a href=\" https:\/\/musestarv.github.io\/main\">© 2014-2022 MUSESTAR<\/a><br>");
-document.write("<a href=\"https:\/\/musestarv.github.io\/sitemap.xml\" >网站地图<\/a><br>");
+document.write("           <a href=\" https:\/\/www.musestar.top\/main\">© 2014-2022 MUSESTAR<\/a><br>");
+document.write("<a href=\"https:\/\/www.musestar.top\/sitemap.xml\" >网站地图<\/a><br>");
 document.write("           <a >本站只提供WEB页面服务，本站不存储、不制作任何视频及图像，不承担任何由于内容的合法性及健康性所引起的争议和法律责任。<\/a>");
 document.write("<p>已运行：<span class=\"brand\" id=\"runtime\"><\/span><\/p>		");
 document.write("<script type=\"text\/javascript\">");
