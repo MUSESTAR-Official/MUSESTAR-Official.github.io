@@ -10,4 +10,3 @@ document.write("<li><a href=\"https:\/\/musestarv.github.io\/animation\/jmdtypsw
 document.write("<li><a href=\"https:\/\/musestarv.github.io\/animation\/jmdtypswdqny\/10\">第10集<\/a><\/li>");
 document.write("<li><a href=\"https:\/\/musestarv.github.io\/animation\/jmdtypswdqny\/11\">第11集<\/a><\/li>");
 document.write("<li><a href=\"https:\/\/musestarv.github.io\/animation\/jmdtypswdqny\/12\">第12集<\/a><\/li>");
-document.write("<li><a href=\"https:\/\/musestarv.github.io\/animation\/jmdtypswdqny\/13\">第13集<\/a><\/li>");
