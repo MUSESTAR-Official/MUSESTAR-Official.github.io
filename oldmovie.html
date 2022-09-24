@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<!--
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇─────▇▇▇▇▇▇▇▇▇▇────────▇▇▇▇───────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───────────────▇▇▇▇▇▇▇▇▇
+▇▇▇▇─────▇▇▇▇▇▇▇▇▇▇─────▇▇▇▇▇▇▇▇▇▇▇▇──────▇▇▇▇▇──────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───────────────▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇─────▇▇▇─────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇────▇▇▇▇▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────▇▇▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇────▇▇▇▇▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇─────▇▇▇▇▇▇─────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇─▇▇─▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇─────▇▇▇▇▇▇──▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇──────▇▇▇▇───▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇─────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇──▇───▇▇▇▇──▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──────────▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇──▇────▇▇▇──▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──────────▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇──▇▇───▇▇───▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇─────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇──▇▇───▇▇──▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇─▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇──▇▇▇──────▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇─▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇──▇▇▇─────▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇─▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇──▇▇▇▇────▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇──▇▇▇▇───▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────▇▇▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇
+▇▇▇▇▇───▇▇▇▇▇──▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇─────────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──────────────▇▇▇▇▇▇▇▇
+▇▇▇▇──────▇▇▇─▇▇▇────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇─────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────────────────▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇▇▇───────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──────────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇─────────────▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇▇────────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───────────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇─────────────▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇─────▇▇▇─────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────▇▇▇──▇▇─────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇────▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇────▇▇▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇──▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇──▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇─────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇────▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇─▇▇▇▇▇▇──▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇────▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇────▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇─────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇────▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇▇────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────────────▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇▇▇▇────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──────────▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇─────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇──────▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇──▇▇─▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇────▇▇▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇─────▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇─────────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────▇▇▇▇▇▇▇▇─────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────▇▇▇▇▇▇─────▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇────────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──────▇▇▇▇▇▇───────▇▇▇▇▇▇▇▇▇▇▇▇────────▇▇▇▇────▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
+-->  
+<html>  
+    <head> 
+<!-- Clarity tracking code for https://musestarv.github.io/ --><script>    (function(c,l,a,r,i,t,y){        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i+"?ref=bwt";        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);    })(window, document, "clarity", "script", "bq49okey7z");</script> 
+        <meta charset="UTF-8">
+<meta name="referrer" content="no-referrer">  
+<script type="text/javascript" src="https://musestarv.github.io/files/hdhead.js"></script>
+        <title>缪斯星影视-斯啦斯啦o(*≧▽≦)ツ看片看剧～</title> 
+<meta name='description' content='缪斯星正在持续收集动漫番剧及电影，给您免费播放网站中的最好体验！斯啦斯啦o(*≧▽≦)ツ'>
+<meta name="keywords" content="电影,在线观看,电视剧,剧集,漫威,缪斯星,MUSESTAR,晓天,GabrieX">
+	      <link href="https://musestarv.github.io/animation/files/style.css" rel="stylesheet" type="text/css">
+	        <link rel="shortcut icon" href="https://musestarv.github.io/ms.ico">
+<script type="text/javascript" src="https://musestarv.github.io/animation/files/history.js"></script>
+</head>
+
+<script type="text/javascript" src="https://musestarv.github.io/files/gg.js"></script>
+
+      <body><style> body{cursor:url('https://musestarv.github.io/files/sbzz.png'),auto;}</style><style> body{cursor:url('https://musestarv.github.io/files/sbzz.png'),auto;}</style><script src="https://musestarv.github.io/files/sbtx.js"></script>
+    <script type="text/javascript" src="https://musestarv.github.io/files/moviehead.js"></script>
+    <script type="text/javascript" src="https://musestarv.github.io/files/time.js"></script>  
+    <script type="text/javascript" src="https://musestarv.github.io/files/weather.js"></script>
+    <script type="text/javascript" src="https://musestarv.github.io/files/search.js"></script>
+    <br>
+    <div class="area">
+      <div class="firs l">
+        <div class="dtit">
+            <h2>
+                <a href="https://musestarv.github.io/movie">本页面已停止更新，点击返回新版缪斯星影视</a></h2>
+            </div>
+            <br>
+            <div class="area">
+              <div class="firs l">
+                <div class="dtit">          
+                    <h2>
+            <a href="https://musestarv.github.io/">电影</a></h2>
+        </div>
+        <div class="img">
+            <li>
+                <a href="https://musestarv.github.io/film/dxyq">
+                    <img referrerpolicy="no-referrer" src="https://s1.imagehub.cc/images/2022/08/18/dxyq.webp"></a>
+                <p class="tname">
+                    <a href="https://musestarv.github.io/film/dxyq">独行月球</a></p>
+                <p>上映时间:
+                    <a  href="https://musestarv.github.io/film/dxyq">2022-07-29</a></p>
+                <p>影片时长:
+                    <a  href="https://musestarv.github.io/film/dxyq">1:56:02</a></p>
+            </li>
+            <li>
+                <a href="https://musestarv.github.io/film/wtkdmzt">
+                    <img referrerpolicy="no-referrer" src="https://s1.imagehub.cc/images/2022/08/18/wtkdmzt.webp"></a>
+                <p class="tname">
+                    <a href="https://musestarv.github.io/film/wtkdmzt">外太空的莫扎特</a></p>
+                <p>上映时间:
+                    <a  href="https://musestarv.github.io/film/wtkdmzt">2022-07-15</a></p>
+                <p>影片时长:
+                    <a  href="https://musestarv.github.io/film/wtkdmzt">2:15:52</a></p>
+            </li>
+            <li>
+                <a href="https://musestarv.github.io/film/Thor4">
+                    <img referrerpolicy="no-referrer" src="https://s1.imagehub.cc/images/2022/08/18/Thor4.webp"></a>
+                <p class="tname">
+                    <a href="https://musestarv.github.io/film/Thor4">雷神4：爱与雷霆</a></p>
+                <p>上映时间:
+                    <a  href="https://musestarv.github.io/film/Thor4">2022-07-08</a></p>
+                <p>影片时长:
+                    <a  href="https://musestarv.github.io/film/Thor4">1:51:39</a></p>
+            </li>
+            <li>
+                <a href="https://musestarv.github.io/film/Minions2">
+                    <img referrerpolicy="no-referrer" src="https://s1.imagehub.cc/images/2022/08/18/Minions2.webp"></a>
+                <p class="tname">
+                    <a href="https://musestarv.github.io/film/Minions2">小黄人大眼萌2：神偷</a></p>
+                    <p class="tname">
+                        <a href="https://musestarv.github.io/film/Minions2">奶爸前传</a></p>
+                <p>上映时间:
+                    <a  href="https://musestarv.github.io/film/Minions2">2022-07-01</a></p>
+                <p>影片时长:
+                    <a  href="https://musestarv.github.io/film/Minions2">1:27:16</a></p>
+            </li>
+        </div>
+        <div class="img">
+            <li>
+                <a href="https://musestarv.github.io/film/rsds">
+                    <img referrerpolicy="no-referrer" src="https://s1.imagehub.cc/images/2022/08/18/rsds.webp"></a>
+                <p class="tname">
+                    <a href="https://musestarv.github.io/film/rsds">人生大事</a></p>
+                <p>上映时间:
+                    <a  href="https://musestarv.github.io/film/rsds">2022-06-24</a></p>
+                <p>影片时长:
+                    <a  href="https://musestarv.github.io/film/rsds">1:45:13</a></p>
+            </li>
+            <li>
+                <a href="https://musestarv.github.io/film/JurassicWorld3">
+                    <img referrerpolicy="no-referrer" src="https://musestarv.github.io/film/files/JurassicWorld3.jpg"></a>
+                <p class="tname">
+                    <a href="https://musestarv.github.io/film/JurassicWorld3">侏罗纪世界3：统治</a></p>
+                <p>上映时间:
+                    <a  href="https://musestarv.github.io/film/JurassicWorld3">2022-06-10</a></p>
+                <p>影片时长:
+                    <a  href="https://musestarv.github.io/film/JurassicWorld3">2:26:58</a></p>
+            </li>
+            <li>
+                <a href="https://musestarv.github.io/film/CyberHell">
+                    <img referrerpolicy="no-referrer" src="https://musestarv.github.io/film/files/CyberHell.jpg"></a>
+                <p class="tname">
+                    <a href="https://musestarv.github.io/film/CyberHell">网络炼狱：揭发N号房</a></p>
+                <p>上映时间:
+                    <a  href="https://musestarv.github.io/film/CyberHell">2022-05-18</a></p>
+                <p>影片时长:
+                    <a  href="https://musestarv.github.io/film/CyberHell">1:45:31</a></p>
+            </li>
+            <li>
+                <a href="https://musestarv.github.io/film/DoctorStrange2">
+                    <img referrerpolicy="no-referrer" src="https://musestarv.github.io/film/files/DoctorStrange2.jpg"></a>
+                <p class="tname">
+                    <a href="https://musestarv.github.io/film/DoctorStrange2">奇异博士2：疯狂多元</a></p>
+                    <p class="tname">
+                        <a href="https://musestarv.github.io/film/DoctorStrange2">宇宙</a></p>
+                <p>上映时间:
+                    <a  href="https://musestarv.github.io/film/DoctorStrange2">2022-05-06</a></p>
+                <p>影片时长:
+                    <a  href="https://musestarv.github.io/film/DoctorStrange2">2:06:29</a></p>
+            </li>
+        </div>
+        <div class="img">
+        <li>
+            <a href="https://musestarv.github.io/film/FantasticBeasts3">
+                <img referrerpolicy="no-referrer" src="https://musestarv.github.io/film/files/FantasticBeasts3.jpg"></a>
+            <p class="tname">
+                <a href="https://musestarv.github.io/film/FantasticBeasts3">神奇动物3：邓布利多</a></p>
+            <p class="tname">
+                <a href="https://musestarv.github.io/film/FantasticBeasts3">之谜</a></p>
+            <p>上映时间:
+                <a  href="https://musestarv.github.io/film/FantasticBeasts3">2022-04-08</a></p>
+            <p>影片时长:
+                <a  href="https://musestarv.github.io/film/FantasticBeasts3">2:22:32</a></p>
+        </li>
+        <li>
+            <a href="https://musestarv.github.io/film/Morbius">
+                <img referrerpolicy="no-referrer" src="https://musestarv.github.io/film/files/Morbius.jpg"></a>
+            <p class="tname">
+                <a href="https://musestarv.github.io/film/Morbius">暗夜博士：莫比亚斯</a></p>
+            <p>上映时间:
+                <a  href="https://musestarv.github.io/film/Morbius">2022-04-01</a></p>
+            <p>影片时长:
+                <a  href="https://musestarv.github.io/film/Morbius">1:43:25</a></p>
+        </li>
+        <li>
+            <a href="https://musestarv.github.io/film/EverythingEverywhereAllatOnce">
+                <img referrerpolicy="no-referrer" src="https://musestarv.github.io/film/files/EverythingEverywhereAllatOnce.jpg"></a>
+            <p class="tname">
+                <a href="https://musestarv.github.io/film/EverythingEverywhereAllatOnce">瞬息全宇宙</a></p>
+            <p>上映时间:
+                <a  href="https://musestarv.github.io/film/EverythingEverywhereAllatOnce">2022-03-25</a></p>
+            <p>影片时长:
+                <a  href="https://musestarv.github.io/film/EverythingEverywhereAllatOnce">2:19:17</a></p>
+        </li>
+        <li>
+            <a href="https://musestarv.github.io/film/moonfall">
+                <img referrerpolicy="no-referrer" src="https://musestarv.github.io/film/files/moonfall.jpg"></a>
+            <p class="tname">
+                <a href="https://musestarv.github.io/film/moonfall">月球陨落</a></p>
+            <p>上映时间:
+                <a  href="https://musestarv.github.io/film/moonfall">2022-03-25</a></p>
+            <p>影片时长:
+                <a  href="https://musestarv.github.io/film/moonfall">2:10:14</a></p>
+        </li>
+    </div>
+    <div class="img">
+        <li>
+            <a href="https://musestarv.github.io/film/TheBatman">
+                <img referrerpolicy="no-referrer" src="https://musestarv.github.io/film/files/TheBatman.jpg"></a>
+            <p class="tname">
+                <a href="https://musestarv.github.io/film/TheBatman">新蝙蝠侠</a></p>
+            <p>上映时间:
+                <a  href="https://musestarv.github.io/film/TheBatman">2022-03-18</a></p>
+            <p>影片时长:
+                <a  href="https://musestarv.github.io/film/TheBatman">2:56:10</a></p>
+        </li>
+        <li>
+            <a href="https://musestarv.github.io/film/TheAdamProject">
+                <img referrerpolicy="no-referrer" src="https://musestarv.github.io/film/files/TheAdamProject.jpg"></a>
+            <p class="tname">
+                <a href="https://musestarv.github.io/film/TheAdamProject">亚当计划</a></p>
+            <p>上映时间:
+                <a  href="https://musestarv.github.io/film/TheAdamProject">2022-03-11</a></p>
+            <p>影片时长:
+                <a  href="https://musestarv.github.io/film/TheAdamProject">1:46:16</a></p>
+        </li>
+        <li>
+            <a href="https://musestarv.github.io/film/NiceView">
+                <img referrerpolicy="no-referrer" src="https://musestarv.github.io/film/files/NiceView.jpg"></a>
+            <p class="tname">
+                <a href="https://musestarv.github.io/film/NiceView">奇迹·笨小孩</a></p>
+            <p>上映时间:
+                <a  href="https://musestarv.github.io/film/NiceView">2022-02-01</a></p>
+            <p>影片时长:
+                <a  href="https://musestarv.github.io/film/NiceView">1:45:44</a></p>
+        </li>
+        <li>
+            <a href="https://musestarv.github.io/film/TooCoolToKill">
+                <img referrerpolicy="no-referrer" src="https://musestarv.github.io/film/files/TooCoolToKill.jpg"></a>
+            <p class="tname">
+                <a href="https://musestarv.github.io/film/TooCoolToKill">这个杀手不太冷静</a></p>
+            <p>上映时间:
+                <a  href="https://musestarv.github.io/film/TooCoolToKill">2022-02-01</a></p>
+            <p>影片时长:
+                <a  href="https://musestarv.github.io/film/TooCoolToKill">1:49:08</a></p>
+        </li>
+        <li>
+            <a href="https://musestarv.github.io/film/NoWayHome">
+                <img referrerpolicy="no-referrer" src="https://musestarv.github.io/film/files/NoWayHome.jpg"></a>
+            <p class="tname">
+                <a href="https://musestarv.github.io/film/NoWayHome">蜘蛛侠3：英雄无归</a></p>
+            <p>上映时间:
+                <a  href="https://musestarv.github.io/film/NoWayHome">2021-12-15</a></p>
+            <p>影片时长:
+                <a  href="https://musestarv.github.io/film/NoWayHome">2:28:09</a></p>
+        </li>
+        <li>
+            <a href="https://musestarv.github.io/film/Dune">
+                <img referrerpolicy="no-referrer" src="https://musestarv.github.io/film/files/Dune.jpg"></a>
+            <p class="tname">
+                <a href="https://musestarv.github.io/film/Dune">沙丘</a></p>
+            <p>上映时间:
+                <a  href="https://musestarv.github.io/film/Dune">2021-10-22</a></p>
+            <p>影片时长:
+                <a  href="https://musestarv.github.io/film/Dune">2:28:24</a></p>
+        </li>
+        <li>
+            <a href="https://musestarv.github.io/film/BlackBox">
+                <img referrerpolicy="no-referrer" src="https://musestarv.github.io/film/files/BlackBox.jpg"></a>
+            <p class="tname">
+                <a href="https://musestarv.github.io/film/BlackBox">黑匣子</a></p>
+            <p>上映时间:
+                <a  href="https://musestarv.github.io/film/BlackBox">2021-09-08</a></p>
+            <p>影片时长:
+                <a  href="https://musestarv.github.io/film/BlackBox">2:09:05</a></p>
+        </li>
+        <li>
+            <a href="https://musestarv.github.io/film/Avatar">
+                <img referrerpolicy="no-referrer" src="https://musestarv.github.io/film/files/Avatar.jpg"></a>
+            <p class="tname">
+                <a href="https://musestarv.github.io/film/Avatar">阿凡达</a></p>
+            <p>上映时间:
+                <a  href="https://musestarv.github.io/film/Avatar">2009-12-18</a></p>
+            <p>影片时长:
+                <a  href="https://musestarv.github.io/film/Avatar">2:57:37</a></p>
+        </li>
+        <li>
+            <a href="https://musestarv.github.io/film/TheShawshankRedemption">
+                <img referrerpolicy="no-referrer" src="https://musestarv.github.io/film/files/TheShawshankRedemption.jpg"></a>
+            <p class="tname">
+                <a href="https://musestarv.github.io/film/TheShawshankRedemption">肖申克的救赎</a></p>
+            <p>上映时间:
+                <a  href="https://musestarv.github.io/film/TheShawshankRedemption">1994-09-23</a></p>
+            <p>影片时长:
+                <a  href="https://musestarv.github.io/film/TheShawshankRedemption">2:22:15</a></p>
+        </li>
+        <li>
+            <a href="https://musestarv.github.io/film/Avatar2">
+                <img referrerpolicy="no-referrer" src="https://musestarv.github.io/film/files/Avatar2.jpg"></a>
+            <p class="tname">
+                <a href="https://musestarv.github.io/film/Avatar2">阿凡达2：水之道</a></p>
+            <p>上映时间:
+                <a  href="https://musestarv.github.io/film/Avatar2">2022-12-16</a></p>
+            <p>影片时长:
+                <a  href="https://musestarv.github.io/film/Avatar2">x:xx:xx</a></p>
+        </li>
+</div>
+    <div class="area">
+      <div class="firs l">
+        <div class="dtit">
+          <h2>
+            <a href="https://musestarv.github.io/">剧集</a></h2>
+        </div>
+        <div class="img">
+            <li>
+                <a href="https://musestarv.github.io/teleplay/MsMarvel">
+                    <img referrerpolicy="no-referrer" src="https://s1.imagehub.cc/images/2022/08/18/MsMarvel.webp"></a>
+                <p class="tname">
+                    <a href="https://musestarv.github.io/teleplay/MsMarvel">惊奇少女</a></p>
+                <p>上映时间:
+                    <a  href="https://musestarv.github.io/teleplay/MsMarvel">2022-06-08</a></p>
+                <p>已完结:
+                    <a  href="https://musestarv.github.io/teleplay/MsMarvel">共6集</a></p>
+            </li>
+            <li>
+                <a href="https://musestarv.github.io/teleplay/moonknight">
+                    <img referrerpolicy="no-referrer" src="https://s1.imagehub.cc/images/2022/08/18/moonknight.jpg"></a>
+                <p class="tname">
+                    <a href="https://musestarv.github.io/teleplay/moonknight">月光骑士</a></p>
+                <p>上映时间:
+                    <a  href="https://musestarv.github.io/teleplay/moonknight">2022-03-30</a></p>
+                <p>已完结:
+                    <a  href="https://musestarv.github.io/teleplay/moonknight">共6集</a></p>
+            </li>
+            <li>
+                <a href="https://musestarv.github.io/teleplay/3body">
+                    <img referrerpolicy="no-referrer" src="https://s1.imagehub.cc/images/2022/08/18/3body.jpg"></a>
+                <p class="tname">
+                    <a href="https://musestarv.github.io/teleplay/3body">三体</a></p>
+                <p>上映时间:
+                    <a  href="https://musestarv.github.io/teleplay/3body">2022-xx-xx</a></p>
+                <p>未上映:
+                    <a  href="https://musestarv.github.io/teleplay/3body">共24集</a></p>
+            </li>
+</div> 
+</div></div></div></div></div>
+    <div class="side r">
+    <div class="firs l">
+    <div class="dtit">
+        <h2>公告</h2>
+    </div>
+    </div>
+	<div class="tlist">
+        <li>
+            <span>
+                <a>8-17</a></span>
+            <a>更新新版缪斯星影视</a>
+        </li>
+        <li>
+            <span>
+                <a>8-17</a></span>
+            <a>上映《人生大事》</a>
+        </li>
+        <li>
+            <span>
+                <a>8-16</a></span>
+            <a>上映《外太空的莫扎特》</a>
+        </li>
+        <li>
+            <span>
+                <a>8-5</a></span>
+            <a>上映《小黄人大眼萌2：神偷奶爸前传》</a>
+        </li>
+        <li>
+            <span>
+                <a>8-4</a></span>
+            <a>上映《独行月球》TC版</a>
+        </li>
+        <li>
+            <span>
+                <a>7-16</a></span>
+            <a>上映《侏罗纪世界3：统治》</a>
+        </li>
+        <li>
+            <span>
+                <a>7-12</a></span>
+            <a>上映《雷神4：爱与雷霆》TC版</a>
+        </li>
+        <li>
+            <span>
+                <a>7-2</a></span>
+            <a>上映《三体》预告片</a>
+        </li>
+        <li>
+            <span>
+                <a>6-27</a></span>
+            <a>上映《惊奇少女》</a>
+        </li>
+        <li>
+            <span>
+                <a>6-27</a></span>
+            <a>上映《阿凡达2：水之道》预告片</a>
+        </li>
+        <li>
+            <span>
+                <a>6-27</a></span>
+            <a>上映《阿凡达》</a>
+        </li>
+        <li>
+            <span>
+                <a>6-26</a></span>
+            <a>上映《新蝙蝠侠》</a>
+        </li>
+        <li>
+            <span>
+                <a>6-25</a></span>
+            <a>上映《奇异博士2：疯狂多元宇宙》</a>
+        </li>
+        <li>
+            <span>
+                <a>6-03</a></span>
+            <a>上映《肖申克的救赎》</a>
+        </li>
+        <li>
+            <span>
+                <a>5-28</a></span>
+            <a>上映《瞬息全宇宙》</a>
+        </li>
+        <li>
+            <span>
+                <a>5-28</a></span>
+            <a>上映《网络炼狱：揭发N号房》</a>
+        </li>
+        <li>
+            <span>
+                <a>5-28</a></span>
+            <a>上映《黑匣子》</a>
+        </li>
+	    <li>
+                <span>
+                    <a>5-21</a></span>
+                <a>上映《沙丘》</a>
+            </li>
+	    <li>
+                <span>
+                    <a>5-20</a></span>
+                <a>上映《暗夜博士：莫比亚斯》</a>
+            </li>
+	    <li>
+                <span>
+                    <a>5-15</a></span>
+                <a>上映《神奇动物3：邓布利多之谜》</a>
+            </li>
+	    <li>
+                <span>
+                    <a>4-23</a></span>
+                <a>上映《奇迹·笨小孩》</a>
+            </li>
+	    <li>
+                <span>
+                    <a>4-23</a></span>
+                <a>上映《这个杀手不太冷静》</a>
+            </li>
+	    <li>
+                <span>
+                    <a>4-23</a></span>
+                <a>上映《亚当计划》</a>
+            </li>
+	    <li>
+                <span>
+                    <a>4-23</a></span>
+                <a>上映《蜘蛛侠3：英雄无归》</a>
+            </li>
+	    <li>
+                <span>
+                    <a>4-18</a></span>
+                <a>上映《月光骑士》</a>
+            </li>
+	    <li>
+                <span>
+                    <a>4-15</a></span>
+                <a>上映《月球陨落》</a>
+            </li>
+</div>
+<script type="text/javascript" src="https://musestarv.github.io/files/fdzz.js"></script>
+<script type="text/javascript" src="https://musestarv.github.io/files/hd.js"></script>
+<div class="blank5"></div>
+</div>       
+      </div>
+ <div class="blank"></div>
+      </div>
+         </div>
+<script type="text/javascript" src="https://musestarv.github.io/files/under.js"></script>
+</body>
+</html>

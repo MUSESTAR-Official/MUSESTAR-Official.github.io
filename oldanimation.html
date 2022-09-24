@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<!--
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇─────▇▇▇▇▇▇▇▇▇▇────────▇▇▇▇───────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───────────────▇▇▇▇▇▇▇▇▇
+▇▇▇▇─────▇▇▇▇▇▇▇▇▇▇─────▇▇▇▇▇▇▇▇▇▇▇▇──────▇▇▇▇▇──────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───────────────▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇─────▇▇▇─────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇────▇▇▇▇▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────▇▇▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇────▇▇▇▇▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇─────▇▇▇▇▇▇─────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇─▇▇─▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇─────▇▇▇▇▇▇──▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇──────▇▇▇▇───▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇─────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇──▇───▇▇▇▇──▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──────────▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇──▇────▇▇▇──▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──────────▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇──▇▇───▇▇───▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇─────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇──▇▇───▇▇──▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇─▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇──▇▇▇──────▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇─▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇──▇▇▇─────▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇─▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇──▇▇▇▇────▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇──▇▇▇▇───▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────▇▇▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇
+▇▇▇▇▇───▇▇▇▇▇──▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇─────────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──────────────▇▇▇▇▇▇▇▇
+▇▇▇▇──────▇▇▇─▇▇▇────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇─────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────────────────▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇▇▇───────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──────────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇─────────────▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇▇────────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───────────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇─────────────▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇─────▇▇▇─────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────▇▇▇──▇▇─────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇────▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇────▇▇▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇──▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇──▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇─────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇────▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇─▇▇▇▇▇▇──▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇────▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇────▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇─────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇────▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇▇────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────────────▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇▇▇▇────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──────────▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇─────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇──────▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇──▇▇─▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇────▇▇▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇─────▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇─────────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────▇▇▇▇▇▇▇▇─────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────▇▇▇▇▇▇─────▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇────────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──────▇▇▇▇▇▇───────▇▇▇▇▇▇▇▇▇▇▇▇────────▇▇▇▇────▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
+-->  
+<html>  
+    <head>  
+<!-- Clarity tracking code for https://musestarv.github.io/ --><script>    (function(c,l,a,r,i,t,y){        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i+"?ref=bwt";        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);    })(window, document, "clarity", "script", "d2ey6p25np");</script><meta charset="UTF-8">
+<meta name="referrer" content="no-referrer">        <meta charset="UTF-8">
+<meta name="referrer" content="no-referrer">  
+<style> 
+ body {
+   background:url("https://dev.iw233.cn/api.php?sort=random")  no-repeat center center;   /*加载背景图*/   /* 背景图不平铺 */
+   background-size:cover;  /* 让背景图基于容器大小伸缩 */
+   background-attachment:fixed;        /* 当内容高度大于图片高度时，背景图像的位置相对于viewport固定 */    //此条属性必须设置否则可能无效/
+   background-color:#CCCCCC;   /* 设置背景颜色，背景图加载过程中会显示背景色 */
+ }
+</style>
+        <title>缪斯星动漫旧版-斯啦斯啦o(*≧▽≦)ツ好番来咯～</title> 
+        <link rel="shortcut icon" href="https://musestarv.github.io/ms.ico">
+<meta name='description' content='缪斯星正在持续收集动漫番剧及电影，给您免费播放网站中的最好体验！斯啦斯啦o(*≧▽≦)ツ'>
+<meta name='keywords' content='番剧,动漫,在线观看,缪斯星,MUSESTAR,晓天,GabrieX'>
+<div id='wx_pic' style='margin:0 auto;display:none;'>
+    <img src='./files/thumbnail.jpg'>
+  </div>
+	      <link href="https://musestarv.github.io/animation/files/style.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="https://musestarv.github.io/animation/files/history.js"></script>
+</head>
+<script type="text/javascript" src="https://musestarv.github.io/files/gg.js"></script>
+    <body><style> body{cursor:url('https://musestarv.github.io/files/sbzz.png'),auto;}</style><script src="https://musestarv.github.io/files/sbtx.js"></script>
+	  <script src="https://musestarv.github.io/files/sakura.js"></script>
+    <script type="text/javascript" src="./files/animationhead.js"></script>
+    <script type="text/javascript" src="https://musestarv.github.io/files/search.js"></script>
+    <br>
+    <div class="area">
+      <div class="firs l">
+        <div class="dtit">
+            <h2>
+                <a href="https://musestarv.github.io/animation">本页面已停止更新，点击返回新版缪斯星动漫</a></h2>
+            </div>
+            <br>
+            <div class="area">
+              <div class="firs l">
+                <div class="dtit">          
+                    <h2>
+            <a href="https://musestarv.github.io/">全部番剧</a></h2>
+        </div>
+        <a href="https://musestarv.github.io/animation/spyfamily"><img src="https://musestarv.github.io/animation/files/spyfamily.gif"></a>
+        <a href="https://musestarv.github.io/animation/bg"><img src="https://musestarv.github.io/animation/files/bg.gif"></a>
+        <a href="https://musestarv.github.io/animation/ydmy"><img src="https://musestarv.github.io/animation/files/ydmy.gif"></a>
+     </div>
+        <div class="img">
+            <li>
+                <a href="https://musestarv.github.io/animation/spyfamily">
+                    <img referrerpolicy="no-referrer" src="https://s1.imagehub.cc/images/2022/08/18/spyfamily.jpg"></a>
+                <p class="tname">
+                    <a href="https://musestarv.github.io/animation/spyfamily">间谍过家家</a></p>
+                <p>上映时间:
+                    <a  href="https://musestarv.github.io/animation/spyfamily">2022-04-09</a></p>
+                <p>已完结:
+                    <a  href="https://musestarv.github.io/animation/spyfamily">共12集</a></p>
+            </li>
+            <li>
+                <a href="https://musestarv.github.io/animation/mnzl">
+                    <img referrerpolicy="no-referrer" src="https://s1.imagehub.cc/images/2022/08/18/mnzl.webp"></a>
+                <p class="tname">
+                    <a href="https://musestarv.github.io/animation/mnzl">魔女之旅</a></p>
+                <p>上映时间:
+                    <a  href="https://musestarv.github.io/animation/mnzl">2020-10-02</a></p>
+                <p>已完结:
+                    <a  href="https://musestarv.github.io/animation/mnzl">共12集</a></p>
+            </li>
+            <li>
+                <a href="https://musestarv.github.io/animation/Charlotte">
+                    <img referrerpolicy="no-referrer" src="https://s1.imagehub.cc/images/2022/08/24/Charlotte.webp"></a>
+                <p class="tname">
+                    <a href="https://musestarv.github.io/animation/Charlotte">Charlotte</a></p>
+                <p>上映时间:
+                    <a  href="https://musestarv.github.io/animation/Charlotte">2015-07-04</a></p>
+                <p>已完结:
+                    <a  href="https://musestarv.github.io/animation/Charlotte">共13集</a></p>
+            </li>
+            <li>
+                <a href="https://musestarv.github.io/animation/ydmy">
+                    <img referrerpolicy="no-referrer" src="https://musestarv.github.io/animation/files/ydmy.jpg"></a>
+                <p class="tname">
+                    <a href="https://musestarv.github.io/animation/ydmy">青春猪头少年不会梦到</a></p>
+                <p class="tname">
+                    <a href="https://musestarv.github.io/animation/ydmy">兔女郎学姐</a></p>
+                <p>上映时间:
+                    <a  href="https://musestarv.github.io/animation/ydmy">2018-10-04</a></p>
+                <p>已完结:
+                    <a  href="https://musestarv.github.io/animation/ydmy">共13集</a></p>
+            </li>
+        </div>
+        <div class="img">
+            <li>
+                <a href="https://musestarv.github.io/animation/bg">
+                    <img referrerpolicy="no-referrer" src="https://musestarv.github.io/animation/files/bg.jpg"></a>
+                <p class="tname">
+                    <a href="https://musestarv.github.io/animation/bg">冰菓</a></p>
+                <p>上映时间:
+                    <a  href="https://musestarv.github.io/animation/bg">2012-04-22</a></p>
+                <p>已完结:
+                    <a  href="https://musestarv.github.io/animation/bg">共22集</a></p>
+            </li>
+                        <li>
+                <a href="https://musestarv.github.io/animation/pdlk">
+                    <img referrerpolicy="no-referrer" src="https://musestarv.github.io/animation/files/pdlk.jpg"></a>
+                <p class="tname">
+                    <a href="https://musestarv.github.io/animation/pdlk">派对浪客诸葛孔明</a></p>
+                <p>上映时间:
+                    <a  href="https://musestarv.github.io/animation/pdlk">2022-04-05</a></p>
+                <p>已完结:
+                    <a  href="https://musestarv.github.io/animation/pdlk">共12集</a></p>
+            </li>
+            <li>
+                <a href="https://musestarv.github.io/animation/tcwzdczgjzxs">
+                    <img referrerpolicy="no-referrer" src="https://musestarv.github.io/animation/files/tcwzdczgjzxs.jpg"></a>
+                <p class="tname">
+                    <a href="https://musestarv.github.io/animation/tcwzdczgjzxs">天才王子的赤字国家</a></p>
+          <p class="tname">
+                    <a href="https://musestarv.github.io/animation/tcwzdczgjzxs">振兴术</a></p>
+                <p>上映时间:
+                    <a  href="https://musestarv.github.io/animation/tcwzdczgjzxs">2022-01-11</a></p>
+                <p>已完结:
+                    <a  href="https://musestarv.github.io/animation/tcwzdczgjzxs">共12集</a></p>
+            </li>
+            <li>
+                <a href="https://musestarv.github.io/animation/gjtxyjlzaz">
+                    <img referrerpolicy="no-referrer" src="https://musestarv.github.io/animation/files/gjtxyjlzaz.jpg"></a>
+                <p class="tname">
+                    <a href="https://musestarv.github.io/animation/gjtxyjlzaz">古见同学有交流</a></p>
+                <p class="tname">
+                    <a href="https://musestarv.github.io/animation/gjtxyjlzaz">障碍症</a></p>
+                <p>上映时间:
+                    <a  href="https://musestarv.github.io/animation/gjtxyjlzaz">2021-10-06</a></p>
+                <p>已完结:
+                    <a  href="https://musestarv.github.io/animation/gjtxyjlzaz">共12集</a></p>
+            </li>
+        <li>
+            <a href="https://musestarv.github.io/animation/gjtxyjlzaz2">
+                <img referrerpolicy="no-referrer" src="https://musestarv.github.io/animation/files/gjtxyjlzaz2.jpg"></a>
+            <p class="tname">
+                <a href="https://musestarv.github.io/animation/gjtxyjlzaz2">古见同学有交流</a></p>
+            <p class="tname">
+                <a href="https://musestarv.github.io/animation/gjtxyjlzaz2">障碍症第二季</a></p>
+            <p>上映时间:
+                <a  href="https://musestarv.github.io/animation/gjtxyjlzaz2">2022-04-06</a></p>
+            <p>已完结:
+                <a  href="https://musestarv.github.io/animation/gjtxyjlzaz2">共12集</a></p>
+        </li>
+        <li>
+            <a href="https://musestarv.github.io/animation/sssyyhnp">
+                <img referrerpolicy="no-referrer" src="https://musestarv.github.io/animation/files/sssyyhnp.jpg"></a>
+            <p class="tname">
+                <a href="https://musestarv.github.io/animation/sssyyhnp">死神少爷与黑女仆</a></p>
+            <p>上映时间:
+                <a  href="https://musestarv.github.io/animation/sssyyhnp">2021-07-04</a></p>
+            <p>已完结:
+                <a  href="https://musestarv.github.io/animation/sssyyhnp">共12集</a></p>
+        </li>
+            <li>
+                <a href="https://musestarv.github.io/animation/almals">
+                    <img referrerpolicy="no-referrer" src="https://musestarv.github.io/animation/files/almals.jpg"></a>
+                <p class="tname">
+                    <a href="https://musestarv.github.io/animation/almals">埃罗芒阿老师</a></p>
+                <p>上映时间:
+                    <a  href="https://musestarv.github.io/animation/almals">2017-04-09</a></p>
+                <p>已完结:
+                    <a  href="https://musestarv.github.io/animation/almals">共12集</a></p>
+            </li>
+        <li>
+            <a href="https://musestarv.github.io/animation/VioletEvergarden">
+                <img referrerpolicy="no-referrer" src="https://musestarv.github.io/animation/files/VioletEvergarden.jpg"></a>
+            <p class="tname">
+                <a href="https://musestarv.github.io/animation/VioletEvergarden">紫罗兰永恒花园</a></p>
+            <p>上映时间:
+                <a  href="https://musestarv.github.io/animation/VioletEvergarden">2018-01-10</a></p>
+            <p>已完结:
+                <a  href="https://musestarv.github.io/animation/VioletEvergarden">共14集</a></p>
+        </li>
+    </div>
+    <div class="img">
+        <li>
+            <a href="https://musestarv.github.io/animation/Gabriel">
+                <img referrerpolicy="no-referrer" src="https://musestarv.github.io/animation/files/Gabriel.jpg"></a>
+            <p class="tname">
+                <a href="https://musestarv.github.io/animation/Gabriel">珈百璃的堕落</a></p>
+            <p>上映时间:
+                <a  href="https://musestarv.github.io/animation/Gabriel">2017-01-09</a></p>
+            <p>已完结:
+                <a  href="https://musestarv.github.io/animation/Gabriel">共12集</a></p>
+        </li>
+        <li>
+            <a href="https://musestarv.github.io/animation/gyrozrah">
+                <img referrerpolicy="no-referrer" src="https://musestarv.github.io/animation/files/gyrozrah.jpg"></a>
+            <p class="tname">
+                <a href="https://musestarv.github.io/animation/gyrozrah">更衣人偶坠入爱河</a></p>
+            <p>上映时间:
+                <a  href="https://musestarv.github.io/animation/gyrozrah">2022-01-08</a></p>
+            <p>已完结:
+                <a  href="https://musestarv.github.io/animation/gyrozrah">共12集</a></p>
+        </li>
+        <li>
+            <a href="https://musestarv.github.io/animation/xrcx">
+                <img referrerpolicy="no-referrer" src="https://musestarv.github.io/animation/files/xrcx.jpg"></a>
+            <p class="tname">
+                <a href="https://musestarv.github.io/animation/xrcx">夏日重现</a></p>
+            <p>上映时间:
+                <a  href="https://musestarv.github.io/animation/xrcx">2022-04-14</a></p>
+            <p>更新中:
+                <a  href="https://musestarv.github.io/animation/xrcx">共25集</a></p>
+        </li>
+        <li>
+            <a href="https://musestarv.github.io/animation/biliRailgun">
+                <img referrerpolicy="no-referrer" src="https://musestarv.github.io/animation/files/Railgun.jpg"></a>
+            <p class="tname">
+                <a href="https://musestarv.github.io/animation/biliRailgun">某科学的超电磁炮</a></p>
+            <p>上映时间:
+                <a  href="https://musestarv.github.io/animation/biliRailgun">2009-10-02</a></p>
+            <p>已完结:
+                <a  href="https://musestarv.github.io/animation/biliRailgun">共24集</a></p>
+        </li>
+        <li>
+            <a href="https://musestarv.github.io/animation/biliRailgun2">
+                <img referrerpolicy="no-referrer" src="https://musestarv.github.io/animation/files/Railgun2.jpg"></a>
+            <p class="tname">
+                <a href="https://musestarv.github.io/animation/biliRailgun2">某科学的超电磁炮S</a></p>
+            <p>上映时间:
+                <a  href="https://musestarv.github.io/animation/biliRailgun2">2013-04-12</a></p>
+            <p>已完结:
+                <a  href="https://musestarv.github.io/animation/biliRailgun2">共24集</a></p>
+        </li>
+        <li>
+            <a href="https://musestarv.github.io/animation/Railgun3">
+                <img referrerpolicy="no-referrer" src="https://musestarv.github.io/animation/files/Railgun3.jpg"></a>
+            <p class="tname">
+                <a href="https://musestarv.github.io/animation/Railgun3">某科学的超电磁炮T</a></p>
+            <p>上映时间:
+                <a  href="https://musestarv.github.io/animation/Railgun3">2020-01-11</a></p>
+            <p>已完结:
+                <a  href="https://musestarv.github.io/animation/Railgun3">共25集</a></p>
+        </li>
+        <li>
+            <a href="https://musestarv.github.io/animation/Accelerator">
+                <img referrerpolicy="no-referrer" src="https://musestarv.github.io/animation/files/Accelerator.jpg"></a>
+            <p class="tname">
+                <a href="https://musestarv.github.io/animation/Accelerator">某科学的一方通行</a></p>
+            <p>上映时间:
+                <a  href="https://musestarv.github.io/animation/Accelerator">2019-07-13</a></p>
+            <p>已完结:
+                <a  href="https://musestarv.github.io/animation/Accelerator">共24集</a></p>
+        </li>
+        <li>
+            <a href="https://musestarv.github.io/animation/Index">
+                <img referrerpolicy="no-referrer" src="https://musestarv.github.io/animation/files/Index.jpg"></a>
+            <p class="tname">
+                <a href="https://musestarv.github.io/animation/Index">魔法禁书目录</a></p>
+            <p>上映时间:
+                <a  href="https://musestarv.github.io/animation/Index">2008-10-04</a></p>
+            <p>已完结:
+                <a  href="https://musestarv.github.io/animation/Index">共24集</a></p>
+        </li>
+        <li>
+            <a href="https://musestarv.github.io/animation/Index2">
+                <img referrerpolicy="no-referrer" src="https://musestarv.github.io/animation/files/Index2.jpg"></a>
+            <p class="tname">
+                <a href="https://musestarv.github.io/animation/Index2">魔法禁书目录第二季</a></p>
+            <p>上映时间:
+                <a  href="https://musestarv.github.io/animation/Index2">2010-10-08</a></p>
+            <p>已完结:
+                <a  href="https://musestarv.github.io/animation/Index2">共24集</a></p>
+        </li>
+        <li>
+            <a href="https://musestarv.github.io/animation/Index3">
+                <img referrerpolicy="no-referrer" src="https://musestarv.github.io/animation/files/Index3.jpg"></a>
+            <p class="tname">
+                <a href="https://musestarv.github.io/animation/Index3">魔法禁书目录第三季</a></p>
+            <p>上映时间:
+                <a  href="https://musestarv.github.io/animation/Index3">2018-10-05</a></p>
+            <p>已完结:
+                <a  href="https://musestarv.github.io/animation/Index3">共26集</a></p>
+        </li>
+        <li>
+            <a href="https://musestarv.github.io/animation/thtdm">
+                <img referrerpolicy="no-referrer" src="https://musestarv.github.io/animation/files/thtdm.jpg"></a>
+            <p class="tname">
+                <a href="https://musestarv.github.io/animation/thtdm">她和她的猫</a></p>
+            <p>上映时间:
+                <a  href="https://musestarv.github.io/animation/thtdm">2016-03-04</a></p>
+            <p>已完结:
+                <a  href="https://musestarv.github.io/animation/thtdm">共4集</a></p>
+        </li>
+        <li>
+            <a href="https://musestarv.github.io/animation/hmbb">
+                <img referrerpolicy="no-referrer" src="https://musestarv.github.io/animation/files/hmbb.jpg"></a>
+            <p class="tname">
+                <a href="https://musestarv.github.io/animation/hmbb">海绵宝宝</a></p>
+            <p>上映时间:
+                <a  href="https://musestarv.github.io/animation/hmbb">1999-07-17</a></p>
+            <p>更新中:
+                <a  href="https://musestarv.github.io/animation/hmbb">共161集</a></p>
+        </li>
+        <li>
+            <a href="https://musestarv.github.io/animation/3body">
+                <img referrerpolicy="no-referrer" src="https://musestarv.github.io/animation/files/3body.jpg"></a>
+            <p class="tname">
+                <a href="https://musestarv.github.io/animation/3body">三体</a></p>
+            <p>上映时间:
+                <a  href="https://musestarv.github.io/animation/3body">202x-xx-xx</a></p>
+            <p>未上映:
+                <a  href="https://musestarv.github.io/animation/3body">共0集</a></p>
+        </li>
+</div>
+    <div class="area">
+      <div class="firs l">
+        <div class="dtit">
+          <h2>
+            <a href="https://musestarv.github.io/">番剧电影</a></h2>
+        </div>
+        <div class="img">
+            <li>
+                <a href="https://musestarv.github.io/film/lyhd">
+                    <img referrerpolicy="no-referrer" src="https://s1.imagehub.cc/images/2022/08/18/lyhd.jpg"></a>
+                <p class="tname">
+                    <a href="https://musestarv.github.io/film/lyhd">铃芽户缔</a></p>
+                <p>上映时间:
+                    <a  href="https://musestarv.github.io/film/lyhd">2022-11-11</a></p>
+                <p>影片时长:
+                    <a  href="https://musestarv.github.io/film/lyhd">x:xx:xx</a></p>
+            </li>
+            <li>
+                <a href="https://musestarv.github.io/film/twxtdsd">
+                    <img referrerpolicy="no-referrer" src="https://s1.imagehub.cc/images/2022/08/18/twxtdsd.webp"></a>
+                <p class="tname">
+                    <a href="https://musestarv.github.io/film/twxtdsd">通往夏天的隧道，</a></p>
+                <p class="tname">
+                    <a href="https://musestarv.github.io/film/twxtdsd">再见的出口</a></p>
+                <p>上映时间:
+                    <a  href="https://musestarv.github.io/film/twxtdsd">2022-09-09</a></p>
+                <p>影片时长:
+                    <a  href="https://musestarv.github.io/film/twxtdsd">x:xx:xx</a></p>
+            </li>
+        <li>
+            <a href="https://musestarv.github.io/film/HelloWorld">
+                <img referrerpolicy="no-referrer" src="https://s1.imagehub.cc/images/2022/08/18/HelloWorld.webp"></a>
+            <p class="tname">
+                <a href="https://musestarv.github.io/film/HelloWorld">你好世界</a></p>
+            <p>上映时间:
+                <a  href="https://musestarv.github.io/film/HelloWorld">2021-06-11</a></p>
+            <p>影片时长:
+                <a  href="https://musestarv.github.io/film/HelloWorld">1:37:43</a></p>
+        </li>
+        <li>
+            <a href="https://musestarv.github.io/animation/VioletEvergardenjcb">
+                <img referrerpolicy="no-referrer" src="https://musestarv.github.io/animation/files/VioletEvergardenjcb.jpg"></a>
+            <p class="tname">
+                <a href="https://musestarv.github.io/animation/VioletEvergardenjcb">紫罗兰永恒花园剧场版</a></p>
+            <p>上映时间:
+                <a  href="https://musestarv.github.io/animation/VioletEvergardenjcb">2020-09-18</a></p>
+            <p>影片时长:
+                <a  href="https://musestarv.github.io/animation/VioletEvergardenjcb">2:20:06</a></p>
+        </li>
+    </div>
+    <div class="img">
+        <li>
+            <a href="https://musestarv.github.io/film/WeatheringWithYou">
+                <img referrerpolicy="no-referrer" src="https://musestarv.github.io/film/files/WeatheringWithYou.jpg"></a>
+            <p class="tname">
+                <a href="https://musestarv.github.io/film/WeatheringWithYou">天气之子</a></p>
+            <p>上映时间:
+                <a  href="https://musestarv.github.io/film/WeatheringWithYou">2019-11-01</a></p>
+            <p>影片时长:
+                <a  href="https://musestarv.github.io/film/WeatheringWithYou">1:52:10</a></p>
+        </li>
+        <li>
+            <a href="https://musestarv.github.io/animation/VioletEvergardenwz">
+                <img referrerpolicy="no-referrer" src="https://musestarv.github.io/animation/files/VioletEvergardenwz.jpg"></a>
+            <p class="tname">
+                <a href="https://musestarv.github.io/animation/VioletEvergardenwz">永远与自动手记人偶</a></p>
+            <p>上映时间:
+                <a  href="https://musestarv.github.io/animation/VioletEvergardenwz">2019-09-06</a></p>
+            <p>影片时长:
+                <a  href="https://musestarv.github.io/animation/VioletEvergardenwz">1:30:39</a></p>
+        </li>
+        <li>
+            <a href="https://musestarv.github.io/film/ydmyjcb">
+                <img referrerpolicy="no-referrer" src="https://musestarv.github.io/film/files/ydmyjcb.jpg"></a>
+            <p class="tname">
+                <a href="https://musestarv.github.io/film/ydmyjcb">青春猪头少年不会梦到</a></p>
+            <p class="tname">
+                <a href="https://musestarv.github.io/film/ydmyjcb">怀梦美少女</a></p>
+            <p>上映时间:
+                <a  href="https://musestarv.github.io/film/ydmyjcb">2019-06-15</a></p>
+            <p>影片时长:
+                <a  href="https://musestarv.github.io/film/ydmyjcb">1:29:54</a></p>
+        </li>
+        <li>
+            <a href="https://musestarv.github.io/film/YourName">
+                <img referrerpolicy="no-referrer" src="https://musestarv.github.io/film/files/YourName.jpg"></a>
+            <p class="tname">
+                <a href="https://musestarv.github.io/film/YourName">你的名字</a></p>
+            <p>上映时间:
+                <a  href="https://musestarv.github.io/film/YourName">2016-12-02</a></p>
+            <p>影片时长:
+                <a  href="https://musestarv.github.io/film/YourName">1:46:40</a></p>
+        </li>
+    </div>
+    <div class="img">
+        <li>
+            <a href="https://musestarv.github.io/film/yyzt">
+                <img referrerpolicy="no-referrer" src="https://musestarv.github.io/film/files/yyzt.jpg"></a>
+            <p class="tname">
+                <a href="https://musestarv.github.io/film/yyzt">言叶之庭</a></p>
+            <p>上映时间:
+                <a  href="https://musestarv.github.io/film/yyzt">2013-05-31</a></p>
+            <p>影片时长:
+                <a  href="https://musestarv.github.io/film/yyzt">46:04</a></p>
+        </li>
+        <li>
+            <a href="https://musestarv.github.io/film/Indexjcb">
+                <img referrerpolicy="no-referrer" src="https://musestarv.github.io/film/files/Indexjcb.jpg"></a>
+            <p class="tname">
+                <a href="https://musestarv.github.io/film/Indexjcb">魔法禁书目录剧场版</a></p>
+            <p>上映时间:
+                <a  href="https://musestarv.github.io/film/Indexjcb">2013-02-23</a></p>
+            <p>影片时长:
+                <a  href="https://musestarv.github.io/film/Indexjcb">1:30:06</a></p>
+        </li>
+        <li>
+            <a href="https://musestarv.github.io/film/5cm">
+                <img referrerpolicy="no-referrer" src="https://musestarv.github.io/film/files/5cm.jpg"></a>
+            <p class="tname">
+                <a href="https://musestarv.github.io/film/5cm">秒速5厘米</a></p>
+            <p>上映时间:
+                <a  href="https://musestarv.github.io/film/5cm">2007-03-03</a></p>
+            <p>影片时长:
+                <a  href="https://musestarv.github.io/film/5cm">1:02:44</a></p>
+        </li>
+        <li>
+            <a href="https://musestarv.github.io/film/yzbd">
+                <img referrerpolicy="no-referrer" src="https://musestarv.github.io/film/files/yzbd.jpg"></a>
+            <p class="tname">
+                <a href="https://musestarv.github.io/film/yzbd">云之彼端，约定的地方</a></p>
+            <p>上映时间:
+                <a  href="https://musestarv.github.io/film/yzbd">2004-11-20</a></p>
+            <p>影片时长:
+                <a  href="https://musestarv.github.io/film/yzbd">1:30:21</a></p>
+        </li>
+        <li>
+            <a href="https://musestarv.github.io/film/xzs">
+                <img referrerpolicy="no-referrer" src="https://musestarv.github.io/film/files/xzs.jpg"></a>
+            <p class="tname">
+                <a href="https://musestarv.github.io/film/xzs">星之声</a></p>
+            <p>上映时间:
+                <a  href="https://musestarv.github.io/film/xzs">2002-02-02</a></p>
+            <p>影片时长:
+                <a  href="https://musestarv.github.io/film/xzs">24:26</a></p>
+        </li>
+</div>
+</div></div></div></div>
+    <div class="side r">
+    <div class="firs l">
+    <div class="dtit">
+        <h2>公告</h2>
+    </div>
+    </div>
+	<div class="tlist">
+        <li>
+            <span>
+                <a>8-6</a></span>
+            <a>更新新版缪斯星动漫</a>
+        </li>
+        <li>
+            <span>
+                <a>7-25</a></span>
+            <a>上映《铃芽户缔》正式PV</a>
+        </li>
+        <li>
+            <span>
+                <a>7-25</a></span>
+            <a>上映《通往夏天的隧道，再见的出口》正式PV</a>
+        </li>
+        <li>
+            <span>
+                <a>7-4</a></span>
+            <a>上映《冰菓》</a>
+        </li>
+        <li>
+            <span>
+                <a>7-2</a></span>
+            <a>上映《青春猪头少年不会梦到兔女郎学姐》</a>
+        </li>
+        <li>
+            <span>
+                <a>6-26</a></span>
+            <a>上映《夏日重现》</a>
+        </li>
+        <li>
+            <span>
+                <a>6-26</a></span>
+            <a>上映《埃罗芒阿老师》</a>
+        </li>
+        <li>
+            <span>
+                <a>6-26</a></span>
+            <a>上映《海绵宝宝》</a>
+        </li>
+            <li>
+                <span>
+                    <a>6-12</a></span>
+                <a>上映《派对浪客诸葛孔明》</a>
+            </li>
+            <li>
+                <span>
+                    <a>6-11</a></span>
+                <a>上映《三体》预告片</a>
+            </li>
+            <li>
+                <span>
+                    <a>6-4</a></span>
+                <a>上映《Charlotte》</a>
+            </li>
+            <li>
+                <span>
+                    <a>6-4</a></span>
+                <a>上映《青春猪头少年不会梦到怀梦美少女》</a>
+            </li>
+            <li>
+                <span>
+                    <a>5-29</a></span>
+                <a>上映《珈百璃的堕落》</a>
+            </li>
+            <li>
+                <span>
+                    <a>5-29</a></span>
+                <a>上映《魔法禁书目录剧场版》</a>
+            </li>
+            <li>
+                <span>
+                    <a>5-29</a></span>
+                <a>上映《魔法禁书目录第二季》</a>
+            </li>
+            <li>
+                <span>
+                    <a>5-29</a></span>
+                <a>上映《魔法禁书目录》</a>
+            </li>
+            <li>
+                <span>
+                    <a>5-28</a></span>
+                <a>上映《某科学的超电磁炮T》</a>
+            </li>
+            <li>
+                <span>
+                    <a>5-28</a></span>
+                <a>上映《某科学的超电磁炮S》</a>
+            </li>
+            <li>
+                <span>
+                    <a>5-28</a></span>
+                <a>上映《某科学的超电磁炮》</a>
+            </li>
+            <li>
+                <span>
+                    <a>5-22</a></span>
+                <a>上映《她和她的猫》</a>
+            </li>
+            <li>
+                <span>
+                    <a>5-22</a></span>
+                <a>上映《云之彼端，约定的地方》</a>
+            </li>
+            <li>
+                <span>
+                    <a>5-22</a></span>
+                <a>上映《星之声》</a>
+            </li>
+            <li>
+                <span>
+                    <a>5-22</a></span>
+                <a>上映《秒速5厘米》</a>
+            </li>
+            <li>
+                <span>
+                    <a>5-22</a></span>
+                <a>上映《言叶之庭》</a>
+            </li>
+            <li>
+                <span>
+                    <a>5-14</a></span>
+                <a>上映《古见同学有交流障碍症第二季》</a>
+            </li>
+            <li>
+                <span>
+                    <a>5-14</a></span>
+                <a>上映《古见同学有交流障碍症》</a>
+            </li>
+            <li>
+                <span>
+                    <a>5-1</a></span>
+                <a>上映《你好世界》</a>
+            </li>
+            <li>
+                <span>
+                    <a>5-1</a></span>
+                <a>上映《天气之子》</a>
+            </li>
+            <li>
+                <span>
+                    <a>5-1</a></span>
+                <a>上映《你的名字》</a>
+            </li>
+            <li>
+                <span>
+                    <a>4-23</a></span>
+                <a>上映《天才王子的赤字国家振兴术》</a>
+            </li>
+            <li>
+                <span>
+                    <a>4-17</a></span>
+                <a>上映《魔女之旅》</a>
+            </li>
+            <li>
+                <span>
+                    <a>4-17</a></span>
+                <a>上映《紫罗兰永恒花园剧场版》</a>
+            </li>
+            <li>
+                <span>
+                    <a>4-17</a></span>
+                <a>上映《永远与自动手记人偶》</a>
+            </li>
+            <li>
+                <span>
+                    <a>4-17</a></span>
+                <a>上映《紫罗兰永恒花园》</a>
+            </li>
+		<li>
+                <span>
+                    <a>4-16</a></span>
+                <a>上映《更衣人偶坠入爱河》</a>
+            </li>
+		<li>
+                <span>
+                    <a>4-15</a></span>
+                <a>上映《间谍过家家》</a>
+            </li>
+</div>
+<script type="text/javascript" src="https://musestarv.github.io/files/fdzz.js"></script>
+<script type="text/javascript" src="https://musestarv.github.io/files/hd.js"></script>
+<div class="blank5"></div>
+</div>       
+      </div>
+ <div class="blank"></div>
+      </div>
+         </div>
+<script type="text/javascript" src="https://musestarv.github.io/files/under.js"></script>
+
+</body>
+</html>
