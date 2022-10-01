@@ -1,5 +1,5 @@
 document.write("	        <ul class=\"top_nav clearfix\">");
-document.write("                				<li class=\"active\"><a href=\"https:\/\/www.musestar.top\/movie\" >缪斯星影视<\/a><\/li>");
+document.write("                				<li class=\"active\"><a href=\"https:\/\/www.musestar.top\/comic\" >缪斯星动画<\/a><\/li>");
 document.write("			<\/ul>");
 document.write("		<\/div>");
 document.write("		<div class=\"head_user\">");
