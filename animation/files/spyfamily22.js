@@ -1,4 +1,3 @@
-document.write("<li><a href=\"https:\/\/www.musestar.top\/animation\/spyfamily2\/00\">预告片<\/a><\/li>");
 document.write("<li><a href=\"https:\/\/www.musestar.top\/animation\/spyfamily2\/01\">第1集<\/a><\/li>");
 document.write("<li><a href=\"https:\/\/www.musestar.top\/animation\/spyfamily2\/02\">第2集<\/a><\/li>");
 document.write("<li><a href=\"https:\/\/www.musestar.top\/animation\/spyfamily2\/03\">第3集<\/a><\/li>");
