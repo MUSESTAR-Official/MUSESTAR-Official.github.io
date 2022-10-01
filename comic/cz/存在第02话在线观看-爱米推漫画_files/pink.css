@@ -1,0 +1,62 @@
+body.style-2 {
+    background-color: #ffb6c1
+}
+.style-2 .title {
+    border-bottom: 1px solid #e5b0b9
+}
+.style-2 .title h1 a {
+    color: #a81919
+}
+.style-2 .title h2 {
+    color: #a81919
+}
+.style-2 .nav-color {
+    color: #333
+}
+.style-2 .footer {
+    border-top: 1px solid #e18595
+}
+.style-2 .footer-main {
+    border-top: 1px solid #e5b0b9;
+    background-color: #e18595;
+    color: #b00;
+    text-shadow: 1px 1px 0 #e59daa
+}
+.style-2 .footer-main a {
+    color: #b00
+}
+.style-2 #page {
+    color: #a81919
+}
+.style-2 .main-btn a, .pager * {
+    border: 1px solid #e00;
+    color: #ffc;
+    background-position: 0 0
+}
+.style-2 .main-btn a, .pager a {
+    text-shadow: 1px 1px 0 red
+}
+.style-2 .main-btn a:hover, .pager a:hover {
+    background-position: 0 -50px;
+    color: #fff;
+    border: 1px solid #c00;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .25) inset, 0 0 12px rgba(0, 0, 0, .25) inset, 0 0 0 0 #c00
+}
+.style-2 .main-btn a:focus, .pager a:focus {
+    background-position: 0 -100px
+}
+.style-2 .pager span {
+    background: none;
+    border-color: #e00
+}
+.style-2 .pager span.current {
+    background: none;
+    border: none;
+    font-weight: bold;
+    padding: 0 10px;
+    color: #c00
+}
+.style-2 .pager span.disabled {
+    color: #999;
+    border-color: #999
+}
