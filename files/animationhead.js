@@ -20,5 +20,8 @@ document.write("			<\/li>");
 document.write("			<li>");
 document.write("<a href=\"https:\/\/www.musestar.top\/pay\" >发电赞助<\/a>");
 document.write("			<\/li>");
+document.write("			<li>");
+document.write("<a href=\"https:\/\/www.musestar.top\/muse\" >缪斯星专区<\/a>");
+document.write("			<\/li>");
 document.write("    <\/div>");
 document.write("	<br>");

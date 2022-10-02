@@ -12,8 +12,6 @@ document.write("			<li>");
 document.write("				<a href=\"https:\/\/www.musestar.top\/comic\">缪斯星漫画<\/a><\/li>");
 document.write("			<li>");
 document.write("				<a href=\"https:\/\/www.musestar.top\/ecy\">二次元图库<\/a><\/li>");
-document.write("			<li>");
-document.write("				<a href=\"https:\/\/www.musestar.top\/muse\">缪斯星专区<\/a><\/li>");
 document.write("    <\/ul>");
 document.write("<ul class=\"dme r\">");
 document.write("			<li class=\"nav\">");
@@ -21,6 +19,9 @@ document.write("<a href=\"https:\/\/www.musestar.top\/musestar\" >缪斯星官�
 document.write("			<\/li>");
 document.write("			<li>");
 document.write("<a href=\"https:\/\/www.musestar.top\/pay\" >发电赞助<\/a>");
+document.write("			<\/li>");
+document.write("			<li>");
+document.write("<a href=\"https:\/\/www.musestar.top\/muse\" >缪斯星专区<\/a>");
 document.write("			<\/li>");
 document.write("    <\/div>");
 document.write("	<br>");
