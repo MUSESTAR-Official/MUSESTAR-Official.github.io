@@ -9,6 +9,8 @@ document.write("				<a href=\"https:\/\/www.musestar.top\/animation\">缪斯星�
 document.write("			<li class=\"nav\">");
 document.write("				<a href=\"https:\/\/www.musestar.top\/movie\">缪斯星影视<\/a><\/li>");
 document.write("			<li>");
+document.write("				<a href=\"https:\/\/www.musestar.top\/comic\">缪斯星漫画<\/a><\/li>");
+document.write("			<li>");
 document.write("				<a href=\"https:\/\/www.musestar.top\/ecy\">二次元图库<\/a><\/li>");
 document.write("    <\/ul>");
 document.write("<ul class=\"dme r\">");
