@@ -9,6 +9,7 @@ document.write("<br>");
 document.write("    <div class=\"foot\">");
 document.write("        <div class=\"footbg\">");
 document.write("           <a href=\" https:\/\/www.musestar.top\">© 2014-2022 MUSESTAR<\/a><br>");
+document.write("<a href=\"https:\/\/icp.gov.moe\/?keyword=20226956\" target=\"_blank\">萌ICP备20226956号<\/a><br>");
 document.write("<a href=\"https:\/\/www.musestar.top\/sitemap.xml\" >网站地图<\/a><br>");
 document.write("           <a >未经本站授权禁止转载、摘编、复制或建立镜像。本站只提供WEB页面服务，本站不存储、不制作任何视频及图像，不承担任何由于内容的合法性及健康性所引起的争议和法律责任。<\/a>");
 document.write("<p>已运行：<span class=\"brand\" id=\"runtime\"><\/span><\/p>		");
