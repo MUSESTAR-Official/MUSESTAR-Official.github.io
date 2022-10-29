@@ -70,7 +70,40 @@
         <div>  
 	<video id="video" width='auto' height="400" controls></video>
         </div>  
-    </body>  
+    		<div class="waifu">
+			<div class="waifu-tips"></div>
+			<canvas id="live2d" class="live2d"></canvas>
+			<div class="waifu-tool">
+				<span class="fui-home"></span>
+				<span class="fui-chat"></span>
+				<span class="fui-eye"></span>
+				<span class="fui-user"></span>
+				<span class="fui-photo"></span>
+				<span class="fui-info-circle"></span>
+				<span class="fui-cross"></span>
+			</div>
+		</div>
+		<script src="https://cdn.jsdelivr.net/npm/jquery-ui-dist@1.12.1/jquery-ui.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+		<script src="https://live2d-cdn.fghrsh.net/assets/1.4.2/waifu-tips.min.js"></script>
+		<script src="https://live2d-cdn.fghrsh.net/assets/1.4.2/live2d.min.js"></script>
+		<script type="text/javascript">
+			live2d_settings['modelId'] = 1;                  // 默认模型 ID
+			live2d_settings['modelTexturesId'] = 83;         // 默认材质 ID
+			live2d_settings['modelStorage'] = false;         // 不储存模型 ID
+			live2d_settings['canCloseLive2d'] = false;       // 隐藏 关闭看板娘 按钮
+			live2d_settings['canTurnToHomePage'] = false;    // 隐藏 返回首页 按钮
+			live2d_settings['waifuSize'] = '380x330';        // 看板娘大小
+			live2d_settings['waifuTipsSize'] = '285x75';    // 提示框大小
+			live2d_settings['waifuFontSize'] = '20px';       // 提示框字体
+			live2d_settings['waifuToolFont'] = '0px';       // 工具栏字体
+			live2d_settings['waifuToolLine'] = '0px';       // 工具栏行高
+			live2d_settings['waifuToolTop'] = '-60px';       // 工具栏顶部边距
+			live2d_settings['waifuDraggable'] = 'axis-x';    // 拖拽样式
+			initModel("https://live2d-cdn.fghrsh.net/assets/1.4.2/waifu-tips.json")
+		</script>
+	<link rel="stylesheet" type="text/css" href="https://live2d-cdn.fghrsh.net/assets/1.4.2/waifu.min.css"/>
+</body>  
   <script type="text/javascript">
 	//播放地址
 	var hlsUrl="https://qq.sd-play.com/20220418/DvUtZgoS/hls/index.m3u8";//需要替换为自己的视频流地址
@@ -113,5 +146,38 @@
 </div>
       </div>
     <script type="text/javascript" src="https://www.musestar.top/files/videounder.js"></script>
+		<div class="waifu">
+			<div class="waifu-tips"></div>
+			<canvas id="live2d" class="live2d"></canvas>
+			<div class="waifu-tool">
+				<span class="fui-home"></span>
+				<span class="fui-chat"></span>
+				<span class="fui-eye"></span>
+				<span class="fui-user"></span>
+				<span class="fui-photo"></span>
+				<span class="fui-info-circle"></span>
+				<span class="fui-cross"></span>
+			</div>
+		</div>
+		<script src="https://cdn.jsdelivr.net/npm/jquery-ui-dist@1.12.1/jquery-ui.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+		<script src="https://live2d-cdn.fghrsh.net/assets/1.4.2/waifu-tips.min.js"></script>
+		<script src="https://live2d-cdn.fghrsh.net/assets/1.4.2/live2d.min.js"></script>
+		<script type="text/javascript">
+			live2d_settings['modelId'] = 1;                  // 默认模型 ID
+			live2d_settings['modelTexturesId'] = 83;         // 默认材质 ID
+			live2d_settings['modelStorage'] = false;         // 不储存模型 ID
+			live2d_settings['canCloseLive2d'] = false;       // 隐藏 关闭看板娘 按钮
+			live2d_settings['canTurnToHomePage'] = false;    // 隐藏 返回首页 按钮
+			live2d_settings['waifuSize'] = '380x330';        // 看板娘大小
+			live2d_settings['waifuTipsSize'] = '285x75';    // 提示框大小
+			live2d_settings['waifuFontSize'] = '20px';       // 提示框字体
+			live2d_settings['waifuToolFont'] = '0px';       // 工具栏字体
+			live2d_settings['waifuToolLine'] = '0px';       // 工具栏行高
+			live2d_settings['waifuToolTop'] = '-60px';       // 工具栏顶部边距
+			live2d_settings['waifuDraggable'] = 'axis-x';    // 拖拽样式
+			initModel("https://live2d-cdn.fghrsh.net/assets/1.4.2/waifu-tips.json")
+		</script>
+	<link rel="stylesheet" type="text/css" href="https://live2d-cdn.fghrsh.net/assets/1.4.2/waifu.min.css"/>
 </body>
 </html>
