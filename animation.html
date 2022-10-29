@@ -60,10 +60,7 @@
 	</div>
    <link rel="stylesheet" type="text/css" href="https://www.musestar.top/files/newstyle.css">
 <link rel="stylesheet" type="text/css" href="https://www.musestar.top/files/newblue.css" name="skin">
-
-<link rel="stylesheet" type="text/css" href="assets/waifu.css"/>
-<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
-
+<link rel="stylesheet" type="text/css" href="https://live2d-cdn.fghrsh.net/assets/1.4.2/waifu.min.css"/>
 </head>
 <body>
 
@@ -434,7 +431,7 @@
 		<script type="text/javascript" src="https://www.musestar.top/files/under.js"></script>
 		<div class="waifu">
 			<div class="waifu-tips"></div>
-			<canvas id="live2d" width="280" height="250" class="live2d"></canvas>
+			<canvas id="live2d" class="live2d"></canvas>
 			<div class="waifu-tool">
 				<span class="fui-home"></span>
 				<span class="fui-chat"></span>
@@ -445,10 +442,27 @@
 				<span class="fui-cross"></span>
 			</div>
 		</div>
-			
-		<script src="assets/waifu-tips.js"></script>
-		<script src="assets/live2d.js"></script>
-		<script type="text/javascript">initModel("assets/")</script>
+		<script src="https://cdn.jsdelivr.net/npm/jquery-ui-dist@1.12.1/jquery-ui.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+		<script src="https://live2d-cdn.fghrsh.net/assets/1.4.2/waifu-tips.min.js"></script>
+		<script src="https://live2d-cdn.fghrsh.net/assets/1.4.2/live2d.min.js"></script>
+		<script type="text/javascript">
+			/* 可直接修改部分参数 */
+			live2d_settings['modelId'] = 1;                  // 默认模型 ID
+			live2d_settings['modelTexturesId'] = 87;         // 默认材质 ID
+			live2d_settings['modelStorage'] = false;         // 不储存模型 ID
+			live2d_settings['canCloseLive2d'] = false;       // 隐藏 关闭看板娘 按钮
+			live2d_settings['canTurnToHomePage'] = false;    // 隐藏 返回首页 按钮
+			live2d_settings['waifuSize'] = '380x330';        // 看板娘大小
+			live2d_settings['waifuTipsSize'] = '285x75';    // 提示框大小
+			live2d_settings['waifuFontSize'] = '20px';       // 提示框字体
+			live2d_settings['waifuToolFont'] = '20px';       // 工具栏字体
+			live2d_settings['waifuToolLine'] = '30px';       // 工具栏行高
+			live2d_settings['waifuToolTop'] = '-60px';       // 工具栏顶部边距
+			live2d_settings['waifuDraggable'] = 'axis-x';    // 拖拽样式
+			/* 在 initModel 前添加 */
+			initModel("https://live2d-cdn.fghrsh.net/assets/1.4.2/waifu-tips.json")
+		</script>
 	
-</body>
+	</body>
 </html>
