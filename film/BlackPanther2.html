@@ -54,7 +54,7 @@
 <title>黑豹2：瓦坎达万岁ฅ^≧ω≦^ฅ缪斯星影视</title> 
 <link rel="shortcut icon" href="https://www.musestar.top/ms.ico">
 <meta name='keywords' content='黑豹2：瓦坎达万岁,电影,在线观看,缪斯星,MUSESTAR'>
-<meta name="description" content="不朽的黑豹，与瓦坎达同在，2022年即将全球献映。">
+<meta name="description" content="在“黑豹”特查拉国王不幸去世后，苏睿（利蒂希娅·赖特 Letitia Wright 饰）、奥克耶（丹娜·奎里拉 Danai Gurira 饰）、拉玛达王太后（安吉拉·贝塞特 Angela Bassett 饰）、姆巴库（温斯顿·杜克 Winston Duke 饰）为了保护瓦坎达而战。瓦坎达人努力迎接他们的新篇章，他们必须在娜吉雅（露皮塔·尼永奥 Lupita Nyong'o 饰）和罗斯探员（马丁·弗瑞曼 Martin Freeman 饰）的帮助下团结起来，为瓦坎达王国开辟新道路。">
 <link rel="stylesheet" type="text/css" href="https://www.musestar.top/files/newstyle.css">
 <link rel="stylesheet" type="text/css" href="https://www.musestar.top/files/newblue.css" name="skin">
 <link rel="stylesheet" type="text/css" href="https://www.musestar.top/files/newblack.css" name="color">
@@ -82,15 +82,41 @@
 			<!-- 播放器  -->
 				<div class="left_row fl">
 					<div class="player_video embed-responsive embed-responsive-16by9 author-qq362695000 clearfix">
-
-					<video src="https://vt1.doubanio.com/202208301522/a0591acf2e6532ae2d90474e06bd2e88/view/movie/M/402920476.mp4" controls autoplay></video>
-
-					</div>
-                 <div class="play_but bline">
-					  <ul>
-						<li>
-							<a ><font color="red">请勿相信视频内的任何广告，下载源可用建议下载观看，问题反馈请点击右上角缪斯星官方</font></a>
-						</li>
+						<div>  
+							<video id="video" width='auto' height="auto" controls></video>
+								</div>  
+						  <script type="text/javascript">
+							//播放地址
+							var hlsUrl="https://vip.lz-cdn10.com/20221117/2986_db70dac0/1200k/hls/mixed.m3u8";//需要替换为自己的视频流地址
+						
+							//播放视频流 
+								function loadVideo(){
+							var video = document.getElementById('video');//获取 video 标签
+							if(Hls.isSupported()) {
+							var hls = new Hls();//实例化 Hls 对象
+							hls.loadSource(hlsUrl);//传入路径
+							hls.attachMedia(video);
+							hls.on(Hls.Events.MANIFEST_PARSED,function() {
+								   video.play();//调用播放 API
+								});
+							} else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+									  video.src = hlsUrl;
+									  video.addEventListener('loadedmetadata',function() {
+										  video.play();
+									  });
+								  }
+							}
+								
+						  //方法调用
+						  loadVideo();
+						  </script>
+						</div>
+	
+					 <div class="play_but bline">
+						  <ul>
+							<li>
+								<a ><font color="red">请勿相信视频内的任何广告，下载源可用建议下载观看，问题反馈请点击右上角缪斯星官方</font></a>
+							</li>
                        </ul>
 					</div>
 				</div>
@@ -101,13 +127,13 @@
 						 </div>
 						 <div class="play_infobox">
 						     <div class="play_vlist cblock">
-								 <div class="play_vlist_thumb vnow lazyload" style="background-image: url(https://s1.imagehub.cc/images/2022/08/30/BlackPanther2.webp"></div>
+								 <div class="play_vlist_thumb vnow lazyload" style="background-image: url(https://s1.imagehub.cc/images/2022/11/25/BlackPanther2.webp"></div>
 								 <div class="play_vlist_text vnow">
 									 <p class="play_vlist_title">黑豹2：瓦坎达万岁</p>
 									 <p class="play_vlist_now"><script type="text/javascript" src="https://www.musestar.top/film/files/BlackPanther2.js"></script></script></p>
 								 </div>
 							</div>
-                         </div><img  width="auto" height="300" src="https://s1.imagehub.cc/images/2022/08/30/BlackPanther2.webp">
+                         </div><img  width="auto" height="300" src="https://s1.imagehub.cc/images/2022/11/25/BlackPanther2.webp">
 					 </div>
 				</div>
 				<!-- end 播放器  -->
@@ -132,7 +158,7 @@
 		    			    <div class="pannel_head clearfix">
 					<h3 class="title">电影介绍</h3>
 				</div>
-				<p><font size="3">不朽的黑豹，与瓦坎达同在，2022年即将全球献映。</font></p>
+				<p><font size="3">在“黑豹”特查拉国王不幸去世后，苏睿（利蒂希娅·赖特 Letitia Wright 饰）、奥克耶（丹娜·奎里拉 Danai Gurira 饰）、拉玛达王太后（安吉拉·贝塞特 Angela Bassett 饰）、姆巴库（温斯顿·杜克 Winston Duke 饰）为了保护瓦坎达而战。瓦坎达人努力迎接他们的新篇章，他们必须在娜吉雅（露皮塔·尼永奥 Lupita Nyong'o 饰）和罗斯探员（马丁·弗瑞曼 Martin Freeman 饰）的帮助下团结起来，为瓦坎达王国开辟新道路。</font></p>
         <div class="pannel_head clearfix">
 					<h3 class="title">电影下载</h3>
 				</div>
