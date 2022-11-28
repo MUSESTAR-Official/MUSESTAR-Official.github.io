@@ -9,6 +9,6 @@ document.write("                <li><a href=\"https:\/\/www.musestar.top\/animat
 document.write("                <li><a href=\"https:\/\/www.musestar.top\/movie\" ><font size=\"1\">缪斯星影视<\/font><\/a><\/li>");
 document.write("                <li><a href=\"https:\/\/www.musestar.top\/comic\" ><font size=\"1\">缪斯星漫画<\/font><\/a><\/li>");
 document.write("                <li><a href=\"https:\/\/www.musestar.top\/ecy\" ><font size=\"1\">二次元图库<\/font><\/a><\/li>");
-document.write("				<li><a href=\"https:\/\/bbs.musestar.top\" ><font size=\"1\">缪斯星论坛<\/font><\/a><\/li>");
+document.write("				<li><a href=\"https:\/\/game.musestar.top\" ><font size=\"1\">缪斯星游戏<\/font><\/a><\/li>");
 document.write("				<li><a href=\"https:\/\/www.musestar.top\/musestar\" ><font size=\"1\">缪斯星官方<\/font><\/a><\/li>");
 document.write("                            <\/ul>");

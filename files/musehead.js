@@ -15,7 +15,7 @@ document.write("				<a href=\"https:\/\/www.musestar.top\/ecy\">二次元图库<
 document.write("    <\/ul>");
 document.write("<ul class=\"dme r\">");
 document.write("			<li>");
-document.write("<a href=\"https:\/\/bbs.musestar.top\" >缪斯星论坛<\/a>");
+document.write("<a href=\"https:\/\/game.musestar.top\" >缪斯星游戏<\/a>");
 document.write("			<\/li>");
 document.write("			<li>");
 document.write("<a href=\"https:\/\/www.musestar.top\/musestar\" >缪斯星官方<\/a>");
