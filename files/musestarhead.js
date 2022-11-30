@@ -8,14 +8,14 @@ document.write("			<li>");
 document.write("				<a href=\"https:\/\/www.musestar.top\/animation\">缪斯星动漫<\/a><\/li>");
 document.write("			<li>");
 document.write("				<a href=\"https:\/\/www.musestar.top\/movie\">缪斯星影视<\/a><\/li>");
-document.write("			<li>");
-document.write("				<a href=\"https:\/\/www.musestar.top\/comic\">缪斯星漫画<\/a><\/li>");
+
 document.write("			<li>");
 document.write("				<a href=\"https:\/\/www.musestar.top\/ecy\">二次元图库<\/a><\/li>");
 document.write("    <\/ul>");
 document.write("<ul class=\"dme r\">");
+
 document.write("			<li>");
-document.write("<a href=\"https:\/\/musestar.top\/game\" >缪斯星游戏<\/a>");
+document.write("<a href=\"https:\/\/www.musestar.cn\" >缪斯星主站<\/a>");
 document.write("			<\/li>");
 document.write("			<li class=\"nav\">");
 document.write("<a href=\"https:\/\/www.musestar.top\/musestar\" >缪斯星官方<\/a>");
