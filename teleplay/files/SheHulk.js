@@ -1,1 +1,0 @@
-document.write("<p>已完结：共9集<\/p>");
