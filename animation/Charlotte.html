@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<!--
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇─────▇▇▇▇▇▇▇▇▇▇────────▇▇▇▇───────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───────────────▇▇▇▇▇▇▇▇▇
+▇▇▇▇─────▇▇▇▇▇▇▇▇▇▇─────▇▇▇▇▇▇▇▇▇▇▇▇──────▇▇▇▇▇──────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───────────────▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇─────▇▇▇─────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇────▇▇▇▇▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────▇▇▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇────▇▇▇▇▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇─────▇▇▇▇▇▇─────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇─▇▇─▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇─────▇▇▇▇▇▇──▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇──────▇▇▇▇───▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇─────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇──▇───▇▇▇▇──▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──────────▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇──▇────▇▇▇──▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──────────▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇──▇▇───▇▇───▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇─────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇──▇▇───▇▇──▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇─▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇──▇▇▇──────▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇─▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇──▇▇▇─────▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇─▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇──▇▇▇▇────▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇──▇▇▇▇───▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────▇▇▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇
+▇▇▇▇▇───▇▇▇▇▇──▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇─────────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──────────────▇▇▇▇▇▇▇▇
+▇▇▇▇──────▇▇▇─▇▇▇────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇─────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────────────────▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇▇▇───────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──────────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇─────────────▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇▇────────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───────────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇─────────────▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇─────▇▇▇─────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────▇▇▇──▇▇─────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇────▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇────▇▇▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇──▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇──▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇─────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇────▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇─▇▇▇▇▇▇──▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇────▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇────▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇─────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇────▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇▇────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────────────▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇▇▇▇────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──────────▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇─────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇──────▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇──▇▇─▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇────▇▇▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇─────▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇─────────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────▇▇▇▇▇▇▇▇─────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────▇▇▇▇▇▇─────▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇────────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──────▇▇▇▇▇▇───────▇▇▇▇▇▇▇▇▇▇▇▇────────▇▇▇▇────▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
+-->
+<head>
+<!-- Clarity tracking code for https://www.musestar.top/ --><script>    (function(c,l,a,r,i,t,y){        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i+"?ref=bwt";        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);    })(window, document, "clarity", "script", "dvrisi60tf");</script><meta name="referrer" content="no-referrer"><meta charset="UTF-8">
+<meta name="referrer" content="no-referrer">   
+<script type="text/javascript" src="https://www.musestar.top/files/hdhead.js"></script>
+   <title>Charlotteฅ^≧ω≦^ฅ缪斯星动漫</title> 
+<meta name='description' content='思春期的少年少女中极少部分人会发作的特殊能力。驱使着无人知晓的能力，过着顺风顺水学园生活的乙坂有宇。突然出现在这样的他的面前的少女，友利奈绪。从与她相遇的那一天起，被揭露出特殊能力者的宿命。这是由麻枝准所描绘的，特殊能力者们奔跑着的青春物语——。'>
+<meta name='keywords' content='Charlotte,动漫,番剧,在线观看,缪斯星,MUSESTAR'>
+       <link rel="shortcut icon" href="https://www.musestar.top/ms.ico">
+    <link href="./files/style.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="./files/history.js"></script>
+<style> 
+  body {
+    background:url("https://s1.imagehub.cc/images/2022/12/04/62a0cdb4b5cda7801d172dc850042ce3.webp")  no-repeat center center;   /*加载背景图*/   /* 背景图不平铺 */
+    background-size:cover;  /* 让背景图基于容器大小伸缩 */
+    background-attachment:fixed;        /* 当内容高度大于图片高度时，背景图像的位置相对于viewport固定 */    //此条属性必须设置否则可能无效/
+    background-color:#CCCCCC;   /* 设置背景颜色，背景图加载过程中会显示背景色 */
+  }
+   </style>
+
+</head>
+      <body><style> body{cursor:url('https://www.musestar.top/files/sbzz.png'),auto;}</style><style> body{cursor:url('https://www.musestar.top/files/sbzz.png'),auto;}</style><script src="https://www.musestar.top/files/sbtx.js"></script>
+    <script type="text/javascript" src="https://www.musestar.top/files/animationhead.js"></script>
+      <div class="fire l">
+        <div class="thumb l">
+          <div class="splay">
+            <a href="#" title="Charlotte">Charlotte</a></div>
+          <img referrerpolicy="no-referrer" src="https://s1.imagehub.cc/images/2022/12/04/62a0cdb4b5cda7801d172dc850042ce3.webp" alt="Charlotte"></div>
+        <div class="rate r">
+          <h1>Charlotte</h1>
+     
+    <div class="sinfo">
+        <p>
+            <label>别名:</label>夏洛特</p>
+        <span>
+            <label>上映:</label>
+            <a href="#" >2015-07-04</a>
+        </span>
+        <span>
+            <label>地区:</label>
+            <a href="#" >日本</a>
+        </span>
+        <span>
+            <label>类型:</label>
+            <a href="#" >治愈</a>
+<a href="#" >喜剧</a>
+        </span>
+        <span>
+            <label>已完结：共13集</label>
+        </span>
+        <p><font color="#FF44AA"></font></p>
+    </div>
+       <div class="blank5"></div>
+        </div>
+          <div class="blank5"></div>
+        <div class="tabs">
+            <ul class="menu0" id="menu0">
+                <li onclick="setTab(0,0)" class="on">第一季</li>
+                <li onclick="setTab(0,1)" class="">暂无第二季</li>
+            </ul>
+          <div class="main0" id="main0">
+            <div class="movurl" style="display: block;"><ul>		
+           <li>
+               <a href="https://www.bilibili.com/bangumi/play/ep63840?bsource=musestar" target="_self">第1-13集</a>
+            </li>     
+           <li>
+               <a href="https://www.bilibili.com/bangumi/play/ep100895?bsource=musestar" target="_self">第5.5集</a>
+            </li>
+			</ul></div><div class="movurl" style="display: none;"><ul>
+            <li>
+                <a href="#" title="暂无" target="_self">暂无</a>
+            </li>
+			</ul></div><div class="movurl" style="display:none">
+</div>       
+          </div>
+
+          <script id="DEF_PLAYINDEX">1</script>
+          
+          <script>
+            __set_playtab_on_index(0);
+          </script>
+        </div>
+        </div>
+      </div>
+
+        <div class="blank"></div>
+        <div class="botit">
+          <h2>动漫介绍</h2></div>
+        <div class="info"><font size="3">思春期的少年少女中极少部分人会发作的特殊能力。驱使着无人知晓的能力，过着顺风顺水学园生活的乙坂有宇。突然出现在这样的他的面前的少女，友利奈绪。从与她相遇的那一天起，被揭露出特殊能力者的宿命。这是由麻枝准所描绘的，特殊能力者们奔跑着的青春物语——。</font></div>
+      </div>
+        <div class="blank"></div>
+        <div class="botit">
+          <h2>推荐视频</h2></div>
+          <iframe src="//player.bilibili.com/player.html?aid=75905104&bvid=BV1QJ411U7Hf&cid=129842724&page=1&high_quality=1" width='900' height="500" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+          <iframe src="//player.bilibili.com/player.html?aid=769008736&bvid=BV1wr4y1b7Ea&cid=721290273&page=1&high_quality=1" width='900' height="500" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+          <iframe src="//player.bilibili.com/player.html?aid=541066516&bvid=BV1Ji4y1G7CU&cid=203351600&page=1&high_quality=1" width='900' height="500" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+          <script type="text/javascript" src="https://www.musestar.top/files/under.js"></script>
+		<div class="waifu">
+			<div class="waifu-tips"></div>
+			<canvas id="live2d" class="live2d"></canvas>
+			<div class="waifu-tool">
+				<span class="fui-home"></span>
+				<span class="fui-chat"></span>
+				<span class="fui-eye"></span>
+				<span class="fui-user"></span>
+				<span class="fui-photo"></span>
+				<span class="fui-info-circle"></span>
+				<span class="fui-cross"></span>
+			</div>			<a href="https://www.internationalsaimoe.com/statistics/nominations/?lang=zh-hans&source=musestar"><img width="600" height="auto" src="https://www.internationalsaimoe.com/img/banners/18.png"></a>
+
+		</div>
+		<script src="https://cdn.jsdelivr.net/npm/jquery-ui-dist@1.12.1/jquery-ui.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+		<script src="https://live2d-cdn.fghrsh.net/assets/1.4.2/waifu-tips.min.js"></script>
+		<script src="https://live2d-cdn.fghrsh.net/assets/1.4.2/live2d.min.js"></script>
+		<script type="text/javascript">
+			live2d_settings['modelId'] = 1;                  // 默认模型 ID
+			live2d_settings['modelTexturesId'] = 83;         // 默认材质 ID
+			live2d_settings['modelStorage'] = false;         // 不储存模型 ID
+			live2d_settings['canCloseLive2d'] = false;       // 隐藏 关闭看板娘 按钮
+			live2d_settings['canTurnToHomePage'] = false;    // 隐藏 返回首页 按钮
+			live2d_settings['waifuSize'] = '275x225';        // 看板娘大小
+			live2d_settings['waifuTipsSize'] = '220x75';    // 提示框大小
+			live2d_settings['waifuFontSize'] = '20px';       // 提示框字体
+			live2d_settings['waifuToolFont'] = '0px';       // 工具栏字体
+			live2d_settings['waifuToolLine'] = '0px';       // 工具栏行高
+			live2d_settings['waifuToolTop'] = '-60px';       // 工具栏顶部边距
+			live2d_settings['waifuDraggable'] = 'axis-x';    // 拖拽样式
+			initModel("https://live2d-cdn.fghrsh.net/assets/1.4.2/waifu-tips.json")
+		</script>
+	<link rel="stylesheet" type="text/css" href="https://live2d-cdn.fghrsh.net/assets/1.4.2/waifu.min.css"/>
+</body>
+</html>

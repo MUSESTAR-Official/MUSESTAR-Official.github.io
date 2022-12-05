@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<!--
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇─────▇▇▇▇▇▇▇▇▇▇────────▇▇▇▇───────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───────────────▇▇▇▇▇▇▇▇▇
+▇▇▇▇─────▇▇▇▇▇▇▇▇▇▇─────▇▇▇▇▇▇▇▇▇▇▇▇──────▇▇▇▇▇──────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───────────────▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇─────▇▇▇─────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇────▇▇▇▇▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────▇▇▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇────▇▇▇▇▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇─────▇▇▇▇▇▇─────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇─▇▇─▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇─────▇▇▇▇▇▇──▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇──────▇▇▇▇───▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇─────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇──▇───▇▇▇▇──▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──────────▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇──▇────▇▇▇──▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──────────▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇──▇▇───▇▇───▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇─────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇──▇▇───▇▇──▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇─▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇──▇▇▇──────▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇─▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇──▇▇▇─────▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇─▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇──▇▇▇▇────▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇──▇▇▇▇───▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────▇▇▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇
+▇▇▇▇▇───▇▇▇▇▇──▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇─────────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──────────────▇▇▇▇▇▇▇▇
+▇▇▇▇──────▇▇▇─▇▇▇────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇─────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────────────────▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇▇▇───────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──────────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇─────────────▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇▇────────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───────────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇─────────────▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇─────▇▇▇─────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────▇▇▇──▇▇─────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇────▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇────▇▇▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇──▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇──▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇─────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇────▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇─▇▇▇▇▇▇──▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇────▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇────▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇─────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇────▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇▇────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────────────▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇▇▇▇────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──────────▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇─────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇──────▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇──▇▇─▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇────▇▇▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇─────▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇─────────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────▇▇▇▇▇▇▇▇─────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────▇▇▇▇▇▇─────▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇────────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──────▇▇▇▇▇▇───────▇▇▇▇▇▇▇▇▇▇▇▇────────▇▇▇▇────▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
+-->  
+<html>  
+<head>
+<!-- Clarity tracking code for https://www.musestar.top/ --><script>    (function(c,l,a,r,i,t,y){        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i+"?ref=bwt";        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);    })(window, document, "clarity", "script", "dvrisi60tf");</script><meta name="referrer" content="no-referrer"><meta charset="UTF-8">
+<meta name="referrer" content="no-referrer">  
+<title>女浩克：律政英雌ฅ^≧ω≦^ฅ缪斯星影视</title> 
+<link rel="shortcut icon" href="https://www.musestar.top/ms.ico">
+<meta name='keywords' content='女浩克：律政英雌,剧集,番剧,在线观看,缪斯星,MUSESTAR'>
+<meta name="description" content="布鲁斯·班纳的表妹珍妮佛·沃特斯，作为刑事律师的她在一次重伤后接受了班纳的输血而产生异变，成为了女浩克：律政英雌。">
+<link rel="stylesheet" type="text/css" href="https://www.musestar.top/files/newstyle.css">
+<link rel="stylesheet" type="text/css" href="https://www.musestar.top/files/newblue.css" name="skin">
+<link rel="stylesheet" type="text/css" href="https://www.musestar.top/files/newblack.css" name="color">
+</head>
+<body class="bstem">
+	<style> body{cursor:url('https://www.musestar.top/files/sbzz.png'),auto;}</style>
+	<script src="https://www.musestar.top/files/sbtx.js"></script>
+    <div id="topnav" class="head_box">    <div class="header">
+		<div class="head_a">
+		<div class="head_menu_a hidden_xs hidden_mi">
+			<script type="text/javascript" src="https://www.musestar.top/files/newmoviehead.js"></script>
+	      </div>	
+		</div>	    		
+	 </div>	 		
+   </div>	 
+		      <div class="hot_banner ">
+		    <div class="bgi_box">
+    	<span class="bgi" style="background-image:url(https://s1.imagehub.cc/images/2022/12/04/aa5012c75c7c9879f2be241647d9a18d.webp"></span>
+    </div>
+    <div class="detail_list_box">
+         <div class="detail_list">
+				<div class="content_box clearfix">
+					<div class="content_thumb fl">											
+						<a class="vodlist_thumb lazyload" style="background-image: url(https://s1.imagehub.cc/images/2022/12/04/aa5012c75c7c9879f2be241647d9a18d.webp);"><span class="play hidden_xs"></span>
+						</a>								
+					</div>
+					<div class="content_detail content_top fl">
+						<div class="pannel_head clearfix">
+							<h2 class="title">女浩克：律政英雌</h2>
+							<p><font color="white">别名：She Hulk</font></p>
+						</div>
+                    </div>
+                    <div class="content_detail content_min fl">
+                        <ul>	
+						<li class="data">
+							<span class="text_muted hidden_xs">上映时间：</span><a>2022-08-18</a><span class="split_line"></span>
+							<span class="text_muted hidden_xs">地区：</span><a>美国</a><span class="split_line"></span>
+							<span class="text_muted hidden_xs">类型：</span><a>科幻  </a>
+						</li>
+						<li class="data"><span>状态：</span><a><script type="text/javascript" src="https://www.musestar.top/teleplay/files/SheHulk.js"></script></a></li>
+						</li>
+						</ul>
+					</div>
+					<div class="content_detail content_min content_btn fl">			    
+<div class="playbtn o_play">
+	<a class="btn btn_primary" href="./SheHulk/01">立即播放</a>
+                    </div>
+                 </div>
+             </div>
+          </div>
+       </div>
+     </div>
+    <div class="container ">
+			<div class="pannel clearfix">
+				<div class="tabs">
+					<h3 class="title">剧集介绍</h3>
+				  <div class="content">
+						<div>
+							<p><font size="3">布鲁斯·班纳的表妹珍妮佛·沃特斯，作为刑事律师的她在一次重伤后接受了班纳的输血而产生异变，成为了女浩克：律政英雌。</font></p>
+						</div>
+				    </div>
+				 </div>
+		      </div>		
+			<div class="pannel clearfix">
+			    <div class="pannel_head clearfix">
+					<h3 class="title">播放列表</h3>
+			            	<p><script type="text/javascript" src="https://www.musestar.top/teleplay/files/SheHulk.js"></script></p>
+							<h3 class="title">第一季</h3>	
+								  </div>
+									  <ul class="content_playlist clearfix">
+										<script type="text/javascript" src="https://www.musestar.top/teleplay/files/SheHulk2.js"></script>
+									  </ul> 
+									  <h3 class="title">第二季</h3>	
+									  <ul class="content_playlist clearfix">
+										 <li><a href="#">暂无</a></li>
+									  </ul> 
+									</div>
+			    <div class="pannel ads_box clearfix hide">
+	      </div>
+			<div class="pannel clearfix">
+				<script type="text/javascript" src="https://www.musestar.top/files/under.js"></script>
+		<div class="waifu">
+			<div class="waifu-tips"></div>
+			<canvas id="live2d" class="live2d"></canvas>
+			<div class="waifu-tool">
+				<span class="fui-home"></span>
+				<span class="fui-chat"></span>
+				<span class="fui-eye"></span>
+				<span class="fui-user"></span>
+				<span class="fui-photo"></span>
+				<span class="fui-info-circle"></span>
+				<span class="fui-cross"></span>
+			</div>			<a href="https://www.internationalsaimoe.com/statistics/nominations/?lang=zh-hans&source=musestar"><img width="600" height="auto" src="https://www.internationalsaimoe.com/img/banners/18.png"></a>
+
+		</div>
+		<script src="https://cdn.jsdelivr.net/npm/jquery-ui-dist@1.12.1/jquery-ui.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+		<script src="https://live2d-cdn.fghrsh.net/assets/1.4.2/waifu-tips.min.js"></script>
+		<script src="https://live2d-cdn.fghrsh.net/assets/1.4.2/live2d.min.js"></script>
+		<script type="text/javascript">
+			live2d_settings['modelId'] = 1;                  // 默认模型 ID
+			live2d_settings['modelTexturesId'] = 83;         // 默认材质 ID
+			live2d_settings['modelStorage'] = false;         // 不储存模型 ID
+			live2d_settings['canCloseLive2d'] = false;       // 隐藏 关闭看板娘 按钮
+			live2d_settings['canTurnToHomePage'] = false;    // 隐藏 返回首页 按钮
+			live2d_settings['waifuSize'] = '275x225';        // 看板娘大小
+			live2d_settings['waifuTipsSize'] = '220x75';    // 提示框大小
+			live2d_settings['waifuFontSize'] = '20px';       // 提示框字体
+			live2d_settings['waifuToolFont'] = '0px';       // 工具栏字体
+			live2d_settings['waifuToolLine'] = '0px';       // 工具栏行高
+			live2d_settings['waifuToolTop'] = '-60px';       // 工具栏顶部边距
+			live2d_settings['waifuDraggable'] = 'axis-x';    // 拖拽样式
+			initModel("https://live2d-cdn.fghrsh.net/assets/1.4.2/waifu-tips.json")
+		</script>
+	<link rel="stylesheet" type="text/css" href="https://live2d-cdn.fghrsh.net/assets/1.4.2/waifu.min.css"/>
+</body>
+</html>
