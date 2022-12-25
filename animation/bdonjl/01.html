@@ -85,35 +85,14 @@
 				<div class="left_row fl">
 
 					<div class="player_video embed-responsive embed-responsive-16by9 author-qq362695000 clearfix">
-					<div>  
-						<video id="video" width='auto' height="auto" controls></video>
-							</div>  
-					  <script type="text/javascript">
-						//播放地址
-						var hlsUrl=" ";//需要替换为自己的视频流地址
-					
-						//播放视频流 
-							function loadVideo(){
-						var video = document.getElementById('video');//获取 video 标签
-						if(Hls.isSupported()) {
-						var hls = new Hls();//实例化 Hls 对象
-						hls.loadSource(hlsUrl);//传入路径
-						hls.attachMedia(video);
-						hls.on(Hls.Events.MANIFEST_PARSED,function() {
-							   video.play();//调用播放 API
-							});
-						} else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-								  video.src = hlsUrl;
-								  video.addEventListener('loadedmetadata',function() {
-									  video.play();
-								  });
-							  }
-						}
-							
-					  //方法调用
-					  loadVideo();
-					  </script>
-					</div>
+
+						<div style="position:relative;width:fit-content;height:fit-content;">
+							<a style="position:absolute;top:20px;right:1rem;opacity:0.8;" href="https://clipchamp.com/watch/6fLdkHVWvi4?utm_source=embed&utm_medium=embed&utm_campaign=watch">
+								<img style="height:22px;" src="https://clipchamp.com/e.svg" alt="Made with Clipchamp" />
+							</a>
+							<iframe allow="autoplay;" allowfullscreen style="border:none" src="https://clipchamp.com/watch/6fLdkHVWvi4/embed" width="640" height="360"></iframe>
+						</div>			
+					</div>		
 
                  <div class="play_but bline">
 					  <ul>
