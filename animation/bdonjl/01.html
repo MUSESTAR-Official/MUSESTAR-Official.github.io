@@ -85,34 +85,7 @@
 				<div class="left_row fl">
 
 					<div class="player_video embed-responsive embed-responsive-16by9 author-qq362695000 clearfix">
-						<div>  
-							<video id="video" width='auto' height="auto" controls></video>
-								</div>  
-						  <script type="text/javascript">
-							//播放地址
-							var hlsUrl=" ";//需要替换为自己的视频流地址
-						
-							//播放视频流 
-								function loadVideo(){
-							var video = document.getElementById('video');//获取 video 标签
-							if(Hls.isSupported()) {
-							var hls = new Hls();//实例化 Hls 对象
-							hls.loadSource(hlsUrl);//传入路径
-							hls.attachMedia(video);
-							hls.on(Hls.Events.MANIFEST_PARSED,function() {
-								   video.play();//调用播放 API
-								});
-							} else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-									  video.src = hlsUrl;
-									  video.addEventListener('loadedmetadata',function() {
-										  video.play();
-									  });
-								  }
-							}
-								
-						  //方法调用
-						  loadVideo();
-						  </script>
+						<video src="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL3YvcyFBZ1hsWVR6S1JLMDBnMWpHRDFIQ0hPR0loX0dXP2U9c3U0ZDFO.mp4" controls autoplay></video>
 						</div>
 	
                  <div class="play_but bline">
@@ -154,12 +127,7 @@
 								   <a >日本</a><a >喜剧</a>	
 							  </p>
 						   </div>
-					   </div>										
-					   <div class="content_detail content_min content_btn fl">			    
-						<div class="playbtn o_play">
-							<a class="btn btn_primary" href="https://clipchamp.com/watch/6fLdkHVWvi4?utm_source=share&utm_medium=social&utm_campaign=watch">
-								第1集生肉先行版</a>
-											</div>				</div>													
+					   </div>																			
 				   </div>
 			   </div>	
 			</div>
