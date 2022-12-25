@@ -85,8 +85,36 @@
 				<div class="left_row fl">
 
 					<div class="player_video embed-responsive embed-responsive-16by9 author-qq362695000 clearfix">
-						<iframe src="https://iframe.cloudflarestream.com/eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJraWQiOiIxNGU3NjczODQxMzM4N2RkZmMzMDg1N2FlM2JkZDg3NiIsInN1YiI6IjUxOWVlYjFmYjRkOTBkMDFkYjUwMDJjOTI4MzdhNWI4IiwiZXhwIjoxNjcyMDI1Nzk3fQ.fdmm9LmO2mcB0wHSkBoXb4JYtupDtiliAb6LysV7rSrA3nV_EQS6Qz8QHfjb6GKnNS6eLhgoEJGDLh_IgLKm9XOYtNqd-5j9PCstrBMIrt9uYG1AITvKcfZ0tzHbIOmiGxOZwSf5OLKeyVjM-BA1n9KiNie01DkqOoCPsKK6cgTbh0xhrvlaGzqaQQ1M0I9Cg0xJthCMwgQIp67Z6utSa_5ISqqEZ0Sz7L1EBu7O6bruwtmz_88OEQSOKs4RqOwpXg2MTWiDyXCstgkfXGTJDRNv6vRb61ztTnFkhk3cnToNAqLZHDk-w_d0VmBETnii3Dm5nwx3tW6kw2K9LGHRRA?preload=auto&amp;controls=false" frameborder="0" height="100%" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="" style="position: absolute; inset: 0px; height: 100%; width: 100%;" __idm_id__="57345"></iframe>					</div>		
-
+						<div>  
+							<video id="video" width='auto' height="auto" controls></video>
+								</div>  
+						  <script type="text/javascript">
+							//播放地址
+							var hlsUrl=" ";//需要替换为自己的视频流地址
+						
+							//播放视频流 
+								function loadVideo(){
+							var video = document.getElementById('video');//获取 video 标签
+							if(Hls.isSupported()) {
+							var hls = new Hls();//实例化 Hls 对象
+							hls.loadSource(hlsUrl);//传入路径
+							hls.attachMedia(video);
+							hls.on(Hls.Events.MANIFEST_PARSED,function() {
+								   video.play();//调用播放 API
+								});
+							} else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+									  video.src = hlsUrl;
+									  video.addEventListener('loadedmetadata',function() {
+										  video.play();
+									  });
+								  }
+							}
+								
+						  //方法调用
+						  loadVideo();
+						  </script>
+						</div>
+	
                  <div class="play_but bline">
 					  <ul>
 						<li>
@@ -126,7 +154,12 @@
 								   <a >日本</a><a >喜剧</a>	
 							  </p>
 						   </div>
-					   </div>																					
+					   </div>										
+					   <div class="content_detail content_min content_btn fl">			    
+						<div class="playbtn o_play">
+							<a class="btn btn_primary" href="https://clipchamp.com/watch/6fLdkHVWvi4?utm_source=share&utm_medium=social&utm_campaign=watch">
+								第1集生肉先行版</a>
+											</div>				</div>													
 				   </div>
 			   </div>	
 			</div>
