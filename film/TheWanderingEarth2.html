@@ -82,9 +82,30 @@
 	        			<div class="play_box play_video">
 			<!-- 播放器  -->
 			<div class="left_row fl">
-				<div class="player_video embed-responsive embed-responsive-16by9 author-qq362695000 clearfix">
-					<video src="https://vt1.doubanio.com/202212150947/9e9bd13734f6ab37e3649f647639e6f9/view/movie/M/402980625.mp4" controls autoplay></video>
-			</div>
+
+				<div>  
+					<div id="dplayer"></div>
+				  <script>
+			  var dp = new DPlayer({
+			  container: document.getElementById('dplayer'),
+			  hotkey: true,
+			  preload: 'auto',
+			  logo: 'https://www.musestar.top/ms.ico',
+			  autoplay: true,
+			  volume: 1.0,
+			  video: {
+			  url: 'https://vt1.doubanio.com/202212150947/9e9bd13734f6ab37e3649f647639e6f9/view/movie/M/402980625.mp4',
+					 },
+					 contextmenu: [
+	{
+			  text: '缪斯星首页',
+			  link: 'https://www.musestar.top/',
+	},
+
+],
+					   });
+				  </script>
+				</div>
 			 <div class="play_but bline">
 					  <ul>
 						<li>
