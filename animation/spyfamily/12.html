@@ -75,31 +75,26 @@
 	<video id="video" width='auto' height="400" controls autoplay></video>
         </div>  
     </body>  
-  <script type="text/javascript">
-	//播放地址
-	var hlsUrl="https://yun.ssdm.cc/SBDM/SPYFAMILY12.m3u8";//需要替换为自己的视频流地址
+  <script>
+			  var dp = new DPlayer({
+			  container: document.getElementById('dplayer'),
+			  hotkey: true,
+			  preload: 'auto',
+			  logo: 'https://www.musestar.top/ms.ico',
+			  autoplay: true,
+			  volume: 1.0,
+			  video: {
+			  url: 'https://yun.ssdm.cc/SBDM/SPYFAMILY12.m3u8',
+					 },
+					 contextmenu: [
+	{
+			  text: '缪斯星首页',
+			  link: 'https://www.musestar.top/',
+	},
 
-	//播放视频流 
-        function loadVideo(){
-	var video = document.getElementById('video');//获取 video 标签
-	if(Hls.isSupported()) {
-	var hls = new Hls();//实例化 Hls 对象
-	hls.loadSource(hlsUrl);//传入路径
-	hls.attachMedia(video);
-	hls.on(Hls.Events.MANIFEST_PARSED,function() {
-		   video.play();//调用播放 API
-		});
-	} else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-	          video.src = hlsUrl;
-	          video.addEventListener('loadedmetadata',function() {
-	              video.play();
-	          });
-	      }
-    }
-		
-  //方法调用
-  loadVideo();
-  </script>
+],
+					   });
+				  </script>
 <p>缪斯星动漫（网站持续完善中）</p>
 <p>SPY×FAMILY <a href="https://www.musestar.top/animation/spyfamily">间谍过家家</a>-第十二集</p>
 <script type="text/javascript" src="https://www.musestar.top/animation/files/spyfamily.js"></script>
@@ -162,7 +157,7 @@
           <h2>动漫介绍</h2></div>
           <div class="info"><font size="3">电视动画《间谍过家家》改编自远藤达哉创作的同名漫画作品，由WIT STUDIO和CLOVER WORKS负责制作，于2022年播出。
 为了潜入名校，西国能力最强的间谍“黄昏”被下令组建家庭.但是，他的“女儿”居然是能够读取他人内心的超能力者！“妻子”是暗杀者？互相隐藏了真实身份的新家庭，面临考验与世界危机的痛快家庭喜剧就此展开！！</font></div>
-       <a href="https://www.musestar.top/animation/spyfamily"><img width='auto' height="500" referrerpolicy="no-referrer" src="https://s1.imagehub.cc/images/2022/08/18/spyfamily.jpg"></a>
+       <a href="https://www.musestar.top/animation/spyfamily"><img width='auto' height="500" referrerpolicy="no-referrer" src="https://s1.imagehub.cc/images/2022/12/04/d63f2f091f4d2b6a6c80592e0dff8836.webp"></a>
         <div class="info">《间谍过家家》</div>
       </div>
     <script type="text/javascript" src="https://www.musestar.top/files/videounder.js"></script>

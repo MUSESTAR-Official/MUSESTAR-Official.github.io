@@ -81,31 +81,26 @@
 	<video id="video" width='auto' height="400" controls autoplay></video>
         </div>  
     </body>  
-  <script type="text/javascript">
-	//播放地址
-	var hlsUrl="https://yun.ssdm.cc/SBDM/KomisanwaKomyushouDesu18.m3u8";//需要替换为自己的视频流地址
+  <script>
+			  var dp = new DPlayer({
+			  container: document.getElementById('dplayer'),
+			  hotkey: true,
+			  preload: 'auto',
+			  logo: 'https://www.musestar.top/ms.ico',
+			  autoplay: true,
+			  volume: 1.0,
+			  video: {
+			  url: 'https://yun.ssdm.cc/SBDM/KomisanwaKomyushouDesu18.m3u8',
+					 },
+					 contextmenu: [
+	{
+			  text: '缪斯星首页',
+			  link: 'https://www.musestar.top/',
+	},
 
-	//播放视频流 
-        function loadVideo(){
-	var video = document.getElementById('video');//获取 video 标签
-	if(Hls.isSupported()) {
-	var hls = new Hls();//实例化 Hls 对象
-	hls.loadSource(hlsUrl);//传入路径
-	hls.attachMedia(video);
-	hls.on(Hls.Events.MANIFEST_PARSED,function() {
-		   video.play();//调用播放 API
-		});
-	} else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-	          video.src = hlsUrl;
-	          video.addEventListener('loadedmetadata',function() {
-	              video.play();
-	          });
-	      }
-    }
-		
-  //方法调用
-  loadVideo();
-  </script>
+],
+					   });
+				  </script>
 <p>缪斯星动漫（网站持续完善中）</p>
 <p><a href="https://www.musestar.top/animation/gjtxyjlzaz2">古见同学有交流障碍症第二季</a>-第六集</p>
 <script type="text/javascript" src="https://www.musestar.top/animation/files/gjtxyjlzaz1.js"></script>
