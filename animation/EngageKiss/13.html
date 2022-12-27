@@ -85,36 +85,29 @@
 			<!-- 播放器  -->
 				<div class="left_row fl">
 
-					<div class="player_video embed-responsive embed-responsive-16by9 author-qq362695000 clearfix">
-					<div>  
-						<video id="video" width='auto' height="auto" controls></video>
-							</div>  
-					  <script type="text/javascript">
-						//播放地址
-						var hlsUrl="https://yun.ssdm.cc/SBDM/EngageKiss13.m3u8";//需要替换为自己的视频流地址
-					
-						//播放视频流 
-							function loadVideo(){
-						var video = document.getElementById('video');//获取 video 标签
-						if(Hls.isSupported()) {
-						var hls = new Hls();//实例化 Hls 对象
-						hls.loadSource(hlsUrl);//传入路径
-						hls.attachMedia(video);
-						hls.on(Hls.Events.MANIFEST_PARSED,function() {
-							   video.play();//调用播放 API
-							});
-						} else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-								  video.src = hlsUrl;
-								  video.addEventListener('loadedmetadata',function() {
-									  video.play();
-								  });
-							  }
-						}
-							
-					  //方法调用
-					  loadVideo();
-					  </script>
-					</div>
+				<div>  
+					<div id="dplayer"></div>
+				  <script>
+			  var dp = new DPlayer({
+			  container: document.getElementById('dplayer'),
+			  hotkey: true,
+			  preload: 'auto',
+			  logo: 'https://www.musestar.top/ms.ico',
+			  autoplay: true,
+			  volume: 1.0,
+			  video: {
+			  url: 'https://yun.ssdm.cc/SBDM/EngageKiss13.m3u8',
+					 },
+					 contextmenu: [
+	{
+			  text: '缪斯星首页',
+			  link: 'https://www.musestar.top/',
+	},
+
+],
+					   });
+				  </script>
+				</div>
 
                  <div class="play_but bline">
 					  <ul>
