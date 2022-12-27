@@ -87,9 +87,19 @@
 					  <script>
                   var dp = new DPlayer({
                   container: document.getElementById('dplayer'),
+				  hotkey: true,
+                  preload: 'auto',
+                  logo: 'https://www.musestar.top/ms.ico',
                   video: {
                   url: 'https://cdn6.hdzyk-video.com/20220811/9532_0bae4abe/1000k/hls/index.m3u8',
                          },
+						 contextmenu: [
+        {
+                  text: '缪斯星首页',
+                  link: 'https://www.musestar.top/',
+        },
+
+    ],
                            });
 					  </script>
 					</div>
