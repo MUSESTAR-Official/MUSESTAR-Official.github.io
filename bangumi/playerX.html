@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>PlayerX</title>
+    <script>
+		function getQueryVariable(variable) {
+			let query = window.location.search.substring(1);
+			let vars = query.split("&");
+			for (let i = 0; i < vars.length; i++) {
+				let pair = vars[i].split("=");
+				if (pair[0] === variable) {
+					return pair[1];
+				}
+			}
+			return false;
+		}
+
+		let idx = getQueryVariable('idx');
+
+		let head = document.getElementsByTagName('head').item(0);
+
+		let scrP = document.createElement('script');
+		scrP.src = `//d.gqyy8.com:8077/ne2/s${idx}.js`;
+		scrP.type = 'text/javascript';
+		head.append(scrP);
+    </script>
+    <a href="playerY.html" style="display: none"></a>
+    <a href="runP.js" style="display: none"></a>
+</head>
+<body>
+<h1>
+    没显示可能是抽风了，请刷新。
+</h1>
+<ul id="m3u8List">
+
+</ul>
+
+<script>
+	let theList = document.getElementById('m3u8List');
+
+	function runPlayer(playArr, arrName) {
+		for (const teP in playArr) {
+			let temLi = document.createElement('li');
+			let temA = document.createElement('a');
+			let vUri = playArr[teP].split(',')[0];
+			temA.href = (vUri.split('.').pop() === 'html') ? `playerJ.html?vsrc=${vUri}` : `playerY.html?vsrc=${vUri}`;
+			temA.innerHTML = unescape(playArr[teP].split(',')[2]);
+			temLi.innerHTML = `源数组${arrName}[${teP}]:`;
+			temLi.append(temA);
+			theList.appendChild(temLi);
+		}
+	}
+
+	function crUl() {
+		theList.innerHTML = '';
+	}
+
+	let pAr;
+	let isOnLo = false;
+
+</script>
+<script src="runP.js"></script>
+</body>
+</html>

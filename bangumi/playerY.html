@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>PlayerY</title>
+</head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hls.js/1.2.9/hls.min.js"
+        integrity="sha512-6bEjENYpGBIDWtHO5JCR6xuFnc5KZM4zUdjq3W1043lv24p+YTaZSX6RE50qI5mtHZaMhz3Obzj7pjTKYRZRMg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+	function getQueryVariable(variable) {
+		let query = window.location.search.substring(1);
+		let vars = query.split("&");
+		for (let i = 0; i < vars.length; i++) {
+			let pair = vars[i].split("=");
+			if (pair[0] === variable) {
+				return pair[1];
+			}
+		}
+		return false;
+	}
+
+	let videoR = getQueryVariable('vsrc');
+	if (videoR.charAt(4) === 's') {
+		if (window.location.protocol !== 'https:') window.location.protocol = 'https:';
+	} else {
+		if (window.location.protocol !== 'http:') window.location.protocol = 'http:';
+	}
+</script>
+<body>
+<div id="dplayer"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dplayer/1.27.0/DPlayer.min.js"
+        integrity="sha512-S4ZaugkFW1FjFLmQYt7dvJuNI0T3T3rwc8iHX3bAk3QT0KFlDrHxdEkg1g8WBkSiyZgtDSu62vvFigf66cVMPQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+	const dp = new DPlayer({
+		container: document.getElementById('dplayer'),
+		video: {
+			url: videoR,
+		},
+	});
+</script>
+</body>
+</html>
