@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <title>PlayerX</title>
     <script>
+		if (window.location.protocol !== 'http:') window.location.protocol = 'http:';
+    </script>
+    <script>
 		function getQueryVariable(variable) {
 			let query = window.location.search.substring(1);
 			let vars = query.split("&");
