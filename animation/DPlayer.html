@@ -77,9 +77,7 @@
 	let videoR = getQueryVariable('vsrc');
 	if (videoR.substr(0,5) === 'https') {
 		if (window.location.protocol !== 'https:') window.location.protocol = 'https:';
-	} else {
-		if (window.location.protocol !== 'http:') window.location.protocol = 'http:';
-	}
+	} 
 </script>
 </head>
 <body class="bstem">
