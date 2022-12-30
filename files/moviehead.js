@@ -10,7 +10,7 @@ document.write("			<li class=\"nav\">");
 document.write("				<a href=\"https:\/\/www.musestar.top\/movie\">缪斯星影视<\/a><\/li>");
 
 document.write("			<li>");
-document.write("				<a href=\"https:\/\/www.musestar.top\/ecy\">二次元图库<\/a><\/li>");
+document.write("				<a href=\"https:\/\/jq.qq.com\/?_wv=1027&k=4A08XieB\">官方QQ群<\/a><\/li>");
 document.write("    <\/ul>");
 document.write("<ul class=\"dme r\">");
 

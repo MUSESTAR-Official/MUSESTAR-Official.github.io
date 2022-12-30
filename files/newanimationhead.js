@@ -7,7 +7,7 @@ document.write("		    <ul>");
 document.write("	        	<li><a href=\"https:\/\/www.musestar.top\"><font size=\"1\">首页<\/font><\/a><\/li>");
 document.write("                <li><a href=\"https:\/\/www.musestar.top\/animation\" ><font size=\"1\">缪斯星动漫<\/font><\/a><\/li>");
 document.write("                <li><a href=\"https:\/\/www.musestar.top\/movie\" ><font size=\"1\">缪斯星影视<\/font><\/a><\/li>");
-document.write("                <li><a href=\"https:\/\/www.musestar.top\/ecy\" ><font size=\"1\">二次元图库<\/font><\/a><\/li>");
+document.write("                <li><a href=\"https:\/\/jq.qq.com\/?_wv=1027&k=4A08XieB\" ><font size=\"1\">官方QQ群<\/font><\/a><\/li>");
 document.write("				<li><a href=\"http:\/\/www.musestars.top\" ><font size=\"1\">缪斯星搜索<\/font><\/a><\/li>");
 document.write("				<li><a href=\"https:\/\/www.musestar.top\/musestar\" ><font size=\"1\">缪斯星官方<\/font><\/a><\/li>");
 document.write("                            <\/ul>");
