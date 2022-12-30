@@ -10,7 +10,7 @@ document.write("			<li>");
 document.write("				<a href=\"https:\/\/www.musestar.top\/movie\">缪斯星影视<\/a><\/li>");
 
 document.write("			<li>");
-document.write("				<a href=\"https:\/\/jq.qq.com\/?_wv=1027&k=o1P4ZyeB\">官方QQ群<\/a><\/li>");
+document.write("				<a href=\" \">缪斯星暂无<\/a><\/li>");
 document.write("    <\/ul>");
 document.write("<ul class=\"dme r\">");
 
