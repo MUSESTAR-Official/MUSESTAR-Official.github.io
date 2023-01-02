@@ -43,7 +43,7 @@ body{padding-top: 2.75rem;}
 body.bstem{padding-top: 0;}
 
 /* header */
-.head_box{position: fixed;display: block;z-index: 999999995;background: #fff; width: 100%; top: 0;left: 0;right: 0;border: 0;-webkit-transition: .3s 0s all ease-out;transition: .3s 0s all ease-out;}
+.head_box{position: fixed;display: block;z-index: 95;background: #fff; width: 100%; top: 0;left: 0;right: 0;border: 0;-webkit-transition: .3s 0s all ease-out;transition: .3s 0s all ease-out;}
 .head_box.nav_top{box-shadow: 0 2px 15px rgba(0,0,0,.1);}
 .head_box.nav_fixed{top: -1.5rem;}
 .header{position: relative;}
