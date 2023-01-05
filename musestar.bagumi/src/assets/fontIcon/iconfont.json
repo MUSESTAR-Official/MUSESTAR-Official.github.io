@@ -1,0 +1,37 @@
+{
+  "id": "3851622",
+  "name": "musestar",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "24472944",
+      "name": "视频",
+      "font_class": "shipin",
+      "unicode": "fc2a",
+      "unicode_decimal": 64554
+    },
+    {
+      "icon_id": "24472962",
+      "name": "搜索",
+      "font_class": "sousuo",
+      "unicode": "fc3a",
+      "unicode_decimal": 64570
+    },
+    {
+      "icon_id": "24472976",
+      "name": "电影",
+      "font_class": "dianying",
+      "unicode": "fc48",
+      "unicode_decimal": 64584
+    },
+    {
+      "icon_id": "24473011",
+      "name": "认证",
+      "font_class": "renzheng",
+      "unicode": "fc6b",
+      "unicode_decimal": 64619
+    }
+  ]
+}
