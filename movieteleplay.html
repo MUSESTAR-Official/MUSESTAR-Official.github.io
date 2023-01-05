@@ -73,6 +73,8 @@
     <link rel="stylesheet" type="text/css" href="https://www.musestar.top/files/newstyle.css">
     <link rel="stylesheet" type="text/css" href="https://www.musestar.top/files/newblue.css" name="skin">
     <link rel="stylesheet" type="text/css" href="https://www.musestar.top/files/newblack.css" name="color">
+    <script src="https://www.musestar.top/files/hls.js"></script>
+    <script src="https://www.musestar.top/files/DPlayer.js"></script>
 </head>
 <body>
 
@@ -101,9 +103,37 @@
         </div>
         <!-- 列表图片 -->
         <p align="center">
-            <!--
-            <video src="https://www.musestar.top/gg.mp4" width="750" height="auto" controls autoplay></video>
-            -->
+            <div class="player_v"
+            id="dplayer">
+
+           <script>
+               var dp = new DPlayer({
+                   container: document.getElementById('dplayer'),
+                   hotkey: true,
+                   preload: 'auto',
+                   logo: 'https://www.musestar.top/ms.ico',
+                   autoplay: true,
+                   volume: 1.0,
+                                 video: {
+quality: [
+{
+   name: '缪斯星线路一',
+   url: 'https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL3YvcyFBZ1hsWVR6S1JLMDBnMW9VQW93VGFtajl2eGs4P2U9ZnVEc3A2.mp3',
+   type: 'normal',
+},
+],
+defaultQuality: 0,
+},
+                   contextmenu: [
+                       {
+                           text: '缪斯星首页',
+                           link: 'https://www.musestar.top/',
+                       },
+
+                   ],
+               });
+           </script>
+       </div>
             <!--
             <a href="https://www.musestar.top/"><img width="750" height="auto" src=" "></a>
             -->
