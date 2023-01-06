@@ -1,1 +1,1 @@
-document.write("第三季更新中：共12集");
+document.write("第三季已完结：共12集");
