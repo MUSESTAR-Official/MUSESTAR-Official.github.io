@@ -14,6 +14,7 @@ document.write("                                            <h4 class=\"title\">
 document.write("                                        <\/div>");
 document.write("                                        <p class=\"vodlist_sub\">2022-10-03<\/p>");
 document.write("                                        <p class=\"vodlist_sub\">美国\/剧情<\/p>");
+document.write("                                        <p class=\"vodlist_sub\">缪斯星影视<\/p>");
 document.write("                                    <\/div>");
 document.write("                                <\/a>");
 document.write("                            <\/li>");
@@ -33,6 +34,7 @@ document.write("                                            <h4 class=\"title\">
 document.write("                                        <\/div>");
 document.write("                                        <p class=\"vodlist_sub\">2023-01-07<\/p>");
 document.write("                                        <p class=\"vodlist_sub\">日本\/喜剧<\/p>");
+document.write("                                        <p class=\"vodlist_sub\">缪斯星动漫<\/p>");
 document.write("                                    <\/div>");
 document.write("                                <\/a>");
 document.write("                            <\/li>");
