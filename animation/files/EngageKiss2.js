@@ -11,4 +11,4 @@ document.write("<li><a href=\"https:\/\/www.musestar.top\/animation\/EngageKiss\
 document.write("<li><a href=\"https:\/\/www.musestar.top\/animation\/EngageKiss\/11\">第11集<\/a><\/li>");
 document.write("<li><a href=\"https:\/\/www.musestar.top\/animation\/EngageKiss\/12\">第12集<\/a><\/li>");
 document.write("<li><a href=\"https:\/\/www.musestar.top\/animation\/EngageKiss\/13\">第13集<\/a><\/li>");
-document.write("<li><a href=\"http:\/\/www.musestars.top\/animation\/EngageKiss\">其他播放源<\/a><\/li>");
+document.write("<li><a href=\"http:\/\/www.musestars.top\/animation\/EngageKiss\">全部播放源<\/a><\/li>");

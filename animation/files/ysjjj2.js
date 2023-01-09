@@ -11,4 +11,4 @@ document.write("<li><a href=\"https:\/\/www.musestar.top\/animation\/ysjjj\/10\"
 document.write("<li><a href=\"https:\/\/www.musestar.top\/animation\/ysjjj\/11\">第11集<\/a><\/li>");
 document.write("<li><a href=\"https:\/\/www.musestar.top\/animation\/ysjjj\/12\">第12集<\/a><\/li>");
 document.write("<li><a href=\"https:\/\/www.musestar.top\/animation\/ysjjj\/13\">第13集<\/a><\/li>");
-document.write("<li><a href=\"http:\/\/www.musestars.top\/animation\/ysjjj\">其他播放源<\/a><\/li>");
+document.write("<li><a href=\"http:\/\/www.musestars.top\/animation\/ysjjj\">全部播放源<\/a><\/li>");
