@@ -59,6 +59,8 @@
 <link rel="stylesheet" type="text/css" href="https://www.musestar.top/files/newblue.css" name="skin">
 <link rel="stylesheet" type="text/css" href="https://www.musestar.top/files/newblack.css" name="color">
 <script type="text/javascript" src="https://www.musestar.top/files/newjquery.min.js"></script>
+<script src="https://www.musestar.top/files/hls.js"></script>
+<script src="https://www.musestar.top/files/DPlayer.js"></script>
 </head>
 <body class="bstem">
 	<style> body{cursor:url('https://www.musestar.top/files/sbzz.png'),auto;}</style>
@@ -81,9 +83,37 @@
 			<!-- 播放器  -->
 				<div class="left_row fl">
 
-					<div class="player_v">
-						<script type="text/javascript">var player_aaaa={"flag":"play","encrypt":0,"trysee":0,"points":0,"link":"\/index.php\/vod\/play\/id\/994\/sid\/1\/nid\/1","link_next":"","link_pre":"\/index.php\/vod\/play\/id\/994\/sid\/1\/nid\/22","url":"https:\/\/yun.ssdm.cc\/SBDM\/Hyouka22.m3u8","url_next":"","from":"dplayer","server":"no","note":"","id":"994","sid":1,"nid":23}</script><script type="text/javascript" src="/static/js/playerconfig.js?t=20220704"></script><script type="text/javascript" src="/static/js/player.js?t=a20220704"></script><style>.MacPlayer{background: #000000;font-size:14px;color:#F6F6F6;margin:0px;padding:0px;position:relative;overflow:hidden;width:100%;height:100%;min-height:100px;}.MacPlayer table{width:100%;height:100%;}.MacPlayer #playleft{position:inherit;!important;width:100%;height:100%;}</style><div class="MacPlayer embed-responsive" style="padding-bottom: 56.25%;"><iframe id="buffer" src="" frameborder="0" scrolling="no" width="100%" height="100%" style="position: absolute; z-index: 99998; display: none;"></iframe><iframe id="install" src="" frameborder="0" scrolling="no" width="100%" height="100%" style="position:absolute;z-index:99998;display:none;"></iframe><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td id="playleft" valign="top" style=""><iframe width="100%" height="100%" src="https://bf.sbdm.cc/m3u8.php?url=https://yun.ssdm.cc/SBDM/Hyouka22.m3u8" frameborder="0" border="0" marginwidth="0" marginheight="0" scrolling="no" allowfullscreen="allowfullscreen" mozallowfullscreen="mozallowfullscreen" msallowfullscreen="msallowfullscreen" oallowfullscreen="oallowfullscreen" webkitallowfullscreen="webkitallowfullscreen" security="restricted" sandbox="allow-same-origin allow-forms allow-scripts" __idm_id__="2277377"></iframe></td></tr></tbody></table></div><script src="/static/player/parse.js"></script>							
-</div>
+                    <div class="player_v"
+                         id="dplayer">
+
+                        <script>
+                            var dp = new DPlayer({
+                                container: document.getElementById('dplayer'),
+                                hotkey: true,
+                                preload: 'auto',
+                                logo: 'https://www.musestar.top/ms.ico',
+                                autoplay: true,
+                                volume: 1.0,
+                                			  video: {
+        quality: [
+            {
+                name: '缪斯星线路一',
+                url: 'https://v16m-default.akamaized.net/3d56a49ba486040fa28ce20f78150621/63bc00f6/video/tos/alisg/tos-alisg-v-0000/oM4IFTtBmUDAFoPtE5IR3LzxtvJfhASGAwqXzv/?a=2011&ch=0&cr=0&dr=0&net=5&cd=0%7C0%7C0%7C0&br=878&bt=439&cs=0&ds=2&ft=XE5bCqT0mmjPD12t-41q3wU7C1JcMeF~OD&mime_type=video_mp4&qs=0&rc=NTM6ZGg6ODs2O2RpZWQ3N0Bpajhmdzc6ZjxmZzMzODYzNEBhM2AzXjQvNl8xMmI0YzEzYSMxZG0ucjRfa3BgLS1kMC1zcw%3D%3D&l=202301090530375CAE7705BF11BD059DA4&btag=80000',
+                
+            },
+        ],
+        defaultQuality: 0,
+    },
+                                contextmenu: [
+                                    {
+                                        text: '缪斯星首页',
+                                        link: 'https://www.musestar.top/',
+                                    },
+
+                                ],
+                            });
+                        </script>
+                    </div>
                  <div class="play_but bline">
 					  <ul>
 						<li>
