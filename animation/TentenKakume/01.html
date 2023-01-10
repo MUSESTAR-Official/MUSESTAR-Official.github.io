@@ -104,18 +104,24 @@
                     <div class="player_v"
                          id="dplayer">
 
-                        <script>
+                         <script>
                             var dp = new DPlayer({
                                 container: document.getElementById('dplayer'),
                                 hotkey: true,
                                 preload: 'auto',
                                 logo: 'https://www.musestar.top/ms.ico',
                                 autoplay: true,
-                                
                                 volume: 1.0,
-                                video: {
-                                    url: 'https://bf3.sbdm.cc/Cache/4f2c70428bf0e187c848876b6921cb0b.m3u8',
-                                },
+                                			  video: {
+        quality: [
+            {
+                name: '缪斯星线路一',
+                url: 'https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL3YvcyFBZ1hsWVR6S1JLMDBnMkw4YVFUUlRfbklRcjNxP2U9VVVHMEI2.mp4',
+                
+            },
+        ],
+        defaultQuality: 0,
+    },
                                 contextmenu: [
                                     {
                                         text: '缪斯星首页',
