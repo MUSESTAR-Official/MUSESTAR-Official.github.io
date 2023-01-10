@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<!--
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇─────▇▇▇▇▇▇▇▇▇▇────────▇▇▇▇───────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───────────────▇▇▇▇▇▇▇▇▇
+▇▇▇▇─────▇▇▇▇▇▇▇▇▇▇─────▇▇▇▇▇▇▇▇▇▇▇▇──────▇▇▇▇▇──────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───────────────▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇─────▇▇▇─────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇────▇▇▇▇▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────▇▇▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇────▇▇▇▇▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇─────▇▇▇▇▇▇─────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇─▇▇─▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇─────▇▇▇▇▇▇──▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇──────▇▇▇▇───▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇─────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇──▇───▇▇▇▇──▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──────────▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇──▇────▇▇▇──▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──────────▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇──▇▇───▇▇───▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇─────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇──▇▇───▇▇──▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇─▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇──▇▇▇──────▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇─▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇──▇▇▇─────▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇─▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇──▇▇▇▇────▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇──▇▇▇▇───▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────▇▇▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇
+▇▇▇▇▇───▇▇▇▇▇──▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇─────────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──────────────▇▇▇▇▇▇▇▇
+▇▇▇▇──────▇▇▇─▇▇▇────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇─────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────────────────▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇▇▇───────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──────────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇─────────────▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇▇────────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───────────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇─────────────▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇─────▇▇▇─────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────▇▇▇──▇▇─────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇────▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇────▇▇▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇──▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇──▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇─────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇────▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇─▇▇▇▇▇▇──▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇────▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇────▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇─────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇────▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇▇────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────────────▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇▇▇▇────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──────────▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇─────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇──────▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇──▇▇─▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇────▇▇▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇─────▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇─────────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────▇▇▇▇▇▇▇▇─────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────▇▇▇▇▇▇─────▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇────────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──────▇▇▇▇▇▇───────▇▇▇▇▇▇▇▇▇▇▇▇────────▇▇▇▇────▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
+-->
+<html>
+<head>
+    <!-- Clarity tracking code for https://www.musestar.top/ -->
+    <script>    (function (c, l, a, r, i, t, y) {
+        c[a] = c[a] || function () {
+            (c[a].q = c[a].q || []).push(arguments)
+        };
+        t = l.createElement(r);
+        t.async = 1;
+        t.src = "https://www.clarity.ms/tag/" + i + "?ref=bwt";
+        y = l.getElementsByTagName(r)[0];
+        y.parentNode.insertBefore(t, y);
+    })(window, document, "clarity", "script", "dvrisi60tf");</script>
+    <meta charset="UTF-8">
+    <meta name="referrer" content="no-referrer">
+    <title>缪斯星影视ฅ^≧ω≦^ฅ看片看剧～</title>
+    <link rel="shortcut icon" href="https://www.musestar.top/ms.ico">
+    <meta name='description'
+          content='MUSESTAR缪斯星正在持续收集动漫番剧、电影、剧集等，给您免费播放网站中的最好体验！ฅ^≧ω≦^ฅ'>
+    <meta name='keywords' content='电影,电视剧,剧集,在线观看,缪斯星,MUSESTAR'>
+    <div id='wx_pic' style='margin:0 auto;display:none;'>
+        <img src='./files/thumbnail.jpg'>
+    </div>
+    <link rel="stylesheet" type="text/css" href="https://www.musestar.top/files/newstyle.css">
+    <link rel="stylesheet" type="text/css" href="https://www.musestar.top/files/newblue.css" name="skin">
+    <link rel="stylesheet" type="text/css" href="https://www.musestar.top/files/newblack.css" name="color">
+    <script src="https://www.musestar.top/files/hls.js"></script>
+    <script src="https://www.musestar.top/files/DPlayer.js"></script>
+</head>
+<body>
+
+<style> body {
+    cursor: url('https://www.musestar.top/files/sbzz.png'), auto;
+}</style>
+<script src="https://www.musestar.top/files/sbtx.js"></script>
+<div id="topnav" class="head_box">
+    <div class="header">
+        <div class="head_a">
+            <div class="head_menu_a hidden_xs hidden_mi">
+                <script type="text/javascript" src="./files/newmoviehead.js"></script>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="head_b">
+    <div class="pannel ads_all clearfix">
+        <div class="pannel clearfix">
+            <div class="pannel_head clearfix">
+                <h3 class="title">最新上映</h3>
+            </div>
+            <ul class="vodlist clearfix">
+                <script type="text/javascript" src="./files/zxsy.js"></script>
+            </ul>
+        </div>
+        <!-- 列表图片 -->
+        <p align="center">
+            <!--
+            <a href="https://www.musestar.top/"><img width="750" height="auto" src=" "></a>
+            -->
+        </p>
+        <!-- 列表图片END -->
+    </div>
+    <div class="vod_row tit_up">
+        <div class="pannel">
+            <!-- 列表分类例子 -->
+            <div class="pannel_head clearfix">
+                <h2 class="title">全部电影</h2>
+
+                <form action="http://www.musestars.top/bangumi/searchX.html">
+                    <span>搜索无法保证质量，下方没有再搜索:</span>
+                    <input type="text" name="s" id="s">
+                    <input type="submit" value="搜索">
+                </form>
+            </div>
+            <ul class="content_playlist clearfix">
+                <li><a href="https://www.musestar.top/movieteleplay">点我前往剧集</a></li>
+            </ul>
+            <div class="cbox_list">
+                <div class="cbox1">
+                    <ul class="vodlist vodlist_wi list_v12 clearfix">
+                        <!-- 列表分类例子END -->
+                        <li class="vodlist_item">
+                            <a class="vodlist_thumb lazyload" href="https://www.musestar.top/film/TheWanderingEarth2"
+                               style="background-image: url(https://s1.imagehub.cc/images/2023/01/02/49348cf0d5976eb8567f845bb616ae38.webp);">
+                                <span class="play hidden_xs"></span>
+                                <span class="vodlist_top"><em class="voddate voddate_year">中国</em>
+							<em class="voddate voddate_type">科幻</em></span>
+                                <span class="pic_text text_right">影片时长: x:xx:xx</span>
+                            </a>
+                            <div class="vodlist_titbox">
+                                <p class="vodlist_title">
+                                    <a href="https://www.musestar.top/film/TheWanderingEarth2">流浪地球2</a>
+                                </p>
+                                <p class="vodlist_sub">上映时间：2023-01-22</p>
+                            </div>
+                        </li>
+                        <li class="vodlist_item">
+                            <a class="vodlist_thumb lazyload" href="https://www.musestar.top/film/Avatar2/01"
+                               style="background-image: url(https://s1.imagehub.cc/images/2022/12/16/852ece4d2e2d5d3347f0027b2528f0e6.webp);">
+                                <span class="play hidden_xs"></span>
+                                <span class="vodlist_top"><em class="voddate voddate_year">美国</em>
+							<em class="voddate voddate_type">科幻</em></span>
+                                <span class="pic_text text_right">影片时长: 3:04:31</span>
+                            </a>
+                            <div class="vodlist_titbox">
+                                <p class="vodlist_title">
+                                    <a href="https://www.musestar.top/film/Avatar2/01">阿凡达2：水之道</a>
+                                </p>
+                                <p class="vodlist_sub">上映时间：2022-12-16</p>
+                            </div>
+                        </li>
+                        <li class="vodlist_item">
+                            <a class="vodlist_thumb lazyload" href="https://www.musestar.top/film/BlackPanther2"
+                               style="background-image: url(https://s1.imagehub.cc/images/2022/12/04/b03f08d2219c8140dd2cc0e198579a57.webp);">
+                                <span class="play hidden_xs"></span>
+                                <span class="vodlist_top"><em class="voddate voddate_year">美国</em>
+							<em class="voddate voddate_type">科幻</em></span>
+                                <span class="pic_text text_right">影片时长: 2:34:12</span>
+                            </a>
+                            <div class="vodlist_titbox">
+                                <p class="vodlist_title">
+                                    <a href="https://www.musestar.top/film/BlackPanther2">黑豹2：瓦坎达万岁</a>
+                                </p>
+                                <p class="vodlist_sub">上映时间：2022-11-11</p>
+                            </div>
+                        </li>
+                        <li class="vodlist_item">
+                            <a class="vodlist_thumb lazyload" href="https://www.musestar.top/film/BlackAdam"
+                               style="background-image: url(https://s1.imagehub.cc/images/2022/12/04/8eb426272a2d98fb62ce060b1b62eb28.jpeg);">
+                                <span class="play hidden_xs"></span>
+                                <span class="vodlist_top"><em class="voddate voddate_year">美国</em>
+							<em class="voddate voddate_type">科幻</em></span>
+                                <span class="pic_text text_right">影片时长: 2:04:47</span>
+                            </a>
+                            <div class="vodlist_titbox">
+                                <p class="vodlist_title">
+                                    <a href="https://www.musestar.top/film/BlackAdam">黑亚当</a>
+                                </p>
+                                <p class="vodlist_sub">上映时间：2022-10-21</p>
+                            </div>
+                        </li>
+                        <li class="vodlist_item">
+                            <a class="vodlist_thumb lazyload" href="https://www.musestar.top/film/Smile"
+                               style="background-image: url(https://s1.imagehub.cc/images/2022/12/04/d4c4cdf7b457e7853c0f27d668a84841.jpeg);">
+                                <span class="play hidden_xs"></span>
+                                <span class="vodlist_top"><em class="voddate voddate_year">美国</em>
+							<em class="voddate voddate_type">恐怖</em></span>
+                                <span class="pic_text text_right">影片时长: 1:55:08</span>
+                            </a>
+                            <div class="vodlist_titbox">
+                                <p class="vodlist_title">
+                                    <a href="https://www.musestar.top/film/Smile">危笑</a>
+                                </p>
+                                <p class="vodlist_sub">上映时间：2022-09-30</p>
+                            </div>
+                        </li>
+                        <li class="vodlist_item">
+                            <a class="vodlist_thumb lazyload" href="https://www.musestar.top/film/HomeComing/01"
+                               style="background-image: url(https://s1.imagehub.cc/images/2022/12/24/ef4583c687d8df15770b0ba37c777b0e.webp);">
+                                <span class="play hidden_xs"></span>
+                                <span class="vodlist_top"><em class="voddate voddate_year">中国</em>
+							<em class="voddate voddate_type">剧情</em></span>
+                                <span class="pic_text text_right">影片时长: 2:17:23</span>
+                            </a>
+                            <div class="vodlist_titbox">
+                                <p class="vodlist_title">
+                                    <a href="https://www.musestar.top/film/HomeComing/01">万里归途</a>
+                                </p>
+                                <p class="vodlist_sub">上映时间：2022-09-30</p>
+                            </div>
+                        </li>
+                        <li class="vodlist_item">
+                            <a class="vodlist_thumb lazyload" href="https://www.musestar.top/film/dxyq"
+                               style="background-image: url(https://s1.imagehub.cc/images/2022/12/04/74acf48d0d16029c4b792b49b0cca1eb.webp);">
+                                <span class="play hidden_xs"></span>
+                                <span class="vodlist_top"><em class="voddate voddate_year">中国</em>
+							<em class="voddate voddate_type">喜剧</em></span>
+                                <span class="pic_text text_right">影片时长: 2:01:59</span>
+                            </a>
+                            <div class="vodlist_titbox">
+                                <p class="vodlist_title">
+                                    <a href="https://www.musestar.top/film/dxyq">独行月球</a>
+                                </p>
+                                <p class="vodlist_sub">上映时间：2022-07-29</p>
+                            </div>
+                        </li>
+                        <li class="vodlist_item">
+                            <a class="vodlist_thumb lazyload" href="https://www.musestar.top/film/WheretheCrawdadsSing"
+                               style="background-image: url(https://s1.imagehub.cc/images/2022/12/04/aca0286dce9a7396a2f2aa3b47b88c3f.jpeg);">
+                                <span class="play hidden_xs"></span>
+                                <span class="vodlist_top"><em class="voddate voddate_year">美国</em>
+							<em class="voddate voddate_type">悬疑</em></span>
+                                <span class="pic_text text_right">影片时长: 1:58:42</span>
+                            </a>
+                            <div class="vodlist_titbox">
+                                <p class="vodlist_title">
+                                    <a href="https://www.musestar.top/film/WheretheCrawdadsSing">沼泽深处的女孩</a>
+                                </p>
+                                <p class="vodlist_sub">上映时间：2022-07-15</p>
+                            </div>
+                        </li>
+                        <li class="vodlist_item">
+                            <a class="vodlist_thumb lazyload" href="https://www.musestar.top/film/wtkdmzt"
+                               style="background-image: url(https://s1.imagehub.cc/images/2022/12/04/3bc24931d241e3ca6890a86993da8d00.webp);">
+                                <span class="play hidden_xs"></span>
+                                <span class="vodlist_top"><em class="voddate voddate_year">中国</em>
+							<em class="voddate voddate_type">喜剧</em></span>
+                                <span class="pic_text text_right">影片时长: 2:16:05</span>
+                            </a>
+                            <div class="vodlist_titbox">
+                                <p class="vodlist_title">
+                                    <a href="https://www.musestar.top/film/wtkdmzt">外太空的莫扎特</a>
+                                </p>
+                                <p class="vodlist_sub">上映时间：2022-07-15</p>
+                            </div>
+                        </li>
+                        <li class="vodlist_item">
+                            <a class="vodlist_thumb lazyload" href="https://www.musestar.top/film/stdz"
+                               style="background-image: url(https://s1.imagehub.cc/images/2022/12/04/e25e07df5d7fbec706a53d9a10f23e16.webp);">
+                                <span class="play hidden_xs"></span>
+                                <span class="vodlist_top"><em class="voddate voddate_year">中国</em>
+							<em class="voddate voddate_type">悬疑</em></span>
+                                <span class="pic_text text_right">影片时长: 1:41:04</span>
+                            </a>
+                            <div class="vodlist_titbox">
+                                <p class="vodlist_title">
+                                    <a href="https://www.musestar.top/film/stdz">神探大战</a>
+                                </p>
+                                <p class="vodlist_sub">上映时间：2022-07-08</p>
+                            </div>
+                        </li>
+                        <li class="vodlist_item">
+                            <a class="vodlist_thumb lazyload" href="https://www.musestar.top/film/Thor4"
+                               style="background-image: url(https://s1.imagehub.cc/images/2022/12/04/2184ef7c383e824c2f2bb46e1a1a8e20.webp);">
+                                <span class="play hidden_xs"></span>
+                                <span class="vodlist_top"><em class="voddate voddate_year">美国</em>
+							<em class="voddate voddate_type">科幻</em></span>
+                                <span class="pic_text text_right">影片时长: 1:58:53</span>
+                            </a>
+                            <div class="vodlist_titbox">
+                                <p class="vodlist_title">
+                                    <a href="https://www.musestar.top/film/Thor4">雷神4：爱与雷霆</a>
+                                </p>
+                                <p class="vodlist_sub">上映时间：2022-07-08</p>
+                            </div>
+                        </li>
+                        <li class="vodlist_item">
+                            <a class="vodlist_thumb lazyload" href="https://www.musestar.top/film/Minions2"
+                               style="background-image: url(https://s1.imagehub.cc/images/2022/12/04/40863897513346fe716d84619aa17bf7.webp);">
+                                <span class="play hidden_xs"></span>
+                                <span class="vodlist_top"><em class="voddate voddate_year">美国</em>
+							<em class="voddate voddate_type">动画</em></span>
+                                <span class="pic_text text_right">影片时长: 1:27:09</span>
+                            </a>
+                            <div class="vodlist_titbox">
+                                <p class="vodlist_title">
+                                    <a href="https://www.musestar.top/film/Minions2">小黄人2：神偷奶爸前传</a>
+                                </p>
+                                <p class="vodlist_sub">上映时间：2022-07-01</p>
+                            </div>
+                        </li>
+                        <li class="vodlist_item">
+                            <a class="vodlist_thumb lazyload" href="https://www.musestar.top/film/rsds"
+                               style="background-image: url(https://s1.imagehub.cc/images/2022/12/04/bf9703fefe5021aded13ade708cbe18d.webp);">
+                                <span class="play hidden_xs"></span>
+                                <span class="vodlist_top"><em class="voddate voddate_year">中国</em>
+							<em class="voddate voddate_type">剧情</em></span>
+                                <span class="pic_text text_right">影片时长: 1:45:13</span>
+                            </a>
+                            <div class="vodlist_titbox">
+                                <p class="vodlist_title">
+                                    <a href="https://www.musestar.top/film/rsds">人生大事</a>
+                                </p>
+                                <p class="vodlist_sub">上映时间：2022-06-24</p>
+                            </div>
+                        </li>
+                        <li class="vodlist_item">
+                            <a class="vodlist_thumb lazyload" href="https://www.musestar.top/film/JurassicWorld3"
+                               style="background-image: url(https://s1.imagehub.cc/images/2022/12/12/4a1ae8bb49c03bcc7c6f9813c81726e7.webp);">
+                                <span class="play hidden_xs"></span>
+                                <span class="vodlist_top"><em class="voddate voddate_year">美国</em>
+							<em class="voddate voddate_type">科幻</em></span>
+                                <span class="pic_text text_right">影片时长: 2:26:58</span>
+                            </a>
+                            <div class="vodlist_titbox">
+                                <p class="vodlist_title">
+                                    <a href="https://www.musestar.top/film/JurassicWorld3">侏罗纪世界3：统治</a>
+                                </p>
+                                <p class="vodlist_sub">上映时间：2022-06-10</p>
+                            </div>
+                        </li>
+                        <li class="vodlist_item">
+                            <a class="vodlist_thumb lazyload" href="https://www.musestar.top/film/TopGun2"
+                               style="background-image: url(https://s1.imagehub.cc/images/2022/12/04/9d696cd7c9ef5cae357f81cf1b4efb8f.webp);">
+                                <span class="play hidden_xs"></span>
+                                <span class="vodlist_top"><em class="voddate voddate_year">美国</em>
+							<em class="voddate voddate_type">动作</em></span>
+                                <span class="pic_text text_right">影片时长: 2:10:28</span>
+                            </a>
+                            <div class="vodlist_titbox">
+                                <p class="vodlist_title">
+                                    <a href="https://www.musestar.top/film/TopGun2">壮志凌云2：独行侠</a>
+                                </p>
+                                <p class="vodlist_sub">上映时间：2022-05-27</p>
+                            </div>
+                        </li>
+                        <li class="vodlist_item">
+                            <a class="vodlist_thumb lazyload" href="https://www.musestar.top/film/CyberHell"
+                               style="background-image: url(https://s1.imagehub.cc/images/2022/12/12/fd51653c9c71b9f8c980a5130f0a207f.jpeg);">
+                                <span class="play hidden_xs"></span>
+                                <span class="vodlist_top"><em class="voddate voddate_year">韩国</em>
+							<em class="voddate voddate_type">纪录片</em></span>
+                                <span class="pic_text text_right">影片时长: 1:45:31</span>
+                            </a>
+                            <div class="vodlist_titbox">
+                                <p class="vodlist_title">
+                                    <a href="https://www.musestar.top/film/CyberHell">网络炼狱：揭发N号房</a>
+                                </p>
+                                <p class="vodlist_sub">上映时间：2022-05-18</p>
+                            </div>
+                        </li>
+                        <li class="vodlist_item">
+                            <a class="vodlist_thumb lazyload" href="https://www.musestar.top/film/DoctorStrange2"
+                               style="background-image: url(https://s1.imagehub.cc/images/2022/12/12/3cb7384d360100219e8344031ac97846.jpeg);">
+                                <span class="play hidden_xs"></span>
+                                <span class="vodlist_top"><em class="voddate voddate_year">美国</em>
+							<em class="voddate voddate_type">科幻</em></span>
+                                <span class="pic_text text_right">影片时长: 2:06:44</span>
+                            </a>
+                            <div class="vodlist_titbox">
+                                <p class="vodlist_title">
+                                    <a href="https://www.musestar.top/film/DoctorStrange2">奇异博士2：疯狂多元宇宙</a>
+                                </p>
+                                <p class="vodlist_sub">上映时间：2022-05-06</p>
+                            </div>
+                        </li>
+                        <li class="vodlist_item">
+                            <a class="vodlist_thumb lazyload" href="https://www.musestar.top/film/FantasticBeasts3"
+                               style="background-image: url(https://s1.imagehub.cc/images/2022/12/13/31b7952ebad3601ff8b67e859cad65d2.webp);">
+                                <span class="play hidden_xs"></span>
+                                <span class="vodlist_top"><em class="voddate voddate_year">美国</em>
+							<em class="voddate voddate_type">科幻</em></span>
+                                <span class="pic_text text_right">影片时长: 2:22:41</span>
+                            </a>
+                            <div class="vodlist_titbox">
+                                <p class="vodlist_title">
+                                    <a href="https://www.musestar.top/film/FantasticBeasts3">神奇动物3：邓布利多之谜</a>
+                                </p>
+                                <p class="vodlist_sub">上映时间：2022-04-08</p>
+                            </div>
+                        </li>
+                        <li class="vodlist_item">
+                            <a class="vodlist_thumb lazyload" href="https://www.musestar.top/film/Morbius"
+                               style="background-image: url(https://s1.imagehub.cc/images/2022/12/12/e8d2645598dc00ac43ef316c0229696a.jpeg);">
+                                <span class="play hidden_xs"></span>
+                                <span class="vodlist_top"><em class="voddate voddate_year">美国</em>
+							<em class="voddate voddate_type">科幻</em></span>
+                                <span class="pic_text text_right">影片时长: 1:43:39</span>
+                            </a>
+                            <div class="vodlist_titbox">
+                                <p class="vodlist_title">
+                                    <a href="https://www.musestar.top/film/Morbius">暗夜博士：莫比亚斯</a>
+                                </p>
+                                <p class="vodlist_sub">上映时间：2022-04-01</p>
+                            </div>
+                        </li>
+                        <li class="vodlist_item">
+                            <a class="vodlist_thumb lazyload" href="https://www.musestar.top/film/moonfall"
+                               style="background-image: url(https://s1.imagehub.cc/images/2022/12/12/531363db4d763ac3f852fc869a96bd68.jpeg);">
+                                <span class="play hidden_xs"></span>
+                                <span class="vodlist_top"><em class="voddate voddate_year">美国</em>
+							<em class="voddate voddate_type">科幻</em></span>
+                                <span class="pic_text text_right">影片时长: 2:10:30</span>
+                            </a>
+                            <div class="vodlist_titbox">
+                                <p class="vodlist_title">
+                                    <a href="https://www.musestar.top/film/moonfall">月球陨落</a>
+                                </p>
+                                <p class="vodlist_sub">上映时间：2022-03-25</p>
+                            </div>
+                        </li>
+                        <li class="vodlist_item">
+                            <a class="vodlist_thumb lazyload"
+                               href="https://www.musestar.top/film/EverythingEverywhereAllatOnce"
+                               style="background-image: url(https://s1.imagehub.cc/images/2022/12/12/1268024d17f6f8e9ed67b1e295c20366.jpeg);">
+                                <span class="play hidden_xs"></span>
+                                <span class="vodlist_top"><em class="voddate voddate_year">美国</em>
+							<em class="voddate voddate_type">科幻</em></span>
+                                <span class="pic_text text_right">影片时长: 2:19:32</span>
+                            </a>
+                            <div class="vodlist_titbox">
+                                <p class="vodlist_title">
+                                    <a href="https://www.musestar.top/film/EverythingEverywhereAllatOnce">瞬息全宇宙</a>
+                                </p>
+                                <p class="vodlist_sub">上映时间：2022-03-25</p>
+                            </div>
+                        </li>
+                        <li class="vodlist_item">
+                            <a class="vodlist_thumb lazyload" href="https://www.musestar.top/film/TheBatman"
+                               style="background-image: url(https://s1.imagehub.cc/images/2022/12/12/ff3249cff950b67887a6b9bb7f8a0d3e.jpeg);">
+                                <span class="play hidden_xs"></span>
+                                <span class="vodlist_top"><em class="voddate voddate_year">美国</em>
+							<em class="voddate voddate_type">科幻</em></span>
+                                <span class="pic_text text_right">影片时长: 2:56:25</span>
+                            </a>
+                            <div class="vodlist_titbox">
+                                <p class="vodlist_title">
+                                    <a href="https://www.musestar.top/film/TheBatman">新蝙蝠侠</a>
+                                </p>
+                                <p class="vodlist_sub">上映时间：2022-03-18</p>
+                            </div>
+                        </li>
+                        <li class="vodlist_item">
+                            <a class="vodlist_thumb lazyload" href="https://www.musestar.top/film/TheAdamProject"
+                               style="background-image: url(https://s1.imagehub.cc/images/2022/12/12/18f81a2f4493e10f50dbaf30d8b48318.jpeg);">
+                                <span class="play hidden_xs"></span>
+                                <span class="vodlist_top"><em class="voddate voddate_year">美国</em>
+							<em class="voddate voddate_type">科幻</em></span>
+                                <span class="pic_text text_right">影片时长: 1:46:50</span>
+                            </a>
+                            <div class="vodlist_titbox">
+                                <p class="vodlist_title">
+                                    <a href="https://www.musestar.top/film/TheAdamProject">亚当计划</a>
+                                </p>
+                                <p class="vodlist_sub">上映时间：2022-03-11</p>
+                            </div>
+                        </li>
+                        <li class="vodlist_item">
+                            <a class="vodlist_thumb lazyload" href="https://www.musestar.top/film/NiceView"
+                               style="background-image: url(https://s1.imagehub.cc/images/2022/12/13/a10a2bb88fb323c4fdd883082653fcdd.jpeg);">
+                                <span class="play hidden_xs"></span>
+                                <span class="vodlist_top"><em class="voddate voddate_year">中国</em>
+							<em class="voddate voddate_type">剧情</em></span>
+                                <span class="pic_text text_right">影片时长: 1:45:50</span>
+                            </a>
+                            <div class="vodlist_titbox">
+                                <p class="vodlist_title">
+                                    <a href="https://www.musestar.top/film/NiceView">奇迹·笨小孩</a>
+                                </p>
+                                <p class="vodlist_sub">上映时间：2022-02-01</p>
+                            </div>
+                        </li>
+                        <li class="vodlist_item">
+                            <a class="vodlist_thumb lazyload" href="https://www.musestar.top/film/TooCoolToKill"
+                               style="background-image: url(https://s1.imagehub.cc/images/2022/12/12/9173c7851d77b828c0ff31c73e39538b.jpeg);">
+                                <span class="play hidden_xs"></span>
+                                <span class="vodlist_top"><em class="voddate voddate_year">中国</em>
+							<em class="voddate voddate_type">喜剧</em></span>
+                                <span class="pic_text text_right">影片时长: 1:49:22</span>
+                            </a>
+                            <div class="vodlist_titbox">
+                                <p class="vodlist_title">
+                                    <a href="https://www.musestar.top/film/TooCoolToKill">这个杀手不太冷静</a>
+                                </p>
+                                <p class="vodlist_sub">上映时间：2022-02-01</p>
+                            </div>
+                        </li>
+                        <li class="vodlist_item">
+                            <a class="vodlist_thumb lazyload" href="https://www.musestar.top/film/NoWayHome"
+                               style="background-image: url(https://s1.imagehub.cc/images/2022/12/12/0095f436eb965a6aa7a1b296ab22f202.jpeg);">
+                                <span class="play hidden_xs"></span>
+                                <span class="vodlist_top"><em class="voddate voddate_year">美国</em>
+							<em class="voddate voddate_type">科幻</em></span>
+                                <span class="pic_text text_right">影片时长: 2:37:09</span>
+                            </a>
+                            <div class="vodlist_titbox">
+                                <p class="vodlist_title">
+                                    <a href="https://www.musestar.top/film/NoWayHome">蜘蛛侠3：英雄无归</a>
+                                </p>
+                                <p class="vodlist_sub">上映时间：2021-12-25</p>
+                            </div>
+                        </li>
+                        <li class="vodlist_item">
+                            <a class="vodlist_thumb lazyload" href="https://www.musestar.top/film/xssn"
+                               style="background-image: url(https://s1.imagehub.cc/images/2022/12/04/29edda8fbb35e257bf712eaa98d2a5f8.jpeg);">
+                                <span class="play hidden_xs"></span>
+                                <span class="vodlist_top"><em class="voddate voddate_year">中国</em>
+							<em class="voddate voddate_type">动画</em></span>
+                                <span class="pic_text text_right">影片时长: 1:43:59</span>
+                            </a>
+                            <div class="vodlist_titbox">
+                                <p class="vodlist_title">
+                                    <a href="https://www.musestar.top/film/xssn">雄狮少年</a>
+                                </p>
+                                <p class="vodlist_sub">上映时间：2021-12-17</p>
+                            </div>
+                        </li>
+                        <li class="vodlist_item">
+                            <a class="vodlist_thumb lazyload" href="https://www.musestar.top/film/Dune"
+                               style="background-image: url(https://s1.imagehub.cc/images/2022/12/12/dcff56ff59655cd048892572148c9b44.jpeg);">
+                                <span class="play hidden_xs"></span>
+                                <span class="vodlist_top"><em class="voddate voddate_year">美国</em>
+							<em class="voddate voddate_type">科幻</em></span>
+                                <span class="pic_text text_right">影片时长: 2:29:09</span>
+                            </a>
+                            <div class="vodlist_titbox">
+                                <p class="vodlist_title">
+                                    <a href="https://www.musestar.top/film/Dune">沙丘</a>
+                                </p>
+                                <p class="vodlist_sub">上映时间：2021-10-22</p>
+                            </div>
+                        </li>
+                        <li class="vodlist_item">
+                            <a class="vodlist_thumb lazyload" href="https://www.musestar.top/film/BlackBox"
+                               style="background-image: url(https://s1.imagehub.cc/images/2022/12/12/f00991718429a378fb3beac7ca6f3e29.jpeg);">
+                                <span class="play hidden_xs"></span>
+                                <span class="vodlist_top"><em class="voddate voddate_year">法国</em>
+							<em class="voddate voddate_type">剧情</em></span>
+                                <span class="pic_text text_right">影片时长: 2:09:05</span>
+                            </a>
+                            <div class="vodlist_titbox">
+                                <p class="vodlist_title">
+                                    <a href="https://www.musestar.top/film/BlackBox">黑匣子</a>
+                                </p>
+                                <p class="vodlist_sub">上映时间：2021-09-08</p>
+                            </div>
+                        </li>
+                        <li class="vodlist_item">
+                            <a class="vodlist_thumb lazyload" href="https://www.musestar.top/film/TheWanderingEarth/01"
+                               style="background-image: url(https://s1.imagehub.cc/images/2023/01/02/d707a61c34fb000cf55ca2906101fb85.webp);">
+                                <span class="play hidden_xs"></span>
+                                <span class="vodlist_top"><em class="voddate voddate_year">中国</em>
+							<em class="voddate voddate_type">科幻</em></span>
+                                <span class="pic_text text_right">影片时长: 2:16:28</span>
+                            </a>
+                            <div class="vodlist_titbox">
+                                <p class="vodlist_title">
+                                    <a href="https://www.musestar.top/film/TheWanderingEarth/01">流浪地球</a>
+                                </p>
+                                <p class="vodlist_sub">上映时间：2019-02-05</p>
+                            </div>
+                        </li>
+                        <li class="vodlist_item">
+                            <a class="vodlist_thumb lazyload" href="https://www.musestar.top/film/Aquaman/01"
+                               style="background-image: url(https://s1.imagehub.cc/images/2023/01/02/d0648c7c7bc6df53ff0d5788d41fe769.webp);">
+                                <span class="play hidden_xs"></span>
+                                <span class="vodlist_top"><em class="voddate voddate_year">美国</em>
+							<em class="voddate voddate_type">动作</em></span>
+                                <span class="pic_text text_right">影片时长: 1:54:34</span>
+                            </a>
+                            <div class="vodlist_titbox">
+                                <p class="vodlist_title">
+                                    <a href="https://www.musestar.top/film/Aquaman/01">海王</a>
+                                </p>
+                                <p class="vodlist_sub">上映时间：2018-12-07</p>
+                            </div>
+                        </li>
+                        <li class="vodlist_item">
+                            <a class="vodlist_thumb lazyload" href="https://www.musestar.top/film/Avatar"
+                               style="background-image: url(https://s1.imagehub.cc/images/2022/12/12/5e9364052e99b6d550d11697267b1423.webp);">
+                                <span class="play hidden_xs"></span>
+                                <span class="vodlist_top"><em class="voddate voddate_year">美国</em>
+							<em class="voddate voddate_type">科幻</em></span>
+                                <span class="pic_text text_right">影片时长: 2:57:37</span>
+                            </a>
+                            <div class="vodlist_titbox">
+                                <p class="vodlist_title">
+                                    <a href="https://www.musestar.top/film/Avatar">阿凡达</a>
+                                </p>
+                                <p class="vodlist_sub">上映时间：2009-12-18</p>
+                            </div>
+                        </li>
+                        <li class="vodlist_item">
+                            <a class="vodlist_thumb lazyload"
+                               href="https://www.musestar.top/film/TheShawshankRedemption"
+                               style="background-image: url(https://s1.imagehub.cc/images/2022/12/12/10770a7925c65a81f1967a3c022ecba1.webp);">
+                                <span class="play hidden_xs"></span>
+                                <span class="vodlist_top"><em class="voddate voddate_year">美国</em>
+							<em class="voddate voddate_type">剧情</em></span>
+                                <span class="pic_text text_right">影片时长: 2:22:33</span>
+                            </a>
+                            <div class="vodlist_titbox">
+                                <p class="vodlist_title">
+                                    <a href="https://www.musestar.top/film/TheShawshankRedemption">肖申克的救赎</a>
+                                </p>
+                                <p class="vodlist_sub">上映时间：1994-09-23</p>
+                            </div>
+                        </li>
+                        <!-- 列表2END -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript" src="https://www.musestar.top/files/under.js"></script>
+</body>
+</html>
