@@ -187,7 +187,7 @@ $('.brand-active').slick({
 	infinite: true,
 	speed: 1000,
 	autoplay: true,
-                                screenshot: true,
+                                
 	arrows: false,
 	slidesToShow: 6,
 	slidesToScroll: 2,
@@ -235,7 +235,7 @@ $('.testimonial-active').slick({
 	infinite: true,
 	speed: 1000,
 	autoplay: true,
-                                screenshot: true,
+                                
 	autoplaySpeed: 4000,
 	centerMode: true,
 	centerPadding: '0px',
