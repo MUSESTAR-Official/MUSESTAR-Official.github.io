@@ -101,8 +101,33 @@
                 <div class="left_row fl">
                     <div class="player_v"
                          id="dplayer">
+                         <script>
+                            var dp = new DPlayer({
+                                container: document.getElementById('dplayer'),
+                                hotkey: true,
+                                preload: 'auto',
+                                logo: 'https://www.musestar.top/ms.ico',
+                                autoplay: true,
+                                volume: 1.0,
+                                			  video: {
+        quality: [
+            {
+                name: '缪斯星播放源',
+                url: 'https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL3YvcyFBZ1hsWVR6S1JLMDBnM2l3OE9Ga1hxUUl3UXdOP2U9MmNRVXNi.mp4',
+                
+            },
+        ],
+        defaultQuality: 0,
+    },
+                                contextmenu: [
+                                    {
+                                        text: '缪斯星首页',
+                                        link: 'https://www.musestar.top/',
+                                    },
 
-<h2>正在等待简中无修版，可加缪斯星官方QQ群599148728等待放映或使用其他播放源</h2>
+                                ],
+                            });
+                        </script>
                     </div>
                     <div class="play_but bline">
                         <ul>
