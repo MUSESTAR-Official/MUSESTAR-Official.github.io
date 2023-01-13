@@ -103,7 +103,33 @@
                 <div class="left_row fl">
                     <div class="player_v"
                          id="dplayer">
-                         <h2>本集将在1.12上映，可加缪斯星官方QQ群599148728等待放映</h2>
+                         <script>
+                            var dp = new DPlayer({
+                                container: document.getElementById('dplayer'),
+                                hotkey: true,
+                                preload: 'auto',
+                                logo: 'https://www.musestar.top/ms.ico',
+                                autoplay: true,
+                                volume: 1.0,
+                                			  video: {
+        quality: [
+            {
+                name: '缪斯星主线路',
+                url: 'https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL3YvcyFBZ1hsWVR6S1JLMDBnM2E3WVV0UDk0M1ZKcVpDP2U9c0plaElm.mp4',
+                
+            },
+        ],
+        defaultQuality: 0,
+    },
+                                contextmenu: [
+                                    {
+                                        text: '缪斯星首页',
+                                        link: 'https://www.musestar.top/',
+                                    },
+
+                                ],
+                            });
+                        </script>
                     </div>
                     <div class="play_but bline">
                         <ul>
