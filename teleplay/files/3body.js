@@ -1,1 +1,1 @@
-document.write("<p>未上映：共24集<\/p>");
+document.write("<p>更新中：共24集<\/p>");
