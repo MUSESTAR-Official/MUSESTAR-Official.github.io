@@ -9,7 +9,7 @@ document.write("                                        <\/div>");
 document.write("                                    <\/div>");
 document.write("                                    <div class=\"ranklist_txt\">");
 document.write("                                        <div class=\"pannel_head clearfix\">");
-document.write("                                            <span class=\"text_muted pull_right\">共24集<\/span>");
+document.write("                                            <span class=\"text_muted pull_right\">共30集<\/span>");
 document.write("                                            <h4 class=\"title\">三体<\/h4>");
 document.write("                                        <\/div>");
 document.write("                                        <p class=\"vodlist_sub\">2023-01-15<\/p>");
