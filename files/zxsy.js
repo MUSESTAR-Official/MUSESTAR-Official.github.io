@@ -4,7 +4,7 @@ document.write("                                    <div class=\"ranklist_img\">
 document.write("                                        <div class=\"ranklist_thumb  lazyload\"");
 document.write("                                             style=\"background-image: url(https:\/\/s1.imagehub.cc\/images\/2023\/01\/02\/49348cf0d5976eb8567f845bb616ae38.webp);\">");
 document.write("                                            <span class=\"play hidden_xs\"><\/span>");
-document.write("                                            <span class=\"part_nums part_num1\">2<\/span>");
+document.write("                                            <span class=\"part_nums part_num1\">1<\/span>");
 document.write("                                        <\/div>");
 document.write("                                    <\/div>");
 document.write("                                    <div class=\"ranklist_txt\">");
