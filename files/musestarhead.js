@@ -1,7 +1,7 @@
 document.write("	<div class=\"menu\">");
 document.write("		<ul class=\"dmx l\">");
 document.write("			<li>");
-document.write("				<a href=\"https:\/\/www.musestar.top\/\"><img src=\"https:\/\/www.musestar.top\/ms.ico\" width=\"25\" height=\"25\"><\/a><\/li>");
+document.write("				<a href=\"https:\/\/www.musestar.top\/\"><img src=\"https:\/\/www.musestar.top\/favicon.ico\" width=\"25\" height=\"25\"><\/a><\/li>");
 document.write("			<li>");
 document.write("				<a href=\"https:\/\/www.musestar.top\/\">首页<\/a><\/li>");
 document.write("			<li>");
