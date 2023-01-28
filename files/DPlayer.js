@@ -3348,7 +3348,7 @@
                         click: function (n) {
                             n.infoPanel.triggle()
                         }
-                    }, {key: "about-author", link: "https://diygod.me"}, {
+                    }, {
                         text: "DPlayer v".concat("1.27.0"),
                         link: "https://github.com/MoePlayer/DPlayer"
                     }]), n
