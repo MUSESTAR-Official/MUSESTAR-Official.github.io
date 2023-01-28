@@ -3350,7 +3350,7 @@
                         }
                     }, {
                         text: "MUSEPlayer",
-                        link: `https://www.musestar.top/MUSEPlayer?vsrc=`
+                        link: "https://www.musestar.top/MUSEPlayer?vsrc="
                     }]), n
                 }(function (n) {
                     for (var e = 1; e < arguments.length; e++) {
