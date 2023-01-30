@@ -349,7 +349,7 @@ a:hover {
 	margin-right:0;
 	margin-left:0;
 }
-.foucs {
+.fo夸克s {
 	width:930px;
 	height:210px;
 	clear:both;
@@ -361,13 +361,13 @@ a:hover {
 	text-align:left;
 	font-family:'microdoft yahei','΢���ź�'
 }
-.foucs ul {
+.fo夸克s ul {
 	width:950px;
 	height:210px;
 	overflow:hidden;
 	margin:15px 20px
 }
-.foucs ul li {
+.fo夸克s ul li {
 	width:300px;
 	height:210px;
 	overflow:hidden;
@@ -375,11 +375,11 @@ a:hover {
 	margin-right:15px;
 	float:left
 }
-.foucs ul li img {
+.fo夸克s ul li img {
 	width:300px;
 	height:210px
 }
-.foucs ul li a p {
+.fo夸克s ul li a p {
 	width:280px;
 	height:25px;
 	line-height:25px;
@@ -395,22 +395,22 @@ a:hover {
 	font-size:14px;
 	filter:progid:DXImageTransform.Microsoft.Shadow(Strength=2,Direction=135,color=#000000)
 }
-.foucs ul li a p span {
+.fo夸克s ul li a p span {
 	display:none;
 	clear:both
 }
-.foucs ul li a:hover p {
+.fo夸克s ul li a:hover p {
 	height:50px;
 	padding-top:6px;
 	line-height:20px;
 	top:160px;
 	left:0;
 }
-.foucs ul li a:hover p span {
+.fo夸克s ul li a:hover p span {
 	display:block;
 	font-size:12px
 }
-.foucs ul li em {
+.fo夸克s ul li em {
 	z-index:2;
 	position:absolute;
 	top:24px;
@@ -429,13 +429,13 @@ a:hover {
 	transform:rotate(315deg);
 	text-shadow:1px 1px 0 #c30
 }
-.foucs .hero-wrap {
+.fo夸克s .hero-wrap {
 	margin:15px;
 	width:930px;
 	height:210px;
 	overflow:hidden
 }
-.foucs .next,.foucs .prev {
+.fo夸克s .next,.fo夸克s .prev {
 	position:absolute;
 	top:50%;
 	margin-top:-25px;
@@ -444,21 +444,21 @@ a:hover {
 	height:51px;
 	width:51px
 }
-.foucs .prev {
+.fo夸克s .prev {
 	background-position:0 -70px;
 	left:8px
 }
-.foucs .prev:hover {
+.fo夸克s .prev:hover {
 	background-position:0 0
 }
-.foucs .next {
+.fo夸克s .next {
 	background-position:-58px -70px;
 	right:8px
 }
-.foucs .next:hover {
+.fo夸克s .next:hover {
 	background-position:-58px 0
 }
-.foucs .heros,.foucs .mask-left,.foucs .mask-right {
+.fo夸克s .heros,.fo夸克s .mask-left,.fo夸克s .mask-right {
 	z-index:1;
 	position:absolute;
 	top:0;
@@ -468,7 +468,7 @@ a:hover {
 	overflow:hidden;
 	left:1900px
 }
-.foucs .mask-left,.foucs .mask-right {
+.fo夸克s .mask-left,.fo夸克s .mask-right {
 	z-index:4;
 	left:-950px;
 	filter:alpha(Opacity=50);
@@ -476,14 +476,14 @@ a:hover {
 	background:#fff;
 	overflow:hidden
 }
-.foucs .mask-right {
+.fo夸克s .mask-right {
 	left:1900px
 }
-.foucs .active {
+.fo夸克s .active {
 	z-index:2;
 	left:0
 }
-.foucs ul li a:hover {
+.fo夸克s ul li a:hover {
 	text-decoration:none
 }
 .box {
