@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EasyWasmPlayer-Demo</title>
+    <script src="./EasyWasmPlayer.js"></script>
+    <style>
+        .box {
+            width:600px;
+            height:400px;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <div id="Player"></div>
+</div>
+<script>
+    // 实例化播放器
+    var Player = new WasmPlayer(null,'Player'，callbackFun,{cbUserPtr:this, decodeType:"auto", openAudio:1, BigPlay:false, Height:true});
+    // 调用播放
+    Player.play('https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL3UvcyFBZ1hsWVR6S1JLMDBoQ21YR3RyQnJOanFQdFFYP2U9aldEZ3VX.mkv', 1)
+</script>
+</body>
+
+</html>
