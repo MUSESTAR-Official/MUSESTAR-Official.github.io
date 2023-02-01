@@ -85,21 +85,27 @@
 
 				<div>  
 					 </div><div class="player_v" id="dplayer">
-				  <script>
-			  var dp = new DPlayer({
-			  container: document.getElementById('dplayer'),
-			  airplay: true,
-			  preload: 'auto',
-			  logo: 'https://www.musestar.top/files/ms.png',
-			  autoplay: true,
-                                
-			  volume: 1.0,
-			  video: {
-			  url: 'https://yun.ssdm.cc/SBDM/MajonoTabitabi11.m3u8',
-					 },
+                        <script>
+                            var dp = new DPlayer({
+                                container: document.getElementById('dplayer'),
+                                airplay: true,
+                                preload: 'auto',
+                                logo: 'https://www.musestar.top/files/ms.png',
+                                autoplay: true,
+                                volume: 1.0,
+                                			  video: {
+        quality: [
+            {
+                name: '缪斯星播放源',
+                url: ' ',
+                
+            },
+        ],
+        defaultQuality: 0,
+    },
 
-					   });
-				  </script>
+                            });
+                        </script>
 				</div>
 
                  <div class="play_but bline">
