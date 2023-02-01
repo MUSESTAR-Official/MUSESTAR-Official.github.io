@@ -3349,8 +3349,8 @@
                             n.infoPanel.triggle()
                         }
                     }, {
-                        text: "MUSEPlayer",
-                        link: "https://www.musestar.top/MUSEPlayer?vsrc="
+                        text: "MUSESTAR缪斯星",
+                        link: "https://www.musestar.top/"
                     }]), n
                 }(function (n) {
                     for (var e = 1; e < arguments.length; e++) {
