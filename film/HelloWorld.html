@@ -76,21 +76,28 @@
     <script type="text/javascript" src="https://www.musestar.top/files/animationhead.js"></script>
         <div>  
 	 </div><div class="player_v" id="dplayer">
-  <script>
-			  var dp = new DPlayer({
-			  container: document.getElementById('dplayer'),
-			  airplay: true,
-			  preload: 'auto',
-			  logo: 'https://www.musestar.top/files/ms.png',
-			  autoplay: true,
-                                
-			  volume: 1.0,
-			  video: {
-			  url: 'https://cdn2.vipzyk-video.com/20220405/7597_2d3a8e65/1000k/hls/index.m3u8',
-					 },
+    <script>
+      var dp = new DPlayer({
+          container: document.getElementById('dplayer'),
+          airplay: true,
+          preload: 'auto',
+          logo: 'https://www.musestar.top/files/ms.png',
+          autoplay: true,
+          
+          volume: 1.0,
+                  video: {
+quality: [
+{
+name: '缪斯星播放源',
+url: 'https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL3YvcyFBZ1hsWVR6S1JLMDBoR25kQ1VFOTk5XzU2Q0xQP2U9dUhVRUhh.mp4',
 
-					   });
-				  </script>
+},
+],
+defaultQuality: 0,
+},
+
+      });
+  </script>
 <p>缪斯星动漫</p>
 <p>你好世界</p>
 <p>上映时间: 2021-06-11</p>
