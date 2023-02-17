@@ -3350,7 +3350,7 @@
                         }
                     }, {
                         text: "MUSESTAR缪斯星",
-                        link: "https://www.musestar.top/"
+                        link: "https://www.musestar.cc/"
                     }]), n
                 }(function (n) {
                     for (var e = 1; e < arguments.length; e++) {
