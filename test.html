@@ -1,60 +1,87 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>视频网站</title>
+
+
+<!DOCTYPE html><html><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta charset="UTF-8">
+    <title>正在播放中</title>
+    <link rel="shortcut icon" href="https://bf123.omofun.top/favicon.ico" type="image/x-icon">
+
+<style>
+    #loading-box {
+        background: # !important;
+    }
+    #my-loading{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: 99999;
+        background-color:#000;
+	background: url() #000;
+	display: block;
+    width: 110%;
+    height: 110%;
+    position: absolute;
+    left: -5%;
+    top: -5%;
+    background-size: cover;
+    background-position: 50%;
+    -webkit-filter: blur(35px);
+    -moz-filter: blur(35px);
+    -ms-filter: blur(35px);
+    filter: blur(0px);      
+    }
+    .loading-text{
+        position: absolute;
+        left: 35px;
+        bottom: 7%;
+        font-size: 0.5rem;
+        color:#999;
+    }
+    .iframeStyle{
+        width: 100%;
+        height: 100%;
+        border: 0px;
+    }
+    .loading .pic{
+        background: url(https://bf123.omofun.top/mizhiplayerapi/img/005.gif) no-repeat!important;
+        background-size: 150px !important;
+        width: 150px;
+        height: 150px;
+        position: absolute;
+        pointer-events: none;
+        border: 0;
+        border-color: unset;
+        opacity: 1;
+        border-radius: 0;
+        -moz-animation: spinoffPulse .9s infinite linear;
+        -webkit-animation: unset;
+        background-size: 100%;
+        top: 50%;
+        left: 50%;
+        transform: translate3d(-50%,-50%,0px);
+    }
+    
+    body, html {
+    font: 24px "Microsoft YaHei", Arial, Lucida Grande, Tahoma, sans-serif;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    }
+    
+    * {
+    margin: 0;
+    padding: 0;
+    font-style: normal;
+    font-weight: normal;
+    }
+</style>
 </head>
-<body>
-	<header>
-		<h1>视频网站</h1>
-		<nav>
-			<ul>
-				<li><a href="#">首页</a></li>
-				<li><a href="#">分类</a></li>
-				<li><a href="#">搜索</a></li>
-			</ul>
-		</nav>
-	</header>
+<body><div class="loading" id="my-loading"><div class="pic"></div></div>
+    <iframe src="https://bf123.omofun.top/player/analysis.php?v=https://vip.lz-cdn14.com/20230607/24663_762ed043/index.m3u8" class="iframeStyle" id="myiframe" ></iframe>
 
-	<main>
-		<section>
-			<h2>热门视频</h2>
-			<article>
-				<h3>视频标题</h3>
-				<video controls>
-					<source src="video.mp4" type="video/mp4">
-				</video>
-				<p>视频描述</p>
-			</article>
-			<article>
-				<h3>视频标题</h3>
-				<video controls>
-					<source src="video.mp4" type="video/mp4">
-				</video>
-				<p>视频描述</p>
-			</article>
-		</section>
-
-		<section>
-			<h2>最新视频</h2>
-			<article>
-				<h3>视频标题</h3>
-				<video controls>
-					<source src="video.mp4" type="video/mp4">
-				</video>
-				<p>视频描述</p>
-			</article>
-			<article>
-				<h3>视频标题</h3>
-				<video controls>
-					<source src="video.mp4" type="video/mp4">
-				</video>
-				<p>视频描述</p>
-			</article>
-		</section>
-	</main>
-
-	<footer>
-		<p>&copy; 2023 视频网站</p>
-	</footer>
-</body>
-</html>
+</body></html>
