@@ -3349,7 +3349,7 @@
                             n.infoPanel.triggle()
                         }
                     }, {
-                        text: "MUSESTAR缪斯星",
+                        text: "𝐌𝐔𝐒𝐄𝐒𝐓𝐀𝐑缪斯星",
                         link: "https://www.musestar.cc/"
                     }]), n
                 }(function (n) {
