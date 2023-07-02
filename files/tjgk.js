@@ -14,7 +14,7 @@ document.write("                                            <h4 class=\"title\">
 document.write("                                        <\/div>");
 document.write("                                        <p class=\"vodlist_sub\">2023-04-12<\/p>");
 document.write("                                        <p class=\"vodlist_sub\">日本\/奇幻<\/p>");
-document.write("                                        <p class=\"vodlist_sub\">缪斯星动漫更新中<\/p>");
+document.write("                                        <p class=\"vodlist_sub\">缪斯星动漫已完结<\/p>");
 document.write("                                    <\/div>");
 document.write("                                <\/a>");
 document.write("                            <\/li>");

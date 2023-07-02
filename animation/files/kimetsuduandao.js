@@ -1,1 +1,1 @@
-document.write("<p>更新中：共11集<\/p>");
+document.write("<p>已完结：共11集<\/p>");
