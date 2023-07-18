@@ -33,7 +33,7 @@ document.write("                                        <div class=\"pannel_head
 document.write("                                            <span class=\"text_muted pull_right\">预计共12集<\/span>");
 document.write("                                            <h4 class=\"title\">僵尸百分百<\/h4>");
 document.write("                                        <\/div>");
-document.write("                                        <p class=\"vodlist_sub\">2023-07-02<\/p>");
+document.write("                                        <p class=\"vodlist_sub\">2023-07-09<\/p>");
 document.write("                                        <p class=\"vodlist_sub\">日本\/喜剧<\/p>");
 document.write("                                        <p class=\"vodlist_sub\">缪斯星动漫更新中<\/p>");
 document.write("                                    <\/div>");
@@ -54,7 +54,7 @@ document.write("                                        <div class=\"pannel_head
 document.write("                                            <span class=\"text_muted pull_right\">预计共12集<\/span>");
 document.write("                                            <h4 class=\"title\">AI电子基因<\/h4>");
 document.write("                                        <\/div>");
-document.write("                                        <p class=\"vodlist_sub\">2023-07-02<\/p>");
+document.write("                                        <p class=\"vodlist_sub\">2023-07-07<\/p>");
 document.write("                                        <p class=\"vodlist_sub\">日本\/科幻<\/p>");
 document.write("                                        <p class=\"vodlist_sub\">缪斯星动漫更新中<\/p>");
 document.write("                                    <\/div>");
