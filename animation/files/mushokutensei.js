@@ -1,1 +1,1 @@
-document.write("更新中：预计共12集");
+document.write("更新中：共25集");
