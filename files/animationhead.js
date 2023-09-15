@@ -15,7 +15,7 @@ document.write("    <\/ul>");
 document.write("<ul class=\"dme r\">");
 
 document.write("			<li>");
-document.write("<a href=\"http:\/\/www.musestars.top\" >缪斯星搜索<\/a>");
+document.write("<a href=\"http:\/\/search.musestar.cc\" >缪斯星搜索<\/a>");
 document.write("			<\/li>");
 document.write("			<li>");
 document.write("<a href=\"https:\/\/www.musestar.cc\/musestar\" >缪斯星官方<\/a>");

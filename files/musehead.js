@@ -9,7 +9,7 @@ document.write("				<a href=\"https:\/\/www.musestar.cc\/animation\">缪斯星�
 document.write("			<li>");
 document.write("				<a href=\"https:\/\/www.musestar.cc\/movie\">缪斯星影视<\/a><\/li>");
 document.write("			<li>");
-document.write("				<a href=\"http:\/\/www.musestars.top\">缪斯星搜索<\/a><\/li>");
+document.write("				<a href=\"http:\/\/search.musestar.cc\">缪斯星搜索<\/a><\/li>");
 document.write("    <\/ul>");
 document.write("<ul class=\"dme r\">");
 document.write("			<li>");
