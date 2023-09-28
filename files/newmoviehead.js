@@ -9,5 +9,4 @@ document.write("                <li><a href=\"https:\/\/www.musestar.cc\/animati
 document.write("                <li><a href=\"https:\/\/www.musestar.cc\/movie\" ><font size=\"1\">缪斯星影视<\/font><\/a><\/li>");
 document.write("                <li><a href=\"http:\/\/search.musestar.cc\" ><font size=\"1\">缪斯星搜索<\/font><\/a><\/li>");
 document.write("				<li><a href=\"https:\/\/www.musestar.cc\/musestar\" ><font size=\"1\">缪斯星官方<\/font><\/a><\/li>");
-document.write("				<li><a href=\" \" ><font size=\"1\">缪斯星暂无<\/font><\/a><\/li>");
 document.write("                            <\/ul>");

@@ -18,8 +18,5 @@ document.write("			<\/li>");
 document.write("			<li>");
 document.write("<a href=\"https:\/\/www.musestar.cc\/muse\" >缪斯星专区<\/a>");
 document.write("			<\/li>");
-document.write("			<li>");
-document.write("<a href=\" \" >缪斯星暂无<\/a>");
-document.write("			<\/li>");
 document.write("    <\/div>");
 document.write("	<br>");
