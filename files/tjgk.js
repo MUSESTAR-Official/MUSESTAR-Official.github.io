@@ -73,7 +73,7 @@ document.write("                                    <\/div>");
 document.write("                                    <div class=\"ranklist_txt\">");
 document.write("                                        <div class=\"pannel_head clearfix\">");
 document.write("                                            <span class=\"text_muted pull_right\">共未知集<\/span>");
-document.write("                                            <h4 class=\"title\">无职转生Ⅱ<\/h4>");
+document.write("                                            <h4 class=\"title\">无职转生Ⅱ Part1<\/h4>");
 document.write("                                        <\/div>");
 document.write("                                        <p class=\"vodlist_sub\">2023-07-02<\/p>");
 document.write("                                        <p class=\"vodlist_sub\">日本\/奇幻<\/p>");
