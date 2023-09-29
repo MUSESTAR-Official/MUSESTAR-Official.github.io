@@ -100,6 +100,28 @@
                                 });
                             </script>
                         </div>
+                        <link rel="stylesheet" href="https://g.alicdn.com/apsara-media-box/imp-web-player/2.17.1/skins/default/aliplayer-min.css" />
+                        <script type="text/javascript" charset="utf-8" src="https://g.alicdn.com/apsara-media-box/imp-web-player/2.17.1/aliplayer-min.js"></script>
+                        <div class="prism-player" id="player-con"></div>
+                        <script>
+                        var player = new Aliplayer({
+                          "id": "player-con",
+                          "source": "https://public.dm.files.1drv.com/y4mi-_V7c2L3EmT-RWRn372es-k3e0LwIZ_1vYHYaGPj0pn4PVcwImNTut6qq2m3tbCERjG8N-jpscAcMlKGzx6jgFH36Xg0PDuhhCgRycsJQJ7aFGOZHMI6tF-J5r6w4xICN5rV7xawYI6rjcKLzHC5BmCyIytBXE2sj10hO70ZKMpdyK5debxiJdzjXL46tjPFLC8x2jy3fju-anJZ2KItkJm8x58knFitItcYaspaAU?AVOverride=1",
+                          "width": "100%",
+                          "height": "500px",
+                          "autoplay": true,
+                          "isLive": false,
+                          "rePlay": false,
+                          "playsinline": true,
+                          "isVBR": true,
+                          "preload": true,
+                          "controlBarVisibility": "hover",
+                          "useH5Prism": true
+                        }, function (player) {
+                            console.log("The player is created");
+                          }
+                        );
+                        </script>
                     </div>
                 </div>
             <div id="jarallax-container-0" style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; overflow: hidden; z-index: -100; clip-path: polygon(0px 0px, 100% 0px, 100% 100%, 0px 100%); background-size: cover;">
