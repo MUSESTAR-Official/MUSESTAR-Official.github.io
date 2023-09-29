@@ -13,7 +13,7 @@ document.write("                                            <span class=\"text_m
 document.write("                                            <h4 class=\"title\">葬送的芙莉莲<\/h4>");
 document.write("                                        <\/div>");
 document.write("                                        <p class=\"vodlist_sub\">2023-09-29<\/p>");
-document.write("                                        <p class=\"vodlist_sub\">日本\/恋爱<\/p>");
+document.write("                                        <p class=\"vodlist_sub\">日本\/剧情<\/p>");
 document.write("                                        <p class=\"vodlist_sub\">缪斯星动漫更新中<\/p>");
 document.write("                                    <\/div>");
 document.write("                                <\/a>");
