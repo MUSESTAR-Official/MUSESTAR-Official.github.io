@@ -59,6 +59,8 @@
 <link rel="stylesheet" type="text/css" href="https://www.musestar.cc/files/newstyle.css">
 <link rel="stylesheet" type="text/css" href="https://www.musestar.cc/files/newblue.css" name="skin">
 <link rel="stylesheet" type="text/css" href="https://www.musestar.cc/files/newblack.css" name="color">
+<script src="https://www.musestar.cc/files/hls.js"></script>
+<script src="https://www.musestar.cc/files/DPlayer.js"></script>
 </head>
 <body class="bstem">
 	
@@ -113,6 +115,30 @@
      </div>
     <div class="container ">
 			<div class="pannel clearfix">
+				<div id="dplayer">
+       
+					<script>
+						var dp = new DPlayer({
+							container: document.getElementById('dplayer'),
+							airplay: true,
+							preload: 'auto',
+							logo: 'https://www.musestar.cc/files/ms.png',
+							autoplay: true,
+							volume: 1.0,
+										  video: {
+	quality: [
+		{
+			name: '缪斯星播放源',
+			url: 'https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL3YvcyFBZ1hsWVR6S1JLMDBpU2lCVW85UXlKZVBhdzBpP2U9NVI4RzN2.mp4',
+			
+		},
+	],
+	defaultQuality: 0,
+},
+
+						});
+					</script>
+				</div>
 				<div class="tabs">
 					<h3 class="title">动漫介绍</h3>
 				  <div class="content">
