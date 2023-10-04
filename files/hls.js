@@ -995,9 +995,9 @@ var hlsDefaultConfig = _objectSpread(_objectSpread({
   capLevelController: _controller_cap_level_controller__WEBPACK_IMPORTED_MODULE_7__["default"],
   fpsController: _controller_fps_controller__WEBPACK_IMPORTED_MODULE_8__["default"],
   stretchShortVideoTrack: false,
-  // used by muse4-remuxer
+  // used by mp4-remuxer
   maxAudioFramesDrift: 1,
-  // used by muse4-remuxer
+  // used by mp4-remuxer
   forceKeyFrameOnDiscontinuity: true,
   // used by ts-demuxer
   abrEwmaFastLive: 3,
@@ -2027,7 +2027,7 @@ var AudioStreamController = /*#__PURE__*/function (_BaseStreamController) {
     console.assert(track, 'Audio track is defined on fragment load progress');
     var details = track.details;
     console.assert(details, 'Audio track details are defined on fragment load progress');
-    var audioCodec = config.defaultAudioCodec || track.audioCodec || 'muse4a.40.2';
+    var audioCodec = config.defaultAudioCodec || track.audioCodec || 'mp4a.40.2';
     var transmuxer = this.transmuxer;
 
     if (!transmuxer) {
@@ -2900,7 +2900,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _events__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../events */ "./src/events.ts");
 /* harmony import */ var _errors__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../errors */ "./src/errors.ts");
 /* harmony import */ var _types_transmuxer__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../types/transmuxer */ "./src/types/transmuxer.ts");
-/* harmony import */ var _utils_muse4_tools__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../utils/muse4-tools */ "./src/utils/muse4-tools.ts");
+/* harmony import */ var _utils_mp4_tools__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../utils/mp4-tools */ "./src/utils/mp4-tools.ts");
 /* harmony import */ var _utils_discontinuities__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../utils/discontinuities */ "./src/utils/discontinuities.ts");
 /* harmony import */ var _fragment_finders__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./fragment-finders */ "./src/controller/fragment-finders.ts");
 /* harmony import */ var _level_helper__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./level-helper */ "./src/controller/level-helper.ts");
@@ -3536,7 +3536,7 @@ var BaseStreamController = /*#__PURE__*/function (_TaskLoop) {
 
     if (data1 && data2) {
       // Combine the moof + mdat so that we buffer with a single append
-      buffer = Object(_utils_muse4_tools__WEBPACK_IMPORTED_MODULE_8__["appendUint8Array"])(data1, data2);
+      buffer = Object(_utils_mp4_tools__WEBPACK_IMPORTED_MODULE_8__["appendUint8Array"])(data1, data2);
     }
 
     if (!buffer || !buffer.length) {
@@ -6023,25 +6023,25 @@ var MAX_LICENSE_REQUEST_FAILURES = 3;
 var createWidevineMediaKeySystemConfigurations = function createWidevineMediaKeySystemConfigurations(audioCodecs, videoCodecs, drmSystemOptions) {
   /* jshint ignore:line */
   var baseConfig = {
-    // initDataTypes: ['keyids', 'muse4'],
+    // initDataTypes: ['keyids', 'mp4'],
     // label: "",
     // persistentState: "not-allowed", // or "required" ?
     // distinctiveIdentifier: "not-allowed", // or "required" ?
     // sessionTypes: ['temporary'],
     audioCapabilities: [],
-    // { contentType: 'audio/muse4; codecs="muse4a.40.2"' }
-    videoCapabilities: [] // { contentType: 'video/muse4; codecs="avc1.42E01E"' }
+    // { contentType: 'audio/mp4; codecs="mp4a.40.2"' }
+    videoCapabilities: [] // { contentType: 'video/mp4; codecs="avc1.42E01E"' }
 
   };
   audioCodecs.forEach(function (codec) {
     baseConfig.audioCapabilities.push({
-      contentType: "audio/muse4; codecs=\"" + codec + "\"",
+      contentType: "audio/mp4; codecs=\"" + codec + "\"",
       robustness: drmSystemOptions.audioRobustness || ''
     });
   });
   videoCodecs.forEach(function (codec) {
     baseConfig.videoCapabilities.push({
-      contentType: "video/muse4; codecs=\"" + codec + "\"",
+      contentType: "video/mp4; codecs=\"" + codec + "\"",
       robustness: drmSystemOptions.videoRobustness || ''
     });
   });
@@ -8267,10 +8267,10 @@ var LevelController = /*#__PURE__*/function (_BasePlaylistControll) {
       var attributes = levelParsed.attrs;
       resolutionFound = resolutionFound || !!(levelParsed.width && levelParsed.height);
       videoCodecFound = videoCodecFound || !!levelParsed.videoCodec;
-      audioCodecFound = audioCodecFound || !!levelParsed.audioCodec; // erase audio codec info if browser does not support muse4a.40.34.
+      audioCodecFound = audioCodecFound || !!levelParsed.audioCodec; // erase audio codec info if browser does not support mp4a.40.34.
       // demuxer will autodetect codec and fallback to mpeg/audio
 
-      if (chromeOrFirefox && levelParsed.audioCodec && levelParsed.audioCodec.indexOf('muse4a.40.34') !== -1) {
+      if (chromeOrFirefox && levelParsed.audioCodec && levelParsed.audioCodec.indexOf('mp4a.40.34') !== -1) {
         levelParsed.audioCodec = undefined;
       }
 
@@ -8309,12 +8309,12 @@ var LevelController = /*#__PURE__*/function (_BasePlaylistControll) {
     levels = levels.filter(function (_ref2) {
       var audioCodec = _ref2.audioCodec,
           videoCodec = _ref2.videoCodec;
-      return (!audioCodec || Object(_utils_codecs__WEBPACK_IMPORTED_MODULE_3__["isCodecSupportedInmuse4"])(audioCodec, 'audio')) && (!videoCodec || Object(_utils_codecs__WEBPACK_IMPORTED_MODULE_3__["isCodecSupportedInmuse4"])(videoCodec, 'video'));
+      return (!audioCodec || Object(_utils_codecs__WEBPACK_IMPORTED_MODULE_3__["isCodecSupportedInmp4"])(audioCodec, 'audio')) && (!videoCodec || Object(_utils_codecs__WEBPACK_IMPORTED_MODULE_3__["isCodecSupportedInmp4"])(videoCodec, 'video'));
     });
 
     if (data.audioTracks) {
       audioTracks = data.audioTracks.filter(function (track) {
-        return !track.audioCodec || Object(_utils_codecs__WEBPACK_IMPORTED_MODULE_3__["isCodecSupportedInmuse4"])(track.audioCodec, 'audio');
+        return !track.audioCodec || Object(_utils_codecs__WEBPACK_IMPORTED_MODULE_3__["isCodecSupportedInmp4"])(track.audioCodec, 'audio');
       }); // Assign ids after filtering as array indices by group-id
 
       Object(_level_helper__WEBPACK_IMPORTED_MODULE_4__["assignTrackIdsByGroup"])(audioTracks);
@@ -9803,11 +9803,11 @@ var StreamController = /*#__PURE__*/function (_BaseStreamController) {
       codec = level.audioCodec;
 
       if (codec) {
-        if (codec.indexOf('muse4a.40.2') !== -1) {
+        if (codec.indexOf('mp4a.40.2') !== -1) {
           aac = true;
         }
 
-        if (codec.indexOf('muse4a.40.5') !== -1) {
+        if (codec.indexOf('mp4a.40.5') !== -1) {
           heaac = true;
         }
       }
@@ -10210,10 +10210,10 @@ var StreamController = /*#__PURE__*/function (_BaseStreamController) {
     if (this.audioCodecSwap && audioCodec) {
       this.log('Swapping audio codec');
 
-      if (audioCodec.indexOf('muse4a.40.5') !== -1) {
-        audioCodec = 'muse4a.40.2';
+      if (audioCodec.indexOf('mp4a.40.5') !== -1) {
+        audioCodec = 'mp4a.40.2';
       } else {
-        audioCodec = 'muse4a.40.5';
+        audioCodec = 'mp4a.40.5';
       }
     }
 
@@ -10403,10 +10403,10 @@ var StreamController = /*#__PURE__*/function (_BaseStreamController) {
 
       if (this.audioCodecSwitch) {
         if (audioCodec) {
-          if (audioCodec.indexOf('muse4a.40.5') !== -1) {
-            audioCodec = 'muse4a.40.2';
+          if (audioCodec.indexOf('mp4a.40.5') !== -1) {
+            audioCodec = 'mp4a.40.2';
           } else {
-            audioCodec = 'muse4a.40.5';
+            audioCodec = 'mp4a.40.5';
           }
         } // In the case that AAC and HE-AAC audio codecs are signalled in manifest,
         // force HE-AAC, as it seems that most browsers prefers it.
@@ -10414,14 +10414,14 @@ var StreamController = /*#__PURE__*/function (_BaseStreamController) {
 
 
         if (audio.metadata.channelCount !== 1 && ua.indexOf('firefox') === -1) {
-          audioCodec = 'muse4a.40.5';
+          audioCodec = 'mp4a.40.5';
         }
       } // HE-AAC is broken on Android, always signal audio codec as AAC even if variant manifest states otherwise
 
 
       if (ua.indexOf('android') !== -1 && audio.container !== 'audio/mpeg') {
         // Exclude mpeg audio
-        audioCodec = 'muse4a.40.2';
+        audioCodec = 'mp4a.40.2';
         this.log("Android: force audio codec to " + audioCodec);
       }
 
@@ -12462,7 +12462,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _fast_aes_key__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./fast-aes-key */ "./src/crypt/fast-aes-key.ts");
 /* harmony import */ var _aes_decryptor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./aes-decryptor */ "./src/crypt/aes-decryptor.ts");
 /* harmony import */ var _utils_logger__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils/logger */ "./src/utils/logger.ts");
-/* harmony import */ var _utils_muse4_tools__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utils/muse4-tools */ "./src/utils/muse4-tools.ts");
+/* harmony import */ var _utils_mp4_tools__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utils/mp4-tools */ "./src/utils/mp4-tools.ts");
 /* harmony import */ var _utils_typed_array__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../utils/typed-array */ "./src/utils/typed-array.ts");
 
 
@@ -12572,7 +12572,7 @@ var Decrypter = /*#__PURE__*/function () {
     // Progressive decryption does not work with WebCrypto
 
     if (remainderData) {
-      data = Object(_utils_muse4_tools__WEBPACK_IMPORTED_MODULE_4__["appendUint8Array"])(remainderData, data);
+      data = Object(_utils_mp4_tools__WEBPACK_IMPORTED_MODULE_4__["appendUint8Array"])(remainderData, data);
       this.remainderData = null;
     } // Byte length must be a multiple of 16 (AES-128 = 128 bit blocks = 16 bytes)
 
@@ -12882,7 +12882,7 @@ function getAudioConfig(observer, data, offset, audioCodec) {
     adtsObjectType = 5;
     config = new Array(4); // if (manifest codec is HE-AAC or HE-AACv2) OR (manifest codec not specified AND frequency less than 24kHz)
 
-    if (audioCodec && (audioCodec.indexOf('muse4a.40.29') !== -1 || audioCodec.indexOf('muse4a.40.5') !== -1) || !audioCodec && adtsSamplingIndex >= 6) {
+    if (audioCodec && (audioCodec.indexOf('mp4a.40.29') !== -1 || audioCodec.indexOf('mp4a.40.5') !== -1) || !audioCodec && adtsSamplingIndex >= 6) {
       // HE-AAC uses SBR (Spectral Band Replication) , high frequencies are constructed from low frequencies
       // there is a factor 2 between frame sample rate and output sample rate
       // multiply frequency by 2 (see table below, equivalent to substract 3)
@@ -12890,7 +12890,7 @@ function getAudioConfig(observer, data, offset, audioCodec) {
     } else {
       // if (manifest codec is AAC) AND (frequency less than 24kHz AND nb channel is 1) OR (manifest codec not specified and mono audio)
       // Chrome fails to play back with low frequency AAC LC mono when initialized with HE-AAC.  This is not a problem with stereo.
-      if (audioCodec && audioCodec.indexOf('muse4a.40.2') !== -1 && (adtsSamplingIndex >= 6 && adtsChanelConfig === 1 || /vivaldi/i.test(userAgent)) || !audioCodec && adtsChanelConfig === 1) {
+      if (audioCodec && audioCodec.indexOf('mp4a.40.2') !== -1 && (adtsSamplingIndex >= 6 && adtsChanelConfig === 1 || /vivaldi/i.test(userAgent)) || !audioCodec && adtsChanelConfig === 1) {
         adtsObjectType = 2;
         config = new Array(2);
       }
@@ -12945,7 +12945,7 @@ function getAudioConfig(observer, data, offset, audioCodec) {
     // adtsExtensionSampleingIndex
     config[1] |= (adtsExtensionSamplingIndex & 0x0e) >> 1;
     config[2] = (adtsExtensionSamplingIndex & 0x01) << 7; // adtsObjectType (force to 2, chrome is checking that object type is less than 5 ???
-    //    https://chromium.googlesource.com/chromium/src.git/+/master/media/formats/muse4/aac.cc
+    //    https://chromium.googlesource.com/chromium/src.git/+/master/media/formats/mp4/aac.cc
 
     config[2] |= 2 << 2;
     config[3] = 0;
@@ -12955,7 +12955,7 @@ function getAudioConfig(observer, data, offset, audioCodec) {
     config: config,
     samplerate: adtsSampleingRates[adtsSamplingIndex],
     channelCount: adtsChanelConfig,
-    codec: 'muse4a.40.' + adtsObjectType,
+    codec: 'mp4a.40.' + adtsObjectType,
     manifestCodec: manifestCodec
   };
 }
@@ -13092,7 +13092,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _home_runner_work_hls_js_hls_js_src_polyfills_number__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./src/polyfills/number */ "./src/polyfills/number.ts");
 /* harmony import */ var _demux_id3__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../demux/id3 */ "./src/demux/id3.ts");
 /* harmony import */ var _dummy_demuxed_track__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./dummy-demuxed-track */ "./src/demux/dummy-demuxed-track.ts");
-/* harmony import */ var _utils_muse4_tools__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils/muse4-tools */ "./src/utils/muse4-tools.ts");
+/* harmony import */ var _utils_mp4_tools__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils/mp4-tools */ "./src/utils/mp4-tools.ts");
 /* harmony import */ var _utils_typed_array__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utils/typed-array */ "./src/utils/typed-array.ts");
 
 
@@ -13136,7 +13136,7 @@ var BaseAudioDemuxer = /*#__PURE__*/function () {
 
   _proto.demux = function demux(data, timeOffset) {
     if (this.cachedData) {
-      data = Object(_utils_muse4_tools__WEBPACK_IMPORTED_MODULE_3__["appendUint8Array"])(this.cachedData, data);
+      data = Object(_utils_mp4_tools__WEBPACK_IMPORTED_MODULE_3__["appendUint8Array"])(this.cachedData, data);
       this.cachedData = null;
     }
 
@@ -13194,7 +13194,7 @@ var BaseAudioDemuxer = /*#__PURE__*/function () {
         var partialData = Object(_utils_typed_array__WEBPACK_IMPORTED_MODULE_4__["sliceUint8"])(data, lastDataIndex);
 
         if (this.cachedData) {
-          this.cachedData = Object(_utils_muse4_tools__WEBPACK_IMPORTED_MODULE_3__["appendUint8Array"])(this.cachedData, partialData);
+          this.cachedData = Object(_utils_mp4_tools__WEBPACK_IMPORTED_MODULE_3__["appendUint8Array"])(this.cachedData, partialData);
         } else {
           this.cachedData = partialData;
         }
@@ -14257,31 +14257,31 @@ MP3Demuxer.minProbeByteLength = 4;
 
 /***/ }),
 
-/***/ "./src/demux/muse4demuxer.ts":
+/***/ "./src/demux/mp4demuxer.ts":
 /*!*********************************!*\
-  !*** ./src/demux/muse4demuxer.ts ***!
+  !*** ./src/demux/mp4demuxer.ts ***!
   \*********************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _utils_muse4_tools__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils/muse4-tools */ "./src/utils/muse4-tools.ts");
+/* harmony import */ var _utils_mp4_tools__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils/mp4-tools */ "./src/utils/mp4-tools.ts");
 /* harmony import */ var _dummy_demuxed_track__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./dummy-demuxed-track */ "./src/demux/dummy-demuxed-track.ts");
 /**
- * muse4 demuxer
+ * mp4 demuxer
  */
 
 
 
-var muse4Demuxer = /*#__PURE__*/function () {
-  function muse4Demuxer(observer, config) {
+var mp4Demuxer = /*#__PURE__*/function () {
+  function mp4Demuxer(observer, config) {
     this.remainderData = null;
     this.config = void 0;
     this.config = config;
   }
 
-  var _proto = muse4Demuxer.prototype;
+  var _proto = mp4Demuxer.prototype;
 
   _proto.resetTimeStamp = function resetTimeStamp() {};
 
@@ -14289,9 +14289,9 @@ var muse4Demuxer = /*#__PURE__*/function () {
 
   _proto.resetContiguity = function resetContiguity() {};
 
-  muse4Demuxer.probe = function probe(data) {
+  mp4Demuxer.probe = function probe(data) {
     // ensure we find a moof box in the first 16 kB
-    return Object(_utils_muse4_tools__WEBPACK_IMPORTED_MODULE_0__["findBox"])({
+    return Object(_utils_mp4_tools__WEBPACK_IMPORTED_MODULE_0__["findBox"])({
       data: data,
       start: 0,
       end: Math.min(data.length, 16384)
@@ -14308,10 +14308,10 @@ var muse4Demuxer = /*#__PURE__*/function () {
       // This is done to guarantee that we're sending valid data to MSE - when demuxing progressively, we have no guarantee
       // that the fetch loader gives us flush moof+mdat pairs. If we push jagged data to MSE, it will throw an exception.
       if (this.remainderData) {
-        avcSamples = Object(_utils_muse4_tools__WEBPACK_IMPORTED_MODULE_0__["appendUint8Array"])(this.remainderData, data);
+        avcSamples = Object(_utils_mp4_tools__WEBPACK_IMPORTED_MODULE_0__["appendUint8Array"])(this.remainderData, data);
       }
 
-      var segmentedData = Object(_utils_muse4_tools__WEBPACK_IMPORTED_MODULE_0__["segmentValidRange"])(avcSamples);
+      var segmentedData = Object(_utils_mp4_tools__WEBPACK_IMPORTED_MODULE_0__["segmentValidRange"])(avcSamples);
       this.remainderData = segmentedData.remainder;
       avcTrack.samples = segmentedData.valid || new Uint8Array();
     } else {
@@ -14339,16 +14339,16 @@ var muse4Demuxer = /*#__PURE__*/function () {
   };
 
   _proto.demuxSampleAes = function demuxSampleAes(data, keyData, timeOffset) {
-    return Promise.reject(new Error('The muse4 demuxer does not support SAMPLE-AES decryption'));
+    return Promise.reject(new Error('The mp4 demuxer does not support SAMPLE-AES decryption'));
   };
 
   _proto.destroy = function destroy() {};
 
-  return muse4Demuxer;
+  return mp4Demuxer;
 }();
 
-muse4Demuxer.minProbeByteLength = 1024;
-/* harmony default export */ __webpack_exports__["default"] = (muse4Demuxer);
+mp4Demuxer.minProbeByteLength = 1024;
+/* harmony default export */ __webpack_exports__["default"] = (mp4Demuxer);
 
 /***/ }),
 
@@ -14714,9 +14714,9 @@ var TransmuxerInterface = /*#__PURE__*/function () {
     this.observer.on(_events__WEBPACK_IMPORTED_MODULE_1__["Events"].FRAG_DECRYPTED, forwardMessage);
     this.observer.on(_events__WEBPACK_IMPORTED_MODULE_1__["Events"].ERROR, forwardMessage);
     var typeSupported = {
-      muse4: MediaSource.isTypeSupported('video/muse4'),
+      mp4: MediaSource.isTypeSupported('video/mp4'),
       mpeg: MediaSource.isTypeSupported('audio/mpeg'),
-      mp3: MediaSource.isTypeSupported('audio/muse4; codecs="mp3"')
+      mp3: MediaSource.isTypeSupported('audio/mp4; codecs="mp3"')
     }; // navigator.vendor is not always available in Web Worker
     // refer to https://developer.mozilla.org/en-US/docs/Web/API/WorkerGlobalScope/navigator
 
@@ -15108,13 +15108,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _errors__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../errors */ "./src/errors.ts");
 /* harmony import */ var _crypt_decrypter__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../crypt/decrypter */ "./src/crypt/decrypter.ts");
 /* harmony import */ var _demux_aacdemuxer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../demux/aacdemuxer */ "./src/demux/aacdemuxer.ts");
-/* harmony import */ var _demux_muse4demuxer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../demux/muse4demuxer */ "./src/demux/muse4demuxer.ts");
+/* harmony import */ var _demux_mp4demuxer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../demux/mp4demuxer */ "./src/demux/mp4demuxer.ts");
 /* harmony import */ var _demux_tsdemuxer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../demux/tsdemuxer */ "./src/demux/tsdemuxer.ts");
 /* harmony import */ var _demux_mp3demuxer__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../demux/mp3demuxer */ "./src/demux/mp3demuxer.ts");
-/* harmony import */ var _remux_muse4_remuxer__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../remux/muse4-remuxer */ "./src/remux/muse4-remuxer.ts");
+/* harmony import */ var _remux_mp4_remuxer__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../remux/mp4-remuxer */ "./src/remux/mp4-remuxer.ts");
 /* harmony import */ var _remux_passthrough_remuxer__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../remux/passthrough-remuxer */ "./src/remux/passthrough-remuxer.ts");
 /* harmony import */ var _chunk_cache__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./chunk-cache */ "./src/demux/chunk-cache.ts");
-/* harmony import */ var _utils_muse4_tools__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../utils/muse4-tools */ "./src/utils/muse4-tools.ts");
+/* harmony import */ var _utils_mp4_tools__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../utils/mp4-tools */ "./src/utils/mp4-tools.ts");
 /* harmony import */ var _utils_logger__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../utils/logger */ "./src/utils/logger.ts");
 
 
@@ -15139,16 +15139,16 @@ try {
 
 var muxConfig = [{
   demux: _demux_tsdemuxer__WEBPACK_IMPORTED_MODULE_5__["default"],
-  remux: _remux_muse4_remuxer__WEBPACK_IMPORTED_MODULE_7__["default"]
+  remux: _remux_mp4_remuxer__WEBPACK_IMPORTED_MODULE_7__["default"]
 }, {
-  demux: _demux_muse4demuxer__WEBPACK_IMPORTED_MODULE_4__["default"],
+  demux: _demux_mp4demuxer__WEBPACK_IMPORTED_MODULE_4__["default"],
   remux: _remux_passthrough_remuxer__WEBPACK_IMPORTED_MODULE_8__["default"]
 }, {
   demux: _demux_aacdemuxer__WEBPACK_IMPORTED_MODULE_3__["default"],
-  remux: _remux_muse4_remuxer__WEBPACK_IMPORTED_MODULE_7__["default"]
+  remux: _remux_mp4_remuxer__WEBPACK_IMPORTED_MODULE_7__["default"]
 }, {
   demux: _demux_mp3demuxer__WEBPACK_IMPORTED_MODULE_6__["default"],
-  remux: _remux_muse4_remuxer__WEBPACK_IMPORTED_MODULE_7__["default"]
+  remux: _remux_mp4_remuxer__WEBPACK_IMPORTED_MODULE_7__["default"]
 }];
 var minProbeByteLength = 1024;
 muxConfig.forEach(function (_ref) {
@@ -15261,7 +15261,7 @@ var Transmuxer = /*#__PURE__*/function () {
     if (this.needsProbing(uintData, discontinuity, trackSwitch)) {
       if (cache.dataLength) {
         var cachedData = cache.flush();
-        uintData = Object(_utils_muse4_tools__WEBPACK_IMPORTED_MODULE_10__["appendUint8Array"])(cachedData, uintData);
+        uintData = Object(_utils_mp4_tools__WEBPACK_IMPORTED_MODULE_10__["appendUint8Array"])(cachedData, uintData);
       }
 
       this.configureTransmuxer(uintData, transmuxConfig);
@@ -15470,10 +15470,10 @@ var Transmuxer = /*#__PURE__*/function () {
     }
 
     if (!mux) {
-      // If probing previous configs fail, use muse4 passthrough
-      _utils_logger__WEBPACK_IMPORTED_MODULE_11__["logger"].warn('Failed to find demuxer by probing frag, treating as muse4 passthrough');
+      // If probing previous configs fail, use mp4 passthrough
+      _utils_logger__WEBPACK_IMPORTED_MODULE_11__["logger"].warn('Failed to find demuxer by probing frag, treating as mp4 passthrough');
       mux = {
-        demux: _demux_muse4demuxer__WEBPACK_IMPORTED_MODULE_4__["default"],
+        demux: _demux_mp4demuxer__WEBPACK_IMPORTED_MODULE_4__["default"],
         remux: _remux_passthrough_remuxer__WEBPACK_IMPORTED_MODULE_8__["default"]
       };
     } // so let's check that current remuxer and demuxer are still valid
@@ -15500,7 +15500,7 @@ var Transmuxer = /*#__PURE__*/function () {
 
   _proto.needsProbing = function needsProbing(data, discontinuity, trackSwitch) {
     // in case of continuity change, or track switch
-    // we might switch from content type (AAC container to TS container, or TS to fmuse4 for example)
+    // we might switch from content type (AAC container to TS container, or TS to fmp4 for example)
     return !this.demuxer || !this.remuxer || discontinuity || trackSwitch;
   };
 
@@ -15584,7 +15584,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _id3__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./id3 */ "./src/demux/id3.ts");
 /* harmony import */ var _sample_aes__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./sample-aes */ "./src/demux/sample-aes.ts");
 /* harmony import */ var _events__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../events */ "./src/events.ts");
-/* harmony import */ var _utils_muse4_tools__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../utils/muse4-tools */ "./src/utils/muse4-tools.ts");
+/* harmony import */ var _utils_mp4_tools__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../utils/mp4-tools */ "./src/utils/mp4-tools.ts");
 /* harmony import */ var _utils_logger__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../utils/logger */ "./src/utils/logger.ts");
 /* harmony import */ var _errors__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../errors */ "./src/errors.ts");
 /**
@@ -15606,12 +15606,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-// We are using fixed track IDs for driving the muse4 remuxer
+// We are using fixed track IDs for driving the mp4 remuxer
 // instead of following the TS PIDs.
 // There is no reason not to do this and some browsers/SourceBuffer-demuxers
 // may not like if there are TrackID "switches"
 // See https://github.com/video-dev/hls.js/issues/1331
-// Here we are mapping our internal track types to constant muse4 track IDs
+// Here we are mapping our internal track types to constant mp4 track IDs
 // With MSE currently one can only have one track of each, and we are muxing
 // whatever video/audio rendition in them.
 var RemuxerTrackIdConfig = {
@@ -15776,7 +15776,7 @@ var TSDemuxer = /*#__PURE__*/function () {
     var len = data.length;
 
     if (this.remainderData) {
-      data = Object(_utils_muse4_tools__WEBPACK_IMPORTED_MODULE_6__["appendUint8Array"])(this.remainderData, data);
+      data = Object(_utils_mp4_tools__WEBPACK_IMPORTED_MODULE_6__["appendUint8Array"])(this.remainderData, data);
       len = data.length;
       this.remainderData = null;
     }
@@ -15901,7 +15901,7 @@ var TSDemuxer = /*#__PURE__*/function () {
               // track PID transiently disappears from the stream
               // this could happen in case of transient missing audio samples for example
               // NOTE this is only the PID of the track as found in TS,
-              // but we are not using this for muse4 track IDs.
+              // but we are not using this for mp4 track IDs.
 
               avcId = parsedPIDs.avc;
 
@@ -17969,7 +17969,7 @@ function isSupported() {
   }
 
   var sourceBuffer = getSourceBuffer();
-  var isTypeSupported = mediaSource && typeof mediaSource.isTypeSupported === 'function' && mediaSource.isTypeSupported('video/muse4; codecs="avc1.42E01E,muse4a.40.2"'); // if SourceBuffer is exposed ensure its API is valid
+  var isTypeSupported = mediaSource && typeof mediaSource.isTypeSupported === 'function' && mediaSource.isTypeSupported('video/mp4; codecs="avc1.42E01E,mp4a.40.2"'); // if SourceBuffer is exposed ensure its API is valid
   // safari and old version of Chrome doe not expose SourceBuffer globally so checking SourceBuffer.prototype is impossible
 
   var sourceBufferValidAPI = !sourceBuffer || sourceBuffer.prototype && typeof sourceBuffer.prototype.appendBuffer === 'function' && typeof sourceBuffer.prototype.remove === 'function';
@@ -19161,12 +19161,12 @@ var LEVEL_PLAYLIST_REGEX_FAST = new RegExp([/#EXTINF:\s*(\d*(?:\.\d+)?)(?:,(.*)\
 /#.*/.source // All other non-segment oriented tags will match with all groups empty
 ].join('|'), 'g');
 var LEVEL_PLAYLIST_REGEX_SLOW = new RegExp([/#(EXTM3U)/.source, /#EXT-X-(PLAYLIST-TYPE):(.+)/.source, /#EXT-X-(MEDIA-SEQUENCE): *(\d+)/.source, /#EXT-X-(SKIP):(.+)/.source, /#EXT-X-(TARGETDURATION): *(\d+)/.source, /#EXT-X-(KEY):(.+)/.source, /#EXT-X-(START):(.+)/.source, /#EXT-X-(ENDLIST)/.source, /#EXT-X-(DISCONTINUITY-SEQ)UENCE: *(\d+)/.source, /#EXT-X-(DIS)CONTINUITY/.source, /#EXT-X-(VERSION):(\d+)/.source, /#EXT-X-(MAP):(.+)/.source, /#EXT-X-(SERVER-CONTROL):(.+)/.source, /#EXT-X-(PART-INF):(.+)/.source, /#EXT-X-(GAP)/.source, /#EXT-X-(BITRATE):\s*(\d+)/.source, /#EXT-X-(PART):(.+)/.source, /#EXT-X-(PRELOAD-HINT):(.+)/.source, /#EXT-X-(RENDITION-REPORT):(.+)/.source, /(#)([^:]*):(.*)/.source, /(#)(.*)(?:.*)\r?\n?/.source].join('|'));
-var muse4_REGEX_SUFFIX = /\.(muse4|m4s|m4v|m4a)$/i;
+var mp4_REGEX_SUFFIX = /\.(mp4|m4s|m4v|m4a)$/i;
 
-function ismuse4Url(url) {
+function ismp4Url(url) {
   var _URLToolkit$parseURL$, _URLToolkit$parseURL;
 
-  return muse4_REGEX_SUFFIX.test((_URLToolkit$parseURL$ = (_URLToolkit$parseURL = url_toolkit__WEBPACK_IMPORTED_MODULE_1__["parseURL"](url)) === null || _URLToolkit$parseURL === void 0 ? void 0 : _URLToolkit$parseURL.path) != null ? _URLToolkit$parseURL$ : '');
+  return mp4_REGEX_SUFFIX.test((_URLToolkit$parseURL$ = (_URLToolkit$parseURL = url_toolkit__WEBPACK_IMPORTED_MODULE_1__["parseURL"](url)) === null || _URLToolkit$parseURL === void 0 ? void 0 : _URLToolkit$parseURL.path) != null ? _URLToolkit$parseURL$ : '');
 }
 
 var M3U8Parser = /*#__PURE__*/function () {
@@ -19645,12 +19645,12 @@ var M3U8Parser = /*#__PURE__*/function () {
 
         if (!firstFragment.initSegment) {
           // this is a bit lurky but HLS really has no other way to tell us
-          // if the fragments are TS or muse4, except if we download them :/
+          // if the fragments are TS or mp4, except if we download them :/
           // but this is to be able to handle SIDX.
           if (level.fragments.every(function (frag) {
-            return frag.relurl && ismuse4Url(frag.relurl);
+            return frag.relurl && ismp4Url(frag.relurl);
           })) {
-            _utils_logger__WEBPACK_IMPORTED_MODULE_6__["logger"].warn('muse4 fragments found but no init segment (probably no MAP, incomplete M3U8), trying to fetch SIDX');
+            _utils_logger__WEBPACK_IMPORTED_MODULE_6__["logger"].warn('mp4 fragments found but no init segment (probably no MAP, incomplete M3U8), trying to fetch SIDX');
             frag = new _fragment__WEBPACK_IMPORTED_MODULE_2__["Fragment"](type, baseurl);
             frag.relurl = lastFragment.relurl;
             frag.level = id;
@@ -19701,7 +19701,7 @@ function setCodecs(codecs, level) {
 
     if (filtered.length) {
       var preferred = filtered.filter(function (codec) {
-        return codec.lastIndexOf('avc1', 0) === 0 || codec.lastIndexOf('muse4a', 0) === 0;
+        return codec.lastIndexOf('avc1', 0) === 0 || codec.lastIndexOf('mp4a', 0) === 0;
       });
       level[type + "Codec"] = preferred.length > 0 ? preferred[0] : filtered[0]; // remove from list
 
@@ -19764,7 +19764,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _events__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../events */ "./src/events.ts");
 /* harmony import */ var _errors__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../errors */ "./src/errors.ts");
 /* harmony import */ var _utils_logger__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils/logger */ "./src/utils/logger.ts");
-/* harmony import */ var _utils_muse4_tools__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utils/muse4-tools */ "./src/utils/muse4-tools.ts");
+/* harmony import */ var _utils_mp4_tools__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utils/mp4-tools */ "./src/utils/mp4-tools.ts");
 /* harmony import */ var _m3u8_parser__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./m3u8-parser */ "./src/loader/m3u8-parser.ts");
 /* harmony import */ var _types_loader__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../types/loader */ "./src/types/loader.ts");
 /* harmony import */ var _utils_attr_list__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../utils/attr-list */ "./src/utils/attr-list.ts");
@@ -20228,7 +20228,7 @@ var PlaylistLoader = /*#__PURE__*/function () {
   };
 
   _proto.handleSidxRequest = function handleSidxRequest(response, context) {
-    var sidxInfo = Object(_utils_muse4_tools__WEBPACK_IMPORTED_MODULE_4__["parseSegmentIndex"])(new Uint8Array(response.data)); // if provided fragment does not contain sidx, early return
+    var sidxInfo = Object(_utils_mp4_tools__WEBPACK_IMPORTED_MODULE_4__["parseSegmentIndex"])(new Uint8Array(response.data)); // if provided fragment does not contain sidx, early return
 
     if (!sidxInfo) {
       return;
@@ -20423,7 +20423,7 @@ var AAC = /*#__PURE__*/function () {
 
   AAC.getSilentFrame = function getSilentFrame(codec, channelCount) {
     switch (codec) {
-      case 'muse4a.40.2':
+      case 'mp4a.40.2':
         if (channelCount === 1) {
           return new Uint8Array([0x00, 0xc8, 0x00, 0x80, 0x23, 0x80]);
         } else if (channelCount === 2) {
@@ -20439,7 +20439,7 @@ var AAC = /*#__PURE__*/function () {
         }
 
         break;
-      // handle HE-AAC below (muse4a.40.5 / muse4a.40.29)
+      // handle HE-AAC below (mp4a.40.5 / mp4a.40.29)
 
       default:
         if (channelCount === 1) {
@@ -20466,9 +20466,9 @@ var AAC = /*#__PURE__*/function () {
 
 /***/ }),
 
-/***/ "./src/remux/muse4-generator.ts":
+/***/ "./src/remux/mp4-generator.ts":
 /*!************************************!*\
-  !*** ./src/remux/muse4-generator.ts ***!
+  !*** ./src/remux/mp4-generator.ts ***!
   \************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -20476,15 +20476,15 @@ var AAC = /*#__PURE__*/function () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /**
- * Generate muse4 Box
+ * Generate mp4 Box
  */
 var UINT32_MAX = Math.pow(2, 32) - 1;
 
-var muse4 = /*#__PURE__*/function () {
-  function muse4() {}
+var mp4 = /*#__PURE__*/function () {
+  function mp4() {}
 
-  muse4.init = function init() {
-    muse4.types = {
+  mp4.init = function init() {
+    mp4.types = {
       avc1: [],
       // codingname
       avcC: [],
@@ -20501,7 +20501,7 @@ var muse4 = /*#__PURE__*/function () {
       minf: [],
       moof: [],
       moov: [],
-      muse4a: [],
+      mp4a: [],
       '.mp3': [],
       mvex: [],
       mvhd: [],
@@ -20525,9 +20525,9 @@ var muse4 = /*#__PURE__*/function () {
     };
     var i;
 
-    for (i in muse4.types) {
-      if (muse4.types.hasOwnProperty(i)) {
-        muse4.types[i] = [i.charCodeAt(0), i.charCodeAt(1), i.charCodeAt(2), i.charCodeAt(3)];
+    for (i in mp4.types) {
+      if (mp4.types.hasOwnProperty(i)) {
+        mp4.types[i] = [i.charCodeAt(0), i.charCodeAt(1), i.charCodeAt(2), i.charCodeAt(3)];
       }
     }
 
@@ -20549,7 +20549,7 @@ var muse4 = /*#__PURE__*/function () {
     0x00, 0x00, 0x00, 0x00, // reserved
     0x53, 0x6f, 0x75, 0x6e, 0x64, 0x48, 0x61, 0x6e, 0x64, 0x6c, 0x65, 0x72, 0x00 // name: 'SoundHandler'
     ]);
-    muse4.HDLR_TYPES = {
+    mp4.HDLR_TYPES = {
       video: videoHdlr,
       audio: audioHdlr
     };
@@ -20565,23 +20565,23 @@ var muse4 = /*#__PURE__*/function () {
     0x00, 0x00, 0x00, // flags
     0x00, 0x00, 0x00, 0x00 // entry_count
     ]);
-    muse4.STTS = muse4.STSC = muse4.STCO = stco;
-    muse4.STSZ = new Uint8Array([0x00, // version
+    mp4.STTS = mp4.STSC = mp4.STCO = stco;
+    mp4.STSZ = new Uint8Array([0x00, // version
     0x00, 0x00, 0x00, // flags
     0x00, 0x00, 0x00, 0x00, // sample_size
     0x00, 0x00, 0x00, 0x00 // sample_count
     ]);
-    muse4.VMHD = new Uint8Array([0x00, // version
+    mp4.VMHD = new Uint8Array([0x00, // version
     0x00, 0x00, 0x01, // flags
     0x00, 0x00, // graphicsmode
     0x00, 0x00, 0x00, 0x00, 0x00, 0x00 // opcolor
     ]);
-    muse4.SMHD = new Uint8Array([0x00, // version
+    mp4.SMHD = new Uint8Array([0x00, // version
     0x00, 0x00, 0x00, // flags
     0x00, 0x00, // balance
     0x00, 0x00 // reserved
     ]);
-    muse4.STSD = new Uint8Array([0x00, // version 0
+    mp4.STSD = new Uint8Array([0x00, // version 0
     0x00, 0x00, 0x00, // flags
     0x00, 0x00, 0x00, 0x01]); // entry_count
 
@@ -20590,11 +20590,11 @@ var muse4 = /*#__PURE__*/function () {
     var avc1Brand = new Uint8Array([97, 118, 99, 49]); // avc1
 
     var minorVersion = new Uint8Array([0, 0, 0, 1]);
-    muse4.FTYP = muse4.box(muse4.types.ftyp, majorBrand, minorVersion, majorBrand, avc1Brand);
-    muse4.DINF = muse4.box(muse4.types.dinf, muse4.box(muse4.types.dref, dref));
+    mp4.FTYP = mp4.box(mp4.types.ftyp, majorBrand, minorVersion, majorBrand, avc1Brand);
+    mp4.DINF = mp4.box(mp4.types.dinf, mp4.box(mp4.types.dref, dref));
   };
 
-  muse4.box = function box(type) {
+  mp4.box = function box(type) {
     var size = 8;
 
     for (var _len = arguments.length, payload = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
@@ -20624,19 +20624,19 @@ var muse4 = /*#__PURE__*/function () {
     return result;
   };
 
-  muse4.hdlr = function hdlr(type) {
-    return muse4.box(muse4.types.hdlr, muse4.HDLR_TYPES[type]);
+  mp4.hdlr = function hdlr(type) {
+    return mp4.box(mp4.types.hdlr, mp4.HDLR_TYPES[type]);
   };
 
-  muse4.mdat = function mdat(data) {
-    return muse4.box(muse4.types.mdat, data);
+  mp4.mdat = function mdat(data) {
+    return mp4.box(mp4.types.mdat, data);
   };
 
-  muse4.mdhd = function mdhd(timescale, duration) {
+  mp4.mdhd = function mdhd(timescale, duration) {
     duration *= timescale;
     var upperWordDuration = Math.floor(duration / (UINT32_MAX + 1));
     var lowerWordDuration = Math.floor(duration % (UINT32_MAX + 1));
-    return muse4.box(muse4.types.mdhd, new Uint8Array([0x01, // version 1
+    return mp4.box(mp4.types.mdhd, new Uint8Array([0x01, // version 1
     0x00, 0x00, 0x00, // flags
     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, // creation_time
     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x03, // modification_time
@@ -20645,55 +20645,55 @@ var muse4 = /*#__PURE__*/function () {
     0x00, 0x00]));
   };
 
-  muse4.mdia = function mdia(track) {
-    return muse4.box(muse4.types.mdia, muse4.mdhd(track.timescale, track.duration), muse4.hdlr(track.type), muse4.minf(track));
+  mp4.mdia = function mdia(track) {
+    return mp4.box(mp4.types.mdia, mp4.mdhd(track.timescale, track.duration), mp4.hdlr(track.type), mp4.minf(track));
   };
 
-  muse4.mfhd = function mfhd(sequenceNumber) {
-    return muse4.box(muse4.types.mfhd, new Uint8Array([0x00, 0x00, 0x00, 0x00, // flags
+  mp4.mfhd = function mfhd(sequenceNumber) {
+    return mp4.box(mp4.types.mfhd, new Uint8Array([0x00, 0x00, 0x00, 0x00, // flags
     sequenceNumber >> 24, sequenceNumber >> 16 & 0xff, sequenceNumber >> 8 & 0xff, sequenceNumber & 0xff // sequence_number
     ]));
   };
 
-  muse4.minf = function minf(track) {
+  mp4.minf = function minf(track) {
     if (track.type === 'audio') {
-      return muse4.box(muse4.types.minf, muse4.box(muse4.types.smhd, muse4.SMHD), muse4.DINF, muse4.stbl(track));
+      return mp4.box(mp4.types.minf, mp4.box(mp4.types.smhd, mp4.SMHD), mp4.DINF, mp4.stbl(track));
     } else {
-      return muse4.box(muse4.types.minf, muse4.box(muse4.types.vmhd, muse4.VMHD), muse4.DINF, muse4.stbl(track));
+      return mp4.box(mp4.types.minf, mp4.box(mp4.types.vmhd, mp4.VMHD), mp4.DINF, mp4.stbl(track));
     }
   };
 
-  muse4.moof = function moof(sn, baseMediaDecodeTime, track) {
-    return muse4.box(muse4.types.moof, muse4.mfhd(sn), muse4.traf(track, baseMediaDecodeTime));
+  mp4.moof = function moof(sn, baseMediaDecodeTime, track) {
+    return mp4.box(mp4.types.moof, mp4.mfhd(sn), mp4.traf(track, baseMediaDecodeTime));
   }
   /**
    * @param tracks... (optional) {array} the tracks associated with this movie
    */
   ;
 
-  muse4.moov = function moov(tracks) {
+  mp4.moov = function moov(tracks) {
     var i = tracks.length;
     var boxes = [];
 
     while (i--) {
-      boxes[i] = muse4.trak(tracks[i]);
+      boxes[i] = mp4.trak(tracks[i]);
     }
 
-    return muse4.box.apply(null, [muse4.types.moov, muse4.mvhd(tracks[0].timescale, tracks[0].duration)].concat(boxes).concat(muse4.mvex(tracks)));
+    return mp4.box.apply(null, [mp4.types.moov, mp4.mvhd(tracks[0].timescale, tracks[0].duration)].concat(boxes).concat(mp4.mvex(tracks)));
   };
 
-  muse4.mvex = function mvex(tracks) {
+  mp4.mvex = function mvex(tracks) {
     var i = tracks.length;
     var boxes = [];
 
     while (i--) {
-      boxes[i] = muse4.trex(tracks[i]);
+      boxes[i] = mp4.trex(tracks[i]);
     }
 
-    return muse4.box.apply(null, [muse4.types.mvex].concat(boxes));
+    return mp4.box.apply(null, [mp4.types.mvex].concat(boxes));
   };
 
-  muse4.mvhd = function mvhd(timescale, duration) {
+  mp4.mvhd = function mvhd(timescale, duration) {
     duration *= timescale;
     var upperWordDuration = Math.floor(duration / (UINT32_MAX + 1));
     var lowerWordDuration = Math.floor(duration % (UINT32_MAX + 1));
@@ -20711,10 +20711,10 @@ var muse4 = /*#__PURE__*/function () {
     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, // pre_defined
     0xff, 0xff, 0xff, 0xff // next_track_ID
     ]);
-    return muse4.box(muse4.types.mvhd, bytes);
+    return mp4.box(mp4.types.mvhd, bytes);
   };
 
-  muse4.sdtp = function sdtp(track) {
+  mp4.sdtp = function sdtp(track) {
     var samples = track.samples || [];
     var bytes = new Uint8Array(4 + samples.length);
     var i;
@@ -20726,14 +20726,14 @@ var muse4 = /*#__PURE__*/function () {
       bytes[i + 4] = flags.dependsOn << 4 | flags.isDependedOn << 2 | flags.hasRedundancy;
     }
 
-    return muse4.box(muse4.types.sdtp, bytes);
+    return mp4.box(mp4.types.sdtp, bytes);
   };
 
-  muse4.stbl = function stbl(track) {
-    return muse4.box(muse4.types.stbl, muse4.stsd(track), muse4.box(muse4.types.stts, muse4.STTS), muse4.box(muse4.types.stsc, muse4.STSC), muse4.box(muse4.types.stsz, muse4.STSZ), muse4.box(muse4.types.stco, muse4.STCO));
+  mp4.stbl = function stbl(track) {
+    return mp4.box(mp4.types.stbl, mp4.stsd(track), mp4.box(mp4.types.stts, mp4.STTS), mp4.box(mp4.types.stsc, mp4.STSC), mp4.box(mp4.types.stsz, mp4.STSZ), mp4.box(mp4.types.stco, mp4.STCO));
   };
 
-  muse4.avc1 = function avc1(track) {
+  mp4.avc1 = function avc1(track) {
     var sps = [];
     var pps = [];
     var i;
@@ -20758,7 +20758,7 @@ var muse4 = /*#__PURE__*/function () {
       pps = pps.concat(Array.prototype.slice.call(data));
     }
 
-    var avcc = muse4.box(muse4.types.avcC, new Uint8Array([0x01, // version
+    var avcc = mp4.box(mp4.types.avcC, new Uint8Array([0x01, // version
     sps[3], // profile
     sps[4], // profile compat
     sps[5], // level
@@ -20771,7 +20771,7 @@ var muse4 = /*#__PURE__*/function () {
     var height = track.height;
     var hSpacing = track.pixelRatio[0];
     var vSpacing = track.pixelRatio[1];
-    return muse4.box(muse4.types.avc1, new Uint8Array([0x00, 0x00, 0x00, // reserved
+    return mp4.box(mp4.types.avc1, new Uint8Array([0x00, 0x00, 0x00, // reserved
     0x00, 0x00, 0x00, // reserved
     0x00, 0x01, // data_reference_index
     0x00, 0x00, // pre_defined
@@ -20787,15 +20787,15 @@ var muse4 = /*#__PURE__*/function () {
     0x79, 0x6d, 0x6f, 0x74, 0x69, 0x6f, 0x6e, 0x2f, 0x68, 0x6c, 0x73, 0x2e, 0x6a, 0x73, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, // compressorname
     0x00, 0x18, // depth = 24
     0x11, 0x11]), // pre_defined = -1
-    avcc, muse4.box(muse4.types.btrt, new Uint8Array([0x00, 0x1c, 0x9c, 0x80, // bufferSizeDB
+    avcc, mp4.box(mp4.types.btrt, new Uint8Array([0x00, 0x1c, 0x9c, 0x80, // bufferSizeDB
     0x00, 0x2d, 0xc6, 0xc0, // maxBitrate
     0x00, 0x2d, 0xc6, 0xc0])), // avgBitrate
-    muse4.box(muse4.types.pasp, new Uint8Array([hSpacing >> 24, // hSpacing
+    mp4.box(mp4.types.pasp, new Uint8Array([hSpacing >> 24, // hSpacing
     hSpacing >> 16 & 0xff, hSpacing >> 8 & 0xff, hSpacing & 0xff, vSpacing >> 24, // vSpacing
     vSpacing >> 16 & 0xff, vSpacing >> 8 & 0xff, vSpacing & 0xff])));
   };
 
-  muse4.esds = function esds(track) {
+  mp4.esds = function esds(track) {
     var configlen = track.config.length;
     return new Uint8Array([0x00, // version 0
     0x00, 0x00, 0x00, // flags
@@ -20814,9 +20814,9 @@ var muse4 = /*#__PURE__*/function () {
     ].concat([configlen]).concat(track.config).concat([0x06, 0x01, 0x02])); // GASpecificConfig)); // length + audio config descriptor
   };
 
-  muse4.muse4a = function muse4a(track) {
+  mp4.mp4a = function mp4a(track) {
     var samplerate = track.samplerate;
-    return muse4.box(muse4.types.muse4a, new Uint8Array([0x00, 0x00, 0x00, // reserved
+    return mp4.box(mp4.types.mp4a, new Uint8Array([0x00, 0x00, 0x00, // reserved
     0x00, 0x00, 0x00, // reserved
     0x00, 0x01, // data_reference_index
     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, // reserved
@@ -20824,12 +20824,12 @@ var muse4 = /*#__PURE__*/function () {
     0x00, 0x10, // sampleSize:16bits
     0x00, 0x00, 0x00, 0x00, // reserved2
     samplerate >> 8 & 0xff, samplerate & 0xff, //
-    0x00, 0x00]), muse4.box(muse4.types.esds, muse4.esds(track)));
+    0x00, 0x00]), mp4.box(mp4.types.esds, mp4.esds(track)));
   };
 
-  muse4.mp3 = function mp3(track) {
+  mp4.mp3 = function mp3(track) {
     var samplerate = track.samplerate;
-    return muse4.box(muse4.types['.mp3'], new Uint8Array([0x00, 0x00, 0x00, // reserved
+    return mp4.box(mp4.types['.mp3'], new Uint8Array([0x00, 0x00, 0x00, // reserved
     0x00, 0x00, 0x00, // reserved
     0x00, 0x01, // data_reference_index
     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, // reserved
@@ -20840,26 +20840,26 @@ var muse4 = /*#__PURE__*/function () {
     0x00, 0x00]));
   };
 
-  muse4.stsd = function stsd(track) {
+  mp4.stsd = function stsd(track) {
     if (track.type === 'audio') {
       if (!track.isAAC && track.codec === 'mp3') {
-        return muse4.box(muse4.types.stsd, muse4.STSD, muse4.mp3(track));
+        return mp4.box(mp4.types.stsd, mp4.STSD, mp4.mp3(track));
       }
 
-      return muse4.box(muse4.types.stsd, muse4.STSD, muse4.muse4a(track));
+      return mp4.box(mp4.types.stsd, mp4.STSD, mp4.mp4a(track));
     } else {
-      return muse4.box(muse4.types.stsd, muse4.STSD, muse4.avc1(track));
+      return mp4.box(mp4.types.stsd, mp4.STSD, mp4.avc1(track));
     }
   };
 
-  muse4.tkhd = function tkhd(track) {
+  mp4.tkhd = function tkhd(track) {
     var id = track.id;
     var duration = track.duration * track.timescale;
     var width = track.width;
     var height = track.height;
     var upperWordDuration = Math.floor(duration / (UINT32_MAX + 1));
     var lowerWordDuration = Math.floor(duration % (UINT32_MAX + 1));
-    return muse4.box(muse4.types.tkhd, new Uint8Array([0x01, // version 1
+    return mp4.box(mp4.types.tkhd, new Uint8Array([0x01, // version 1
     0x00, 0x00, 0x07, // flags
     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, // creation_time
     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x03, // modification_time
@@ -20876,17 +20876,17 @@ var muse4 = /*#__PURE__*/function () {
     ]));
   };
 
-  muse4.traf = function traf(track, baseMediaDecodeTime) {
-    var sampleDependencyTable = muse4.sdtp(track);
+  mp4.traf = function traf(track, baseMediaDecodeTime) {
+    var sampleDependencyTable = mp4.sdtp(track);
     var id = track.id;
     var upperWordBaseMediaDecodeTime = Math.floor(baseMediaDecodeTime / (UINT32_MAX + 1));
     var lowerWordBaseMediaDecodeTime = Math.floor(baseMediaDecodeTime % (UINT32_MAX + 1));
-    return muse4.box(muse4.types.traf, muse4.box(muse4.types.tfhd, new Uint8Array([0x00, // version 0
+    return mp4.box(mp4.types.traf, mp4.box(mp4.types.tfhd, new Uint8Array([0x00, // version 0
     0x00, 0x00, 0x00, // flags
     id >> 24, id >> 16 & 0xff, id >> 8 & 0xff, id & 0xff // track_ID
-    ])), muse4.box(muse4.types.tfdt, new Uint8Array([0x01, // version 1
+    ])), mp4.box(mp4.types.tfdt, new Uint8Array([0x01, // version 1
     0x00, 0x00, 0x00, // flags
-    upperWordBaseMediaDecodeTime >> 24, upperWordBaseMediaDecodeTime >> 16 & 0xff, upperWordBaseMediaDecodeTime >> 8 & 0xff, upperWordBaseMediaDecodeTime & 0xff, lowerWordBaseMediaDecodeTime >> 24, lowerWordBaseMediaDecodeTime >> 16 & 0xff, lowerWordBaseMediaDecodeTime >> 8 & 0xff, lowerWordBaseMediaDecodeTime & 0xff])), muse4.trun(track, sampleDependencyTable.length + 16 + // tfhd
+    upperWordBaseMediaDecodeTime >> 24, upperWordBaseMediaDecodeTime >> 16 & 0xff, upperWordBaseMediaDecodeTime >> 8 & 0xff, upperWordBaseMediaDecodeTime & 0xff, lowerWordBaseMediaDecodeTime >> 24, lowerWordBaseMediaDecodeTime >> 16 & 0xff, lowerWordBaseMediaDecodeTime >> 8 & 0xff, lowerWordBaseMediaDecodeTime & 0xff])), mp4.trun(track, sampleDependencyTable.length + 16 + // tfhd
     20 + // tfdt
     8 + // traf header
     16 + // mfhd
@@ -20901,14 +20901,14 @@ var muse4 = /*#__PURE__*/function () {
    */
   ;
 
-  muse4.trak = function trak(track) {
+  mp4.trak = function trak(track) {
     track.duration = track.duration || 0xffffffff;
-    return muse4.box(muse4.types.trak, muse4.tkhd(track), muse4.mdia(track));
+    return mp4.box(mp4.types.trak, mp4.tkhd(track), mp4.mdia(track));
   };
 
-  muse4.trex = function trex(track) {
+  mp4.trex = function trex(track) {
     var id = track.id;
-    return muse4.box(muse4.types.trex, new Uint8Array([0x00, // version 0
+    return mp4.box(mp4.types.trex, new Uint8Array([0x00, // version 0
     0x00, 0x00, 0x00, // flags
     id >> 24, id >> 16 & 0xff, id >> 8 & 0xff, id & 0xff, // track_ID
     0x00, 0x00, 0x00, 0x01, // default_sample_description_index
@@ -20918,7 +20918,7 @@ var muse4 = /*#__PURE__*/function () {
     ]));
   };
 
-  muse4.trun = function trun(track, offset) {
+  mp4.trun = function trun(track, offset) {
     var samples = track.samples || [];
     var len = samples.length;
     var arraylen = 12 + 16 * len;
@@ -20949,53 +20949,53 @@ var muse4 = /*#__PURE__*/function () {
       ], 12 + 16 * i);
     }
 
-    return muse4.box(muse4.types.trun, array);
+    return mp4.box(mp4.types.trun, array);
   };
 
-  muse4.initSegment = function initSegment(tracks) {
-    if (!muse4.types) {
-      muse4.init();
+  mp4.initSegment = function initSegment(tracks) {
+    if (!mp4.types) {
+      mp4.init();
     }
 
-    var movie = muse4.moov(tracks);
-    var result = new Uint8Array(muse4.FTYP.byteLength + movie.byteLength);
-    result.set(muse4.FTYP);
-    result.set(movie, muse4.FTYP.byteLength);
+    var movie = mp4.moov(tracks);
+    var result = new Uint8Array(mp4.FTYP.byteLength + movie.byteLength);
+    result.set(mp4.FTYP);
+    result.set(movie, mp4.FTYP.byteLength);
     return result;
   };
 
-  return muse4;
+  return mp4;
 }();
 
-muse4.types = void 0;
-muse4.HDLR_TYPES = void 0;
-muse4.STTS = void 0;
-muse4.STSC = void 0;
-muse4.STCO = void 0;
-muse4.STSZ = void 0;
-muse4.VMHD = void 0;
-muse4.SMHD = void 0;
-muse4.STSD = void 0;
-muse4.FTYP = void 0;
-muse4.DINF = void 0;
-/* harmony default export */ __webpack_exports__["default"] = (muse4);
+mp4.types = void 0;
+mp4.HDLR_TYPES = void 0;
+mp4.STTS = void 0;
+mp4.STSC = void 0;
+mp4.STCO = void 0;
+mp4.STSZ = void 0;
+mp4.VMHD = void 0;
+mp4.SMHD = void 0;
+mp4.STSD = void 0;
+mp4.FTYP = void 0;
+mp4.DINF = void 0;
+/* harmony default export */ __webpack_exports__["default"] = (mp4);
 
 /***/ }),
 
-/***/ "./src/remux/muse4-remuxer.ts":
+/***/ "./src/remux/mp4-remuxer.ts":
 /*!**********************************!*\
-  !*** ./src/remux/muse4-remuxer.ts ***!
+  !*** ./src/remux/mp4-remuxer.ts ***!
   \**********************************/
 /*! exports provided: default, normalizePts */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return muse4Remuxer; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return mp4Remuxer; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "normalizePts", function() { return normalizePts; });
 /* harmony import */ var _home_runner_work_hls_js_hls_js_src_polyfills_number__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./src/polyfills/number */ "./src/polyfills/number.ts");
 /* harmony import */ var _aac_helper__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./aac-helper */ "./src/remux/aac-helper.ts");
-/* harmony import */ var _muse4_generator__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./muse4-generator */ "./src/remux/muse4-generator.ts");
+/* harmony import */ var _mp4_generator__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./mp4-generator */ "./src/remux/mp4-generator.ts");
 /* harmony import */ var _events__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../events */ "./src/events.ts");
 /* harmony import */ var _errors__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../errors */ "./src/errors.ts");
 /* harmony import */ var _utils_logger__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../utils/logger */ "./src/utils/logger.ts");
@@ -21020,8 +21020,8 @@ var chromeVersion = null;
 var safariWebkitVersion = null;
 var requiresPositiveDts = false;
 
-var muse4Remuxer = /*#__PURE__*/function () {
-  function muse4Remuxer(observer, config, typeSupported, vendor) {
+var mp4Remuxer = /*#__PURE__*/function () {
+  function mp4Remuxer(observer, config, typeSupported, vendor) {
     if (vendor === void 0) {
       vendor = '';
     }
@@ -21056,23 +21056,23 @@ var muse4Remuxer = /*#__PURE__*/function () {
     requiresPositiveDts = !!chromeVersion && chromeVersion < 75 || !!safariWebkitVersion && safariWebkitVersion < 600;
   }
 
-  var _proto = muse4Remuxer.prototype;
+  var _proto = mp4Remuxer.prototype;
 
   _proto.destroy = function destroy() {};
 
   _proto.resetTimeStamp = function resetTimeStamp(defaultTimeStamp) {
-    _utils_logger__WEBPACK_IMPORTED_MODULE_5__["logger"].log('[muse4-remuxer]: initPTS & initDTS reset');
+    _utils_logger__WEBPACK_IMPORTED_MODULE_5__["logger"].log('[mp4-remuxer]: initPTS & initDTS reset');
     this._initPTS = this._initDTS = defaultTimeStamp;
   };
 
   _proto.resetNextTimestamp = function resetNextTimestamp() {
-    _utils_logger__WEBPACK_IMPORTED_MODULE_5__["logger"].log('[muse4-remuxer]: reset next timestamp');
+    _utils_logger__WEBPACK_IMPORTED_MODULE_5__["logger"].log('[mp4-remuxer]: reset next timestamp');
     this.isVideoContiguous = false;
     this.isAudioContiguous = false;
   };
 
   _proto.resetInitSegment = function resetInitSegment() {
-    _utils_logger__WEBPACK_IMPORTED_MODULE_5__["logger"].log('[muse4-remuxer]: ISGenerated flag reset');
+    _utils_logger__WEBPACK_IMPORTED_MODULE_5__["logger"].log('[mp4-remuxer]: ISGenerated flag reset');
     this.ISGenerated = false;
   };
 
@@ -21135,13 +21135,13 @@ var muse4Remuxer = /*#__PURE__*/function () {
           independent = true;
 
           if (firstKeyFrameIndex > 0) {
-            _utils_logger__WEBPACK_IMPORTED_MODULE_5__["logger"].warn("[muse4-remuxer]: Dropped " + firstKeyFrameIndex + " out of " + length + " video samples due to a missing keyframe");
+            _utils_logger__WEBPACK_IMPORTED_MODULE_5__["logger"].warn("[mp4-remuxer]: Dropped " + firstKeyFrameIndex + " out of " + length + " video samples due to a missing keyframe");
             var startPTS = this.getVideoStartPts(videoTrack.samples);
             videoTrack.samples = videoTrack.samples.slice(firstKeyFrameIndex);
             videoTrack.dropped += firstKeyFrameIndex;
             videoTimeOffset += (videoTrack.samples[0].pts - startPTS) / (videoTrack.timescale || 90000);
           } else if (firstKeyFrameIndex === -1) {
-            _utils_logger__WEBPACK_IMPORTED_MODULE_5__["logger"].warn("[muse4-remuxer]: No keyframe found out of " + length + " video samples");
+            _utils_logger__WEBPACK_IMPORTED_MODULE_5__["logger"].warn("[mp4-remuxer]: No keyframe found out of " + length + " video samples");
             independent = false;
           }
         }
@@ -21166,7 +21166,7 @@ var muse4Remuxer = /*#__PURE__*/function () {
         if (enoughAudioSamples) {
           // if initSegment was generated without audio samples, regenerate it again
           if (!audioTrack.samplerate) {
-            _utils_logger__WEBPACK_IMPORTED_MODULE_5__["logger"].warn('[muse4-remuxer]: regenerate InitSegment as audio detected');
+            _utils_logger__WEBPACK_IMPORTED_MODULE_5__["logger"].warn('[mp4-remuxer]: regenerate InitSegment as audio detected');
             initSegment = this.generateIS(audioTrack, videoTrack, timeOffset);
           }
 
@@ -21176,7 +21176,7 @@ var muse4Remuxer = /*#__PURE__*/function () {
             var audioTrackLength = audio ? audio.endPTS - audio.startPTS : 0; // if initSegment was generated without video samples, regenerate it again
 
             if (!videoTrack.inputTimeScale) {
-              _utils_logger__WEBPACK_IMPORTED_MODULE_5__["logger"].warn('[muse4-remuxer]: regenerate InitSegment as video detected');
+              _utils_logger__WEBPACK_IMPORTED_MODULE_5__["logger"].warn('[mp4-remuxer]: regenerate InitSegment as video detected');
               initSegment = this.generateIS(audioTrack, videoTrack, timeOffset);
             }
 
@@ -21220,7 +21220,7 @@ var muse4Remuxer = /*#__PURE__*/function () {
     var typeSupported = this.typeSupported;
     var tracks = {};
     var computePTSDTS = !Object(_home_runner_work_hls_js_hls_js_src_polyfills_number__WEBPACK_IMPORTED_MODULE_0__["isFiniteNumber"])(this._initPTS);
-    var container = 'audio/muse4';
+    var container = 'audio/mp4';
     var initPTS;
     var initDTS;
     var timescale;
@@ -21230,9 +21230,9 @@ var muse4Remuxer = /*#__PURE__*/function () {
     }
 
     if (audioTrack.config && audioSamples.length) {
-      // let's use audio sampling rate as muse4 time scale.
+      // let's use audio sampling rate as mp4 time scale.
       // rationale is that there is a integer nb of audio frames per audio sample (1024 for AAC)
-      // using audio sampling rate here helps having an integer muse4 frame duration
+      // using audio sampling rate here helps having an integer mp4 frame duration
       // this avoids potential rounding issue and AV sync issue
       audioTrack.timescale = audioTrack.samplerate;
 
@@ -21251,7 +21251,7 @@ var muse4Remuxer = /*#__PURE__*/function () {
         id: 'audio',
         container: container,
         codec: audioTrack.codec,
-        initSegment: !audioTrack.isAAC && typeSupported.mpeg ? new Uint8Array(0) : _muse4_generator__WEBPACK_IMPORTED_MODULE_2__["default"].initSegment([audioTrack]),
+        initSegment: !audioTrack.isAAC && typeSupported.mpeg ? new Uint8Array(0) : _mp4_generator__WEBPACK_IMPORTED_MODULE_2__["default"].initSegment([audioTrack]),
         metadata: {
           channelCount: audioTrack.channelCount
         }
@@ -21265,14 +21265,14 @@ var muse4Remuxer = /*#__PURE__*/function () {
     }
 
     if (videoTrack.sps && videoTrack.pps && videoSamples.length) {
-      // let's use input time scale as muse4 video timescale
+      // let's use input time scale as mp4 video timescale
       // we use input time scale straight away to avoid rounding issues on frame duration / cts computation
       videoTrack.timescale = videoTrack.inputTimeScale;
       tracks.video = {
         id: 'main',
-        container: 'video/muse4',
+        container: 'video/mp4',
         codec: videoTrack.codec,
-        initSegment: _muse4_generator__WEBPACK_IMPORTED_MODULE_2__["default"].initSegment([videoTrack]),
+        initSegment: _mp4_generator__WEBPACK_IMPORTED_MODULE_2__["default"].initSegment([videoTrack]),
         metadata: {
           width: videoTrack.width,
           height: videoTrack.height
@@ -21312,7 +21312,7 @@ var muse4Remuxer = /*#__PURE__*/function () {
     var initPTS = this._initPTS;
     var nextAvcDts = this.nextAvcDts;
     var offset = 8;
-    var muse4SampleDuration;
+    var mp4SampleDuration;
     var firstDTS;
     var lastDTS;
     var minPTS = Number.POSITIVE_INFINITY;
@@ -21356,7 +21356,7 @@ var muse4Remuxer = /*#__PURE__*/function () {
 
     firstDTS = inputSamples[0].dts;
     lastDTS = inputSamples[inputSamples.length - 1].dts; // on Safari let's signal the same sample duration for all samples
-    // sample duration (as expected by trun muse4 boxes), should be the delta between sample DTS
+    // sample duration (as expected by trun mp4 boxes), should be the delta between sample DTS
     // set this constant duration as being the avg delta between consecutive DTS.
 
     var averageSampleDuration = Math.round((lastDTS - firstDTS) / (nbSamples - 1)); // handle broken streams with PTS < DTS, tolerance up 0.2 seconds
@@ -21459,12 +21459,12 @@ var muse4Remuxer = /*#__PURE__*/function () {
 
     var view = new DataView(mdat.buffer);
     view.setUint32(0, mdatSize);
-    mdat.set(_muse4_generator__WEBPACK_IMPORTED_MODULE_2__["default"].types.mdat, 4);
+    mdat.set(_mp4_generator__WEBPACK_IMPORTED_MODULE_2__["default"].types.mdat, 4);
 
     for (var _i4 = 0; _i4 < nbSamples; _i4++) {
       var avcSample = inputSamples[_i4];
       var avcSampleUnits = avcSample.units;
-      var muse4SampleLength = 0; // convert NALU bitstream to muse4 format (prepend NALU with size field)
+      var mp4SampleLength = 0; // convert NALU bitstream to mp4 format (prepend NALU with size field)
 
       for (var _j = 0, _nbUnits = avcSampleUnits.length; _j < _nbUnits; _j++) {
         var unit = avcSampleUnits[_j];
@@ -21474,12 +21474,12 @@ var muse4Remuxer = /*#__PURE__*/function () {
         offset += 4;
         mdat.set(unitData, offset);
         offset += unitDataLen;
-        muse4SampleLength += 4 + unitDataLen;
+        mp4SampleLength += 4 + unitDataLen;
       } // expected sample duration is the Decoding Timestamp diff of consecutive samples
 
 
       if (_i4 < nbSamples - 1) {
-        muse4SampleDuration = inputSamples[_i4 + 1].dts - avcSample.dts;
+        mp4SampleDuration = inputSamples[_i4 + 1].dts - avcSample.dts;
       } else {
         var config = this.config;
         var lastFrameDuration = avcSample.dts - inputSamples[_i4 > 0 ? _i4 - 1 : _i4].dts;
@@ -21496,23 +21496,23 @@ var muse4Remuxer = /*#__PURE__*/function () {
           if (deltaToFrameEnd > gapTolerance) {
             // We subtract lastFrameDuration from deltaToFrameEnd to try to prevent any video
             // frame overlap. maxBufferHole should be >> lastFrameDuration anyway.
-            muse4SampleDuration = deltaToFrameEnd - lastFrameDuration;
+            mp4SampleDuration = deltaToFrameEnd - lastFrameDuration;
 
-            if (muse4SampleDuration < 0) {
-              muse4SampleDuration = lastFrameDuration;
+            if (mp4SampleDuration < 0) {
+              mp4SampleDuration = lastFrameDuration;
             }
 
-            _utils_logger__WEBPACK_IMPORTED_MODULE_5__["logger"].log("[muse4-remuxer]: It is approximately " + deltaToFrameEnd / 90 + " ms to the next segment; using duration " + muse4SampleDuration / 90 + " ms for the last video frame.");
+            _utils_logger__WEBPACK_IMPORTED_MODULE_5__["logger"].log("[mp4-remuxer]: It is approximately " + deltaToFrameEnd / 90 + " ms to the next segment; using duration " + mp4SampleDuration / 90 + " ms for the last video frame.");
           } else {
-            muse4SampleDuration = lastFrameDuration;
+            mp4SampleDuration = lastFrameDuration;
           }
         } else {
-          muse4SampleDuration = lastFrameDuration;
+          mp4SampleDuration = lastFrameDuration;
         }
       }
 
       var compositionTimeOffset = Math.round(avcSample.pts - avcSample.dts);
-      outputSamples.push(new muse4Sample(avcSample.key, muse4SampleDuration, muse4SampleLength, compositionTimeOffset));
+      outputSamples.push(new mp4Sample(avcSample.key, mp4SampleDuration, mp4SampleLength, compositionTimeOffset));
     }
 
     if (outputSamples.length && chromeVersion && chromeVersion < 70) {
@@ -21523,11 +21523,11 @@ var muse4Remuxer = /*#__PURE__*/function () {
       flags.isNonSync = 0;
     }
 
-    console.assert(muse4SampleDuration !== undefined, 'muse4SampleDuration must be computed'); // next AVC sample DTS should be equal to last sample DTS + last sample duration (in PES timescale)
+    console.assert(mp4SampleDuration !== undefined, 'mp4SampleDuration must be computed'); // next AVC sample DTS should be equal to last sample DTS + last sample duration (in PES timescale)
 
-    this.nextAvcDts = nextAvcDts = lastDTS + muse4SampleDuration;
+    this.nextAvcDts = nextAvcDts = lastDTS + mp4SampleDuration;
     this.isVideoContiguous = true;
-    var moof = _muse4_generator__WEBPACK_IMPORTED_MODULE_2__["default"].moof(track.sequenceNumber++, firstDTS, _extends({}, track, {
+    var moof = _mp4_generator__WEBPACK_IMPORTED_MODULE_2__["default"].moof(track.sequenceNumber++, firstDTS, _extends({}, track, {
       samples: outputSamples
     }));
     var type = 'video';
@@ -21535,7 +21535,7 @@ var muse4Remuxer = /*#__PURE__*/function () {
       data1: moof,
       data2: mdat,
       startPTS: minPTS / timeScale,
-      endPTS: (maxPTS + muse4SampleDuration) / timeScale,
+      endPTS: (maxPTS + mp4SampleDuration) / timeScale,
       startDTS: firstDTS / timeScale,
       endDTS: nextAvcDts / timeScale,
       type: type,
@@ -21552,10 +21552,10 @@ var muse4Remuxer = /*#__PURE__*/function () {
 
   _proto.remuxAudio = function remuxAudio(track, timeOffset, contiguous, accurateTimeOffset, videoTimeOffset) {
     var inputTimeScale = track.inputTimeScale;
-    var muse4timeScale = track.samplerate ? track.samplerate : inputTimeScale;
-    var scaleFactor = inputTimeScale / muse4timeScale;
-    var muse4SampleDuration = track.isAAC ? AAC_SAMPLES_PER_FRAME : MPEG_AUDIO_SAMPLE_PER_FRAME;
-    var inputSampleDuration = muse4SampleDuration * scaleFactor;
+    var mp4timeScale = track.samplerate ? track.samplerate : inputTimeScale;
+    var scaleFactor = inputTimeScale / mp4timeScale;
+    var mp4SampleDuration = track.isAAC ? AAC_SAMPLES_PER_FRAME : MPEG_AUDIO_SAMPLE_PER_FRAME;
+    var inputSampleDuration = mp4SampleDuration * scaleFactor;
     var initPTS = this._initPTS;
     var rawMPEG = !track.isAAC && this.typeSupported.mpeg;
     var outputSamples = [];
@@ -21601,7 +21601,7 @@ var muse4Remuxer = /*#__PURE__*/function () {
         nextAudioPts = inputSamples[0].pts;
       }
     } // If the audio track is missing samples, the frames seem to get "left-shifted" within the
-    // resulting muse4 segment, causing sync issues and leaving gaps at the end of the audio segment.
+    // resulting mp4 segment, causing sync issues and leaving gaps at the end of the audio segment.
     // In an effort to prevent this from happening, we inject frames here where there are gaps.
     // When possible, we inject a silent frame; when that's not possible, we duplicate the last
     // frame.
@@ -21644,14 +21644,14 @@ var muse4Remuxer = /*#__PURE__*/function () {
             this.nextAudioPts = nextAudioPts = nextPts;
           }
 
-          _utils_logger__WEBPACK_IMPORTED_MODULE_5__["logger"].warn("[muse4-remuxer]: Injecting " + missing + " audio frame @ " + (nextPts / inputTimeScale).toFixed(3) + "s due to " + Math.round(1000 * delta / inputTimeScale) + " ms gap.");
+          _utils_logger__WEBPACK_IMPORTED_MODULE_5__["logger"].warn("[mp4-remuxer]: Injecting " + missing + " audio frame @ " + (nextPts / inputTimeScale).toFixed(3) + "s due to " + Math.round(1000 * delta / inputTimeScale) + " ms gap.");
 
           for (var j = 0; j < missing; j++) {
             var newStamp = Math.max(nextPts, 0);
             var fillFrame = _aac_helper__WEBPACK_IMPORTED_MODULE_1__["default"].getSilentFrame(track.manifestCodec || track.codec, track.channelCount);
 
             if (!fillFrame) {
-              _utils_logger__WEBPACK_IMPORTED_MODULE_5__["logger"].log('[muse4-remuxer]: Unable to get silent frame for given audio codec; duplicating last frame instead.');
+              _utils_logger__WEBPACK_IMPORTED_MODULE_5__["logger"].log('[mp4-remuxer]: Unable to get silent frame for given audio codec; duplicating last frame instead.');
               fillFrame = sample.unit.subarray();
             }
 
@@ -21719,7 +21719,7 @@ var muse4Remuxer = /*#__PURE__*/function () {
           if (!rawMPEG) {
             var view = new DataView(mdat.buffer);
             view.setUint32(0, mdatSize);
-            mdat.set(_muse4_generator__WEBPACK_IMPORTED_MODULE_2__["default"].types.mdat, 4);
+            mdat.set(_mp4_generator__WEBPACK_IMPORTED_MODULE_2__["default"].types.mdat, 4);
           }
         } else {
           // no audio samples
@@ -21729,11 +21729,11 @@ var muse4Remuxer = /*#__PURE__*/function () {
 
       mdat.set(unit, offset);
       var unitLen = unit.byteLength;
-      offset += unitLen; // Default the sample's duration to the computed muse4SampleDuration, which will either be 1024 for AAC or 1152 for MPEG
+      offset += unitLen; // Default the sample's duration to the computed mp4SampleDuration, which will either be 1024 for AAC or 1152 for MPEG
       // In the case that we have 1 sample, this will be the duration. If we have more than one sample, the duration
       // becomes the PTS diff with the previous sample
 
-      outputSamples.push(new muse4Sample(true, muse4SampleDuration, unitLen, 0));
+      outputSamples.push(new mp4Sample(true, mp4SampleDuration, unitLen, 0));
       lastPTS = _pts;
     } // We could end up with no audio samples if all input samples were overlapping with the previously remuxed ones
 
@@ -21748,7 +21748,7 @@ var muse4Remuxer = /*#__PURE__*/function () {
     var lastSample = outputSamples[outputSamples.length - 1];
     this.nextAudioPts = nextAudioPts = lastPTS + scaleFactor * lastSample.duration; // Set the track samples from inputSamples to outputSamples before remuxing
 
-    var moof = rawMPEG ? new Uint8Array(0) : _muse4_generator__WEBPACK_IMPORTED_MODULE_2__["default"].moof(track.sequenceNumber++, firstPTS / scaleFactor, _extends({}, track, {
+    var moof = rawMPEG ? new Uint8Array(0) : _mp4_generator__WEBPACK_IMPORTED_MODULE_2__["default"].moof(track.sequenceNumber++, firstPTS / scaleFactor, _extends({}, track, {
       samples: outputSamples
     })); // Clear the track samples. This also clears the samples array in the demuxer, since the reference is shared
 
@@ -21775,8 +21775,8 @@ var muse4Remuxer = /*#__PURE__*/function () {
 
   _proto.remuxEmptyAudio = function remuxEmptyAudio(track, timeOffset, contiguous, videoData) {
     var inputTimeScale = track.inputTimeScale;
-    var muse4timeScale = track.samplerate ? track.samplerate : inputTimeScale;
-    var scaleFactor = inputTimeScale / muse4timeScale;
+    var mp4timeScale = track.samplerate ? track.samplerate : inputTimeScale;
+    var scaleFactor = inputTimeScale / mp4timeScale;
     var nextAudioPts = this.nextAudioPts; // sync with video's timestamp
 
     var startDTS = (nextAudioPts !== null ? nextAudioPts : videoData.startDTS * inputTimeScale) + this._initDTS;
@@ -21787,10 +21787,10 @@ var muse4Remuxer = /*#__PURE__*/function () {
     var nbSamples = Math.ceil((endDTS - startDTS) / frameDuration); // silent frame
 
     var silentFrame = _aac_helper__WEBPACK_IMPORTED_MODULE_1__["default"].getSilentFrame(track.manifestCodec || track.codec, track.channelCount);
-    _utils_logger__WEBPACK_IMPORTED_MODULE_5__["logger"].warn('[muse4-remuxer]: remux empty Audio'); // Can't remux if we can't generate a silent frame...
+    _utils_logger__WEBPACK_IMPORTED_MODULE_5__["logger"].warn('[mp4-remuxer]: remux empty Audio'); // Can't remux if we can't generate a silent frame...
 
     if (!silentFrame) {
-      _utils_logger__WEBPACK_IMPORTED_MODULE_5__["logger"].trace('[muse4-remuxer]: Unable to remuxEmptyAudio since we were unable to get a silent frame for given audio codec');
+      _utils_logger__WEBPACK_IMPORTED_MODULE_5__["logger"].trace('[mp4-remuxer]: Unable to remuxEmptyAudio since we were unable to get a silent frame for given audio codec');
       return;
     }
 
@@ -21862,7 +21862,7 @@ var muse4Remuxer = /*#__PURE__*/function () {
     };
   };
 
-  return muse4Remuxer;
+  return mp4Remuxer;
 }();
 
 
@@ -21902,7 +21902,7 @@ function findKeyframeIndex(samples) {
   return -1;
 }
 
-var muse4Sample = function muse4Sample(isKeyframe, duration, size, cts) {
+var mp4Sample = function mp4Sample(isKeyframe, duration, size, cts) {
   this.size = void 0;
   this.duration = void 0;
   this.cts = void 0;
@@ -21910,10 +21910,10 @@ var muse4Sample = function muse4Sample(isKeyframe, duration, size, cts) {
   this.duration = duration;
   this.size = size;
   this.cts = cts;
-  this.flags = new muse4SampleFlags(isKeyframe);
+  this.flags = new mp4SampleFlags(isKeyframe);
 };
 
-var muse4SampleFlags = function muse4SampleFlags(isKeyframe) {
+var mp4SampleFlags = function mp4SampleFlags(isKeyframe) {
   this.isLeading = 0;
   this.isDependedOn = 0;
   this.hasRedundancy = 0;
@@ -21936,7 +21936,7 @@ var muse4SampleFlags = function muse4SampleFlags(isKeyframe) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _home_runner_work_hls_js_hls_js_src_polyfills_number__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./src/polyfills/number */ "./src/polyfills/number.ts");
-/* harmony import */ var _utils_muse4_tools__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils/muse4-tools */ "./src/utils/muse4-tools.ts");
+/* harmony import */ var _utils_mp4_tools__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils/mp4-tools */ "./src/utils/mp4-tools.ts");
 /* harmony import */ var _loader_fragment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../loader/fragment */ "./src/loader/fragment.ts");
 /* harmony import */ var _utils_logger__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils/logger */ "./src/utils/logger.ts");
 
@@ -21986,7 +21986,7 @@ var PassThroughRemuxer = /*#__PURE__*/function () {
       return;
     }
 
-    var initData = this.initData = Object(_utils_muse4_tools__WEBPACK_IMPORTED_MODULE_1__["parseInitSegment"])(initSegment); // Get codec from initSegment or fallback to default
+    var initData = this.initData = Object(_utils_mp4_tools__WEBPACK_IMPORTED_MODULE_1__["parseInitSegment"])(initSegment); // Get codec from initSegment or fallback to default
 
     if (!audioCodec) {
       audioCodec = getParsedTrackCodec(initData.audio, _loader_fragment__WEBPACK_IMPORTED_MODULE_2__["ElementaryStreamTypes"].AUDIO);
@@ -22000,21 +22000,21 @@ var PassThroughRemuxer = /*#__PURE__*/function () {
 
     if (initData.audio && initData.video) {
       tracks.audiovideo = {
-        container: 'video/muse4',
+        container: 'video/mp4',
         codec: audioCodec + ',' + videoCodec,
         initSegment: initSegment,
         id: 'main'
       };
     } else if (initData.audio) {
       tracks.audio = {
-        container: 'audio/muse4',
+        container: 'audio/mp4',
         codec: audioCodec,
         initSegment: initSegment,
         id: 'audio'
       };
     } else if (initData.video) {
       tracks.video = {
-        container: 'video/muse4',
+        container: 'video/mp4',
         codec: videoCodec,
         initSegment: initSegment,
         id: 'main'
@@ -22041,7 +22041,7 @@ var PassThroughRemuxer = /*#__PURE__*/function () {
 
     if (!Object(_home_runner_work_hls_js_hls_js_src_polyfills_number__WEBPACK_IMPORTED_MODULE_0__["isFiniteNumber"])(lastEndDTS)) {
       lastEndDTS = this.lastEndDTS = timeOffset || 0;
-    } // The binary segment data is added to the videoTrack in the muse4demuxer. We don't check to see if the data is only
+    } // The binary segment data is added to the videoTrack in the mp4demuxer. We don't check to see if the data is only
     // audio or video (or both); adding it to video was an arbitrary choice.
 
 
@@ -22077,15 +22077,15 @@ var PassThroughRemuxer = /*#__PURE__*/function () {
       this.initPTS = initSegment.initPTS = initPTS = computeInitPTS(initData, data, lastEndDTS);
     }
 
-    var duration = Object(_utils_muse4_tools__WEBPACK_IMPORTED_MODULE_1__["getDuration"])(data, initData);
+    var duration = Object(_utils_mp4_tools__WEBPACK_IMPORTED_MODULE_1__["getDuration"])(data, initData);
     var startDTS = lastEndDTS;
     var endDTS = duration + startDTS;
-    Object(_utils_muse4_tools__WEBPACK_IMPORTED_MODULE_1__["offsetStartDTS"])(initData, data, initPTS);
+    Object(_utils_mp4_tools__WEBPACK_IMPORTED_MODULE_1__["offsetStartDTS"])(initData, data, initPTS);
 
     if (duration > 0) {
       this.lastEndDTS = endDTS;
     } else {
-      _utils_logger__WEBPACK_IMPORTED_MODULE_3__["logger"].warn('Duration parsed from muse4 should be greater than zero');
+      _utils_logger__WEBPACK_IMPORTED_MODULE_3__["logger"].warn('Duration parsed from mp4 should be greater than zero');
       this.resetNextTimestamp();
     }
 
@@ -22125,7 +22125,7 @@ var PassThroughRemuxer = /*#__PURE__*/function () {
 }();
 
 var computeInitPTS = function computeInitPTS(initData, data, timeOffset) {
-  return Object(_utils_muse4_tools__WEBPACK_IMPORTED_MODULE_1__["getStartDTS"])(initData, data) - timeOffset;
+  return Object(_utils_mp4_tools__WEBPACK_IMPORTED_MODULE_1__["getStartDTS"])(initData, data) - timeOffset;
 };
 
 function getParsedTrackCodec(track, type) {
@@ -22133,9 +22133,9 @@ function getParsedTrackCodec(track, type) {
 
   if (parsedCodec && parsedCodec.length > 4) {
     return parsedCodec;
-  } // Since muse4-tools cannot parse full codec string (see 'TODO: Parse codec details'... in muse4-tools)
+  } // Since mp4-tools cannot parse full codec string (see 'TODO: Parse codec details'... in mp4-tools)
   // Provide defaults based on codec type
-  // This allows for some playback of some fmuse4 playlists without CODECS defined in manifest
+  // This allows for some playback of some fmp4 playlists without CODECS defined in manifest
 
 
   if (parsedCodec === 'hvc1') {
@@ -22150,7 +22150,7 @@ function getParsedTrackCodec(track, type) {
     return 'avc1.42e01e';
   }
 
-  return 'muse4a.40.5';
+  return 'mp4a.40.5';
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (PassThroughRemuxer);
@@ -24463,14 +24463,14 @@ function createCmdHistory() {
 /*!*****************************!*\
   !*** ./src/utils/codecs.ts ***!
   \*****************************/
-/*! exports provided: isCodecType, isCodecSupportedInmuse4 */
+/*! exports provided: isCodecType, isCodecSupportedInmp4 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isCodecType", function() { return isCodecType; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isCodecSupportedInmuse4", function() { return isCodecSupportedInmuse4; });
-// from http://muse4ra.org/codecs
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isCodecSupportedInmp4", function() { return isCodecSupportedInmp4; });
+// from http://mp4ra.org/codecs
 var sampleEntryCodesISO = {
   audio: {
     a3ds: true,
@@ -24494,7 +24494,7 @@ var sampleEntryCodesISO = {
     mhm1: true,
     mhm2: true,
     mlpa: true,
-    muse4a: true,
+    mp4a: true,
     'raw ': true,
     Opus: true,
     samr: true,
@@ -24520,7 +24520,7 @@ var sampleEntryCodesISO = {
     hev1: true,
     hvc1: true,
     mjp2: true,
-    muse4v: true,
+    mp4v: true,
     mvc1: true,
     mvc2: true,
     mvc3: true,
@@ -24543,8 +24543,8 @@ function isCodecType(codec, type) {
   var typeCodes = sampleEntryCodesISO[type];
   return !!typeCodes && typeCodes[codec.slice(0, 4)] === true;
 }
-function isCodecSupportedInmuse4(codec, type) {
-  return MediaSource.isTypeSupported((type || 'video') + "/muse4;codecs=\"" + codec + "\"");
+function isCodecSupportedInmp4(codec, type) {
+  return MediaSource.isTypeSupported((type || 'video') + "/mp4;codecs=\"" + codec + "\"");
 }
 
 /***/ }),
@@ -25301,7 +25301,7 @@ var FetchError = /*#__PURE__*/function (_Error) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "IMSC1_CODEC", function() { return IMSC1_CODEC; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "parseIMSC1", function() { return parseIMSC1; });
-/* harmony import */ var _muse4_tools__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./muse4-tools */ "./src/utils/muse4-tools.ts");
+/* harmony import */ var _mp4_tools__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./mp4-tools */ "./src/utils/mp4-tools.ts");
 /* harmony import */ var _vttparser__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./vttparser */ "./src/utils/vttparser.ts");
 /* harmony import */ var _vttcue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./vttcue */ "./src/utils/vttcue.ts");
 /* harmony import */ var _demux_id3__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../demux/id3 */ "./src/demux/id3.ts");
@@ -25328,7 +25328,7 @@ var textAlignToLineAlign = {
   end: 'end'
 };
 function parseIMSC1(payload, initPTS, timescale, callBack, errorCallBack) {
-  var results = Object(_muse4_tools__WEBPACK_IMPORTED_MODULE_0__["findBox"])(new Uint8Array(payload), ['mdat']);
+  var results = Object(_mp4_tools__WEBPACK_IMPORTED_MODULE_0__["findBox"])(new Uint8Array(payload), ['mdat']);
 
   if (results.length === 0) {
     errorCallBack(new Error('Could not parse IMSC1 mdat'));
@@ -25665,9 +25665,9 @@ function getMediaSource() {
 
 /***/ }),
 
-/***/ "./src/utils/muse4-tools.ts":
+/***/ "./src/utils/mp4-tools.ts":
 /*!********************************!*\
-  !*** ./src/utils/muse4-tools.ts ***!
+  !*** ./src/utils/mp4-tools.ts ***!
   \********************************/
 /*! exports provided: bin2str, readUint16, readUint32, writeUint32, findBox, parseSegmentIndex, parseInitSegment, getStartDTS, getDuration, computeRawDurationFromSamples, offsetStartDTS, segmentValidRange, appendUint8Array */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -25860,14 +25860,14 @@ function parseSegmentIndex(initSegment) {
   };
 }
 /**
- * Parses an muse4 initialization segment and extracts stream type and
+ * Parses an mp4 initialization segment and extracts stream type and
  * timescale values for any declared tracks. Timescale values indicate the
  * number of clock ticks per second to assume for time-based values
- * elsewhere in the muse4.
+ * elsewhere in the mp4.
  *
- * To determine the start time of an muse4, you need two pieces of
+ * To determine the start time of an mp4, you need two pieces of
  * information: the timescale unit and the earliest base media decode
- * time. Multiple timescales can be specified within an muse4 but the
+ * time. Multiple timescales can be specified within an mp4 but the
  * base media decode time is always expressed in the timescale from
  * the media header box for the track:
  * ```
@@ -25918,7 +25918,7 @@ function parseInitSegment(initSegment) {
               // stsd.start += 8;
               // const codecBox = findBox(stsd, [codec])[0];
               // if (codecBox) {
-              //   TODO: Codec parsing support for avc1, muse4a, hevc, av01...
+              //   TODO: Codec parsing support for avc1, mp4a, hevc, av01...
               // }
             }
 
@@ -25952,7 +25952,7 @@ function parseInitSegment(initSegment) {
   return result;
 }
 /**
- * Determine the base media decode start time, in seconds, for an muse4
+ * Determine the base media decode start time, in seconds, for an mp4
  * fragment. If multiple fragments are specified, the earliest time is
  * returned.
  *
@@ -25964,14 +25964,14 @@ function parseInitSegment(initSegment) {
  * It requires the timescale value from the mdhd to interpret.
  *
  * @param initData {InitData} a hash of track type to timescale values
- * @param fmuse4 {Uint8Array} the bytes of the muse4 fragment
+ * @param fmp4 {Uint8Array} the bytes of the mp4 fragment
  * @return {number} the earliest base media decode start time for the
  * fragment, in seconds
  */
 
-function getStartDTS(initData, fmuse4) {
+function getStartDTS(initData, fmp4) {
   // we need info from two children of each track fragment box
-  return findBox(fmuse4, ['moof', 'traf']).reduce(function (result, traf) {
+  return findBox(fmp4, ['moof', 'traf']).reduce(function (result, traf) {
     var tfdt = findBox(traf, ['tfdt'])[0];
     var version = tfdt.data[tfdt.start];
     var start = findBox(traf, ['tfhd']).reduce(function (result, tfhd) {
@@ -26160,8 +26160,8 @@ function computeRawDurationFromSamples(trun) {
 
   return duration;
 }
-function offsetStartDTS(initData, fmuse4, timeOffset) {
-  findBox(fmuse4, ['moof', 'traf']).forEach(function (traf) {
+function offsetStartDTS(initData, fmp4, timeOffset) {
+  findBox(fmp4, ['moof', 'traf']).forEach(function (traf) {
     findBox(traf, ['tfhd']).forEach(function (tfhd) {
       // get the track id from the tfhd
       var id = readUint32(tfhd, 4);
@@ -27386,7 +27386,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _vttparser__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./vttparser */ "./src/utils/vttparser.ts");
 /* harmony import */ var _demux_id3__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../demux/id3 */ "./src/demux/id3.ts");
 /* harmony import */ var _timescale_conversion__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./timescale-conversion */ "./src/utils/timescale-conversion.ts");
-/* harmony import */ var _remux_muse4_remuxer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../remux/muse4-remuxer */ "./src/remux/muse4-remuxer.ts");
+/* harmony import */ var _remux_mp4_remuxer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../remux/mp4-remuxer */ "./src/remux/mp4-remuxer.ts");
 
 
 
@@ -27501,7 +27501,7 @@ function parseWebVTT(vttByteArray, initPTS, timescale, vttCCs, cc, timeOffset, c
 
     if (timestampMap) {
       var duration = cue.endTime - cue.startTime;
-      var startTime = Object(_remux_muse4_remuxer__WEBPACK_IMPORTED_MODULE_4__["normalizePts"])((cue.startTime + cueOffset - timestampMapLOCAL) * 90000, timeOffset * 90000) / 90000;
+      var startTime = Object(_remux_mp4_remuxer__WEBPACK_IMPORTED_MODULE_4__["normalizePts"])((cue.startTime + cueOffset - timestampMapLOCAL) * 90000, timeOffset * 90000) / 90000;
       cue.startTime = startTime;
       cue.endTime = startTime + duration;
     } //trim trailing webvtt block whitespaces

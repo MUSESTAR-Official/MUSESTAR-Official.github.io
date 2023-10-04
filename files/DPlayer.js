@@ -3504,7 +3504,7 @@
                                     return t.container.classList.remove("dplayer-loading")
                                 }), {once: !0}), p.add(d, (function (n) {
                                     n.files.find((function (n) {
-                                        return n.name.endsWith(".muse4")
+                                        return n.name.endsWith(".mp4")
                                     })).renderTo(t.video, {autoplay: t.options.autoplay, controls: !1})
                                 })), this.events.on("destroy", (function () {
                                     p.remove(d), p.destroy(), delete t.plugins.webtorrent
