@@ -51,7 +51,7 @@ document.write("                                        <\/div>");
 document.write("                                    <\/div>");
 document.write("                                    <div class=\"ranklist_txt\">");
 document.write("                                        <div class=\"pannel_head clearfix\">");
-document.write("                                            <span class=\"text_muted pull_right\">共10集<\/span>");
+document.write("                                            <span class=\"text_muted pull_right\"><\/span>");
 document.write("                                            <h4 class=\"title\">国民死刑投票<\/h4>");
 document.write("                                        <\/div>");
 document.write("                                        <p class=\"vodlist_sub\">2023-08-10<\/p>");
