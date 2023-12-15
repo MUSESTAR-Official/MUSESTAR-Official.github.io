@@ -71,6 +71,7 @@
 <body class="">
     <a href="https://www.musestar.cc/oldani"> </a>
     <a href="https://www.musestar.cc/oldmov"> </a>
+    <a href="https://icp.gov.moe/?keyword=20226956"> </a>
     <!-- BG --> 
 <div>
     <style> 
@@ -80,12 +81,38 @@
           background-attachment:fixed;        /* 当内容高度大于图片高度时，背景图像的位置相对于viewport固定 */     
           background-color:#CCCCCC;   /* 设置背景颜色，背景图加载过程中会显示背景色 */
         }
+
+
+.xuhua
+{
+    /*设置布局*/
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*设置card的大小*/
+    width: 1080px;
+    height:700px;
+
+    /*设置阴影*/
+    box-shadow: 20px 20px 50px rgba(0,0,0,0.5);
+    /*设置圆角*/
+    border-radius:15px;
+    /*设置上边界和左边界亮纹，使card有一种层次感*/
+    border-top: 1px solid rgba(255,255,255,0.5);
+    border-left: 1px solid rgba(255,255,255,0.5);
+
+    /*设置背景样式*/
+    background: rgba(255,255,255,0.1);
+    /*让透过card的底部元素模糊化,达到毛玻璃效果*/
+    backdrop-filter: blur(5px);
+}
        </style>
 </div>
 <!-- Wrapper --> 
-<div id="wrapper">
+<div id="wrapper" >
 <!-- Header --> 
-    <header id="header"> 
+    <header id="header" class="xuhua"> 
         <div class="logo"> 
             <img src="https://dlink.host/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBZ1hsWVR6S1JLMDBpVnljUXdmWENUa2lncjJWP2U9VTRxU2FH.jpg" class="logo"> 
         </div> 
@@ -105,9 +132,9 @@
         </nav>
     </header>
     <!-- Footer --> 
-    <footer id="footer"> 
-        <p class="copyright">© 2023 MirlKoi</p>
-        <script type="text/javascript" src="https://www.musestar.cc/files/under.js"></script>
+    <footer id="footer" > 
+        <p class="copyright">© 2023 MUSESTAR</p>
+        <p class="copyright">本页设计 © 2023 MirlKoi</p>
     </footer> 
 </div>
 <!-- Scripts --> 
