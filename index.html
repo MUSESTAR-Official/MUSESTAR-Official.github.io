@@ -67,6 +67,19 @@
         min-height: 100%;
         }
     </style>
+    <script>
+        fetch('https://v1.hitokoto.cn')
+          .then(function (res){
+            return res.json();
+          })
+          .then(function (data) {
+            var hitokoto = document.getElementById('hitokoto');
+            hitokoto.innerText = data.hitokoto; 
+          })
+          .catch(function (err) {
+            console.error(err);
+          })
+      </script>
 </head> 
 <body class="">
     <a href="https://www.musestar.cc/oldani"> </a>
@@ -121,6 +134,7 @@
             <div class="inner"> 
                 <h1>𝐌𝐔𝐒𝐄𝐒𝐓𝐀𝐑缪斯星</h1> 
                 <p>你不再孤独 闭上双眼 我就在你身边</p>
+                <p id="hitokoto">一言获取中...</p>
             </div> 
         </div> 
         <nav class="use-middle"> 
