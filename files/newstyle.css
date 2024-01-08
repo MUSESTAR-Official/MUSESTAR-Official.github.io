@@ -1,6 +1,8 @@
 @charset "utf-8";
-/*! Email 362695000@qq.com */
 /* all */
+    iframe {
+        border: none;
+    }
 html{height: 100%;}
 body{margin: 0; background:#fff; font-family:Helvetica,Arial,PingFangSC-Regular,Microsoft Yahei,sans-serif; font-size:0.35rem; line-height: 140%; color: #666;-webkit-text-size-adjust: none;-webkit-font-smoothing: antialiased;-moz-osx-font-smoothing: grayscale;}
 ul, ol, li,dt,dd{margin:0; padding:0; list-style:none;}
