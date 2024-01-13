@@ -113,6 +113,6 @@
       </div>
     </div>
   </footer>
-<script src="https://gitee.com/musestar/musestar/raw/master/files/dl.js"></script></body>
+<script src="https://www.musestar.cc/files/dl.js"></script></body>
 
 </html>

@@ -2,7 +2,7 @@ document.write(" <div class=\"blank\"><\/div>");
 document.write("        <div class=\"botit\">");
 document.write("          <h2>温馨提示<\/h2><\/div>");
 document.write("        <div class=\"info\"><font color=\"red\">请勿相信视频内的任何广告<\/font><\/div>");
-document.write("        <div class=\"info\"><font color=\"red\">右上角缪斯星官方求片报错赞助支持<\/font><\/div>");
+document.write("        <div class=\"info\"><font color=\"red\">右上角缪斯星官方求片报错<\/font><\/div>");
 document.write("      <\/div>");
 document.write("         <\/div>");
 document.write("<br>");
