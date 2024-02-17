@@ -24506,7 +24506,7 @@ var sampleEntryCodesISO = {
     twos: true,
     ulaw: true
   },
-  video: {
+  video: {pic: 'https://dlink.host/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBZ1hsWVR6S1JLMDBsRXJDeDZ5M2ZsbGY4OEpTP2U9STJmWFZF.jpg',
     avc1: true,
     avc2: true,
     avc3: true,

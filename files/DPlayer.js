@@ -1638,7 +1638,7 @@
                         tran: this.tran,
                         icons: En,
                         mobile: z.isMobile,
-                        video: {
+                        video: {pic: 'https://dlink.host/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBZ1hsWVR6S1JLMDBsRXJDeDZ5M2ZsbGY4OEpTP2U9STJmWFZF.jpg',
                             current: !0,
                             pic: this.options.video.pic,
                             screenshot: this.options.screenshot,
@@ -3336,7 +3336,7 @@
                         volume: .7,
                         playbackSpeed: [.5, .75, 1, 1.25, 1.5, 2],
                         apiBackend: T,
-                        video: {},
+                        video: {pic: 'https://dlink.host/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBZ1hsWVR6S1JLMDBsRXJDeDZ5M2ZsbGY4OEpTP2U9STJmWFZF.jpg',},
                         contextmenu: [],
                         mutex: !0,
                         pluginOptions: {hls: {}, flv: {}, dash: {}, webtorrent: {}},
