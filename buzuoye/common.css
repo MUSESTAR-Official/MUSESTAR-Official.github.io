@@ -1,0 +1,62 @@
+.div_btn a{color:#fff;text-decoration:none;}
+.div_btn {
+	position: fixed;
+	cursor: pointer;
+	width: 42px;
+	height: 42px;
+	border: 2px solid #fff;
+	border-radius: 50%;
+	font-size: 1em;
+	line-height: 40px;
+	text-align: center;
+	z-index: 999
+}
+#btn-make {
+	bottom: 140px;/*180*/
+	right: 30px;
+	background-color: rgba(0,0,0,.3)
+}
+#div_wph{bottom: 20px;right:30px;border: 0;}
+#div_support {
+	bottom: 80px;/*120*/
+	right: 30px;
+	background-color: rgba(0,0,0,.3)
+}
+
+#action .btn {
+	font-size: 1.2rem;
+	background-color: #2196f3;
+}
+#btn-make a,#div_support a,#div_wph a{text-shadow: 1px 1px 1px #000;}
+
+/*
+  å°ç¨‹åºæ ·å¼
+*/
+#action-make .btn-return {
+	float: left;
+	color: #000;
+	border-radius: 0 25px 25px 0;
+	background-color: #2196f3;
+	padding: 0.8rem 2.4rem 0.8rem 2.4rem;
+	color: #fff;
+	box-shadow: 0.2rem 0 0.2rem #888888;
+}
+
+#action-make .btn-make {
+	float: right;
+	color: #000;
+	border-radius: 25px 0 0 25px;
+	background-color: #2196f3;
+	padding: 0.8rem 1.5rem 0.8rem 1.5rem;
+	color: #fff;
+	box-shadow: 0 0.2rem 0.2rem #888888;
+}
+
+#action-make {
+    bottom: 3rem;
+    position: fixed;
+    width: 100%;
+    height: 80px;
+    z-index: 99999;
+    text-align: center;
+}
