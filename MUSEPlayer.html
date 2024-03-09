@@ -68,7 +68,6 @@
     <meta name='keywords' content='MUSEPlayer,播放器,在线观看,高清,下载,缪斯星,MUSESTAR'>
     <meta name="description" content="MUSEPlayer">
     <script src="https://www.musestar.cc/files/hls.js"></script>
-    <script src="./files/DPlayer.js"></script>
     <script>
         function getQueryVariable(variable) {
             let query = window.location.search.substring(1);
@@ -85,25 +84,52 @@
     </script>
 </head>
 <body>
-<div id="dplayer">
+
+    <script src="./files/ArtPlayer.js"></script>
+    <style>
+        .artplayer-app {
+            aspect-ratio: 16/9;
+        }
+        </style>
+    <div class="artplayer-app">
     <script>
-        var dp = new DPlayer({
-            container: document.getElementById('dplayer'),
-            airplay: true,
-            preload: 'auto',
-            logo: 'https://s1.imagehub.cc/images/2024/01/14/a0174399c39f9ba1cb0b59911c11afe7.png',
-            autoplay: true,
-            volume: 1.0,
-            video: {pic: 'https://s1.imagehub.cc/images/2024/03/09/2eb0a83839ae4a57e4260d61c3c12804.png',
+var art = new Artplayer({
+    container: '.artplayer-app', 
+    poster: 'https://s1.imagehub.cc/images/2024/03/09/2eb0a83839ae4a57e4260d61c3c12804.png',
+    url: videoR,
+    quality: [
+        {
+            default: true,
+            html: '缪斯星播放源',
+            url: videoR,
+        },
+        {
+            html: '播放源',
+            url: videoR,
+        },
+    ],
+    volume: 1,
+    autoplay: true,
+    autoSize: true,
+    autoMini: true,
+    setting: true,
+    flip: true,
+    playbackRate: true,
+    aspectRatio: true,
+    screenshot: true,
+    hotkey: true,
+    pip: true,
+    fullscreen: true,
+    fullscreenWeb: true,
+    miniProgressBar: true,
+    lock: true,
+    fastForward: true,
+    airplay: true,
+});
 
-                        url: videoR,
-
-                defaultQuality: 0,
-            },
-
-        });
     </script>
-</div>
+    </div>
+
 <div style="text-align: center;">
 <h2>MUSEPlayer vsrc</h2>
 <img height="150" src="https://s1.imagehub.cc/images/2024/01/13/d0469ae970a9dac3b9e56aa223193e34.png"><br>
