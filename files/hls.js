@@ -24506,7 +24506,7 @@ var sampleEntryCodesISO = {
     twos: true,
     ulaw: true
   },
-  video: {pic: 'https://s1.imagehub.cc/images/2024/03/09/02711cf0ff530abac96b43091b8e2183.png',
+  video: {pic: 'https://s1.imagehub.cc/images/2024/03/17/33615c30d4fbc1455385bb41120a0ddb.png',
     avc1: true,
     avc2: true,
     avc3: true,
