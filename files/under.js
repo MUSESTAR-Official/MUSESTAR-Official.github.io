@@ -4,7 +4,7 @@ document.write("        <div class=\"footbg\">");
 document.write("           <a href=\" https:\/\/www.musestar.cc\/main\">© 2024 MUSESTAR<\/a><br>");
 document.write("           <a href=\" https:\/\/www.musestar.cc\/main\">© 2024 LycoriXradiaTa<\/a><br>");
 document.write("<a href=\"https:\/\/icp.gov.moe\/?keyword=20226956\" target=\"_blank\">萌ICP备20226956号<\/a><br>");
-document.write("<a>本站已坚持 <span class=\"brand\" id=\"runtime\"><\/span><\/a><br>");
+document.write("<a>本站已运行 <span class=\"brand\" id=\"runtime\"><\/span><\/a><br>");
 document.write("<a id=\"hitokoto\">一言获取中...<\/a>");
 document.write("<script type=\"text\/javascript\">");
 document.write("	function show_runtime(){");
