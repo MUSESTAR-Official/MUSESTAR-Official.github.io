@@ -47,111 +47,148 @@
 ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
 ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
 -->
-<html>
-<head>
-    <!-- Clarity tracking code for https://www.musestar.cc/ -->
-    <script>    (function (c, l, a, r, i, t, y) {
-        c[a] = c[a] || function () {
-            (c[a].q = c[a].q || []).push(arguments)
-        };
-        t = l.createElement(r);
-        t.async = 1;
-        t.src = "https://www.clarity.ms/tag/" + i + "?ref=bwt";
-        y = l.getElementsByTagName(r)[0];
-        y.parentNode.insertBefore(t, y);
-    })(window, document, "clarity", "script", "fvlvixulu7");</script>
-    <meta name="referrer" content="no-referrer">
-    <meta charset="UTF-8">
-    <meta name="referrer" content="no-referrer">
-    <title>MUSEPlayerฅ^≧ω≦^ฅ缪斯星</title>
-    <link rel="shortcut icon" href="https://www.musestar.cc/favicon.ico">
-    <meta name='keywords' content='MUSEPlayer,播放器,在线观看,高清,下载,缪斯星,MUSESTAR'>
-    <meta name="description" content="MUSEPlayer">
-    <script src="https://www.musestar.cc/files/hls.js"></script>
-    <script>
-        function getQueryVariable(variable) {
-            let query = window.location.search.substring(1);
-            let vars = query.split("&");
-            for (let i = 0; i < vars.length; i++) {
-                let pair = vars[i].split("=");
-                if (pair[0] === variable) {
-                    return pair[1];
-                }
-            }
-            return false;
-        }
-        let videoR = getQueryVariable('vsrc');
-    </script>
-</head>
-<body>
-
-    <script src="./files/ArtPlayer.js"></script>
+<html lang="zh">
+    <head>
+    <!-- Clarity tracking code for https://www.musestar.cc/ --><script>    (function(c,l,a,r,i,t,y){        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i+"?ref=bwt";        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);    })(window, document, "clarity", "script", "fvlvixulu7");</script><meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>MUSEArtPlayerฅ^≧ω≦^ฅ缪斯星</title>
+    <link rel="icon" href="https://www.musestar.cc/favicon.ico" type="image/gif" sizes="16x16">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta name="keywords" content="MUSEArtPlayer,在线观看,高清,下载,缪斯星,MUSESTAR">
+    <meta name="description" content="MUSEArtPlayer">    
+    <!-- CSS Files -->
+    <link href="https://www.musestar.cc/files/maobootstrap.min.css" rel="stylesheet" type="text/css" id="bootstrap">
+    <link href="https://www.musestar.cc/files/maoplugins.css" rel="stylesheet" type="text/css">
+    <link href="https://www.musestar.cc/files/maostyle.css" rel="stylesheet" type="text/css">
     <style>
-        .artplayer-app {
-            aspect-ratio: 16/9;
+        :root {
+            --primary-color: #CF1F1F;
+            --primary-color-rgb: 207, 31, 31;
         }
-        </style>
-    <div class="artplayer-app">
-    <script>
-        
-var art = new Artplayer({
-    container: '.artplayer-app', 
-    poster: 'https://s1.imagehub.cc/images/2024/05/05/d50cb284e4b5d4f4710c09b8776c5525.jpeg',
-    url: videoR,
-    quality: [
-        {
-            default: true,
-            html: '源1',
-            url: videoR,
-        },
-        {
-            html: '源2',
-            url: videoR,
-        },
-    ],
-    volume: 1,
-    autoplay: true,
-    autoSize: true,
-    autoMini: true,
-    setting: true,
-    flip: true,
-    playbackRate: true,
-    aspectRatio: true,
-    hotkey: true,
-    fullscreen: true,
-    fullscreenWeb: true,
-    miniProgressBar: true,
-    lock: true,
-    fastForward: true,
-    customType: {
-        m3u8: playM3u8,
-    },
-});
-function playM3u8(video, url, art) {
-    if (Hls.isSupported()) {
-        if (art.hls) art.hls.destroy();
-        const hls = new Hls();
-        hls.loadSource(url);
-        hls.attachMedia(video);
-        art.hls = hls;
-        art.on('destroy', () => hls.destroy());
-    } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-        video.src = url;
-    } else {
-        art.notice.show = 'Unsupported playback format: m3u8';
-    }
-}
-art.on('ready', () => {
-    console.info(art.hls);
-});
-    </script>
-    </div>
+    </style>
+        <script src="https://www.musestar.cc/files/hls.js"></script>
+        <script>
+            function getQueryVariable(variable) {
+                let query = window.location.search.substring(1);
+                let vars = query.split("&");
+                for (let i = 0; i < vars.length; i++) {
+                    let pair = vars[i].split("=");
+                    if (pair[0] === variable) {
+                        return pair[1];
+                    }
+                }
+                return false;
+            }
+            let videoR = getQueryVariable('museurl');
+        </script>
+    </head>
+    
+</head>
 
-<div style="text-align: center;">
-<h2>MUSEPlayer vsrc</h2>
-<img height="150" src="https://s1.imagehub.cc/images/2024/01/13/d0469ae970a9dac3b9e56aa223193e34.png"><br>
-<img width=350 src="https://moe-counter.anjiurine.top/get/@musestar?theme=rule34" alt="musestar">
-<script type="text/javascript" src="https://www.musestar.cc/files/under.js"></script>
-</div>
-</body>
-</html>
+<body class="onepage dark-scheme" style="background-size: cover;">
+    <div id="wrapper" style="background-size: cover;">
+            <section aria-label="section" class="jarallax no-top no-bottom text-light" style="z-index: 0; background-size: cover;">
+                <div class="v-center" style="background-size: cover;">
+                    <div class="container" style="background-size: cover;">
+                        <script src="https://www.musestar.cc/files/ArtPlayer.js"></script>
+                        <style>
+                            .artplayer-app {
+                                aspect-ratio: 16/9;
+                            }
+                            </style>
+    <div class="artplayer-app">
+        <h2><font color="red">播放器未加载，地址muserul值错误</font></h2>
+        <script>
+            
+    var art = new Artplayer({
+        container: '.artplayer-app', 
+        poster: 'https://s1.imagehub.cc/images/2024/05/05/d50cb284e4b5d4f4710c09b8776c5525.jpeg',
+        url: videoR,
+        quality: [
+            {
+                default: true,
+                html: 'MUSEArtPlayer',
+                url: videoR,
+            },
+        ],
+        volume: 1,
+        autoplay: true,
+        autoSize: true,
+        autoMini: true,
+        setting: true,
+        flip: true,
+        playbackRate: true,
+        aspectRatio: true,
+        hotkey: true,
+        fullscreen: true,
+        fullscreenWeb: true,
+        miniProgressBar: true,
+        lock: true,
+        fastForward: true,
+        customType: {
+            m3u8: playM3u8,
+        },
+    });
+    function playM3u8(video, url, art) {
+        if (Hls.isSupported()) {
+            if (art.hls) art.hls.destroy();
+            const hls = new Hls();
+            hls.loadSource(url);
+            hls.attachMedia(video);
+            art.hls = hls;
+            art.on('destroy', () => hls.destroy());
+        } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+            video.src = url;
+        } else {
+            art.notice.show = 'Unsupported playback format: m3u8';
+        }
+    }
+    art.on('ready', () => {
+        console.info(art.hls);
+    });
+        </script>
+        </div>
+                        </div>
+                </div>
+            <div id="jarallax-container-0" style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; overflow: hidden; z-index: -100; clip-path: polygon(0px 0px, 100% 0px, 100% 100%, 0px 100%); background-size: cover;">
+                <img src="https://s1.imagehub.cc/images/2024/05/18/4bcf6c86043b519c979d903bd1e4630c.jpeg" class="jarallax-img" alt="" style="object-fit: cover; object-position: 50% 50%; max-width: none; position: absolute; top: 0px; left: 0px; width: 2079px; height: 1177px; overflow: hidden; pointer-events: none; transform-style: preserve-3d; backface-visibility: hidden; will-change: transform, opacity; margin-top: 0px; transform: translate3d(0px, 0px, 0px);"></div></section>
+        </div><br><br><br>
+        <div class="col-md-12 text-center wow fadeInUp animated" style="background-size: cover; visibility: visible; animation-name: fadeInUp;">
+            <div id="logo" style="background-size: cover;">
+        </div>
+            <h2>MUSEArtPlayer</h2>
+            <div class="space-border" style="background-size: cover;"></div>
+        </div>
+        <div style="text-align: center;">
+            <ul class="list_location wow fadeInUp animated" data-wow-delay=".8s" style="visibility: visible; animation-delay: 0.8s; animation-name: fadeInUp;">
+                <li><a class="btn btn-dark" href="https://www.musestar.cc/">缪斯星首页</a></li>
+                <li><a class="btn btn-dark" href="https://www.musestar.cc/animation">缪斯星动漫</a></li>
+                <li><a class="btn btn-dark" href="https://www.musestar.cc/movie">缪斯星影视</a></li>
+                <li><a class="btn btn-dark" href="http://search.musestar.cc/">缪斯星搜索</a></li>
+                <li><a class="btn btn-danger" href="http://www.musestar.cc/musestar">缪斯星官方</a></li>
+                </ul>
+                <a href="https://qm.qq.com/cgi-bin/qm/qr?_wv=1027&amp;k=azWBZtjkxoIKJMdnPEnG5nGjvEWS5naB"><img src="https://s1.imagehub.cc/images/2024/05/05/b5249501f40dea6208c06a82afb499dd.jpeg" width="auto" height="400"></a>
+            </div><br>
+    <div class="space-border" style="background-size: cover;"></div>
+    <div style="text-align: center;">
+        <a class="btn btn-dark" href="https://www.musestar.cn/index.php/29/dhelp/" target="_blank">下载帮助</a>
+        <br><br><img height="150" src="https://s1.imagehub.cc/images/2024/01/13/d0469ae970a9dac3b9e56aa223193e34.png"><br>
+        <img width=350 src="https://moe-counter.anjiurine.top/get/@musestar?theme=rule34" alt="musestar">
+    </div><br>
+        <!-- footer begin -->
+        <footer>
+            <div class="container" style="background-size: cover;">
+                <div class="row" style="background-size: cover;">
+                    <div class="col-md-6" style="background-size: cover;">
+                        <a href="https://www.musestar.cc/musestar"><font color="red">请勿相信视频内的任何广告！点击缪斯星官方求片报错、赞助支持、加入交流群</font></a>
+                            <script type="text/javascript" src="https://www.musestar.cc/files/under.js"></script>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- footer close -->
+    </div>
+	</div></div></div></div>
+    <script src="https://www.musestar.cc/files/maoplugins.js"></script>
+    <script src="https://www.musestar.cc/files/maodesignesia.js"></script>
+<script src="https://www.musestar.cc/files/dl.js"></script></body></html>
