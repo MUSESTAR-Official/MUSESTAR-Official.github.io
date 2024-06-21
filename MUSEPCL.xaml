@@ -13,7 +13,9 @@
 		            Logo="pack://application:,,,/images/Blocks/Grass.png" Title="6.21新增mods下载" Info="mods数量不足可能会导致无法进入服务器"
 		            EventType="打开网页" EventData="https://dlink.host/1drv/aHR0cHM6Ly8xZHJ2Lm1zL3UvcyFBZ1hsWVR6S1JLMDBtR3hUYTY4OEtmUUJKUHE0P2U9TGFXTnJm.zip" Type="Clickable" />
         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                    Text="截至2024.6.21，缪斯星服务器共需mods58个"/>
+                    Text="截至2024.6.21，缪斯星服务器共需mods57个"/>
+        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
+                    Text="老玩家请将 [传送命令tpmaster-1.0.2.jar] 模组删除"/>
         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" Text=""/>
 
         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
