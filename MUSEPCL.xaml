@@ -1,0 +1,22 @@
+﻿<local:MyCard Title="MUSESTAR PCL II 公告" Margin="0,0,0,15" CanSwap="True" IsSwaped="True">
+	<StackPanel Margin="25,40,23,15">
+		<local:MyListItem  Margin="-5,2,-5,8"
+		            Logo="https://www.musestar.cc/favicon.ico" Title="MUSESTAR缪斯星" Info="MUSESTAR缪斯星官方网站"
+		            EventType="打开网页" EventData="https://www.musestar.cc/" Type="Clickable" />
+        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
+                    Text="未安装Java可使用本压缩包内 [Java19.exe] 安装"/>
+        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
+                    Text="部分教程详见本压缩包内 [部分模组教程合集.txt]"/>
+        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" Text=""/>
+
+		<local:MyListItem  Margin="-5,2,-5,8"
+		            Logo="pack://application:,,,/images/Blocks/Grass.png" Title="6.21新增mods下载" Info="mods数量不足可能会导致无法进入服务器"
+		            EventType="打开网页" EventData="https://dlink.host/1drv/aHR0cHM6Ly8xZHJ2Lm1zL3UvcyFBZ1hsWVR6S1JLMDBtR3hUYTY4OEtmUUJKUHE0P2U9TGFXTnJm.zip" Type="Clickable" />
+        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
+                    Text="截至2024.6.21，缪斯星服务器共需mods58个"/>
+        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" Text=""/>
+
+        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
+                    Text="本公告自动联网更新，请每次打开启动器时查阅" />
+	</StackPanel>
+</local:MyCard>
