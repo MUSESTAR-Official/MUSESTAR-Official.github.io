@@ -74,7 +74,6 @@
             <section aria-label="section" class="jarallax no-top no-bottom text-light" style="z-index: 0; background-size: cover;">
                 <div class="v-center" style="background-size: cover;">
                     <div class="container" style="background-size: cover;">
-                        <h2><font color="red">本集缪斯星暂未上映，若其他网站已上映可暂时使用第三方播放源观看</font></h2>
                         <script src="https://www.musestar.cc/files/ArtPlayer.js"></script>
                         <style>
                             .artplayer-app {
@@ -89,8 +88,12 @@
                         url: '视频链接',
                         quality: [
                             {
-                                default: true,
                                 html: 'MUSE源',
+                                url: '视频链接',
+                            },
+                            {
+                                default: true,
+                                html: 'JS源',
                                 url: '视频链接',
                             },
                         ],
