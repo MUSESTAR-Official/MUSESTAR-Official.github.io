@@ -1,0 +1,11 @@
+{
+  "name": "musestar",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/MUSESTAR-Official/MUSESTAR-Official.github.io.git",
+  "author": "MUSESTAR-Official",
+  "license": "MIT",
+  "dependencies": {
+    "prettier": "^3.3.3"
+  }
+}
