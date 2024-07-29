@@ -113,6 +113,6 @@
       </div>
     </div>
   </footer>
-<script src="/files/dl.js"></script></body>
+</body>
 
 </html>

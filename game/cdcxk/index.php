@@ -106,6 +106,6 @@
     </div>
 
     <script src="./static/index.js"></script>
-<script src="/files/dl.js"></script></body>
+</body>
 
 </html>
