@@ -1,8 +1,8 @@
 ﻿<local:MyCard Title="MUSESTAR PCL II 公告" Margin="0,0,0,15" CanSwap="True" IsSwaped="True">
 	<StackPanel Margin="25,40,23,15">
 		<local:MyListItem  Margin="-5,2,-5,8"
-		            Logo="https://www.musestar.cc/favicon.ico" Title="MUSESTAR缪斯星" Info="MUSESTAR缪斯星官方网站"
-		            EventType="打开网页" EventData="https://www.musestar.cc/" Type="Clickable" />
+		            Logo="/favicon.ico" Title="MUSESTAR缪斯星" Info="MUSESTAR缪斯星官方网站"
+		            EventType="打开网页" EventData="https://musestar.cc/" Type="Clickable" />
         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
                     Text="未安装Java可使用本压缩包内 [Java19.exe] 安装"/>
         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"

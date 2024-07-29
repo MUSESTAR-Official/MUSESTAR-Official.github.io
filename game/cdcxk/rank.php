@@ -113,6 +113,6 @@
       </div>
     </div>
   </footer>
-<script src="https://www.musestar.cc/files/dl.js"></script></body>
+</body>
 
 </html>
