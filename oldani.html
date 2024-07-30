@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<!--
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇─────▇▇▇▇▇▇▇▇▇▇────────▇▇▇▇───────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───────────────▇▇▇▇▇▇▇▇▇
+▇▇▇▇─────▇▇▇▇▇▇▇▇▇▇─────▇▇▇▇▇▇▇▇▇▇▇▇──────▇▇▇▇▇──────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───────────────▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇─────▇▇▇─────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇────▇▇▇▇▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────▇▇▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇────▇▇▇▇▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇─────▇▇▇▇▇▇─────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇─▇▇─▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇─────▇▇▇▇▇▇──▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇──────▇▇▇▇───▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇─────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇──▇───▇▇▇▇──▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──────────▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇──▇────▇▇▇──▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──────────▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇──▇▇───▇▇───▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇─────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇──▇▇───▇▇──▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇─▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇──▇▇▇──────▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇─▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇──▇▇▇─────▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇─▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇──▇▇▇▇────▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇──▇▇▇▇───▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────▇▇▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇
+▇▇▇▇▇───▇▇▇▇▇──▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇─────────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──────────────▇▇▇▇▇▇▇▇
+▇▇▇▇──────▇▇▇─▇▇▇────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇─────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────────────────▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇▇▇───────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──────────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇─────────────▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇▇────────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───────────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇─────────────▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇─────▇▇▇─────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────▇▇▇──▇▇─────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇────▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇────▇▇▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇──▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇──▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇─────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇────▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇─▇▇▇▇▇▇──▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇────▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇────▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇─────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇────▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇▇────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────────────▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇▇▇▇────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──────────▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇─────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇──────▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇  ▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇──▇▇─▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇────▇▇▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇─────▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇─────────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────▇▇▇▇▇▇▇▇─────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────▇▇▇▇▇▇─────▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇────────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──────▇▇▇▇▇▇───────▇▇▇▇▇▇▇▇▇▇▇▇────────▇▇▇▇────▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
+-->
+<html>
+<head>
+    <!-- Clarity tracking code for https://musestar.cc/ -->
+    <script>    (function (c, l, a, r, i, t, y) {
+        c[a] = c[a] || function () {
+            (c[a].q = c[a].q || []).push(arguments)
+        };
+        t = l.createElement(r);
+        t.async = 1;
+        t.src = "https://www.clarity.ms/tag/" + i + "?ref=bwt";
+        y = l.getElementsByTagName(r)[0];
+        y.parentNode.insertBefore(t, y);
+    })(window, document, "clarity", "script", "fvlvixulu7");</script>
+    <meta charset="UTF-8">
+    <meta name="referrer" content="no-referrer">
+    <title>缪斯星动漫（索引版）ฅ^≧ω≦^ฅ好番来咯～</title>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <meta name='description'
+          content='𝐌𝐔𝐒𝐄𝐒𝐓𝐀𝐑缪斯星正在持续收集动漫番剧、电影、剧集等，给您免费播放网站中的最好体验！ฅ^≧ω≦^ฅ'>
+    <meta name='keywords' content='番剧,动漫,在线观看,高清,下载,缪斯星,MUSESTAR'>
+    <div id='wx_pic' style='margin:0 auto;display:none;'>
+        <img src='./files/thumbnail.jpg'>
+    </div>
+    <link rel="stylesheet" type="text/css" href="/files/newstyle.css">
+    <link rel="stylesheet" type="text/css" href="/files/newblue.css" name="skin">
+    <script src="/files/hls.js"></script>
+    <script src="https://cdn.cbd.int/dplayer@1.27.1/dist/DPlayer.min.js"></script>
+</head>
+<body>
+
+    <ul class="content_playlist clearfix">
+        <li><a href="https://musestar.cc/animation/makeine">败北女角太多了！</a></li>
+        <li><a href="https://musestar.cc/animation/shikanoko">鹿乃子乃子虎视眈眈</a></li>
+        <li><a href="https://musestar.cc/animation/oshinoko2">我推的孩子 第二季</a></li>
+        <li><a href="https://musestar.cc/animation/roshidere">不时轻声地以俄语遮羞的邻座艾莉同学</a></li>
+        <li><a href="https://musestar.cc/animation/DateALive5">约会大作战 第五季</a></li>
+        <li><a href="https://musestar.cc/animation/konosuba3">为美好的世界献上祝福！ 第三季</a></li>
+        <li><a href="https://musestar.cc/animation/yorukura">夜晚的水母不会游泳</a></li>
+        <li><a href="https://musestar.cc/animation/jisanbasan">老夫老妻重返青春</a></li>
+        <li><a href="https://musestar.cc/animation/eupho3">吹响吧上低音号 第三季</a></li>
+        <li><a href="https://musestar.cc/animation/bluearchive">蔚蓝档案</a></li>
+        <li><a href="https://musestar.cc/animation/mushokutensei2">无职转生Ⅱ Part2</a></li>
+        <li><a href="https://musestar.cc/animation/tensura3">关于我转生变成史莱姆这档事 第三季</a></li>
+        <li><a href="https://musestar.cc/animation/yurucamp3">摇曳露营△ 第三季</a></li>
+        <li><a href="https://musestar.cc/animation/sololeveling">我独自升级</a></li>
+        <li><a href="https://musestar.cc/animation/bokuyaba2">我心里危险的东西 第二季</a></li>
+        <li><a href="https://musestar.cc/animation/mashle2">物理魔法使马修 第二季</a></li>
+        <li><a href="https://musestar.cc/animation/aoex3">青之驱魔师 第三季</a></li>
+        <li><a href="https://musestar.cc/animation/youzitsu3">欢迎来到实力至上主义的教室 第三季</a></li>
+        <li><a href="https://musestar.cc/animation/mahoako">憧憬成为魔法少女</a></li>
+        <li><a href="https://musestar.cc/animation/MatoSeiheinoSlave">魔都精兵的奴隶</a></li>
+        <li><a href="https://musestar.cc/animation/adamkun">挣扎吧，亚当君</a></li>
+        <li><a href="https://musestar.cc/film/odekake">青春期猪头少年不会梦到娇怜外出妹</a></li>
+        <li><a href="https://musestar.cc/animation/jujutsukaisen">咒术回战第二季</a></li>
+        <li><a href="https://musestar.cc/animation/Arknights2">明日方舟：冬隐归路</a></li>
+        <li><a href="https://musestar.cc/film/knapsack">青春猪头少年不会梦到红书包女孩</a></li>
+        <li><a href="https://musestar.cc/film/AttackonTitan">进击的巨人 最终季 完结篇 后篇</a></li>
+        <li><a href="https://musestar.cc/animation/hoshitele">星灵感应</a></li>
+        <li><a href="https://musestar.cc/animation/PLUTO">冥王</a></li>
+        <li><a href="https://musestar.cc/animation/spyfamilys2">间谍过家家第二季</a></li>
+        <li><a href="https://musestar.cc/animation/hikikomari">家里蹲吸血姬的苦闷</a></li>
+        <li><a href="https://musestar.cc/animation/kimizero">经验丰富的你和经验为零的我交往的故事</a></li>
+        <li><a href="https://musestar.cc/animation/TheEminenceinShadow2">想要成为影之实力者！第二季</a></li>
+        <li><a href="https://musestar.cc/animation/umamusume3">赛马娘第三季</a></li>
+        <li><a href="https://musestar.cc/animation/16bitsensation">16bit的感动</a></li>
+        <li><a href="https://musestar.cc/animation/FrierenBeyondJourneysEnd">葬送的芙莉莲</a></li>
+        <li><a href="https://musestar.cc/animation/shiroseijyo">白圣女与黑牧师</a></li>
+        <li><a href="https://musestar.cc/animation/fate">命运/奇异赝品 黎明低语</a></li>
+        <li><a href="https://musestar.cc/animation/zom100">僵尸百分百</a></li>
+        <li><a href="https://musestar.cc/animation/mushokutensei">无职转生2</a></li>
+        <li><a href="https://musestar.cc/animation/ainoidenshi">AI电子基因</a></li>
+        <li><a href="https://musestar.cc/film/SwordArtOnlineK">刀剑神域进击篇：暮色黄昏</a></li>
+        <li><a href="https://musestar.cc/film/spyfamilycode">间谍过家家 代号：白</a></li>
+        <li><a href="https://musestar.cc/animation/IchigoProduction">我推的孩子</a></li>
+        <li><a href="https://musestar.cc/animation/SaikyouOnmyouji">最强阴阳师的异世界转生记</a></li>
+    </ul>
+
+<div>
+    <style>
+        body {
+            background: url("https://api.anosu.top/api/?sort=all") no-repeat center center; /*加载背景图*/ /* 背景图不平铺 */
+            background-size: cover; /* 让背景图基于容器大小伸缩 */
+            background-attachment: fixed; /* 当内容高度大于图片高度时，背景图像的位置相对于viewport固定 */
+            background-color: #CCCCCC; /* 设置背景颜色，背景图加载过程中会显示背景色 */
+        }
+    </style>
+</div>
+
+
+
+<div id="topnav" class="head_box">
+    <div class="header">
+        <div class="head_a">
+            <div class="head_menu_a hidden_xs hidden_mi">
+                <script type="text/javascript" src="./files/newanimationhead.js"></script>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="head_b">
+    <div class="pannel ads_all clearfix">
+        <div class="pannel clearfix">
+            <div class="pannel_head clearfix">
+                <h3 class="title">推荐观看</h3>
+            </div>
+            <ul class="vodlist clearfix">
+                <script type="text/javascript" src="/files/tjgk.js"></script>
+            </ul>
+        </div>
+        <!-- 列表图片 -->
+        <p align="center">
+                <a href="#">
+                    <mg width="750" height="auto"
+                        src="https://s1.imagehub.cc/images/2022/12/26/6170b842954e6cb64b4a0bc1d378af4e.jpeg">
+                </a>
+        </p>
+        <!-- 列表图片END -->
+    </div>
+    <div class="vod_row tit_up">
+        <div class="pannel">
+            <!-- 列表分类例子 -->
+            <div class="pannel_head clearfix">
+                <h2 class="title"><font color="red">本页面仅供索引使用，新版链接<a href="https://musestar.cc/animation">https://musestar.cc/animation</a></font></h2>
+                <form action="http://search.musestar.cc/search/searchX.html">
+                    <span>搜索无法保证质量，下方没有再搜索:</span>
+                    <input type="text" name="s" id="s">
+                    <input type="submit" value="搜索">
+                </form>
+            </div>
+            <ul class="content_playlist clearfix">
+            </ul>
+            <div class="cbox_list">
+                <div class="cbox1">
+                    <ul class="vodlist vodlist_wi list_v12 clearfix">
+                        <!-- 列表分类例子END -->
+                        <li class="vodlist_item">
+                            <a class="vodlist_thumb lazyload" href="https://musestar.cc/animation/mnzl"
+                               style="background-image: url(https://s1.imagehub.cc/images/2022/12/04/e50bf5b9866cded55cfd9f4596d71a82.webp);">
+                                <span class="play hidden_xs"></span>
+                                <span class="vodlist_top"><em class="voddate voddate_year">日本</em>
+							<em class="voddate voddate_type">治愈</em></span>
+                                <span class="pic_text text_right">已完结：共12集</span>
+                            </a>
+                            <div class="vodlist_titbox">
+                                <p class="vodlist_title">
+                                    <a href="https://musestar.cc/animation/mnzl">魔女之旅</a>
+                                </p>
+                                <p class="vodlist_sub">上映时间：2020-10-02</p>
+                            </div>
+                        </li>
+                        <li class="vodlist_item">
+                            <a class="vodlist_thumb lazyload" href="https://musestar.cc/animation/Itainohaiya"
+                               style="background-image: url(https://s1.imagehub.cc/images/2022/12/23/66f481396edc1415d1060b8747fafbd3.jpeg);">
+                                <span class="play hidden_xs"></span>
+                                <span class="vodlist_top"><em class="voddate voddate_year">日本</em>
+							<em class="voddate voddate_type">喜剧</em></span>
+                                <span class="pic_text text_right"><script type="text/javascript"
+                                                                          src="https://musestar.cc/animation/files/Itainohaiya.js"></script></span>
+                            </a>
+                            <div class="vodlist_titbox">
+                                <p class="vodlist_title">
+                                    <a href="https://musestar.cc/animation/Itainohaiya">太怕痛全点防御力第二季</a>
+                                </p>
+                                <p class="vodlist_sub">上映时间：2023-01-11</p>
+                            </div>
+                        </li>
+                        <li class="vodlist_item">
+                            <a class="vodlist_thumb lazyload" href="https://musestar.cc/animation/NieRAutomata"
+                               style="background-image: url(https://s1.imagehub.cc/images/2022/12/23/dc905bc1842726a76afb441ad3abd621.jpeg);">
+                                <span class="play hidden_xs"></span>
+                                <span class="vodlist_top"><em class="voddate voddate_year">日本</em>
+							<em class="voddate voddate_type">战斗</em></span>
+                                <span class="pic_text text_right"><script type="text/javascript"
+                                                                          src="https://musestar.cc/animation/files/NieRAutomata.js"></script></span>
+                            </a>
+                            <div class="vodlist_titbox">
+                                <p class="vodlist_title">
+                                    <a href="https://musestar.cc/animation/NieRAutomata">尼尔：自动人形</a>
+                                </p>
+                                <p class="vodlist_sub">上映时间：2023-01-07</p>
+                            </div>
+                        </li>
+                        <li class="vodlist_item">
+                            <a class="vodlist_thumb lazyload"
+                               href="https://musestar.cc/animation/OtonarinoTenshisama"
+                               style="background-image: url(https://s1.imagehub.cc/images/2022/12/23/95d115413660da96bde32f6cef0e933e.jpeg);">
+                                <span class="play hidden_xs"></span>
+                                <span class="vodlist_top"><em class="voddate voddate_year">日本</em>
+							<em class="voddate voddate_type">喜剧</em></span>
+                                <span class="pic_text text_right"><script type="text/javascript"
+                                                                          src="https://musestar.cc/animation/files/OtonarinoTenshisama.js"></script></span>
+                            </a>
+                            <div class="vodlist_titbox">
+                                <p class="vodlist_title">
+                                    <a href="https://musestar.cc/animation/OtonarinoTenshisama">我被天使变成废柴</a>
+                                </p>
+                                <p class="vodlist_sub">上映时间：2023-01-07</p>
+                            </div>
+                        </li>
+                        <li class="vodlist_item">
+                            <a class="vodlist_thumb lazyload" href="https://musestar.cc/animation/bdonjl"
+                               style="background-image: url(https://s1.imagehub.cc/images/2022/12/11/48127033756a3831706e8eaa72612a48.jpeg);">
+                                <span class="play hidden_xs"></span>
+                                <span class="vodlist_top"><em class="voddate voddate_year">日本</em>
+							<em class="voddate voddate_type">喜剧</em></span>
+                                <span class="pic_text text_right"><script type="text/javascript"
+                                                                          src="https://musestar.cc/animation/files/bdonjl.js"></script></span>
+                            </a>
+                            <div class="vodlist_titbox">
+                                <p class="vodlist_title">
+                                    <a href="https://musestar.cc/animation/bdonjl">别当欧尼酱了！</a>
+                                </p>
+                                <p class="vodlist_sub">上映时间：2023-01-05</p>
+                            </div>
+                        </li>
+                        <li class="vodlist_item">
+                            <a class="vodlist_thumb lazyload" href="https://musestar.cc/animation/Spyroom"
+                               style="background-image: url(https://s1.imagehub.cc/images/2022/12/23/e43f5a35cfc9c5226629a9b0f8fca824.jpeg);">
+                                <span class="play hidden_xs"></span>
+                                <span class="vodlist_top"><em class="voddate voddate_year">日本</em>
+							<em class="voddate voddate_type">战斗</em></span>
+                                <span class="pic_text text_right"><script type="text/javascript"
+                                                                          src="https://musestar.cc/animation/files/Spyroom.js"></script></span>
+                            </a>
+                            <div class="vodlist_titbox">
+                                <p class="vodlist_title">
+                                    <a href="https://musestar.cc/animation/Spyroom">间谍教室</a>
+                                </p>
+                                <p class="vodlist_sub">上映时间：2023-01-05</p>
+                            </div>
+                        </li>
+                        <li class="vodlist_item">
+                            <a class="vodlist_thumb lazyload" href="https://musestar.cc/animation/Inuhiro"
+                               style="background-image: url(https://s1.imagehub.cc/images/2023/01/11/afaa8b07965871b302c0ba2c16302ac7.webp);">
+                                <span class="play hidden_xs"></span>
+                                <span class="vodlist_top"><em class="voddate voddate_year">日本</em>
+							<em class="voddate voddate_type">喜剧</em></span>
+                                <span class="pic_text text_right"><script type="text/javascript"
+                                                                          src="https://musestar.cc/animation/files/Inuhiro.js"></script></span>
+                            </a>
+                            <div class="vodlist_titbox">
+                                <p class="vodlist_title">
+                                    <a href="https://musestar.cc/animation/Inuhiro">无意间变成狗，被喜欢的女生捡回家。</a>
+                                </p>
+                                <p class="vodlist_sub">上映时间：2023-01-04</p>
+                            </div>
+                        </li>
+                        <li class="vodlist_item">
+                            <a class="vodlist_thumb lazyload" href="https://musestar.cc/animation/TentenKakume"
+                               style="background-image: url(https://s1.imagehub.cc/images/2023/01/04/92834316efdfec96df02ce6049d159be.jpeg);">
+                                <span class="play hidden_xs"></span>
+                                <span class="vodlist_top"><em class="voddate voddate_year">日本</em>
+							<em class="voddate voddate_type">奇幻</em></span>
+                                <span class="pic_text text_right"><script type="text/javascript"
+                                                                          src="https://musestar.cc/animation/files/TentenKakume.js"></script></span>
+                            </a>
+                            <div class="vodlist_titbox">
+                                <p class="vodlist_title">
+                                    <a href="https://musestar.cc/animation/TentenKakume">王女与千金的魔法革命</a>
+                                </p>
+                                <p class="vodlist_sub">上映时间：2023-01-04</p>
+                            </div>
+                        </li>
+                        <li class="vodlist_item">
+                            <a class="vodlist_thumb lazyload" href="https://musestar.cc/film/SuzumenoTojimari"
+                               style="background-image: url(https://s1.imagehub.cc/images/2022/12/04/016fecf9d2293894e6afdad40f8d07cc.webp);">
+                                <span class="play hidden_xs"></span>
+                                <span class="vodlist_top"><em class="voddate voddate_year">日本</em>
+							<em class="voddate voddate_type">奇幻</em></span>
+                                <span class="pic_text text_right">影片时长: x:xx:xx</span>
+                            </a>
+                            <div class="vodlist_titbox">
+                                <p class="vodlist_title">
+                                    <a href="https://musestar.cc/film/SuzumenoTojimari">铃芽之旅</a>
+                                </p>
+                                <p class="vodlist_sub">上映时间：2022-11-11</p>
+                            </div>
+                        </li>
+                        <li class="vodlist_item">
+                            <a class="vodlist_thumb lazyload" href="https://musestar.cc/film/NatsuenoTunnel"
+                               style="background-image: url(https://s1.imagehub.cc/images/2022/12/04/3315a902ab17bfb4922cf350437e9877.webp);">
+                                <span class="play hidden_xs"></span>
+                                <span class="vodlist_top"><em class="voddate voddate_year">日本</em>
+					<em class="voddate voddate_type">恋爱</em></span>
+                                <span class="pic_text text_right">影片时长: x:xx:xx</span>
+                            </a>
+                            <div class="vodlist_titbox">
+                                <p class="vodlist_title">
+                                    <a href="https://musestar.cc/film/NatsuenoTunnel"><font
+                                            size="2.5">通往夏天的隧道,再见的出口</font></a>
+                                </p>
+                                <p class="vodlist_sub">上映时间：2022-09-09</p>
+                            </div>
+                        </li>
+                        <li class="vodlist_item">
+                            <a class="vodlist_thumb lazyload" href="https://musestar.cc/film/HelloWorld"
+                               style="background-image: url(https://s1.imagehub.cc/images/2022/12/04/ab787edbfcdc71970465ac43e1bf36dd.webp);">
+                                <span class="play hidden_xs"></span>
+                                <span class="vodlist_top"><em class="voddate voddate_year">日本</em>
+					<em class="voddate voddate_type">恋爱</em></span>
+                                <span class="pic_text text_right">影片时长: 1:37:43</span>
+                            </a>
+                            <div class="vodlist_titbox">
+                                <p class="vodlist_title">
+                                    <a href="https://musestar.cc/film/HelloWorld">你好世界</a>
+                                </p>
+                                <p class="vodlist_sub">上映时间：2021-06-11</p>
+                            </div>
+                        </li>
+                        <!-- 列表2END -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript" src="/files/under.js"></script>
+</body>
+</html>
