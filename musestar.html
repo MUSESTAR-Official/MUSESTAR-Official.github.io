@@ -148,11 +148,11 @@
                                 <div class="h1_big text-white wow fadeInUp animated" data-wow-delay=".6s" style="background-size: cover; visibility: visible; animation-delay: 0.6s; animation-name: fadeInUp;">
                                     <div class="typed-strings" style="background-size: cover; display: none;">
                                         <p>缪斯星官方</p>
-                                        <p>MUSESTAR Official</p>
+                                        <p>Musestar Official</p>
                                         <p>ミューズスター公式</p>
                                         <p>뮤즈스타관</p>
                                     </div>
-                                    <div class="typed" style="background-size: cover;"> </div><span class="typed-cursor">|</span>
+                                    <div class="typed" id="typed" style="background-size: cover;"> </div>
                                 </div>
                             </div>
                             <div class="spacer-20" style="background-size: cover;"></div>
@@ -219,26 +219,30 @@
     </div>
     <!-- Javascript Files
     ================================================== -->
-    <script src="https://cdn.cbd.int/jquery@3.7.1/dist/jquery.min.js"></script>
-    <script src="https://cdn.cbd.int/jquery-migrate@3.5.2/dist/jquery-migrate.min.js"></script>
-    <script src="/files/maodesignesia.js"></script>
+    <script src="https://cdn.cbd.int/jquery@1.7.3/tmp/jquery.js"></script>
+    <script src="https://cdn.cbd.int/typed.js@2.1.0/dist/typed.umd.js"></script>
     <script>
-    jQuery(document).ready(function() {
-        $(function() {
-            // jquery typed plugin
-            $(".typed").typed({
-                stringsElement: $('.typed-strings'),
+        document.addEventListener('DOMContentLoaded', function() {
+            var typed = new Typed('#typed', {
+                strings: [
+                    '缪斯星官方',
+                    'Musestar Official',
+                    'ミューズスター公式',
+                    '뮤즈스타관'
+                ],
                 typeSpeed: 100,
                 backDelay: 500,
                 loop: true,
-                contentType: 'html', // or text
-                // defaults to false for infinite loop
+                contentType: 'html', // or 'text'
                 loopCount: false,
-                callback: function() { null; },
-                resetCallback: function() { newTyped(); }
+                // callback function
+                callback: function() { },
+                // reset callback function
+                resetCallback: function() {
+                    newTyped();
+                }
             });
         });
-    });
     </script>
 	</div></div>
 </body></html>
