@@ -1,5 +1,5 @@
 document.write("                            <li class=\"ranklist_item\">");
-document.write("                                <a href=\"https:\/\/www.musestar.cc\/animation\/FrierenBeyondJourneysEnd\">");
+document.write("                                <a href=\"https:\/\/musestar.cc\/animation\/FrierenBeyondJourneysEnd\">");
 document.write("                                    <div class=\"ranklist_img\">");
 document.write("                                        <div class=\"ranklist_thumb  lazyload\"");
 document.write("                                             style=\"background-image: url(https:\/\/s1.imagehub.cc\/images\/2023\/09\/28\/FrierenBeyondJourneysEnd.webp);\">");
