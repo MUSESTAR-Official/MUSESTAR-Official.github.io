@@ -47,8 +47,7 @@
 ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
 ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
 -->
-<!doctype html>
-<html lang="zh_CN">
+<html lang="zh">
 
 <head>
     <!-- Clarity tracking code for https://musestar.cc/ -->
@@ -66,77 +65,132 @@
     </script>
     <meta charset="UTF-8">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>缪斯星官方首页ฅ^≧ω≦^ฅ𝐌𝐔𝐒𝐄𝐒𝐓𝐀𝐑</title>
-    <meta name="keywords" content="高清,下载,缪斯星,MUSESTAR,番剧,电影,在线观看,电视剧,剧集">
-    <meta name="description" content="𝐌𝐔𝐒𝐄𝐒𝐓𝐀𝐑缪斯星正在持续收集动漫番剧、电影、剧集等，给您免费播放网站中的最好体验！ฅ^≧ω≦^ฅ">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="/files/css/main.css">
+    <title>MUSEVLฅ^≧ω≦^ฅ缪斯星</title>
+    <link rel="icon" href="/favicon.ico" type="image/gif" sizes="16x16">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta name="keywords" content="MUSEVL,在线观看,高清,下载,缪斯星,MUSESTAR">
+    <meta name="description" content="MUSEVL">
+    <!-- CSS Files -->
+    <link href="https://cdn.cbd.int/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"
+        id="bootstrap">
+    <link href="https://cdn.cbd.int/animate.css@4.1.1/animate.min.css" rel="stylesheet" type="text/css">
+    <link href="/files/maostyle.css" rel="stylesheet" type="text/css">
     <style>
-        .vvv {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            min-width: 100%;
-            min-height: 100%;
+        :root {
+            --primary-color: #CF1F1F;
+            --primary-color-rgb: 207, 31, 31;
         }
     </style>
+    <script src="/files/hls.js"></script>
+    <script>
+        function getQueryVariable(variable) {
+            let query = window.location.search.substring(1);
+            let vars = query.split("&");
+            for (let i = 0; i < vars.length; i++) {
+                let pair = vars[i].split("=");
+                if (pair[0] === variable) {
+                    return pair[1];
+                }
+            }
+            return false;
+        }
+        let videoR = getQueryVariable('museurl');
+    </script>
 </head>
 
-<body class="is-preload">
-    <a href="/oldani"> </a>
-    <a href="/oldmov"> </a>
-    <a href="https://icp.gov.moe/?keyword=20226956"> </a>
-    <!-- Wrapper -->
-    <div id="wrapper">
-        <!-- Header -->
-        <header id="header">
-            <div class="logo">
-                <img src="https://s1.imagehub.cc/images/2024/06/10/0f2d3ce9dd8dc6e31175f5d50085d342.jpeg" class="logo">
-            </div>
-            <div class="content">
-                <div class="inner">
-                    <h1>𝐌𝐔𝐒𝐄𝐒𝐓𝐀𝐑✶缪斯星</h1>
-                    <p>花开无叶，叶生无花，相念相惜不得相见，独自彼岸路。</p>
+</head>
+
+<body class="onepage dark-scheme" style="background-size: cover;">
+    <div id="wrapper" style="background-size: cover;">
+        <section aria-label="section" class="jarallax no-top no-bottom text-light"
+            style="z-index: 0; background-size: cover;">
+            <div class="v-center" style="background-size: cover;">
+                <div class="container" style="background-size: cover;">
+                    <script src="/files/DPlayer.js"></script>
+                    <div class="player_v" id="dplayer">
+                        <h2>
+                            <font color="red">播放器未加载，地址museurl值错误</font>
+                        </h2>
+                        <script>
+                            var dp = new DPlayer({
+                                container: document.getElementById('dplayer'),
+                                airplay: true,
+                                preload: 'auto',
+                                logo: 'https://s1.imagehub.cc/images/2024/01/14/a0174399c39f9ba1cb0b59911c11afe7.png',
+                                autoplay: true,
+                                volume: 1.0,
+                                video: {
+                                    pic: 'https://s1.imagehub.cc/images/2024/08/12/20558017d6792d0a2a78a1659f66b6fa.jpg',
+                                    quality: [
+                                    {
+                                        name: 'MUSEVL源',
+                                        url: videoR,
+                                    }, 
+                                ],
+                                    defaultQuality: 0,
+                                },
+
+                            });
+                        </script>
+                    </div>
                 </div>
             </div>
-            <nav>
-                <ul>
-                    <li><a href="/animation">缪斯星动漫</a></li>
-                    <li><a href="/movie">缪斯星影视</a></li>
-                    <li><a href="https://video.musestar.cc/">缪斯集合搜</a></li>
-                    <li><a href="/musestar">缪斯星官方</a></li>
-                </ul>
-            </nav>
-            <nav>
-            <ul>
-                <li><a href="/MUSEVL?museurl=https://videolink.musestar.cc/test/BILIBILI%20MACRO%20LINK%202024%20宣传PV.m3u8">新MUSEVL源测试页</a></li>
-            </ul>
-            </nav>
-            <img width=350 src="https://moe-counter.anjiurine.top/get/@musestar?theme=rule34" alt="musestar">
-        </header>
-        <!-- Footer -->
-        <footer id="footer">
-            <p class="copyright">© 2024 MUSESTAR</p>
-        </footer>
+            <div id="jarallax-container-0"
+                style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; overflow: hidden; z-index: -100; clip-path: polygon(0px 0px, 100% 0px, 100% 100%, 0px 100%); background-size: 100vh;">
+                <img src="https://s1.imagehub.cc/images/2024/08/19/298392c6f9a763a79fc85ea0c9e5f4ff.jpg"
+                    class="jarallax-img" alt=""
+                    style="object-fit: cover; object-position: 50% 50%; max-width: none; position: absolute; top: 0px; left: 0px; height: 100vh; overflow: hidden; pointer-events: none; transform-style: preserve-3d; backface-visibility: hidden; will-change: transform, opacity; margin-top: 0px; transform: translate3d(0px, 0px, 0px);">
+            </div>
+        </section>
+    </div><br><br><br>
+    <div class="col-md-12 text-center wow fadeInUp animated"
+        style="background-size: cover; visibility: visible; animation-name: fadeInUp;">
+        <div id="logo" style="background-size: cover;">
+        </div>
+        <h2>MUSEVL</h2>
+        <div class="space-border" style="background-size: cover;"></div>
     </div>
-    <!-- BG -->
-    <div id="bg" data-dsn="video" data-overlay="6">
-        <video class="vvv" autoplay loop muted>
-            <source
-                src="https://note.youdao.com/yws/api/personal/file/WEB751491bdd586c6fb562e5f093d8ab94d?method=download&shareKey=19f7644c5797771641f69be9c2e0b068"
-                type="video/mp4">
-        </video>
+    <div style="text-align: center;">
+        <ul class="list_location wow fadeInUp animated" data-wow-delay=".8s"
+            style="visibility: visible; animation-delay: 0.8s; animation-name: fadeInUp;">
+            <li><a class="btn btn-dark" href="/">缪斯星首页</a></li>
+            <li><a class="btn btn-dark" href="/animation">缪斯星动漫</a></li>
+            <li><a class="btn btn-dark" href="/movie">缪斯星影视</a></li>
+            <li><a class="btn btn-dark" href="https://video.musestar.cc/">缪斯星搜索</a></li>
+            <li><a class="btn btn-danger" href="/musestar">缪斯星官方</a></li>
+        </ul>
+        <a href="https://qm.qq.com/cgi-bin/qm/qr?_wv=1027&amp;k=azWBZtjkxoIKJMdnPEnG5nGjvEWS5naB"><img
+                src="https://s1.imagehub.cc/images/2024/05/05/b5249501f40dea6208c06a82afb499dd.jpeg" width="auto"
+                height="400"></a>
+    </div><br>
+    <div class="space-border" style="background-size: cover;"></div>
+    <div style="text-align: center;">
+
+        <br><br><img height="150"
+            src="https://s1.imagehub.cc/images/2024/01/13/d0469ae970a9dac3b9e56aa223193e34.png"><br>
+        <img width=350 src="https://moe-counter.anjiurine.top/get/@musestar?theme=rule34" alt="musestar">
+    </div><br>
+    <!-- footer begin -->
+    <footer>
+        <div class="container" style="background-size: cover;">
+            <div class="row" style="background-size: cover;">
+                <div class="col-md-6" style="background-size: cover;">
+                    <a href="/musestar">
+                        <font color="red">请勿相信视频内的任何广告！点击缪斯星官方求片报错、赞助支持、加入交流群</font>
+                    </a>
+                    <script type="text/javascript" src="/files/under.js"></script>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- footer close -->
     </div>
-    <!-- Scripts -->
+    </div>
+    </div>
+    </div>
+    </div>
     <script src="/files/jquery.min.js"></script>
-    <script src="/files/js/browser.min.js"></script>
-    <script src="/files/js/breakpoints.min.js"></script>
-    <script src="/files/js/util.js"></script>
-    <script src="/files/js/main.js"></script>
-    <script src="https://myhkw.cn/api/player/167498531382" id="myhk" key="167498531382" skin="player" lr="r" m="1"
-        au="0"></script>
+    <script src="/files/maodesignesia.js"></script>
 </body>
 
 </html>
