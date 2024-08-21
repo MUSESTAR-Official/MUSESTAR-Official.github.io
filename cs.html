@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>夏日隧道 - 视频播放页</title>
+    <title>通往夏天的隧道，再见的出口ฅ^≧ω≦^ฅ缪斯星动漫</title>
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -137,6 +137,60 @@
                 display: block;
             }
         }
+        .download-container, .magnet-container {
+            margin-top: 20px;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 5px;
+        }
+        .download-link, .magnet-link {
+            word-break: break-all;
+            color: #ebebf5;
+            font-size: clamp(0.8rem, 1.5vw, 1rem);
+        }
+        .btn {
+            display: inline-block;
+            margin-top: 10px;
+            margin-right: 10px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            font-size: clamp(0.8rem, 2vw, 1rem);
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            cursor: pointer;
+            border: none;
+            outline: none;
+        }
+        .btn:hover {
+            background-color: #45a049;
+        }
+        .copy-btn {
+            background-color: #008CBA;
+        }
+        .copy-btn:hover {
+            background-color: #007B9A;
+        }
+        .footer {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .footer img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+        a {
+            color: #ebebf5;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        a:hover {
+            color: #ebebf5;
+            text-decoration: underline;
+        }
     </style>
     <script src="https://vip.musestar.cc/files/hls.js"></script>
     <script src="https://vip.musestar.cc/files/DPlayer.js"></script>
@@ -146,7 +200,7 @@
         <div id="dplayer"></div>
     </div>
     <div class="info-container">
-        <h1>夏日隧道</h1>
+        <h1>通往夏天的隧道，再见的出口</h1>
         <div class="divider">
             <div class="divider-line"></div>
             <div class="divider-inner"></div>
@@ -166,6 +220,27 @@
         <p>导演：田中瞳</p>
         <p>主演：古川琴音、小野寺晃良、冈本夏美</p>
         <p>简介：故事讲述了高中生小夏和同学们在暑假期间，意外发现了一条神秘隧道的冒险故事。通过这条隧道，他们可以穿越到过去，经历了一系列奇妙而又感人的事件。</p>
+        <div class="download-container">
+            <p id="downloadLink" class="download-link">https://dlink.host/1drv/aHR0cHM6Ly8xZHJ2Lm1zL3YvcyFBZ1hsWVR6S1JLMDBoV3NvYnNpQ0NndnVkM1NZP2U9TDVVdGpW.muse4</p>
+            <button class="btn copy-btn" onclick="copyDownloadLink()">复制下载链接</button>
+            <a href="https://example.com/download/夏日隧道.mp4" class="btn" download>直接下载</a>
+        </div>
+        <div class="magnet-container">
+            <p id="magnetLink" class="magnet-link">magnet:?xt=urn:btih:1234567890abcdef1234567890abcdef12345678&dn=夏日隧道.mp4</p>
+            <button class="btn copy-btn" onclick="copyMagnetLink()">复制磁力链接</button>
+            <a href="magnet:?xt=urn:btih:1234567890abcdef1234567890abcdef12345678&dn=夏日隧道.mp4" class="btn">使用磁力下载</a>
+        </div>
+        <div class="footer">
+            <img width="150" src="https://s1.imagehub.cc/images/2024/01/13/d0469ae970a9dac3b9e56aa223193e34.png" alt="Footer Image">
+            <br>
+            <img width="350" src="https://moe-counter.anjiurine.top/get/@musestar?theme=rule34" alt="Visitor Counter">
+            <div class="divider">
+                <div class="divider-line"></div>
+                <div class="divider-inner"></div>
+                <div class="divider-line"></div>
+            </div>
+            <script type="text/javascript" src="https://vip.musestar.cc/files/under.js"></script>
+        </div>
     </div>
     <script>
         var dp = new DPlayer({
@@ -186,6 +261,27 @@
                 defaultQuality: 0,
             },
         });
+
+        function copyMagnetLink() {
+            var magnetLink = document.getElementById("magnetLink");
+            copyToClipboard(magnetLink.textContent);
+            alert("磁力链接已复制到剪贴板！");
+        }
+
+        function copyDownloadLink() {
+            var downloadLink = document.getElementById("downloadLink");
+            copyToClipboard(downloadLink.textContent);
+            alert("下载链接已复制到剪贴板！");
+        }
+
+        function copyToClipboard(text) {
+            var textArea = document.createElement("textarea");
+            textArea.value = text;
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand("Copy");
+            textArea.remove();
+        }
     </script>
 </body>
 </html>

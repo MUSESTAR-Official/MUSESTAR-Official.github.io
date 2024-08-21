@@ -1,4 +1,3 @@
-document.write("<br>");
 document.write("    <div class=\"foot\">");
 document.write("        <div class=\"footbg\">");
 document.write("           <a href=\" https:\/\/musestar.cc\/\">© 2024 MUSESTAR<\/a><br>");
