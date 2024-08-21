@@ -46,14 +46,19 @@
             background-color: rgba(44, 44, 46, 0.8);
             padding: 20px;
             margin-top: 20px;
+            margin-bottom: 40px; /* 添加底部边距 */
             border-radius: 10px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
-        h1 {
+        h1, h2 {
             color: #ffffff;
             text-align: center;
             margin-bottom: 15px;
             font-size: clamp(1.2rem, 3vw, 2rem);
+        }
+        h2 {
+            font-size: clamp(1rem, 2.5vw, 1.5rem);
+            margin-top: 20px;
         }
         .divider {
             display: flex;
@@ -191,6 +196,32 @@
             color: #ebebf5;
             text-decoration: underline;
         }
+        .episode-selector {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .episode-btn {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-size: clamp(0.8rem, 2vw, 1rem);
+            text-decoration: none;
+        }
+        .episode-btn:hover {
+            background-color: rgba(255, 255, 255, 0.4);
+        }
+        .synopsis {
+            text-align: center;
+            font-weight: bold;
+            margin: 20px 0;
+        }
     </style>
     <script src="https://vip.musestar.cc/files/hls.js"></script>
     <script src="https://vip.musestar.cc/files/DPlayer.js"></script>
@@ -217,9 +248,40 @@
             <div class="vertical-divider"></div>
             <a href="https://musestar-cloud.github.io/about.html" class="option-btn">缪斯星官方</a>
         </div>
-        <p>导演：田中瞳</p>
-        <p>主演：古川琴音、小野寺晃良、冈本夏美</p>
-        <p>简介：故事讲述了高中生小夏和同学们在暑假期间，意外发现了一条神秘隧道的冒险故事。通过这条隧道，他们可以穿越到过去，经历了一系列奇妙而又感人的事件。</p>
+        <h2>集数选择</h2>
+        <div class="divider">
+            <div class="divider-line"></div>
+            <div class="divider-inner"></div>
+            <div class="divider-line"></div>
+        </div>
+        <div class="episode-selector">
+            <a href="https://musestar-cloud.github.io/animation.html" class="episode-btn">第三方播放源</a>
+            <a href="cs1.html" class="episode-btn">第1集</a>
+            <a href="cs2.html" class="episode-btn">第2集</a>
+            <a href="cs3.html" class="episode-btn">第3集</a>
+            <a href="cs4.html" class="episode-btn">第4集</a>
+            <a href="cs5.html" class="episode-btn">第5集</a>
+            <a href="cs6.html" class="episode-btn">第6集</a>
+            <a href="cs7.html" class="episode-btn">第7集</a>
+            <a href="cs8.html" class="episode-btn">第8集</a>
+            <a href="cs9.html" class="episode-btn">第9集</a>
+            <a href="cs10.html" class="episode-btn">第10集</a>
+            <a href="cs11.html" class="episode-btn">第11集</a>
+            <a href="cs12.html" class="episode-btn">第12集</a>
+        </div>
+        <h2>动漫介绍</h2>
+        <div class="divider">
+            <div class="divider-line"></div>
+            <div class="divider-inner"></div>
+            <div class="divider-line"></div>
+        </div>
+        <p class="synopsis">故事讲述了高中生小夏和同学们在暑假期间，意外发现了一条神秘隧道的冒险故事。通过这条隧道，他们可以穿越到过去，经历了一系列奇妙而又感人的事件。</p>
+        <h2>本集下载</h2>
+        <div class="divider">
+            <div class="divider-line"></div>
+            <div class="divider-inner"></div>
+            <div class="divider-line"></div>
+        </div>
         <div class="download-container">
             <p id="downloadLink" class="download-link">https://dlink.host/1drv/aHR0cHM6Ly8xZHJ2Lm1zL3YvcyFBZ1hsWVR6S1JLMDBoV3NvYnNpQ0NndnVkM1NZP2U9TDVVdGpW.muse4</p>
             <button class="btn copy-btn" onclick="copyDownloadLink()">复制下载链接</button>
@@ -228,7 +290,7 @@
         <div class="magnet-container">
             <p id="magnetLink" class="magnet-link">magnet:?xt=urn:btih:1234567890abcdef1234567890abcdef12345678&dn=夏日隧道.mp4</p>
             <button class="btn copy-btn" onclick="copyMagnetLink()">复制磁力链接</button>
-            <a href="magnet:?xt=urn:btih:1234567890abcdef1234567890abcdef12345678&dn=夏日隧道.mp4" class="btn">使用磁力下载</a>
+            <a href="magnet:?xt=urn:btih:1234567890abcdef1234567890abcdef12345678&dn=夏日隧道.mp4" class="btn">磁力下载</a>
         </div>
         <div class="footer">
             <img width="150" src="https://s1.imagehub.cc/images/2024/01/13/d0469ae970a9dac3b9e56aa223193e34.png" alt="Footer Image">
