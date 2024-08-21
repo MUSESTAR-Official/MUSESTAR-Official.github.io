@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>夏日隧道 - 视频播放页</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            background-image: url('https://s1.imagehub.cc/images/2024/08/19/b68cbf5ff34a36fe57d3ce0d06e4870a.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: scroll;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .video-container {
+            width: 100%;
+            max-width: 1200px;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #dplayer {
+            width: 95%;
+            height: 0;
+            padding-bottom: 53.4375%; /* 16:9 比例 */
+            position: relative;
+        }
+        #dplayer .dplayer-video-wrap {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .info-container {
+            width: 90%;
+            max-width: 1200px;
+            background-color: rgba(44, 44, 46, 0.8);
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        h1 {
+            color: #ffffff;
+            text-align: center;
+            margin-bottom: 15px;
+            font-size: clamp(1.2rem, 3vw, 2rem);
+        }
+        .divider {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 15px 0 25px;
+        }
+        .divider-line {
+            width: 15px;
+            height: 1px;
+            background-color: #808080;
+        }
+        .divider-inner {
+            width: 15px;
+            height: 1px;
+            background-color: #ffffff;
+            margin: 0 5px;
+        }
+        p {
+            color: #ebebf5;
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
+        }
+        /* 更细的滚动条样式 */
+        ::-webkit-scrollbar {
+            width: 5px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #000000;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #ffffff;
+            border-radius: 0;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #e0e0e0;
+        }
+        .options {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+            gap: 10px;
+        }
+        .option-btn {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none;
+            font-size: clamp(0.8rem, 2vw, 1rem);
+        }
+        .option-btn:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+        .vertical-divider {
+            width: 1px;
+            height: 16px;
+            background-color: #808080;
+            margin: 0 8px;
+            display: none;
+        }
+        .highlight {
+            background-image: linear-gradient(45deg, rgba(255,255,255,0.2) 25%, transparent 25%, transparent 50%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0.2) 75%, transparent 75%, transparent);
+            background-size: 20px 20px;
+            animation: move 1s linear infinite;
+        }
+        @keyframes move {
+            0% {
+                background-position: 0 0;
+            }
+            100% {
+                background-position: 20px 20px;
+            }
+        }
+        @media (min-width: 768px) {
+            .vertical-divider {
+                display: block;
+            }
+        }
+    </style>
+    <script src="https://vip.musestar.cc/files/hls.js"></script>
+    <script src="https://vip.musestar.cc/files/DPlayer.js"></script>
+</head>
+<body>
+    <div class="video-container">
+        <div id="dplayer"></div>
+    </div>
+    <div class="info-container">
+        <h1>夏日隧道</h1>
+        <div class="divider">
+            <div class="divider-line"></div>
+            <div class="divider-inner"></div>
+            <div class="divider-line"></div>
+        </div>
+        <div class="options">
+            <a href="https://musestar-cloud.github.io/" class="option-btn">缪斯星首页</a>
+            <div class="vertical-divider"></div>
+            <a href="https://musestar-cloud.github.io/animation.html" class="option-btn highlight">缪斯星动漫</a>
+            <div class="vertical-divider"></div>
+            <a href="https://musestar-cloud.github.io/movie.html" class="option-btn">缪斯星影视</a>
+            <div class="vertical-divider"></div>
+            <a href="https://musestar-cloud.github.io/search.html" class="option-btn">缪斯星搜索</a>
+            <div class="vertical-divider"></div>
+            <a href="https://musestar-cloud.github.io/about.html" class="option-btn">缪斯星官方</a>
+        </div>
+        <p>导演：田中瞳</p>
+        <p>主演：古川琴音、小野寺晃良、冈本夏美</p>
+        <p>简介：故事讲述了高中生小夏和同学们在暑假期间，意外发现了一条神秘隧道的冒险故事。通过这条隧道，他们可以穿越到过去，经历了一系列奇妙而又感人的事件。</p>
+    </div>
+    <script>
+        var dp = new DPlayer({
+            container: document.getElementById('dplayer'),
+            airplay: true,
+            preload: 'auto',
+            logo: 'https://s1.imagehub.cc/images/2024/01/14/a0174399c39f9ba1cb0b59911c11afe7.png',
+            autoplay: false,
+            volume: 1.0,
+            video: {
+                pic: 'https://s1.imagehub.cc/images/2024/08/12/20558017d6792d0a2a78a1659f66b6fa.jpg',
+                quality: [
+                    {
+                        name: 'MUSE源',
+                        url: "https://dlink.host/1drv/aHR0cHM6Ly8xZHJ2Lm1zL3YvcyFBZ1hsWVR6S1JLMDBoV3NvYnNpQ0NndnVkM1NZP2U9TDVVdGpW.muse4",
+                    }, 
+                ],
+                defaultQuality: 0,
+            },
+        });
+    </script>
+</body>
+</html>
