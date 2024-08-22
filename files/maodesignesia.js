@@ -651,7 +651,7 @@
             loop: true,
             dots: true,
             margin: 25,
-            autoplay: false,
+            autoplay: true,
             autoplayTimeout: 0,
             responsive: {
                 1000: {
