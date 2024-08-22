@@ -47,455 +47,96 @@
 ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
 ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
 -->
-<html lang="zh-CN">
+
+<!doctype html>
+<html lang="zh_CN">
+
 <head>
+    <!-- Clarity tracking code for https://musestar.cc/ -->
+    <script>
+        (function (c, l, a, r, i, t, y) {
+            c[a] = c[a] || function () {
+                (c[a].q = c[a].q || []).push(arguments)
+            };
+            t = l.createElement(r);
+            t.async = 1;
+            t.src = "https://www.clarity.ms/tag/" + i + "?ref=bwt";
+            y = l.getElementsByTagName(r)[0];
+            y.parentNode.insertBefore(t, y);
+        })(window, document, "clarity", "script", "fvlvixulu7");
+    </script>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>团队发展详情 - 缪斯星</title>
-    <link rel="icon" href="/favicon.ico" type="image/x-icon">
-    <meta name="keywords" content="团队发展,详情页,缪斯星,MUSESTAR">
-    <meta name="description" content="这是一个关于团队发展的详情页面">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>缪斯星官方ฅ^≧ω≦^ฅ𝐌𝐔𝐒𝐄𝐒𝐓𝐀𝐑</title>
+    <meta name="keywords" content="高清,下载,缪斯星,MUSESTAR,番剧,电影,在线观看,电视剧,剧集">
+    <meta name="description" content="𝐌𝐔𝐒𝐄𝐒𝐓𝐀𝐑缪斯星正在持续收集动漫番剧、电影、剧集等，给您免费播放网站中的最好体验！ฅ^≧ω≦^ฅ">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/files/css/main.css">
     <style>
-        body {
-            background-image: url('https://t.alcy.cc/pc/');
-            background-size: cover;
-            background-attachment: fixed;
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: center;
-            padding-top: 30vh;
-        }
-
-        .logo {
-            font-size: clamp(2em, 5vw, 2.8em);
-            color: #fff;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-            margin: 20px 0;
-            text-align: center;
-            position: relative;
-            font-weight: bold;
-        }
-
-        .logo::before,
-        .logo::after {
-            content: '';
+        .vvv {
             position: absolute;
             left: 50%;
-            transform: translateX(-50%);
-            width: 120%;
-            height: 3px;
-            background-color: #fff;
-        }
-
-        .logo::before {
-            top: -10px;
-        }
-
-        .logo::after {
-            bottom: -10px;
-        }
-
-        .container {
-            background-color: rgba(44, 44, 46, 0.8);
-            padding: 20px;
-            margin: 20px auto;
-            width: 90%;
-            max-width: 1200px;
-            color: #fff;
-            border-radius: 10px;
-        }
-
-        h1,
-        h2 {
-            color: #fff;
-            text-align: center;
-        }
-
-        .info {
-            margin-bottom: 20px;
-        }
-
-        .info p {
-            margin: 10px 0;
-        }
-
-        .timeline {
-            overflow-x: auto;
-            white-space: nowrap;
-            scrollbar-width: thin;
-            scrollbar-color: #FF9F55 rgba(255, 255, 255, 0.1);
-        }
-
-        .timeline-item {
-            display: inline-block;
-            padding: 5px;
-            position: relative;
-            background-color: inherit;
-            width: 250px;
-            vertical-align: top;
-        }
-
-        .content {
-            padding: 15px;
-            background-color: rgba(255, 255, 255, 0.1);
-            position: relative;
-            border-radius: 6px;
-            text-align: center;
-            transition: all 0.3s ease;
-            height: 90px;
-            overflow: hidden;
-            margin-bottom: 10px;
-        }
-
-        .content:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        }
-
-        .content h2 {
-            margin: 0 0 10px 0;
-            font-size: 1.2em;
-        }
-
-        .content p {
-            margin: 0;
-            font-size: 0.9em;
-            line-height: 1.4;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
-            white-space: normal;
-        }
-
-        .sponsor-area {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-            margin-top: 30px;
-        }
-
-        .sponsor-item {
-            text-align: center;
-            margin: 10px;
-            width: calc(33.33% - 20px);
-            min-width: 250px;
-        }
-
-        .sponsor-item img {
-            width: 100%;
-            max-width: 300px;
-            height: auto;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .sponsor-item img:hover {
-            transform: scale(1.05);
-        }
-
-        .sponsor-item p {
-            margin-top: 10px;
-            font-weight: bold;
-        }
-
-        .options {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: center;
-            margin-top: 20px;
-            gap: 10px;
-        }
-
-        .option-btn {
-            background-color: rgba(255, 255, 255, 0.2);
-            color: #ffffff;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            text-decoration: none;
-            font-size: clamp(0.8rem, 2vw, 1rem);
-        }
-
-        .option-btn:hover {
-            background-color: rgba(255, 255, 255, 0.3);
-        }
-
-        .vertical-divider {
-            width: 1px;
-            height: 16px;
-            background-color: #808080;
-            margin: 0 8px;
-            display: none;
-        }
-
-        .highlight {
-            background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, transparent 75%, transparent);
-            background-size: 20px 20px;
-            animation: move 1s linear infinite;
-        }
-
-        .footer {
-            margin-top: 20px;
-            text-align: center;
-        }
-
-        .footer img {
-            max-width: 100%;
-            height: auto;
-            margin-bottom: 10px;
-        }
-
-        .divider {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 15px 0 25px;
-        }
-
-        .divider-line {
-            width: 15px;
-            height: 1px;
-            background-color: #808080;
-        }
-
-        .divider-inner {
-            width: 15px;
-            height: 1px;
-            background-color: #ffffff;
-            margin: 0 5px;
-        }
-
-        a {
-            color: #ebebf5;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        a:hover {
-            color: #ebebf5;
-            text-decoration: underline;
-        }
-
-        @media (max-width: 768px) {
-            body {
-                padding-top: 30vh;
-            }
-
-            .container {
-                width: 95%;
-                padding: 10px;
-            }
-
-            .timeline-item {
-                width: 200px;
-            }
-
-            .sponsor-item {
-                width: calc(50% - 20px);
-                min-width: 200px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .sponsor-item {
-                width: 100%;
-            }
-        }
-
-        @media (min-width: 768px) {
-            .vertical-divider {
-                display: block;
-            }
+            top: 50%;
+            transform: translate(-50%, -50%);
+            min-width: 100%;
+            min-height: 100%;
         }
     </style>
 </head>
 
-<body>
-    <div class="logo">缪斯星✶官方</div>
-    <div class="container">
-        <div class="options">
-            <a href="/" class="option-btn">缪斯星首页</a>
-            <div class="vertical-divider"></div>
-            <a href="/animation" class="option-btn">缪斯星动漫</a>
-            <div class="vertical-divider"></div>
-            <a href="/movie" class="option-btn">缪斯星影视</a>
-            <div class="vertical-divider"></div>
-            <a href="https://video.musestar.cc/" class="option-btn">缪斯星搜索</a>
-            <div class="vertical-divider"></div>
-            <a href="/musestar" class="option-btn highlight">缪斯星官方</a>
-        </div>
-        <h1>网站发展详情</h1>
-        <div class="divider">
-            <div class="divider-line"></div>
-            <div class="divider-inner"></div>
-            <div class="divider-line"></div>
-        </div>
-        <div class="info">
-            <p><strong>建站时间：</strong>2022年4月25日</p>
-            <p><strong>特别提醒：</strong>本站无任何盈利方式，第三方播放源内所有广告均与本站无关，如果您喜欢本站欢迎打赏，您的支持是缪斯星坚持下去的最大动力！</p>
-            <p><strong>站语：</strong>𝐌𝐔𝐒𝐄𝐒𝐓𝐀𝐑缪斯星正在持续收集动漫番剧、电影、剧集等，给您免费播放网站中的最好体验！ฅ^≧ω≦^ฅ</p>
-        </div>
-        <h2>发展时间线</h2>
-        <div class="divider">
-            <div class="divider-line"></div>
-            <div class="divider-inner"></div>
-            <div class="divider-line"></div>
-        </div>
-        <div class="timeline">
-            <div class="timeline-item">
-                <div class="content">
-                    <h2>2024年8月23日</h2>
-                    <p>缪斯星官方页V3正式上线，增加发展时间线
-                    </p>
+<body class="is-preload">
+    <!-- Wrapper -->
+    <div id="wrapper">
+        <!-- Header -->
+        <header id="header">
+            <div class="logo">
+                <img src="https://s1.imagehub.cc/images/2024/06/10/0f2d3ce9dd8dc6e31175f5d50085d342.jpeg" class="logo">
+            </div>
+            <div class="content">
+                <div class="inner">
+                    <h1>缪斯星✶官方</h1>
+                    <p>花开无叶，叶生无花，相念相惜不得相见，独自彼岸路。</p>
                 </div>
             </div>
-            <div class="timeline-item">
-                <div class="content">
-                    <h2>2024年8月22日</h2>
-                    <p>缪斯星播放页V4正式上线，首次在《通往夏天的隧道,再见的出口》中应用</p>
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div class="content">
-                    <h2>2024年8月19日</h2>
-                    <p>MUSE源站单独分离为vip.musestar.cc，并且不再公开</p>
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div class="content">
-                    <h2>2024年8月19日</h2>
-                    <p>更改www.musestar.cc的用途，仅用作缪斯星导航页</p>
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div class="content">
-                    <h2>2024年8月13日</h2>
-                    <p>缪斯星服务状态stats.uptimerobot.com/NJ9gBiMZ7D正式上线</p>
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div class="content">
-                    <h2>2024年8月11日</h2>
-                    <p>全新缪斯星第三方搜索video.musestar.cc正式上线</p>
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div class="content">
-                    <h2>2024年3月</h2>
-                    <p>缪斯星动漫成为《憧憬成为魔法少女》搜索结果前三名</p>
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div class="content">
-                    <h2>2023年</h2>
-                    <p>缪斯星选片列表V3正式上线，V2改为索引页</p>
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div class="content">
-                    <h2>2023年9月29日</h2>
-                    <p>缪斯星播放页V3正式上线，首次在《葬送的芙莉莲》中应用</p>
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div class="content">
-                    <h2>2023年12月16日</h2>
-                    <p>猫猫举牌访问统计正式上线</p>
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div class="content">
-                    <h2>2023年2月17日</h2>
-                    <p>缪斯星域名更换为musestar.cc</p>
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div class="content">
-                    <h2>2022年</h2>
-                    <p>缪斯星播放页V2正式上线</p>
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div class="content">
-                    <h2>2022年</h2>
-                    <p>缪斯星选片列表V2正式上线</p>
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div class="content">
-                    <h2>2022年12月29日</h2>
-                    <p>缪斯星第三方搜索正式上线</p>
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div class="content">
-                    <h2>2022年10月30日</h2>
-                    <p>缪斯星正式加入萌备</p>
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div class="content">
-                    <h2>2022年7月</h2>
-                    <p>缪斯星影视正式上线</p>
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div class="content">
-                    <h2>2022年5月</h2>
-                    <p>缪斯星动漫因《间谍过家家》爆火，日访问量高达10000</p>
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div class="content">
-                    <h2>2022年4月25日</h2>
-                    <p>缪斯星动漫正式上线</p>
-                </div>
-            </div>
-        </div>
-        <h2>赞助打赏</h2>
-        <div class="divider">
-            <div class="divider-line"></div>
-            <div class="divider-inner"></div>
-            <div class="divider-line"></div>
-        </div>
-        <div class="sponsor-area">
-            <div class="sponsor-item">
-                <img src="https://s1.imagehub.cc/images/2024/06/07/6ce9c21015eab6ed9b495b55e79d05cc.jpeg" alt="微信支付">
-                <p>微信支付</p>
-            </div>
-            <div class="sponsor-item">
-                <img src="https://s1.imagehub.cc/images/2024/06/07/bab12f334bd7a2b5d6db76664a37bd28.jpeg" alt="支付宝">
-                <p>支付宝</p>
-            </div>
-            <div class="sponsor-item">
-                <img src="https://s1.imagehub.cc/images/2024/06/07/935658f74a3c87b7e1b30268ab741a2c.jpeg" alt="官方QQ交流群">
-                <p>官方QQ交流群</p>
-            </div>
-        </div>
-        <div class="footer">
-            <img width="150" src="https://s1.imagehub.cc/images/2024/01/13/d0469ae970a9dac3b9e56aa223193e34.png"
-                alt="Footer Image">
-            <br>
-            <img width="350" src="https://moe-counter.anjiurine.top/get/@musestar?theme=rule34" alt="Visitor Counter">
-            <div class="divider">
-                <div class="divider-line"></div>
-                <div class="divider-inner"></div>
-                <div class="divider-line"></div>
-            </div>
-            <script type="text/javascript" src="/files/under.js"></script>
-        </div>
+            <nav>
+            <ul>
+                <li><a href="/animation">缪斯星动漫</a></li>
+                <li><a href="/movie">缪斯星影视</a></li>
+                <li><a href="https://video.musestar.cc/">缪斯集合搜</a></li>
+                <li><a href="/musestar">缪斯星官方</a></li>
+            </ul>
+            </nav>
+            <ul>
+                <a href="https://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=azWBZtjkxoIKJMdnPEnG5nGjvEWS5naB"><img src="https://s1.imagehub.cc/images/2024/06/07/935658f74a3c87b7e1b30268ab741a2c.jpeg" width='auto' height="400" /></a>
+                <img ms="wxpay" src="https://s1.imagehub.cc/images/2024/06/07/6ce9c21015eab6ed9b495b55e79d05cc.jpeg" width='auto' height="400" />
+                <img ms="zfbpay" src="https://s1.imagehub.cc/images/2024/06/07/bab12f334bd7a2b5d6db76664a37bd28.jpeg" width='auto' height="400" />
+                <img ms="llwx" src="https://s1.imagehub.cc/images/2024/06/07/935658f74a3c87b7e1b30268ab741a2c.jpeg" width='auto' height="400" />
+                <img ms="llqq" src="https://dlink.host/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBZ1hsWVR6S1JLMDBranFtSWVXV1dzY3FXNGJYP2U9UlQ4NHps.jpg" width='auto' height="400" />
+                <h3>本站无任何盈利方式，第三方视频源内所有广告均与本站无关，如果您喜欢本站欢迎打赏，您的支持是缪斯星坚持下去的最大动力！</h3>
+                <h3>您可以通过官方QQ交流群或微信号给我们提出建议或反馈BUG，也可以投稿在本站您想看却未看到的番剧或电影，我们会尽最大努力寻找！</h3> 
+                </ul>
+            <img width=350 src="https://moe-counter.anjiurine.top/get/@musestar?theme=rule34" alt="musestar">
+        </header>
+        <!-- Footer -->
+        <footer id="footer">
+            <p class="copyright">© 2024 MUSESTAR</p>
+        </footer>
     </div>
+    <!-- BG -->
+    <div id="bg" data-dsn="video" data-overlay="6">
+        <video class="vvv" autoplay loop muted>
+            <source
+                src="https://note.youdao.com/yws/api/personal/file/WEB751491bdd586c6fb562e5f093d8ab94d?method=download&shareKey=19f7644c5797771641f69be9c2e0b068"
+                type="video/mp4">
+        </video>
+    </div>
+    <!-- Scripts -->
+    <script src="/files/jquery.min.js"></script>
+    <script src="/files/js/browser.min.js"></script>
+    <script src="/files/js/breakpoints.min.js"></script>
+    <script src="/files/js/util.js"></script>
+    <script src="/files/js/main.js"></script>
 </body>
 
 </html>
