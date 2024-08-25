@@ -60,12 +60,18 @@
         body {
             background-image: url('https://s1.imagehub.cc/images/2024/08/22/83ac04dacb9b4d9a4c68403f2edf1de0.jpg');
         }
+        @media (max-width: 1000px) {
+            .body-container {
+                background-image: url('https://s1.imagehub.cc/images/2024/08/22/83ac04dacb9b4d9a4c68403f2edf1de0.jpg');
+            }
+        }
     </style>
     <link href="/files/css/museplay.css" rel="stylesheet" type="text/css">
     <script src="/files/hls.js"></script>
     <script src="/files/DPlayer.js"></script>
 </head>
 <body>
+    <div class="body-container">
     <div class="video-container">
         <div id="dplayer"></div>
     </div>
@@ -150,6 +156,7 @@
             <script type="text/javascript" src="/files/under.js"></script>
         </div>
     </div>
+</div>
     <script>
         var dp = new DPlayer({
             container: document.getElementById('dplayer'),
