@@ -157,6 +157,15 @@ p {
         display: block;
     }
 }
+@media (min-width: 768px) {
+    .body-container {
+        background-image: none;
+        background-size: none;
+        background-position: none;
+        background-attachment: none;
+        background-repeat: none;
+    }
+}
 .download-container, .magnet-container {
     margin-top: 20px;
     background-color: rgba(255, 255, 255, 0.1);
