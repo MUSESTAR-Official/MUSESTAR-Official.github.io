@@ -40,13 +40,6 @@
             background-repeat: no-repeat;
         }
 
-        .body-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 100%;
-        }
-
         .video-container {
             width: 100%;
             max-width: 1200px;
@@ -203,6 +196,15 @@
         @media (min-width: 768px) {
             .vertical-divider {
                 display: block;
+            }
+        }
+
+        @media (min-width: 1000px) {
+            .body-container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
             }
         }
 
