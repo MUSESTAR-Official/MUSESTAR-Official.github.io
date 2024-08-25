@@ -18,10 +18,6 @@ body {
     flex-direction: column;
     align-items: center;
     width: 100%;
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
 }
 .video-container {
     width: 100%;
@@ -157,13 +153,12 @@ p {
         display: block;
     }
 }
-@media (min-width: 1000px) {
+@media (max-width: 1000px) {
     .body-container {
-        background-image: none;
-        background-size: none;
-        background-position: none;
-        background-attachment: none;
-        background-repeat: none;
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
     }
 }
 .download-container, .magnet-container {
