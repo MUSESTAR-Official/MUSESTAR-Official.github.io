@@ -157,7 +157,7 @@ p {
         display: block;
     }
 }
-@media (min-width: 768px) {
+@media (min-width: 1000px) {
     .body-container {
         background-image: none;
         background-size: none;
