@@ -160,6 +160,13 @@ p {
         background-attachment: fixed;
         background-repeat: no-repeat;
     }
+    body {
+        background-color: none; 
+        background-size: none;
+        background-position: none;
+        background-attachment: none;
+        background-repeat: none; 
+    }    
 }
 .download-container, .magnet-container {
     margin-top: 20px;
