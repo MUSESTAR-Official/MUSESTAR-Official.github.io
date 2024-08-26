@@ -17,7 +17,6 @@
             y.parentNode.insertBefore(t, y);
         })(window, document, "clarity", "script", "fvlvixulu7");
     </script>
-    <meta charset="UTF-8">
     <title>文字例ฅ^≧ω≦^ฅ缪斯星动漫</title>
     <link rel="icon" href="/favicon.ico" type="image/gif" sizes="16x16">
     <meta name="keywords" content="文字例,动漫,番剧,在线观看,高清,下载,缪斯星,MUSESTAR">
@@ -33,14 +32,21 @@
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
-            background-image: url('https://s1.imagehub.cc/images/2024/07/26/02fa0219d89963cdffa13b4d18ccaf3c.jpeg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: scroll;
-            background-repeat: no-repeat;
         }
 
         .body-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            background-image: url('https://s1.imagehub.cc/images/2024/07/26/02fa0219d89963cdffa13b4d18ccaf3c.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+        }
+
+        .up-container {
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -206,16 +212,6 @@
             }
         }
 
-        @media (max-width: 1000px) {
-            .body-container {
-                background-image: url('https://s1.imagehub.cc/images/2024/07/26/02fa0219d89963cdffa13b4d18ccaf3c.jpeg');
-                background-size: cover;
-                background-position: center;
-                background-attachment: fixed;
-                background-repeat: no-repeat;
-            }
-        }
-
         .download-container,
         .magnet-container {
             margin-top: 20px;
@@ -319,9 +315,11 @@
 
 <body>
     <div class="body-container">
+        <div class="up-container">
         <div class="video-container">
             <div id="dplayer"></div>
         </div>
+    </div>
         <div class="info-container">
             <h1>文字例</h1>
             <div class="divider">
