@@ -60,18 +60,12 @@
         body {
             background-image: url('背景图片');
         }
-        @media (max-width: 1000px) {
-            .body-container {
-                background-image: url('背景图片');
-            }
-        }
     </style>
     <link href="/files/css/museplay.css" rel="stylesheet" type="text/css">
     <script src="/files/hls.js"></script>
     <script src="/files/DPlayer.js"></script>
 </head>
 <body>
-    <div class="body-container">
     <h1><font color="red">本集缪斯星暂未上映，若官方已上映可暂时使用第三方播放源观看</font></h1>
     <div class="video-container">
         <div id="dplayer"></div>
@@ -156,7 +150,6 @@
             <script type="text/javascript" src="/files/under.js"></script>
         </div>
     </div>
-</div>
     <script>
         var dp = new DPlayer({
             container: document.getElementById('dplayer'),

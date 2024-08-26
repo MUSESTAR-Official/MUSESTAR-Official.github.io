@@ -32,25 +32,12 @@
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
-        }
-
-        .body-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 100%;
             background-image: url('https://s1.imagehub.cc/images/2024/07/26/02fa0219d89963cdffa13b4d18ccaf3c.jpeg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
             background-repeat: no-repeat;
-        }
 
-        .up-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 100%;
         }
 
         .video-container {
@@ -212,6 +199,21 @@
             }
         }
 
+        @media (max-width: 768px) {
+            body:before {
+                content: "";
+                position: fixed;
+                z-index: -1;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                background-image: inherit;
+                -webkit-background-size: cover !important;
+                -o-background-size: cover;
+            }
+        }
+
         .download-container,
         .magnet-container {
             margin-top: 20px;
@@ -314,92 +316,87 @@
 </head>
 
 <body>
-    <div class="body-container">
-        <div class="up-container">
-        <div class="video-container">
-            <div id="dplayer"></div>
-        </div>
+    <div class="video-container">
+        <div id="dplayer"></div>
     </div>
-        <div class="info-container">
-            <h1>文字例</h1>
+    <div class="info-container">
+        <h1>文字例</h1>
+        <div class="divider">
+            <div class="divider-line"></div>
+            <div class="divider-inner"></div>
+            <div class="divider-line"></div>
+        </div>
+        <div class="options">
+            <a href="/" class="option-btn">缪斯星首页</a>
+            <div class="vertical-divider"></div>
+            <a href="/animation" class="option-btn highlight">缪斯星动漫</a>
+            <div class="vertical-divider"></div>
+            <a href="/movie" class="option-btn">缪斯星影视</a>
+            <div class="vertical-divider"></div>
+            <a href="https://video.musestar.cc/" class="option-btn">缪斯星搜索</a>
+            <div class="vertical-divider"></div>
+            <a href="/musestar" class="option-btn">缪斯星官方</a>
+        </div>
+        <h2>集数选择</h2>
+        <div class="divider">
+            <div class="divider-line"></div>
+            <div class="divider-inner"></div>
+            <div class="divider-line"></div>
+        </div>
+        <div style="text-align: center;">
+            <p class="synopsis">
+                <script type="text/javascript" src="/animation/files/代码例.js"></script>
+            </p>
+        </div>
+        <div class="episode-selector">
+            <a href="https://video.musestar.cc/index.php/vod/search.html?wd=文字例" class="episode-btn">第三方播放源</a>
+            <a href="/animation/代码例/01" class="episode-btn">第1集</a>
+            <a href="/animation/代码例/02" class="episode-btn">第2集</a>
+            <a href="/animation/代码例/03" class="episode-btn">第3集</a>
+            <a href="/animation/代码例/04" class="episode-btn">第4集</a>
+            <a href="/animation/代码例/05" class="episode-btn">第5集</a>
+            <a href="/animation/代码例/06" class="episode-btn">第6集</a>
+            <a href="/animation/代码例/07" class="episode-btn">第7集</a>
+            <a href="/animation/代码例/08" class="episode-btn">第8集</a>
+            <a href="/animation/代码例/09" class="episode-btn">第9集</a>
+            <a href="/animation/代码例/10" class="episode-btn">第10集</a>
+            <a href="/animation/代码例/11" class="episode-btn">第11集</a>
+            <a href="/animation/代码例/12" class="episode-btn">第12集</a>
+        </div>
+        <h2>动漫介绍</h2>
+        <div class="divider">
+            <div class="divider-line"></div>
+            <div class="divider-inner"></div>
+            <div class="divider-line"></div>
+        </div>
+        <p class="synopsis">简介例</p>
+        <h2>本集下载</h2>
+        <div class="divider">
+            <div class="divider-line"></div>
+            <div class="divider-inner"></div>
+            <div class="divider-line"></div>
+        </div>
+        <div class="download-container">
+            <p id="downloadLink" class="download-link">视频链接</p>
+            <button class="btn copy-btn" onclick="copyDownloadLink()">复制下载链接</button>
+            <a href="视频链接" class="btn" download>直接下载</a>
+        </div>
+        <div class="magnet-container">
+            <p id="magnetLink" class="magnet-link">磁力链接</p>
+            <button class="btn copy-btn" onclick="copyMagnetLink()">复制磁力链接</button>
+            <a href="磁力链接" class="btn">磁力下载</a>
+        </div>
+        <div class="footer">
+            <img width="150" src="https://s1.imagehub.cc/images/2024/01/13/d0469ae970a9dac3b9e56aa223193e34.png"
+                alt="Footer Image">
+            <br>
+            <img width="350" src="https://moe-counter.anjiurine.top/get/@musestar?theme=rule34" alt="Visitor Counter">
             <div class="divider">
                 <div class="divider-line"></div>
                 <div class="divider-inner"></div>
                 <div class="divider-line"></div>
             </div>
-            <div class="options">
-                <a href="/" class="option-btn">缪斯星首页</a>
-                <div class="vertical-divider"></div>
-                <a href="/animation" class="option-btn highlight">缪斯星动漫</a>
-                <div class="vertical-divider"></div>
-                <a href="/movie" class="option-btn">缪斯星影视</a>
-                <div class="vertical-divider"></div>
-                <a href="https://video.musestar.cc/" class="option-btn">缪斯星搜索</a>
-                <div class="vertical-divider"></div>
-                <a href="/musestar" class="option-btn">缪斯星官方</a>
-            </div>
-            <h2>集数选择</h2>
-            <div class="divider">
-                <div class="divider-line"></div>
-                <div class="divider-inner"></div>
-                <div class="divider-line"></div>
-            </div>
-            <div style="text-align: center;">
-                <p class="synopsis">
-                    <script type="text/javascript" src="/animation/files/代码例.js"></script>
-                </p>
-            </div>
-            <div class="episode-selector">
-                <a href="https://video.musestar.cc/index.php/vod/search.html?wd=文字例" class="episode-btn">第三方播放源</a>
-                <a href="/animation/代码例/01" class="episode-btn">第1集</a>
-                <a href="/animation/代码例/02" class="episode-btn">第2集</a>
-                <a href="/animation/代码例/03" class="episode-btn">第3集</a>
-                <a href="/animation/代码例/04" class="episode-btn">第4集</a>
-                <a href="/animation/代码例/05" class="episode-btn">第5集</a>
-                <a href="/animation/代码例/06" class="episode-btn">第6集</a>
-                <a href="/animation/代码例/07" class="episode-btn">第7集</a>
-                <a href="/animation/代码例/08" class="episode-btn">第8集</a>
-                <a href="/animation/代码例/09" class="episode-btn">第9集</a>
-                <a href="/animation/代码例/10" class="episode-btn">第10集</a>
-                <a href="/animation/代码例/11" class="episode-btn">第11集</a>
-                <a href="/animation/代码例/12" class="episode-btn">第12集</a>
-            </div>
-            <h2>动漫介绍</h2>
-            <div class="divider">
-                <div class="divider-line"></div>
-                <div class="divider-inner"></div>
-                <div class="divider-line"></div>
-            </div>
-            <p class="synopsis">简介例</p>
-            <h2>本集下载</h2>
-            <div class="divider">
-                <div class="divider-line"></div>
-                <div class="divider-inner"></div>
-                <div class="divider-line"></div>
-            </div>
-            <div class="download-container">
-                <p id="downloadLink" class="download-link">视频链接</p>
-                <button class="btn copy-btn" onclick="copyDownloadLink()">复制下载链接</button>
-                <a href="视频链接" class="btn" download>直接下载</a>
-            </div>
-            <div class="magnet-container">
-                <p id="magnetLink" class="magnet-link">磁力链接</p>
-                <button class="btn copy-btn" onclick="copyMagnetLink()">复制磁力链接</button>
-                <a href="磁力链接" class="btn">磁力下载</a>
-            </div>
-            <div class="footer">
-                <img width="150" src="https://s1.imagehub.cc/images/2024/01/13/d0469ae970a9dac3b9e56aa223193e34.png"
-                    alt="Footer Image">
-                <br>
-                <img width="350" src="https://moe-counter.anjiurine.top/get/@musestar?theme=rule34"
-                    alt="Visitor Counter">
-                <div class="divider">
-                    <div class="divider-line"></div>
-                    <div class="divider-inner"></div>
-                    <div class="divider-line"></div>
-                </div>
-                <script type="text/javascript" src="/files/under.js"></script>
-            </div>
+            <script type="text/javascript" src="/files/under.js"></script>
         </div>
     </div>
     <script>
