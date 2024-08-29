@@ -334,6 +334,22 @@
             }
         }
 
+        @media (max-width: 768px) {
+            body:before {
+                content: "";
+                position: fixed;
+                z-index: -1;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                background-image: inherit;
+                -webkit-background-size: cover !important;
+                -o-background-size: cover;
+                background-position: center;
+            }
+        }
+
         ::-webkit-scrollbar {
             width: 5px;
         }
