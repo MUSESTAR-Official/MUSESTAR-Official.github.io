@@ -88,6 +88,10 @@
             <div class="vertical-divider"></div>
             <a href="/musestar" class="option-btn">缪斯星官方</a>
         </div>
+        <div class="options">
+            <a href="#" class="option-btn highlight">本番剧已启用自动更新</a>
+            <a href="#" class="option-btn highlight">播放器右下角切换播放源</a>
+        </div>    
         <h2>集数选择</h2>
         <div class="divider">
             <div class="divider-line"></div>
@@ -126,9 +130,14 @@
             <div class="divider-line"></div>
         </div>
         <div class="download-container">
-            <p id="downloadLink" class="download-link">视频链接</p>
-            <button class="btn copy-btn" onclick="copyDownloadLink()">复制下载链接</button>
-            <a href="视频链接" class="btn" download>直接下载</a>
+            <p id="downloadLink" class="download-link">视频链接VL</p>
+            <button class="btn copy-btn" onclick="copyDownloadLink()">复制MUSEVL源下载链接</button>
+            <a href="视频链接VL" class="btn" download>直接下载MUSEVL源</a>
+        </div>
+        <div class="download-container">
+            <p id="downloadLink" class="download-link">视频链接OD</p>
+            <button class="btn copy-btn" onclick="copyDownloadLink()">复制MUSEOD源下载链接</button>
+            <a href="视频链接VL" class="btn" download>直接下载MUSEOD源</a>
         </div>
         <div class="magnet-container">
             <p id="magnetLink" class="magnet-link">磁力地址</p>
@@ -159,8 +168,12 @@
                 pic: 'https://s1.imagehub.cc/images/2024/08/12/20558017d6792d0a2a78a1659f66b6fa.jpg',
                 quality: [
                     {
+                        name: 'MUSEVL源',
+                        url: "视频链接VL",
+                    }, 
+                    {
                         name: 'MUSEOD源',
-                        url: "视频链接",
+                        url: "视频链接OD",
                     }, 
                 ],
                 defaultQuality: 0,
