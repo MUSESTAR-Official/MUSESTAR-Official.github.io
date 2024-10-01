@@ -14,7 +14,7 @@
 //document.write("                                        <\/div>");
 //document.write("                                        <p class=\"vodlist_sub\">2023-09-29<\/p>");
 //document.write("                                        <p class=\"vodlist_sub\">日本\/剧情<\/p>");
-//document.write("                                        <p class=\"vodlist_sub\">缪斯星动漫更新中<\/p>");
+//document.write("                                        <p class=\"vodlist_sub\">缪斯星动漫已完结<\/p>");
 //document.write("                                    <\/div>");
 //document.write("                                <\/a>");
 //document.write("                            <\/li>");

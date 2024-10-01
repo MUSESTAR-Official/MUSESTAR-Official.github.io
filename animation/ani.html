@@ -52,28 +52,64 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Clarity tracking code for https://musestar.cc/ --><script>    (function(c,l,a,r,i,t,y){        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i+"?ref=bwt";        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);    })(window, document, "clarity", "script", "fvlvixulu7");</script>
-    <title>精灵幻想记 第二季-第一集ฅ^≧ω≦^ฅ缪斯星动漫</title>
+    <title>动漫名-第一集ฅ^≧ω≦^ฅ缪斯星动漫</title>
     <link rel="icon" href="/favicon.ico" type="image/gif" sizes="16x16">
-    <meta name="keywords" content="精灵幻想记 第二季,动漫,番剧,在线观看,高清,下载,缪斯星,MUSESTAR">
-    <meta name="description" content="前世与现世交错——异世界转生幻想新章开幕!!
-幼年时母亲被杀，成为贫民窟孤儿的少年里奥。七岁的某一天，因意外事故而死去的日本大学生“天川春人的记忆”在他心中复苏，同时“庞大的魔力”也觉醒了。
-之后经历了各种各样的相遇和离别的里奥在父母的故乡发誓要向杀死母亲的宿敌复仇。
-经过数年的旅行回到施特拉尔地区的里奥，救出了被迫接受不情愿的政治婚姻的恩师塞莉亚。但是，在那之后突然出现的光柱的引导下，他与自己前世天川春人的初恋少女绫濑美春达成了冲击性的重逢——">    
+    <meta name="keywords" content="动漫,番剧,在线观看,高清,下载,缪斯星,MUSESTAR">
+    <meta name="description" content="简介例">    
     <style>
         body {
-            background-image: url('https://s1.imagehub.cc/images/2024/10/01/0065636f82a0d5f286d9f3ccec7b823d.jpg');
+            background-image: url('背景图片');
         }
     </style>
     <link href="/files/css/museplay.css" rel="stylesheet" type="text/css">
-    
     <script src="/files/DPlayer.js"></script>
+    <script>
+                function getQueryVariable(variable) {
+            let query = window.location.search.substring(1);
+            let vars = query.split("&");
+            for (let i = 0; i < vars.length; i++) {
+                let pair = vars[i].split("=");
+                if (pair[0] === variable) {
+                    return pair[1];
+                }
+            }
+            return false;
+        }
+
+        let id = getQueryVariable('id');
+
+        let scrP = document.createElement('script');
+        scrP.src = `/animation/list/${id}.js`;
+        scrP.type = 'text/javascript';
+        document.head.appendChild(scrP);
+
+        function ulRender(objArr) {
+            let msimg = document.getElementById('msimg');
+            for (let oAE of objArr) {
+                let sc = oAE.url.split('/');
+
+                let imgA = document.createElement('img');
+                imgA.src = `${oAE.thumb}`
+                imgA.height = `300`
+                msimg.appendChild(imgA);
+
+                let msp = document.getElementById('msp');
+                let pA = document.createElement('p');
+                pA.innerHTML = `连载集数：${oAE.lianzaijs}`
+                msp.appendChild(pA);
+
+                document.title = `${oAE.musetitle}ฅ^≧ω≦^ฅฅ^≧ω≦^ฅ缪斯星动漫`
+            }
+
+        }
+    </script>
 </head>
 <body>
     <div class="video-container">
         <div id="dplayer"></div>
     </div>
     <div class="info-container">
-        <h1>精灵幻想记 第二季-第一集</h1>
+        <h1>动漫名-第一集</h1>
         <div class="divider">
             <div class="divider-line"></div>
             <div class="divider-inner"></div>
@@ -100,20 +136,23 @@
             <div class="divider-inner"></div>
             <div class="divider-line"></div>
         </div>
+        <div style="text-align: center;">
+            <p class="synopsis"><script type="text/javascript" src="/animation/files/代码例.js"></script></p>
+        </div>
         <div class="episode-selector">
-            <a href="https://video.musestar.cc/index.php/vod/search.html?wd=精灵幻想记 第二季" class="episode-btn">第三方播放源</a>
-            <a href="/animation/SeireiGensouki2/01" class="episode-btn">第1集</a>
-            <a href="/animation/SeireiGensouki2/02" class="episode-btn">第2集</a>
-            <a href="/animation/SeireiGensouki2/03" class="episode-btn">第3集</a>
-            <a href="/animation/SeireiGensouki2/04" class="episode-btn">第4集</a>
-            <a href="/animation/SeireiGensouki2/05" class="episode-btn">第5集</a>
-            <a href="/animation/SeireiGensouki2/06" class="episode-btn">第6集</a>
-            <a href="/animation/SeireiGensouki2/07" class="episode-btn">第7集</a>
-            <a href="/animation/SeireiGensouki2/08" class="episode-btn">第8集</a>
-            <a href="/animation/SeireiGensouki2/09" class="episode-btn">第9集</a>
-            <a href="/animation/SeireiGensouki2/10" class="episode-btn">第10集</a>
-            <a href="/animation/SeireiGensouki2/11" class="episode-btn">第11集</a>
-            <a href="/animation/SeireiGensouki2/12" class="episode-btn">第12集</a>
+            <a href="https://video.musestar.cc/index.php/vod/search.html?wd=动漫名" class="episode-btn">第三方播放源</a>
+            <a href="/animation/代码例/01" class="episode-btn">第1集</a>
+            <a href="/animation/代码例/02" class="episode-btn">第2集</a>
+            <a href="/animation/代码例/03" class="episode-btn">第3集</a>
+            <a href="/animation/代码例/04" class="episode-btn">第4集</a>
+            <a href="/animation/代码例/05" class="episode-btn">第5集</a>
+            <a href="/animation/代码例/06" class="episode-btn">第6集</a>
+            <a href="/animation/代码例/07" class="episode-btn">第7集</a>
+            <a href="/animation/代码例/08" class="episode-btn">第8集</a>
+            <a href="/animation/代码例/09" class="episode-btn">第9集</a>
+            <a href="/animation/代码例/10" class="episode-btn">第10集</a>
+            <a href="/animation/代码例/11" class="episode-btn">第11集</a>
+            <a href="/animation/代码例/12" class="episode-btn">第12集</a>
         </div>
         <h2>动漫介绍</h2>
         <div class="divider">
@@ -121,10 +160,7 @@
             <div class="divider-inner"></div>
             <div class="divider-line"></div>
         </div>
-        <p class="synopsis">前世与现世交错——异世界转生幻想新章开幕!!
-幼年时母亲被杀，成为贫民窟孤儿的少年里奥。七岁的某一天，因意外事故而死去的日本大学生“天川春人的记忆”在他心中复苏，同时“庞大的魔力”也觉醒了。
-之后经历了各种各样的相遇和离别的里奥在父母的故乡发誓要向杀死母亲的宿敌复仇。
-经过数年的旅行回到施特拉尔地区的里奥，救出了被迫接受不情愿的政治婚姻的恩师塞莉亚。但是，在那之后突然出现的光柱的引导下，他与自己前世天川春人的初恋少女绫濑美春达成了冲击性的重逢——</p>
+        <p class="synopsis">简介例</p>
         <h2>本集下载</h2>
         <div class="divider">
             <div class="divider-line"></div>
@@ -132,19 +168,19 @@
             <div class="divider-line"></div>
         </div>
         <div class="download-container">
-            <p id="downloadLink" class="download-link">https://videolink.musestar.cc/onedrive/animation/精灵幻想记/season%202/精灵幻想记%20S02E01.mp4</p>
+            <p id="downloadLink" class="download-link">https://videolink.musestar.cc/onedrive/animation/动漫名/season%201/动漫名%20S01E01.mp4</p>
             <button class="btn copy-btn" onclick="copyDownloadLink()">复制MUSEVL源下载链接</button>
-            <a href="https://videolink.musestar.cc/onedrive/animation/精灵幻想记/season%202/精灵幻想记%20S02E01.mp4" class="btn" download>直接下载MUSEVL源</a>
+            <a href="https://videolink.musestar.cc/onedrive/animation/动漫名/season%201/动漫名%20S01E01.mp4" class="btn" download>直接下载MUSEVL源</a>
         </div>
         <div class="download-container">
-            <p id="downloadLink" class="download-link">https://my.microsoftpersonalcontent.com/personal/34ad44ca3c61e505/_layouts/15/download.aspx?share=EZV60nR88ylBl_0hjVjafOEB6QTLUhDcv3Jd24ylxjW_nA</p>
+            <p id="downloadLink" class="download-link">https://my.microsoftpersonalcontent.com/personal/34ad44ca3c61e505/_layouts/15/download.aspx?share=视频链接OD</p>
             <button class="btn copy-btn" onclick="copyDownloadLink()">复制MUSEOD源下载链接</button>
-            <a href="https://my.microsoftpersonalcontent.com/personal/34ad44ca3c61e505/_layouts/15/download.aspx?share=EZV60nR88ylBl_0hjVjafOEB6QTLUhDcv3Jd24ylxjW_nA" class="btn" download>直接下载MUSEOD源</a>
+            <a href="https://my.microsoftpersonalcontent.com/personal/34ad44ca3c61e505/_layouts/15/download.aspx?share=视频链接OD" class="btn" download>直接下载MUSEOD源</a>
         </div>
         <div class="magnet-container">
-            <p id="magnetLink" class="magnet-link">https://acgrip.art/?term=ANi+精灵幻想记</p>
+            <p id="magnetLink" class="magnet-link">磁力地址</p>
             <button class="btn copy-btn" onclick="copyMagnetLink()">复制磁力链接</button>
-            <a href="https://acgrip.art/?term=ANi+精灵幻想记" class="btn">磁力下载</a>
+            <a href="磁力地址" class="btn">磁力下载</a>
         </div>
         <div class="footer">
             <img width="150" src="https://s1.imagehub.cc/images/2024/01/13/d0469ae970a9dac3b9e56aa223193e34.png" alt="Footer Image">
@@ -171,11 +207,11 @@
                 quality: [
                     {
                         name: 'MUSEOD源',
-                        url: "https://my.microsoftpersonalcontent.com/personal/34ad44ca3c61e505/_layouts/15/download.aspx?share=EZV60nR88ylBl_0hjVjafOEB6QTLUhDcv3Jd24ylxjW_nA",
+                        url: "https://my.microsoftpersonalcontent.com/personal/34ad44ca3c61e505/_layouts/15/download.aspx?share=视频链接OD",
                     }, 
                     {
                         name: 'MUSEVL源',
-                        url: "https://videolink.musestar.cc/onedrive/animation/精灵幻想记/season%202/精灵幻想记%20S02E01.mp4",
+                        url: "https://videolink.musestar.cc/onedrive/animation/动漫名/season%201/动漫名%20S01E01.mp4",
                     }, 
                 ],
                 defaultQuality: 0,
