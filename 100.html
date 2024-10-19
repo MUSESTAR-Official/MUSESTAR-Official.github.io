@@ -3,31 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>𝐌𝐔𝐒𝐄𝐒𝐓𝐀𝐑✶缪斯星</title>
+    <title>我的页面</title>
     <style>
         body {
             margin: 0;
             padding: 0;
-            font-family: Arial, sans-serif;
-            background-image: url('https://note.youdao.com/yws/api/personal/file/WEB1129ba7ba6e9edad57fac044437cf6ae?method=download&inline=true&shareKey=4de381a849b7fedd7ea96824cc480cef'); /* 请替换为您的背景图片URL */
+            background-image: url('https://note.youdao.com/yws/api/personal/file/WEB1129ba7ba6e9edad57fac044437cf6ae?method=download&inline=true&shareKey=4de381a849b7fedd7ea96824cc480cef');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            background-attachment: fixed;
-            height: 100vh;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
-        .title {
+        .logo {
             position: absolute;
-            top: 20px;
+            top: -15px;
             left: 20px;
-            font-size: 40px;
+            width: 200px;
+            height: auto;
+        }
+        .bottom-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: stretch;
+            padding: 0;
+            margin: 0 30px 30px 30px;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 200px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .bottom-options a {
+            color: white;
+            text-decoration: none;
+            font-size: 30px;
             font-weight: bold;
-            color: #ffffff; /* 可以根据背景图片调整文字颜色 */
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* 添加文字阴影以增加可读性 */
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.3s, transform 0.5s;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+            transform: translateX(-100%);
+            opacity: 0;
+        }
+        .bottom-options a:hover {
+            opacity: 0.8;
+        }
+        .bottom-options a:nth-child(1) {
+            background-image: url('https://s1.imagehub.cc/images/2024/08/18/69a776cb5468e12bb38866b0f7332b0d.jpg');
+            animation: slideIn 0.5s forwards;
+        }
+        .bottom-options a:nth-child(2) {
+            background-image: url('https://s1.imagehub.cc/images/2024/10/18/14263a888127c08369e650be307d5fd3.jpg');
+            animation: slideIn 0.5s forwards 0.2s;
+        }
+        .bottom-options a:nth-child(3) {
+            background-image: url('https://api.anosu.top/api/?sort=all');
+            animation: slideIn 0.5s forwards 0.4s;
+        }
+        .bottom-options a:nth-child(4) {
+            background-image: url('https://s1.imagehub.cc/images/2024/10/08/009311278d9e91751280590d6ce037cb.jpg');
+            animation: slideIn 0.5s forwards 0.6s;
+        }
+        @keyframes slideIn {
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        @font-face {
+            font-family: "MUSE";
+            src: url("/SmileySans-Oblique.ttf");
         }
     </style>
 </head>
 <body>
-    <div class="title">𝐌𝐔𝐒𝐄𝐒𝐓𝐀𝐑✶缪斯星</div>
+    <img src="https://s1.imagehub.cc/images/2024/01/13/d0469ae970a9dac3b9e56aa223193e34.png" alt="Logo" class="logo">
+    <div class="bottom-options">
+        <a href="#option1" style="font-family: MUSE;">缪 斯 星 动 漫</a>
+        <a href="#option2" style="font-family: MUSE;">缪 斯 星 影 视</a>
+        <a href="#option3" style="font-family: MUSE;">缪 斯 集 合 搜</a>
+        <a href="#option4" style="font-family: MUSE;">缪 斯 星 官 方</a>
+    </div>
 </body>
 </html>
