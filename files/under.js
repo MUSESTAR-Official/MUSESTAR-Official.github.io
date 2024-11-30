@@ -1,6 +1,6 @@
 document.write("    <div class=\"foot\">");
 document.write("        <div class=\"footbg\">");
-document.write("           <a href=\" https:\/\/musestar.cc\/\">© 2024 MUSESTAR<\/a><br>");
+document.write("           <a href=\" https:\/\/musestar.cc\/\">© <script> document.write('' + (new Date()).getFullYear()) <\/script> MUSESTAR<\/a><br>");
 document.write("<a href=\"https:\/\/icp.gov.moe\/?keyword=20226956\" target=\"_blank\">萌ICP备20226956号<\/a><br>");
 document.write("<a href=\"https:\/\/stats.uptimerobot.com\/NJ9gBiMZ7D\" target=\"_blank\">缪斯星服务状态<\/a><br>");
 document.write("<a href=\"admin@musestar.cc\" target=\"_blank\">联系邮箱admin@musestar.cc<\/a><br>");
