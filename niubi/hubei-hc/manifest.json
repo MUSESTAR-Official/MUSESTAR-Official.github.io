@@ -1,0 +1,16 @@
+{
+  "short_name": "湖北健康码",
+  "name": "湖北健康码",
+  "icons": [
+    {
+      "src": "static/QRlogo.png",
+      "type": "image/png",
+      "sizes": "676x676"
+    }
+  ],
+  "id": "ilovexjp-hubei-hc-simulator",
+  "start_url": ".",
+  "display": "fullscreen",
+  "scope": "/",
+  "description": "湖北健康码模拟"
+}
