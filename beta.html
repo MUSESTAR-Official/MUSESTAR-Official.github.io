@@ -8,6 +8,10 @@
     <meta name="description" content="𝐌𝐔𝐒𝐄𝐒𝐓𝐀𝐑缪斯星正在持续收集动漫番剧、电影、剧集等，给您免费播放网站中的最好体验！ฅ^≧ω≦^ฅ">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
     <style>
+        html {
+            height: 100%;
+            overflow-x: hidden;
+        }
         body {
             margin: 0;
             padding: 0;
@@ -15,16 +19,18 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            min-height: 100vh;
+            min-height: 500vh; /* 增加页面高度以便滚动 */
             display: flex;
             flex-direction: column;
+            overflow-x: hidden;
         }
         .logo {
-            position: absolute;
+            position: fixed;
             top: -15px;
             left: 20px;
             width: 200px;
             height: auto;
+            z-index: 1000;
         }
         .bottom-options {
             display: flex;
@@ -39,6 +45,7 @@
             height: 200px;
             border-radius: 10px;
             overflow: hidden;
+            z-index: 1000;
         }
         .bottom-options a {
             color: white;
@@ -86,15 +93,111 @@
             font-family: "MUSE";
             src: url("/SmileySans-Oblique.ttf");
         }
+        .announcement {
+            position: fixed;
+            top: 20px;
+            right: -300px;
+            width: 280px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 15px;
+            border-radius: 10px 0 0 10px;
+            box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
+            transition: right 0.5s ease;
+            font-family: MUSE;
+            display: none;
+            z-index: 1000;
+        }
+        .announcement.show {
+            right: 0;
+            display: block;
+        }
+        .announcement h3 {
+            margin: 0 0 10px 0;
+            color: #333;
+        }
+        .announcement p {
+            margin: 0;
+            color: #666;
+            line-height: 1.5;
+        }
+        .scroll-section {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            pointer-events: none;
+        }
+        .scroll-content {
+            width: 50%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            transform: translateX(100%);
+            transition: transform 0.5s ease;
+            padding: 40px;
+            box-sizing: border-box;
+            pointer-events: auto;
+            overflow-y: auto;
+        }
+        .scroll-content.visible {
+            transform: translateX(0);
+        }
     </style>
 </head>
 <body>
     <img src="https://s1.imagehub.cc/images/2024/01/13/d0469ae970a9dac3b9e56aa223193e34.png" alt="Logo" class="logo">
+    <div class="announcement">
+        <h3>公告</h3>
+        <p id="announcement-content"></p>
+    </div>
+    <div class="scroll-section">
+        <div class="scroll-content" id="scrollContent">
+            <h2 style="font-family: MUSE;">滚动内容</h2>
+            <p style="font-family: MUSE;">这里是滚动展示的内容区域</p>
+            <!-- 可以添加更多内容 -->
+        </div>
+    </div>
     <div class="bottom-options">
         <a href="#option1" style="font-family: MUSE;">缪 斯 星 动 漫</a>
         <a href="#option2" style="font-family: MUSE;">缪 斯 星 影 视</a>
         <a href="#option3" style="font-family: MUSE;">缪 斯 集 合 搜</a>
         <a href="#option4" style="font-family: MUSE;">缪 斯 星 官 方</a>
     </div>
+    <script>
+        // 检查是否有公告内容
+        function checkAnnouncement() {
+            const content = "这里是公告内容";
+            const announcementElement = document.querySelector('.announcement');
+            const contentElement = document.getElementById('announcement-content');
+            
+            if (content && content.trim() !== '') {
+                contentElement.textContent = content;
+                announcementElement.classList.add('show');
+            }
+        }
+        
+        window.addEventListener('load', checkAnnouncement);
+
+        // 滚动效果
+        let lastScrollY = 0;
+        const scrollContent = document.getElementById('scrollContent');
+        const triggerPoint = window.innerHeight * 0.3; // 触发点为视窗高度的30%
+
+        window.addEventListener('scroll', () => {
+            const currentScrollY = window.scrollY;
+            const scrollDistance = currentScrollY - lastScrollY;
+            
+            if (currentScrollY > triggerPoint) {
+                scrollContent.classList.add('visible');
+            } else {
+                scrollContent.classList.remove('visible');
+            }
+            
+            lastScrollY = currentScrollY;
+        });
+    </script>
 </body>
 </html>
