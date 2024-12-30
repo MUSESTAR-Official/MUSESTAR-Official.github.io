@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<!doctype html>
-<html lang="zh_CN">
+<html lang="zh-CN">
 
 <head>
     <!-- Clarity tracking code for https://musestar.cc/ -->
@@ -25,14 +24,29 @@
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="/files/css/main.css">
     <style>
-        .vvv {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            display: none;
+        }
+        
+        .video-background video {
             min-width: 100%;
             min-height: 100%;
+            width: auto;
+            height: auto;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
         }
+
         body {
             background-image: url('https://img-r2.amemei-lists.top/q78kg/fb27a46f-58f3-4c40-ba84-fdf9cf8ac528.webp');
             background-size: cover;
@@ -45,19 +59,31 @@
             display: none;
         }
         @media (min-width: 1000px) {
+            #wrapper {
+                margin-left: -500px;
+            }
+            
             .announcement {
-            display: black;
-            position: fixed;
-            right: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            padding: 20px;
-            border-radius: 10px;
-            max-width: 200px;
-            border-bottom:solid 1px white;
-            border-left:solid 1px white; 
-            border-right:solid 1px white; 
-            border-top:solid 1px white
+                display: black;
+                position: fixed;
+                right: 20px;
+                top: 50%;
+                transform: translateY(-50%);
+                padding: 20px;
+                border-radius: 10px;
+                max-width: 200px;
+                border-bottom:solid 1px white;
+                border-left:solid 1px white; 
+                border-right:solid 1px white; 
+                border-top:solid 1px white
+            }
+
+            .video-background {
+                display: block;
+            }
+
+            body {
+                background: none;
             }
         }
     </style>
@@ -94,7 +120,6 @@
         <!-- Footer -->
         <footer id="footer">
             <p class="copyright">© <script> document.write('' + (new Date()).getFullYear()) </script> MUSESTAR</p>
-            <p class="copyright"><a href="https://stats.uptimerobot.com/NJ9gBiMZ7D">缪斯星服务状态</a></p>
         </footer>
     </div>
     
@@ -115,6 +140,12 @@
         </video>
     </div>
 -->
+<div class="video-background">
+    <video autoplay loop muted>
+        <source src="https://my.microsoftpersonalcontent.com/personal/34ad44ca3c61e505/_layouts/15/download.aspx?share=EfRlBwAh2GdDutzGeKZpN5YBdTqzjurznNx5elQPLGS45g" type="video/mp4">
+    </video>
+</div>
+
     <!-- Scripts -->
     <script src="/files/jquery.min.js"></script>
     <script src="/files/js/browser.min.js"></script>
