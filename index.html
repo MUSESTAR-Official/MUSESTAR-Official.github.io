@@ -23,6 +23,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="/files/css/main.css">
+    <script src="/files/DPlayer.js"></script>
     <style>
         .video-background {
             position: fixed;
@@ -58,6 +59,11 @@
         .announcement {
             display: none;
         }
+
+        .video-player {
+            display: none;
+        }
+
         @media (min-width: 1000px) {
             #wrapper {
                 margin-left: -500px;
@@ -78,6 +84,24 @@
                 border-top:solid 1px white
             }
 
+            .video-player {
+                display: block;
+                position: fixed;
+                right: 20px;
+                top: 20px;
+                width: 25vw; /* 改为相对视窗宽度 */
+                max-width: 400px; /* 设置最大宽度 */
+                min-width: 280px; /* 设置最小宽度 */
+                height: calc(25vw * 9.5/16); 
+                max-height: 235px; /* 最大高度 */
+                min-height: 157.5px; /* 最小高度 */
+                background: rgba(0,0,0,0.5);
+                border-radius: 10px;
+                padding: 10px;
+                border: 1px solid white;
+                z-index: 100;
+            }
+
             .video-background {
                 display: block;
             }
@@ -85,6 +109,29 @@
             body {
                 background: none;
             }
+
+            .option-btn {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none;
+            font-size: clamp(0.8rem, 2vw, 1rem);
+        }
+
+        .option-btn:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .highlight {
+            background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, transparent 75%, transparent);
+            background-size: 20px 20px;
+            animation: move 1s linear infinite;
+        }
+
         }
     </style>
 </head>
@@ -127,6 +174,27 @@
     <div class="announcement">
         <h3>公告</h3>
         <p></p>
+    </div>
+
+    <!-- 视频播放器 -->
+    <div class="video-player">
+        <div id="dplayer">
+            <script>
+                var dp = new DPlayer({
+                    container: document.getElementById('dplayer'),
+                    airplay: true,
+                    preload: 'auto',
+                    logo: "",
+                    autoplay: true,
+                    volume: 1.0,
+                    video: {
+                        url: "http://note.youdao.com/yws/api/personal/file/WEB74401178a0f874ca909b919c3b224441?method=download&inline=true&shareKey=959b5644edf50f5514c5ee339810d515",
+                        defaultQuality: 0,
+                    },
+                });
+            </script>        
+        </div>
+        <a href="https://store.steampowered.com/app/2527500/_MiSide/" target="_blank" class="option-btn highlight" style="margin-top: 15px; display: block; text-align: center;">米塔 MiSide</a>
     </div>
 
     <!-- BG
