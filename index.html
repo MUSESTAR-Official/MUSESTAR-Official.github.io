@@ -180,15 +180,25 @@
     <div class="video-player">
         <div id="dplayer">
             <script>
+                // 定义视频列表
+                const videos = [
+                    "http://note.youdao.com/yws/api/personal/file/WEB74401178a0f874ca909b919c3b224441?method=download&inline=true&shareKey=959b5644edf50f5514c5ee339810d515",
+                    "http://note.youdao.com/yws/api/personal/file/WEB0c910abd96de93aa6b5003b1d6a6229d?method=download&inline=true&shareKey=8e850fb15dcc08ebee4e5885cbcb6bfa",
+                    "http://note.youdao.com/yws/api/personal/file/WEB55a85d18c7418e1f4b1b8cdf60424110?method=download&inline=true&shareKey=363cfca8e4b3d9b1aec04a29d25f8fb2"
+                ];
+                
+                // 随机选择一个视频
+                const randomVideo = videos[Math.floor(Math.random() * videos.length)];
+                
                 var dp = new DPlayer({
                     container: document.getElementById('dplayer'),
                     airplay: true,
                     preload: 'auto',
                     logo: "",
-                    autoplay: true,
+                    autoplay: false,
                     volume: 1.0,
                     video: {
-                        url: "http://note.youdao.com/yws/api/personal/file/WEB74401178a0f874ca909b919c3b224441?method=download&inline=true&shareKey=959b5644edf50f5514c5ee339810d515",
+                        url: randomVideo,
                         defaultQuality: 0,
                     },
                 });
