@@ -16,7 +16,7 @@
         <local:MyHint Text="“乡野”需要手动更新，①进入模组文件夹删除原“乡野”模组文件，②点击下方按钮下载新版本后导入" />
 		<local:MyListItem  Margin="-5,2,-5,8"
 		            Logo="pack://application:,,,/images/Blocks/Egg.png" Title="1.20单独更新模组下载" Info="乡野六月_1.18.2"
-		            EventType="打开网页" EventData="https://dlink.host/1drv/aHR0cHM6Ly8xZHJ2Lm1zL3UvcyFBZ1hsWVR6S1JLMDBtR3hUYTY4OEtmUUJKUHE0P2U9TGFXTnJm.zip" Type="Clickable" />
+		            EventType="打开网页" EventData="https://my.microsoftpersonalcontent.com/personal/34ad44ca3c61e505/_layouts/15/download.aspx?share=Ec9HKk-H4sZAtaqLb8WwDD0BA4zI_wC121dmTtu1AN3FTw" Type="Clickable" />
         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" Text=""/>
         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
                     Text="截至2025.1.20，缪斯星服务器共需模组57个"/>
@@ -24,7 +24,7 @@
                     Text="模组数量或版本不符可能导致您无法进入服务器"/>
 		<local:MyListItem  Margin="-5,2,-5,8"
 		            Logo="pack://application:,,,/images/Blocks/Grass.png" Title="全部所需模组打包下载" Info="模组问题无法解决可以尝试全部替换"
-		            EventType="打开网页" EventData="https://dlink.host/1drv/aHR0cHM6Ly8xZHJ2Lm1zL3UvcyFBZ1hsWVR6S1JLMDBtR3hUYTY4OEtmUUJKUHE0P2U9TGFXTnJm.zip" Type="Clickable" />
+		            EventType="打开网页" EventData="https://my.microsoftpersonalcontent.com/personal/34ad44ca3c61e505/_layouts/15/download.aspx?share=EbM1is6pn9VOtb_1iwPoT4IBcXfy4AR_Rvnma6fZwh1KbQ" Type="Clickable" />
         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" Text=""/>
         <local:MyHint Text="本公告自动联网更新，建议每次打开启动器时查阅" />
 	</StackPanel>
