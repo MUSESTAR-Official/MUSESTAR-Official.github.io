@@ -151,7 +151,10 @@
                 ],
                 defaultQuality: 0,
             },
-            seek: 3600,
+        });
+
+        dp.on('loadedmetadata', function() {
+            dp.seek(3600);
         });
     </script>
      <script src="/files/js/museplaydownload.js"></script>
