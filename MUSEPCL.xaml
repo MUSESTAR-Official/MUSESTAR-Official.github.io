@@ -13,11 +13,10 @@
 		<local:MyListItem  Margin="-5,2,-5,8"
 		            Logo="pack://application:,,,/images/Blocks/Egg.png" Title="1.27添加模组下载①" Info="屠宰工艺"
 		            EventType="打开网页" EventData="https://my.microsoftpersonalcontent.com/personal/34ad44ca3c61e505/_layouts/15/download.aspx?share=ER4Zudg30zVOkwERNpOlETMBrb6zcqtYIqKnH_AT7U7n0g" Type="Clickable" />
-        <local:MyHint Text="同时，需要将“乡野”模组删除" />
 		<local:MyListItem  Margin="-5,2,-5,8"
 		            Logo="pack://application:,,,/images/Blocks/Egg.png" Title="1.27添加模组下载②" Info="多元乐事"
 		            EventType="打开网页" EventData="https://my.microsoftpersonalcontent.com/personal/34ad44ca3c61e505/_layouts/15/download.aspx?share=ETcHrrf3lCZMnU-Udqf5Ms4Bokdg8wv2dAYagMAS4BmQYA" Type="Clickable" />
-
+        <local:MyHint Text="同时，需要将“乡野”模组删除" />
         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" Text=""/>
 
         <local:MyHint Text="1.26进行了模组添加。" />
