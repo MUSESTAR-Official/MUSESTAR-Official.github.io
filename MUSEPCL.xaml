@@ -1,4 +1,4 @@
-﻿<local:MyCard Title="缪斯星公告 - 1.26更新" Margin="0,0,0,15" CanSwap="True" IsSwaped="True">
+﻿<local:MyCard Title="缪斯星公告 - 2025.1.27更新" Margin="0,0,0,15" CanSwap="True" IsSwaped="True">
 	<StackPanel Margin="25,40,23,15">
 		<local:MyListItem  Margin="-5,2,-5,8"
 		            Logo="https://www.musestar.cc/favicon.ico" Title="MUSESTAR缪斯星" Info="MUSESTAR缪斯星官方网站"
@@ -9,23 +9,31 @@
                     Text="部分教程详见本压缩包内 [部分模组教程合集.txt]"/>
         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" Text=""/>
 
+        <local:MyHint Text="1.27进行了模组添加。" />
+		<local:MyListItem  Margin="-5,2,-5,8"
+		            Logo="pack://application:,,,/images/Blocks/Egg.png" Title="1.27添加模组下载①" Info="屠宰工艺"
+		            EventType="打开网页" EventData="https://my.microsoftpersonalcontent.com/personal/34ad44ca3c61e505/_layouts/15/download.aspx?share=ER4Zudg30zVOkwERNpOlETMBrb6zcqtYIqKnH_AT7U7n0g" Type="Clickable" />
+        <local:MyHint Text="同时，需要将“乡野”模组删除" />
+		<local:MyListItem  Margin="-5,2,-5,8"
+		            Logo="pack://application:,,,/images/Blocks/Egg.png" Title="1.27添加模组下载②" Info="多元乐事"
+		            EventType="打开网页" EventData="https://my.microsoftpersonalcontent.com/personal/34ad44ca3c61e505/_layouts/15/download.aspx?share=ETcHrrf3lCZMnU-Udqf5Ms4Bokdg8wv2dAYagMAS4BmQYA" Type="Clickable" />
+
+        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" Text=""/>
+
         <local:MyHint Text="1.26进行了模组添加。" />
 		<local:MyListItem  Margin="-5,2,-5,8"
 		            Logo="pack://application:,,,/images/Blocks/RedstoneLampOn.png" Title="1.26添加模组下载" Info="机械动力：伪装方块+"
 		            EventType="打开网页" EventData="https://my.microsoftpersonalcontent.com/personal/34ad44ca3c61e505/_layouts/15/download.aspx?share=EemNSVVstxtIiDN3JwDW2NABxbapG_AQBy93ECDa4yxiaQ" Type="Clickable" />
+        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" Text=""/>
 
         <local:MyHint Text="1.20进行了模组版本更新。请按照以下步骤更新您的模组版本" />
         <local:MyImage Height="300" HorizontalAlignment="Center" Source="https://s1.imagehub.cc/images/2025/01/20/1cd8cfda5a4137ec478f2be4a18a9ae7.png" />
         <local:MyImage Height="300" HorizontalAlignment="Center" Source="https://s1.imagehub.cc/images/2025/01/20/13bd7a62359e6083fa0cff4585a2ea70.png" />
         <local:MyHint Text="除了“飞跃地球”、“Planeteer - Core”、“飞跃群星：机器”其他的全部更新" />
-        <local:MyHint Text="“乡野”需要手动更新，①进入模组文件夹删除原“乡野”模组文件，②点击下方按钮下载新版本后导入" />
-		<local:MyListItem  Margin="-5,2,-5,8"
-		            Logo="pack://application:,,,/images/Blocks/Egg.png" Title="1.20单独更新模组下载" Info="乡野六月_1.18.2"
-		            EventType="打开网页" EventData="https://my.microsoftpersonalcontent.com/personal/34ad44ca3c61e505/_layouts/15/download.aspx?share=Ec9HKk-H4sZAtaqLb8WwDD0BA4zI_wC121dmTtu1AN3FTw" Type="Clickable" />
         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" Text=""/>
         
         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                    Text="截至2025.1.26，缪斯星服务器共需模组58个"/>
+                    Text="截至2025.1.27，缪斯星服务器共需模组59个"/>
         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
                     Text="模组数量或版本不符可能导致您无法进入服务器"/>
 		<local:MyListItem  Margin="-5,2,-5,8"
