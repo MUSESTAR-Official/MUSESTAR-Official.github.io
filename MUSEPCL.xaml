@@ -1,4 +1,4 @@
-﻿<local:MyCard Title="缪斯星公告 - 2025.1.27更新" Margin="0,0,0,15" CanSwap="True" IsSwaped="True">
+﻿<local:MyCard Title="缪斯星公告 - 2025.1.30更新" Margin="0,0,0,15" CanSwap="True" IsSwaped="True">
 	<StackPanel Margin="25,40,23,15">
 		<local:MyListItem  Margin="-5,2,-5,8"
 		            Logo="https://www.musestar.cc/favicon.ico" Title="MUSESTAR缪斯星" Info="MUSESTAR缪斯星官方网站"
@@ -7,6 +7,13 @@
                     Text="未安装Java可使用本压缩包内 [Java19.exe] 安装"/>
         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
                     Text="部分教程详见本压缩包内 [部分模组教程合集.txt]"/>
+        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" Text=""/>
+
+        <local:MyHint Text="1.30进行了模组添加。" />
+		<local:MyListItem  Margin="-5,2,-5,8"
+		            Logo="pack://application:,,,/images/Blocks/RedstoneLampOn.png" Title="1.30添加模组下载" Info="自动汉化更新"
+		            EventType="打开网页" EventData="https://my.microsoftpersonalcontent.com/personal/34ad44ca3c61e505/_layouts/15/download.aspx?share=EVXJZdp-f8tFuyu1bVQ76DMBbGbxOIpngp7juyastCtAKw" Type="Clickable" />
+        <local:MyHint Text="同时，如果安装过“机械动力：伪装方块+”，需要将该模组删除" />
         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" Text=""/>
 
         <local:MyHint Text="1.27进行了模组添加。" />
@@ -19,12 +26,6 @@
         <local:MyHint Text="同时，需要将“乡野”模组删除" />
         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" Text=""/>
 
-        <local:MyHint Text="1.26进行了模组添加。" />
-		<local:MyListItem  Margin="-5,2,-5,8"
-		            Logo="pack://application:,,,/images/Blocks/RedstoneLampOn.png" Title="1.26添加模组下载" Info="机械动力：伪装方块+"
-		            EventType="打开网页" EventData="https://my.microsoftpersonalcontent.com/personal/34ad44ca3c61e505/_layouts/15/download.aspx?share=EemNSVVstxtIiDN3JwDW2NABxbapG_AQBy93ECDa4yxiaQ" Type="Clickable" />
-        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" Text=""/>
-
         <local:MyHint Text="1.20进行了模组版本更新。请按照以下步骤更新您的模组版本" />
         <local:MyImage Height="300" HorizontalAlignment="Center" Source="https://s1.imagehub.cc/images/2025/01/20/1cd8cfda5a4137ec478f2be4a18a9ae7.png" />
         <local:MyImage Height="300" HorizontalAlignment="Center" Source="https://s1.imagehub.cc/images/2025/01/20/13bd7a62359e6083fa0cff4585a2ea70.png" />
@@ -32,7 +33,7 @@
         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" Text=""/>
         
         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                    Text="截至2025.1.27，缪斯星服务器共需模组59个"/>
+                    Text="截至2025.1.30，缪斯星服务器共需模组59个"/>
         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
                     Text="模组数量或版本不符可能导致您无法进入服务器"/>
 		<local:MyListItem  Margin="-5,2,-5,8"
