@@ -9,6 +9,12 @@
                     Text="部分教程详见本压缩包内 [部分模组教程合集.txt]"/>
         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" Text=""/>
 
+        <local:MyHint Text="2.2进行了模组添加。" />
+		<local:MyListItem  Margin="-5,2,-5,8"
+		            Logo="pack://application:,,,/images/Blocks/RedstoneLampOn.png" Title="2.2添加模组下载" Info="2.2新增"
+		            EventType="打开网页" EventData="https://my.microsoftpersonalcontent.com/personal/34ad44ca3c61e505/_layouts/15/download.aspx?share=ERrOypIxdFBMqQt5TkVs4qUBd0g36G5EzA3H7mfGwDfo8g" Type="Clickable" />
+        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" Text=""/>
+
         <local:MyHint Text="1.30进行了模组添加。" />
 		<local:MyListItem  Margin="-5,2,-5,8"
 		            Logo="pack://application:,,,/images/Blocks/RedstoneLampOn.png" Title="1.30添加模组下载" Info="自动汉化更新"
@@ -33,7 +39,7 @@
         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" Text=""/>
         
         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                    Text="截至2025.1.30，缪斯星服务器共需模组59个"/>
+                    Text="截至2025.1.30，缪斯星服务器共需模组67个"/>
         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
                     Text="模组数量或版本不符可能导致您无法进入服务器"/>
 		<local:MyListItem  Margin="-5,2,-5,8"
