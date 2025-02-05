@@ -1,4 +1,4 @@
-﻿<local:MyCard Title="缪斯星公告 - 2025.2.3更新" Margin="0,0,0,15" CanSwap="True" IsSwaped="True">
+﻿<local:MyCard Title="缪斯星公告 - 2025.2.6更新" Margin="0,0,0,15" CanSwap="True" IsSwaped="True">
 	<StackPanel Margin="25,40,23,15">
 		<local:MyListItem  Margin="-5,2,-5,8"
 		            Logo="https://www.musestar.cc/favicon.ico" Title="MUSESTAR缪斯星" Info="MUSESTAR缪斯星官方网站"
@@ -10,7 +10,7 @@
         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" Text=""/>
 
         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                    Text="截至2025.2.3，缪斯星服务器共需模组68个"/>
+                    Text="截至2025.2.6，缪斯星服务器共需模组69个"/>
         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
                     Text="模组数量或版本不符可能导致您无法进入服务器"/>
 		<local:MyListItem  Margin="-5,2,-5,8"
@@ -18,6 +18,12 @@
 		            EventType="打开网页" EventData="https://my.microsoftpersonalcontent.com/personal/34ad44ca3c61e505/_layouts/15/download.aspx?share=EbM1is6pn9VOtb_1iwPoT4IBcXfy4AR_Rvnma6fZwh1KbQ" Type="Clickable" />
         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" Text=""/>
         <local:MyHint Text="本公告自动联网更新，建议每次打开启动器时查阅" />
+        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" Text=""/>
+
+        <local:MyHint Text="2.6进行了模组添加。" />
+		<local:MyListItem  Margin="-5,2,-5,8"
+		            Logo="pack://application:,,,/images/Blocks/RedstoneLampOn.png" Title="2.6添加模组下载" Info="机械动力：末影传输"
+		            EventType="打开网页" EventData="https://my.microsoftpersonalcontent.com/personal/34ad44ca3c61e505/_layouts/15/download.aspx?share=ER1gfp9ES7VBu-ymfLN7ztcBTZHgc0B6nmvncPrjpgZ0fg" Type="Clickable" />
         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" Text=""/>
 
         <local:MyHint Text="2.3进行了模组添加。" />
@@ -47,12 +53,6 @@
 		            Logo="pack://application:,,,/images/Blocks/Egg.png" Title="1.27添加模组下载②" Info="多元乐事"
 		            EventType="打开网页" EventData="https://my.microsoftpersonalcontent.com/personal/34ad44ca3c61e505/_layouts/15/download.aspx?share=ETcHrrf3lCZMnU-Udqf5Ms4Bokdg8wv2dAYagMAS4BmQYA" Type="Clickable" />
         <local:MyHint Text="同时，需要将“乡野”模组删除" />
-        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" Text=""/>
-
-        <local:MyHint Text="1.20进行了模组版本更新。请按照以下步骤更新您的模组版本" />
-        <local:MyImage Height="300" HorizontalAlignment="Center" Source="https://s1.imagehub.cc/images/2025/01/20/1cd8cfda5a4137ec478f2be4a18a9ae7.png" />
-        <local:MyImage Height="300" HorizontalAlignment="Center" Source="https://s1.imagehub.cc/images/2025/01/20/13bd7a62359e6083fa0cff4585a2ea70.png" />
-        <local:MyHint Text="除了“飞跃地球”、“Planeteer - Core”、“飞跃群星：机器”其他的全部更新" />
         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" Text=""/>
         
 	</StackPanel>
