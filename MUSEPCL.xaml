@@ -15,7 +15,7 @@
                     Text="模组数量或版本不符可能导致您无法进入服务器"/>
 		<local:MyListItem  Margin="-5,2,-5,8"
 		            Logo="pack://application:,,,/images/Blocks/Grass.png" Title="全部所需模组打包下载" Info="模组问题无法解决可以尝试全部替换"
-		            EventType="打开网页" EventData="https://my.microsoftpersonalcontent.com/personal/34ad44ca3c61e505/_layouts/15/download.aspx?share=EbM1is6pn9VOtb_1iwPoT4IBcXfy4AR_Rvnma6fZwh1KbQ" Type="Clickable" />
+		            EventType="打开网页" EventData="https://my.microsoftpersonalcontent.com/personal/34ad44ca3c61e505/_layouts/15/download.aspx?share=EX3tQXq7id5MvhMat5MzWcoB4jc5reBhUML1y8BePk4WSQ" Type="Clickable" />
         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" Text=""/>
         <local:MyHint Text="本公告自动联网更新，建议每次打开启动器时查阅" />
         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" Text=""/>
