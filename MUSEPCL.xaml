@@ -3,51 +3,42 @@
 		<local:MyListItem  Margin="-5,2,-5,8"
 		            Logo="https://www.musestar.cc/favicon.ico" Title="MUSESTAR缪斯星" Info="MUSESTAR缪斯星官方网站"
 		            EventType="打开网页" EventData="/" Type="Clickable" />
-        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                    Text="未安装Java可使用本压缩包内 [Java19.exe] 安装"/>
+        <local:MyHint Margin="0,8,0,2" IsWarn="False"
+                    Text="请在“版本设置-设置-游戏Java”中选择在MUSEPCL2目录中的JDK21"/>
         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
                     Text="部分教程详见本压缩包内 [部分模组教程合集.txt]"/>
-        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" Text=""/>
-
-        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
+        <local:MyHint Margin="0,8,0,2" IsWarn="False"
                     Text="截至2025.2.6，缪斯星服务器共需模组69个"/>
         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
                     Text="模组数量或版本不符可能导致您无法进入服务器"/>
 		<local:MyListItem  Margin="-5,2,-5,8"
 		            Logo="pack://application:,,,/images/Blocks/Grass.png" Title="全部所需模组打包下载" Info="模组问题无法解决可以尝试全部替换"
 		            EventType="打开网页" EventData="https://my.microsoftpersonalcontent.com/personal/34ad44ca3c61e505/_layouts/15/download.aspx?share=EX3tQXq7id5MvhMat5MzWcoB4jc5reBhUML1y8BePk4WSQ" Type="Clickable" />
-        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" Text=""/>
 		<local:MyListItem  Margin="-5,2,-5,8"
 		            Logo="pack://application:,,,/images/Blocks/Anvil.png" Title="IDM多线程下载器下载" Info="下载速度慢可使用IDM多线程下载"
 		            EventType="打开网页" EventData="https://my.microsoftpersonalcontent.com/personal/34ad44ca3c61e505/_layouts/15/download.aspx?share=EQXlYTzKRK0ggDSlCwAAAAABB39nkYZ9xf7hjSInadX1Lg" Type="Clickable" />
-        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" Text=""/>
-        <local:MyHint Text="本公告自动联网更新，建议每次打开启动器时查阅" />
-        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" Text=""/>
+        <local:MyHint Margin="0,8,0,2" IsWarn="False" Text="本公告自动联网更新，建议每次打开启动器时查阅" />
 
         <local:MyHint Text="2.6进行了模组添加。" />
 		<local:MyListItem  Margin="-5,2,-5,8"
 		            Logo="pack://application:,,,/images/Blocks/RedstoneLampOn.png" Title="2.6添加模组下载" Info="机械动力：末影传输"
 		            EventType="打开网页" EventData="https://my.microsoftpersonalcontent.com/personal/34ad44ca3c61e505/_layouts/15/download.aspx?share=ER1gfp9ES7VBu-ymfLN7ztcBTZHgc0B6nmvncPrjpgZ0fg" Type="Clickable" />
-        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" Text=""/>
 
         <local:MyHint Text="2.3进行了模组添加。" />
 		<local:MyListItem  Margin="-5,2,-5,8"
 		            Logo="pack://application:,,,/images/Blocks/RedstoneLampOn.png" Title="2.3添加模组下载" Info="机械动力：创意传动"
 		            EventType="打开网页" EventData="https://my.microsoftpersonalcontent.com/personal/34ad44ca3c61e505/_layouts/15/download.aspx?share=EeCRh-TwdvpJqrwSTFMiQ-wBJPzTus9IuaF5E_g-p132gA" Type="Clickable" />
-        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" Text=""/>
 
         <local:MyHint Text="2.2进行了模组添加。" />
 		<local:MyListItem  Margin="-5,2,-5,8"
 		            Logo="pack://application:,,,/images/Blocks/RedstoneLampOn.png" Title="2.2添加模组下载" Info="2.2新增"
 		            EventType="打开网页" EventData="https://my.microsoftpersonalcontent.com/personal/34ad44ca3c61e505/_layouts/15/download.aspx?share=ERrOypIxdFBMqQt5TkVs4qUBd0g36G5EzA3H7mfGwDfo8g" Type="Clickable" />
-        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" Text=""/>
 
         <local:MyHint Text="1.30进行了模组添加。" />
 		<local:MyListItem  Margin="-5,2,-5,8"
 		            Logo="pack://application:,,,/images/Blocks/RedstoneLampOn.png" Title="1.30添加模组下载" Info="自动汉化更新"
 		            EventType="打开网页" EventData="https://my.microsoftpersonalcontent.com/personal/34ad44ca3c61e505/_layouts/15/download.aspx?share=EVXJZdp-f8tFuyu1bVQ76DMBbGbxOIpngp7juyastCtAKw" Type="Clickable" />
         <local:MyHint Text="同时，如果安装过“机械动力：伪装方块+”，需要将该模组删除" />
-        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" Text=""/>
 
         <local:MyHint Text="1.27进行了模组添加。" />
 		<local:MyListItem  Margin="-5,2,-5,8"
@@ -57,7 +48,6 @@
 		            Logo="pack://application:,,,/images/Blocks/Egg.png" Title="1.27添加模组下载②" Info="多元乐事"
 		            EventType="打开网页" EventData="https://my.microsoftpersonalcontent.com/personal/34ad44ca3c61e505/_layouts/15/download.aspx?share=ETcHrrf3lCZMnU-Udqf5Ms4Bokdg8wv2dAYagMAS4BmQYA" Type="Clickable" />
         <local:MyHint Text="同时，需要将“乡野”模组删除" />
-        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" Text=""/>
         
 	</StackPanel>
 </local:MyCard>
