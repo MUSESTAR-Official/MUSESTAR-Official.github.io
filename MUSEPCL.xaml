@@ -1,4 +1,4 @@
-﻿<local:MyCard Title="缪斯星公告 - 2025.2.11更新" Margin="0,0,0,15" CanSwap="True" IsSwaped="True">
+﻿<local:MyCard Title="缪斯星公告 - 2025.2.6更新" Margin="0,0,0,15" CanSwap="True" IsSwaped="True">
 	<StackPanel Margin="25,40,23,15">
 		<local:MyListItem  Margin="-5,2,-5,8"
 		            Logo="https://www.musestar.cc/favicon.ico" Title="MUSESTAR缪斯星" Info="MUSESTAR缪斯星官方网站"
@@ -8,7 +8,7 @@
         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
                     Text="部分教程详见本压缩包内 [部分模组教程合集.txt]"/>
         <local:MyHint Margin="0,8,0,2" IsWarn="False"
-                    Text="截至2025.2.11，缪斯星服务器共需模组70个"/>
+                    Text="截至2025.2.6，缪斯星服务器共需模组69个"/>
         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
                     Text="模组数量或版本不符可能导致您无法进入服务器"/>
 		<local:MyListItem  Margin="-5,2,-5,8"
@@ -18,11 +18,6 @@
 		            Logo="pack://application:,,,/images/Blocks/Anvil.png" Title="IDM多线程下载器下载" Info="下载速度慢可使用IDM多线程下载"
 		            EventType="打开网页" EventData="https://my.microsoftpersonalcontent.com/personal/34ad44ca3c61e505/_layouts/15/download.aspx?share=EQXlYTzKRK0ggDSlCwAAAAABB39nkYZ9xf7hjSInadX1Lg" Type="Clickable" />
         <local:MyHint Margin="0,8,0,2" IsWarn="False" Text="本公告自动联网更新，建议每次打开启动器时查阅" />
-
-        <local:MyHint Text="2.11进行了模组添加。" />
-		<local:MyListItem  Margin="-5,2,-5,8"
-		            Logo="pack://application:,,,/images/Blocks/RedstoneLampOn.png" Title="2.11添加模组下载" Info="机械动力：梦想与欲望"
-		            EventType="打开网页" EventData="https://my.microsoftpersonalcontent.com/personal/34ad44ca3c61e505/_layouts/15/download.aspx?share=EV27fTl0fdVKi4TmYknb66cBDBiOxQ1nK_jV56bihF7ujg" Type="Clickable" />
 
         <local:MyHint Text="2.6进行了模组添加。" />
 		<local:MyListItem  Margin="-5,2,-5,8"
