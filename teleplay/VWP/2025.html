@@ -67,21 +67,8 @@
 <body>
     <div class="video-container">
         <div id="dplayer1"></div>
-        <img height="500" id="reloadImage" src="/files/kamitsubaki.webp" alt="神椿">
+        <img height="500" src="/files/kamitsubaki.webp" alt="神椿">
     </div>
-    <script>
-        let hasLoaded = false;
-        function reloadImage() {
-            if (hasLoaded) return;
-            const img = document.getElementById('reloadImage');
-            const src = img.src;
-            img.src = '';
-            img.src = src + '?t=' + new Date().getTime();
-            hasLoaded = true;
-        }
-        
-        document.addEventListener('DOMContentLoaded', reloadImage, { once: true });
-    </script>
     <div class="info-container">
         <h1>V.W.P 3rd ONE-MAN LIVE「現象III-神椿市探訪中-」</h1>
         <div class="divider">
