@@ -180,6 +180,24 @@
                 defaultQuality: 0,
             },
         });
+
+        const videoKey = '文字例_第一集_progress';
+        
+        const savedTime = localStorage.getItem(videoKey);
+        if (savedTime) {
+            dp.seek(parseFloat(savedTime));
+        }
+        
+        setInterval(() => {
+            if (!dp.video.paused) {
+                localStorage.setItem(videoKey, dp.video.currentTime);
+            }
+        }, 1000);
+        
+        dp.on('ended', () => {
+            localStorage.removeItem(videoKey);
+        });
+
     </script>
      <script src="/files/js/museplaydownload.js"></script>
 </body>
