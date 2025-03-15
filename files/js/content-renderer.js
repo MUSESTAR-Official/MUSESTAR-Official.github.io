@@ -131,8 +131,15 @@ function renderScheduleTabs() {
         scheduleData[day].forEach(anime => {
             const animeCard = document.createElement('div');
             animeCard.className = 'schedule-card';
+            
+            // 构建卡片HTML，将话数标签放在图片内部
             animeCard.innerHTML = `
-                <img src="${anime.image}" alt="${anime.title}">
+                <div class="img-container" style="position: relative; width: 100%;">
+                    <img src="${anime.image}" alt="${anime.title}">
+                    <div class="country-tag">${anime.country || '日本'}</div>
+                    <div class="type-tag">${anime.type || '动画'}</div>
+                    <div class="episode-count" style="position: absolute; right: 10px; bottom: 10px;">${anime.episodes || '未知'}</div>
+                </div>
                 <div class="title">${anime.title}</div>
                 <div class="time">${anime.time}</div>
             `;
@@ -248,6 +255,147 @@ function renderScheduleTabs() {
     console.log("时间表渲染完成");
 }
 
+// 3. 渲染动漫列表
+function renderVerticalAnimeSection() {
+    console.log("开始渲染动漫列表");
+    const verticalSection = document.querySelector('.vertical-section');
+    
+    if (!verticalSection) {
+        console.error('找不到动漫列表容器元素');
+        return;
+    }
+    
+    // 清空容器
+    verticalSection.innerHTML = '';
+    
+    // 使用外部数据填充动漫列表，最多显示10个
+    const maxItems = Math.min(verticalAnimeData.length, 10);
+    
+    for (let i = 0; i < maxItems; i++) {
+        const anime = verticalAnimeData[i];
+        const animeCard = document.createElement('div');
+        animeCard.className = 'vertical-card';
+        
+        // 构建卡片HTML，将话数标签放在图片内部
+        animeCard.innerHTML = `
+            <div class="img-container" style="position: relative; width: 100%;">
+                <img src="${anime.image}" alt="${anime.title}" onerror="this.src='https://s1.imagehub.cc/images/2024/12/08/error-image.jpg';">
+                <div class="country-tag">${anime.country || '日本'}</div>
+                <div class="type-tag">${anime.type || '动画'}</div>
+                <div class="episode-count" style="position: absolute; right: 10px; bottom: 10px;">${anime.episodes || '未知'}</div>
+            </div>
+            <div class="title">${anime.title}</div>
+            <div class="release-date">${anime.releaseDate || '2024'}</div>
+        `;
+        
+        // 添加点击跳转功能
+        if (anime.url) {
+            animeCard.style.cursor = 'pointer';
+            animeCard.addEventListener('click', function() {
+                window.location.href = anime.url;
+            });
+        }
+        
+        verticalSection.appendChild(animeCard);
+    }
+    
+    console.log("动漫列表渲染完成");
+}
+
+// 4. 渲染影视列表
+function renderVerticalMovieSection() {
+    console.log("开始渲染影视列表");
+    const movieSection = document.getElementById('movie-section');
+    
+    if (!movieSection) {
+        console.error('找不到影视列表容器元素');
+        return;
+    }
+    
+    // 清空容器
+    movieSection.innerHTML = '';
+    
+    // 使用外部数据填充影视列表，最多显示10个
+    const maxItems = Math.min(verticalMovieData.length, 10);
+    
+    for (let i = 0; i < maxItems; i++) {
+        const movie = verticalMovieData[i];
+        const movieCard = document.createElement('div');
+        movieCard.className = 'vertical-card';
+        
+        // 构建卡片HTML，将时长标签放在图片内部
+        movieCard.innerHTML = `
+            <div class="img-container" style="position: relative; width: 100%;">
+                <img src="${movie.image}" alt="${movie.title}" onerror="this.src='https://s1.imagehub.cc/images/2024/12/08/error-image.jpg';">
+                <div class="country-tag">${movie.country || '美国'}</div>
+                <div class="type-tag">${movie.type || '电影'}</div>
+                <div class="episode-count" style="position: absolute; right: 10px; bottom: 10px;">${movie.duration || '未知'}</div>
+            </div>
+            <div class="title">${movie.title}</div>
+            <div class="release-date">${movie.releaseDate || '2024'}</div>
+        `;
+        
+        // 添加点击跳转功能
+        if (movie.url) {
+            movieCard.style.cursor = 'pointer';
+            movieCard.addEventListener('click', function() {
+                window.location.href = movie.url;
+            });
+        }
+        
+        movieSection.appendChild(movieCard);
+    }
+    
+    console.log("影视列表渲染完成");
+}
+
+// 5. 渲染演唱会列表
+function renderVerticalConcertSection() {
+    console.log("开始渲染演唱会列表");
+    const concertSection = document.getElementById('concert-section');
+    
+    if (!concertSection) {
+        console.error('找不到演唱会列表容器元素');
+        return;
+    }
+    
+    // 清空容器
+    concertSection.innerHTML = '';
+    
+    // 使用外部数据填充演唱会列表，最多显示10个
+    const maxItems = Math.min(verticalConcertData.length, 10);
+    
+    for (let i = 0; i < maxItems; i++) {
+        const concert = verticalConcertData[i];
+        const concertCard = document.createElement('div');
+        concertCard.className = 'vertical-card';
+        
+        // 构建卡片HTML，将时长标签放在图片内部
+        concertCard.innerHTML = `
+            <div class="img-container" style="position: relative; width: 100%;">
+                <img src="${concert.image}" alt="${concert.title}" onerror="this.src='https://s1.imagehub.cc/images/2024/12/08/error-image.jpg';">
+                <div class="country-tag">${concert.country || '日本'}</div>
+                <div class="type-tag">${concert.type || '演唱会'}</div>
+                <div class="episode-count" style="position: absolute; right: 10px; bottom: 10px;">${concert.duration || '未知'}</div>
+            </div>
+            <div class="title">${concert.title}</div>
+            <div class="release-date">${concert.releaseDate || '2024'}</div>
+        `;
+        
+        // 添加点击跳转功能
+        if (concert.url) {
+            concertCard.style.cursor = 'pointer';
+            concertCard.addEventListener('click', function() {
+                window.location.href = concert.url;
+            });
+        }
+        
+        concertSection.appendChild(concertCard);
+    }
+    
+    console.log("演唱会列表渲染完成");
+}
+
 // 页面加载完成后执行渲染
 document.addEventListener('DOMContentLoaded', function() {
     // 渲染轮播图
@@ -255,4 +403,13 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // 渲染时间表
     renderScheduleTabs();
+    
+    // 渲染动漫列表
+    renderVerticalAnimeSection();
+    
+    // 渲染影视列表
+    renderVerticalMovieSection();
+    
+    // 渲染演唱会列表
+    renderVerticalConcertSection();
 }); 
