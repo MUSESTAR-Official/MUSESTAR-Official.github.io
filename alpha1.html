@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MUSE动漫 - 首页</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-color: #f0f2f5;
+            --text-color: #333;
+            --card-bg: white;
+            --card-shadow: rgba(0, 0, 0, 0.1);
+            --hover-color: #007bff;
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #1a1a1a;
+            --text-color: #ffffff;
+            --card-bg: #2d2d2d;
+            --card-shadow: rgba(0, 0, 0, 0.3);
+            --hover-color: #4dabf7;
+        }
+
+        body {
+            font-family: 'Microsoft YaHei', sans-serif;
+            background: var(--bg-color);
+            color: var(--text-color);
+            transition: all 0.3s ease;
+        }
+
+        /* 顶部导航栏 */
+        .navbar {
+            background: transparent;
+            padding: 10px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            transition: all 0.3s;
+            width: 100%;
+        }
+
+        .navbar.scrolled {
+            background: var(--card-bg);
+            box-shadow: 0 2px 4px var(--card-shadow);
+            padding: 8px 40px;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-container {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 8px;
+            padding: 3px 10px;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s;
+            margin-right: 20px;
+        }
+
+        .navbar.scrolled .logo-container {
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        [data-theme="dark"] .navbar.scrolled .logo-container {
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .logo {
+            width: 100px;
+            height: 35px;
+            object-fit: contain;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .navbar.scrolled .nav-links a {
+            color: var(--text-color);
+        }
+
+        .nav-links a:hover {
+            color: var(--hover-color);
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .search-container {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 8px;
+            padding: 5px 15px;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease-in-out;
+            position: relative;
+            width: 200px;
+        }
+
+        .search-container:focus-within {
+            width: 300px;
+            background: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        [data-theme="dark"] .search-container:focus-within {
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .search-icon {
+            color: white;
+            font-size: 16px;
+            margin-right: 8px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .navbar.scrolled .search-icon {
+            color: #333;
+        }
+
+        .search-input {
+            background: transparent;
+            border: none;
+            outline: none;
+            padding: 5px;
+            width: 100%;
+            color: white;
+            font-size: 14px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .navbar.scrolled .search-input {
+            color: #333;
+        }
+
+        [data-theme="dark"] .search-input {
+            color: white;
+        }
+
+        .search-input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+            transition: all 0.3s ease-in-out;
+        }
+
+        .navbar.scrolled .search-input::placeholder {
+            color: rgba(0, 0, 0, 0.5);
+        }
+
+        [data-theme="dark"] .search-input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* 顶部横幅 */
+        .banner {
+            display: none;
+        }
+
+        /* 主要内容区域 */
+        .main-content {
+            max-width: 100%;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+        }
+
+        /* 中间部分布局 */
+        .middle-section {
+            display: block;
+            margin: 0;
+            position: relative;
+            width: 100%;
+            padding: 0;
+        }
+
+        /* 左侧轮播图 */
+        .carousel {
+            background: white;
+            border-radius: 0;
+            overflow: hidden;
+            box-shadow: none;
+            position: relative;
+            width: 100vw;
+            height: 750px;
+            margin: 0;
+            margin-left: calc(-50vw + 50%);
+            margin-right: calc(-50vw + 50%);
+        }
+
+        .carousel-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .carousel-slide::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(to bottom, transparent, var(--bg-color));
+            pointer-events: none;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .carousel-title {
+            position: absolute;
+            bottom: 80px;
+            left: 40px;
+            color: white;
+            font-size: 32px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            z-index: 10;
+        }
+
+        .carousel-btn {
+            position: absolute;
+            bottom: 40px;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 15px 20px;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: background 0.3s;
+            font-size: 20px;
+            z-index: 10;
+        }
+
+        .carousel-btn:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        .carousel-btn.prev {
+            right: 80px;
+        }
+
+        .carousel-btn.next {
+            right: 40px;
+        }
+
+        /* 添加指示点样式 */
+        .carousel-dots {
+            position: absolute;
+            bottom: 40px;
+            left: 40px;
+            display: flex;
+            gap: 12px;
+            z-index: 10;
+        }
+
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .carousel-dot.active {
+            background: white;
+        }
+
+        /* 横向选项框区域 */
+        .horizontal-section {
+            padding: 40px;
+            margin-top: 0;
+        }
+
+        .anime-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+            width: 100%;
+        }
+
+        .anime-card {
+            position: relative;
+            width: 100%;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            background: var(--card-bg);
+            box-shadow: 0 2px 4px var(--card-shadow);
+            height: 200px;
+        }
+
+        .anime-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .anime-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .anime-title {
+            margin-top: 10px;
+            color: var(--text-color);
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        /* 下方竖排选项框 */
+        .vertical-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .vertical-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .vertical-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .vertical-card img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+        }
+
+        .vertical-card .title {
+            padding: 10px;
+            font-size: 14px;
+            color: var(--text-color);
+            line-height: 1.4;
+        }
+
+        /* 毛玻璃效果 */
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        /* 响应式调整 */
+        @media (max-width: 3200px) {
+            .main-content {
+                max-width: 100%;
+                padding: 0;
+            }
+        }
+
+        @media (max-width: 2800px) {
+            .main-content {
+                max-width: 100%;
+                padding: 0;
+            }
+        }
+
+        @media (max-width: 2400px) {
+            .main-content {
+                max-width: 100%;
+                padding: 0;
+            }
+        }
+
+        @media (max-width: 2000px) {
+            .main-content {
+                max-width: 100%;
+                padding: 0;
+            }
+        }
+
+        @media (max-width: 1600px) {
+            .main-content {
+                max-width: 100%;
+                padding: 0;
+            }
+        }
+
+        @media (max-width: 1200px) {
+            .main-content {
+                max-width: 100%;
+                padding: 0;
+            }
+            
+            .middle-section {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* 修改主题切换按钮样式 */
+        .theme-toggle {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 8px;
+            padding: 5px 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            height: 36px;
+            width: 36px;
+        }
+
+        .theme-toggle i {
+            font-size: 16px;
+            color: white;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .navbar.scrolled .theme-toggle i {
+            color: #333;
+        }
+
+        [data-theme="dark"] .theme-toggle i {
+            color: white;
+        }
+
+        /* 修改用户头像按钮样式 */
+        .user-avatar {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 50%;
+            padding: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            height: 36px;
+            width: 36px;
+        }
+
+        .user-avatar i {
+            font-size: 18px;
+            color: white;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .navbar.scrolled .user-avatar i {
+            color: #333;
+        }
+
+        [data-theme="dark"] .user-avatar i {
+            color: white;
+        }
+
+        .user-avatar:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        [data-theme="dark"] .user-avatar:hover {
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        /* 回到顶部按钮样式 */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease-in-out;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top i {
+            color: white;
+            font-size: 20px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .navbar.scrolled ~ .back-to-top i {
+            color: #333;
+        }
+
+        [data-theme="dark"] .back-to-top i,
+        [data-theme="dark"] .navbar.scrolled ~ .back-to-top i {
+            color: white;
+        }
+
+        .back-to-top:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-3px);
+        }
+
+        [data-theme="dark"] .back-to-top:hover {
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        /* 公告区域样式 */
+        .announcement {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 8px;
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            max-width: 300px;
+            opacity: 0;
+            transform: translateY(20px);
+            visibility: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .announcement.visible {
+            opacity: 1;
+            transform: translateY(0);
+            visibility: visible;
+        }
+
+        .announcement i {
+            color: #ff6b6b;
+            font-size: 16px;
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) 0.1s;
+        }
+
+        .announcement.visible i {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .announcement-content {
+            color: #333;
+            font-size: 14px;
+            line-height: 1.4;
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) 0.2s;
+        }
+
+        .announcement.visible .announcement-content {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .navbar.scrolled ~ .announcement .announcement-content {
+            color: #333;
+        }
+
+        [data-theme="dark"] .announcement .announcement-content,
+        [data-theme="dark"] .navbar.scrolled ~ .announcement .announcement-content {
+            color: white;
+        }
+
+        .announcement-close {
+            cursor: pointer;
+            color: rgba(255, 255, 255, 0.7);
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateX(10px);
+        }
+
+        .announcement.visible .announcement-close {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .navbar.scrolled ~ .announcement .announcement-close {
+            color: rgba(0, 0, 0, 0.5);
+        }
+
+        [data-theme="dark"] .announcement .announcement-close {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .announcement-close:hover {
+            opacity: 0.8;
+            transform: scale(1.1);
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <!-- 顶部导航栏 -->
+    <div class="navbar">
+        <div class="nav-left">
+            <div class="logo-container">
+                <img src="https://s1.imagehub.cc/images/2025/03/14/75aca0f31bd08308fa150301c0ec6589.png" alt="Logo" class="logo">
+            </div>
+            <div class="nav-links">
+                <a href="#">缪斯星动漫</a>
+                <a href="#">缪斯星影视</a>
+                <a href="#">缪斯星官方</a>
+            </div>
+        </div>
+        <div class="nav-right">
+            <div class="search-container">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" class="search-input" placeholder="搜索动漫、影视...">
+            </div>
+            <div class="user-avatar">
+                <i class="fas fa-user"></i>
+            </div>
+            <div class="theme-toggle">
+                <i class="fas fa-sun"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- 主要内容区域 -->
+    <div class="main-content">
+        <!-- 轮播图部分 -->
+        <div class="middle-section">
+            <div class="carousel">
+                <div class="carousel-container">
+                    <div class="carousel-slide">
+                        <img src="https://s1.imagehub.cc/images/2025/03/14/372d03a2c11b29039cf85e16c9ef339c.png" alt="轮播图1">
+                        <div class="carousel-title">热门动漫推荐</div>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="https://s1.imagehub.cc/images/2025/03/14/d1f465e94153189ea3a68f5c8e906947.png" alt="轮播图2">
+                        <div class="carousel-title">最新更新</div>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="https://s1.imagehub.cc/images/2025/03/14/a5e261e58c615b2b7b257e6241e805ea.png" alt="轮播图3">
+                        <div class="carousel-title">精选内容</div>
+                    </div>
+                </div>
+                <div class="carousel-dots">
+                    <div class="carousel-dot active"></div>
+                    <div class="carousel-dot"></div>
+                    <div class="carousel-dot"></div>
+                </div>
+                <button class="carousel-btn prev">❮</button>
+                <button class="carousel-btn next">❯</button>
+            </div>
+        </div>
+
+        <!-- 横向选项框 -->
+        <div class="horizontal-section">
+            <div class="anime-grid">
+                <div>
+                    <div class="anime-card">
+                        <img src="https://picsum.photos/400/225?random=4" alt="动漫1">
+                    </div>
+                    <div class="anime-title">动漫标题1</div>
+                </div>
+                <div>
+                    <div class="anime-card">
+                        <img src="https://picsum.photos/400/225?random=5" alt="动漫2">
+                    </div>
+                    <div class="anime-title">动漫标题2</div>
+                </div>
+                <div>
+                    <div class="anime-card">
+                        <img src="https://picsum.photos/400/225?random=6" alt="动漫3">
+                    </div>
+                    <div class="anime-title">动漫标题3</div>
+                </div>
+                <div>
+                    <div class="anime-card">
+                        <img src="https://picsum.photos/400/225?random=7" alt="动漫4">
+                    </div>
+                    <div class="anime-title">动漫标题4</div>
+                </div>
+                <div>
+                    <div class="anime-card">
+                        <img src="https://picsum.photos/400/225?random=7" alt="动漫4">
+                    </div>
+                    <div class="anime-title">动漫标题5</div>
+                </div>
+                <div>
+                    <div class="anime-card">
+                        <img src="https://picsum.photos/400/225?random=7" alt="动漫4">
+                    </div>
+                    <div class="anime-title">动漫标题6</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 下方竖排选项框 -->
+        <div class="vertical-section">
+            <div class="vertical-card">
+                <img src="https://picsum.photos/200/280?random=8" alt="动漫1">
+                <div class="title">进击的巨人</div>
+            </div>
+            <div class="vertical-card">
+                <img src="https://picsum.photos/200/280?random=9" alt="动漫2">
+                <div class="title">鬼灭之刃</div>
+            </div>
+            <div class="vertical-card">
+                <img src="https://picsum.photos/200/280?random=10" alt="动漫3">
+                <div class="title">咒术回战</div>
+            </div>
+            <div class="vertical-card">
+                <img src="https://picsum.photos/200/280?random=11" alt="动漫4">
+                <div class="title">间谍过家家</div>
+            </div>
+            <div class="vertical-card">
+                <img src="https://picsum.photos/200/280?random=12" alt="动漫5">
+                <div class="title">海贼王</div>
+            </div>
+            <div class="vertical-card">
+                <img src="https://picsum.photos/200/280?random=13" alt="动漫6">
+                <div class="title">火影忍者</div>
+            </div>
+            <div class="vertical-card">
+                <img src="https://picsum.photos/200/280?random=14" alt="动漫7">
+                <div class="title">死神</div>
+            </div>
+            <div class="vertical-card">
+                <img src="https://picsum.photos/200/280?random=15" alt="动漫8">
+                <div class="title">钢之炼金术师</div>
+            </div>
+            <div class="vertical-card">
+                <img src="https://picsum.photos/200/280?random=16" alt="动漫9">
+                <div class="title">全职猎人</div>
+            </div>
+            <div class="vertical-card">
+                <img src="https://picsum.photos/200/280?random=17" alt="动漫10">
+                <div class="title">一拳超人</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 回到顶部按钮 -->
+    <div class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- 公告区域 -->
+    <div class="announcement">
+        <i class="fas fa-bullhorn"></i>
+        <div class="announcement-content"></div>
+        <div class="announcement-close">
+            <i class="fas fa-times"></i>
+        </div>
+    </div>
+
+    <script>
+        // 添加滚动监听
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // 轮播图功能
+        const carousel = document.querySelector('.carousel-container');
+        const slides = document.querySelectorAll('.carousel-slide');
+        const dots = document.querySelectorAll('.carousel-dot');
+        const prevBtn = document.querySelector('.carousel-btn.prev');
+        const nextBtn = document.querySelector('.carousel-btn.next');
+        
+        let currentSlide = 0;
+        const slideCount = slides.length;
+
+        function updateCarousel() {
+            carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
+            // 更新指示点状态
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
+            });
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slideCount;
+            updateCarousel();
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slideCount) % slideCount;
+            updateCarousel();
+        }
+
+        // 添加按钮点击事件
+        nextBtn.addEventListener('click', nextSlide);
+        prevBtn.addEventListener('click', prevSlide);
+
+        // 添加指示点点击事件
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                currentSlide = index;
+                updateCarousel();
+            });
+        });
+
+        // 自动轮播
+        setInterval(nextSlide, 5000);
+
+        // 修改主题切换功能
+        const themeToggle = document.querySelector('.theme-toggle');
+        const icon = themeToggle.querySelector('i');
+
+        // 检查本地存储中的主题设置，默认为light
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', currentTheme);
+        updateIcon(currentTheme);
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateIcon(newTheme);
+        });
+
+        function updateIcon(theme) {
+            icon.className = theme === 'light' ? 'fas fa-sun' : 'fas fa-moon';
+        }
+
+        // 回到顶部按钮功能
+        const backToTop = document.querySelector('.back-to-top');
+        
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        backToTop.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // 公告功能
+        const announcement = document.querySelector('.announcement');
+        const announcementContent = announcement.querySelector('.announcement-content');
+        const announcementClose = announcement.querySelector('.announcement-close');
+
+        // 设置公告内容（这里可以替换为实际的公告内容）
+        const announcementText = "欢迎来到缪斯星动漫！我们正在努力为您提供更好的服务。";
+
+        // 检查是否有公告内容
+        if (announcementText) {
+            announcementContent.textContent = announcementText;
+            // 使用 setTimeout 确保 DOM 更新后再添加 visible 类
+            setTimeout(() => {
+                announcement.classList.add('visible');
+            }, 100);
+        }
+
+        // 关闭公告
+        announcementClose.addEventListener('click', () => {
+            announcement.classList.remove('visible');
+        });
+    </script>
+</body>
+</html>
