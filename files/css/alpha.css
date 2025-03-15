@@ -337,6 +337,37 @@ body {
 	right: 40px;
 }
 
+/* 立即播放按钮样式 */
+.carousel-play-btn {
+	position: absolute;
+	bottom: 40px;
+	right: 180px;
+	background: rgba(0, 0, 0, 0.6);
+	color: white;
+	border: none;
+	padding: 0 20px;
+	cursor: pointer;
+	border-radius: 30px;
+	transition: all 0.3s;
+	font-size: 16px;
+	z-index: 10;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	font-weight: 500;
+	height: 50px;
+}
+
+.carousel-play-btn:hover {
+	background: var(--hover-color);
+	transform: translateY(-3px);
+}
+
+.carousel-play-btn i {
+	font-size: 14px;
+}
+
 /* 添加指示点样式 */
 .carousel-dots {
 	position: absolute;
@@ -473,6 +504,14 @@ body {
 	white-space: nowrap; /* 防止文本换行 */
 	overflow: hidden; /* 隐藏溢出内容 */
 	text-overflow: ellipsis; /* 显示省略号 */
+	transition: color 0.3s;
+}
+
+/* 添加鼠标悬停效果，提示可点击 */
+[style*="cursor: pointer"] .anime-title:hover,
+[style*="cursor: pointer"] .title:hover {
+	color: var(--hover-color);
+	text-decoration: underline;
 }
 
 /* 下方竖排选项框 */
@@ -522,6 +561,7 @@ body {
 	line-height: 1.4;
 	/* 确保标题不会被压缩 */
 	flex-shrink: 0;
+	transition: color 0.3s;
 }
 
 /* 毛玻璃效果 */
@@ -883,7 +923,7 @@ body {
 	overflow: hidden;
 	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 	cursor: pointer;
-	transition: transform 0.3s;
+	transition: transform 0.3s, box-shadow 0.3s;
 	/* 添加与竖直选项框类似的样式 */
 	display: flex;
 	flex-direction: column;
@@ -891,6 +931,7 @@ body {
 
 .schedule-card:hover {
 	transform: translateY(-5px);
+	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 .schedule-card img {
@@ -915,6 +956,11 @@ body {
 	color: var(--hover-color);
 	/* 确保时间不会被压缩 */
 	flex-shrink: 0;
+}
+
+.schedule-card[style*="cursor: pointer"]:hover .title {
+	color: var(--hover-color);
+	text-decoration: underline;
 }
 
 /* 底栏样式 */

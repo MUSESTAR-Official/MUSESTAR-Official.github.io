@@ -8,6 +8,12 @@ function renderCarousel() {
     const prevBtn = document.querySelector('.carousel-btn.prev');
     const nextBtn = document.querySelector('.carousel-btn.next');
     
+    // 创建立即播放按钮
+    const playBtn = document.createElement('button');
+    playBtn.className = 'carousel-play-btn';
+    playBtn.innerHTML = '<i class="fas fa-play"></i> 立即播放';
+    document.querySelector('.carousel').appendChild(playBtn);
+    
     if (!carouselContainer || !dotsContainer) {
         console.error('找不到轮播图容器元素');
         return;
@@ -56,6 +62,13 @@ function renderCarousel() {
         dots.forEach((dot, index) => {
             dot.classList.toggle('active', index === currentSlide);
         });
+        
+        // 更新立即播放按钮的链接
+        if (carouselData[currentSlide] && carouselData[currentSlide].url) {
+            playBtn.onclick = function() {
+                window.location.href = carouselData[currentSlide].url;
+            };
+        }
     }
 
     function nextSlide() {
@@ -81,6 +94,9 @@ function renderCarousel() {
             updateCarousel();
         });
     });
+    
+    // 初始化立即播放按钮
+    updateCarousel();
 
     // 自动轮播
     setInterval(nextSlide, 5000);
@@ -120,6 +136,15 @@ function renderScheduleTabs() {
                 <div class="title">${anime.title}</div>
                 <div class="time">${anime.time}</div>
             `;
+            
+            // 添加点击跳转功能
+            if (anime.url) {
+                animeCard.style.cursor = 'pointer';
+                animeCard.addEventListener('click', function() {
+                    window.location.href = anime.url;
+                });
+            }
+            
             dayContent.appendChild(animeCard);
         });
         
