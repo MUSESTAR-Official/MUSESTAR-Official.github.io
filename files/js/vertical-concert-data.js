@@ -1,4 +1,5 @@
 // 纵向选项卡内容 - 全部演唱会列表
+// 使用分批加载策略，初始只加载前10个数据
 const verticalConcertData = [
     {
         image: "https://s1.imagehub.cc/images/2025/02/13/1b2217f14c1a5ff6006ad887fb84db67.jpg",
@@ -89,7 +90,11 @@ const verticalConcertData = [
         type: "综合演唱会",
         duration: "",
         releaseDate: "2024年7月13日"
-    },
+    }
+];
+
+// 剩余数据，只在需要时加载
+const verticalConcertDataMore = [
     {
         image: "https://s1.imagehub.cc/images/2024/07/28/65c2270b7b17a06eadf72cc5a5c9255e.jpeg",
         title: "TUBEOUT! 2024",
@@ -144,4 +149,44 @@ const verticalConcertData = [
         duration: "",
         releaseDate: "2019年8月1日"
     }
-]; 
+];
+
+// 懒加载函数 - 当用户点击"查看全部"或滚动到底部时加载更多数据
+function loadMoreConcertData() {
+    // 合并数据
+    verticalConcertData.push(...verticalConcertDataMore);
+    // 清空额外数据数组以释放内存
+    verticalConcertDataMore.length = 0;
+    // 这里可以添加渲染新数据的代码
+    return verticalConcertData;
+}
+
+// 图片懒加载优化
+document.addEventListener("DOMContentLoaded", function() {
+    // 使用IntersectionObserver实现图片懒加载
+    if ('IntersectionObserver' in window) {
+        const lazyImageObserver = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    const lazyImage = entry.target;
+                    if (lazyImage.dataset.src) {
+                        lazyImage.src = lazyImage.dataset.src;
+                        lazyImage.removeAttribute('data-src');
+                    }
+                    lazyImageObserver.unobserve(lazyImage);
+                }
+            });
+        });
+
+        // 获取所有需要懒加载的图片
+        document.querySelectorAll('.vertical-card img, .schedule-card img').forEach(function(img) {
+            // 将原始src存储到data-src属性
+            if (img.src) {
+                img.dataset.src = img.src;
+                // 设置一个占位图或低质量预览图
+                img.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1 1"%3E%3C/svg%3E';
+                lazyImageObserver.observe(img);
+            }
+        });
+    }
+}); 
