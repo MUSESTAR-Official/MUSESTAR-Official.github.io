@@ -1,5 +1,4 @@
 // 纵向选项卡内容 - 全部影视列表
-// 使用分批加载策略，初始只加载前10个数据
 const verticalMovieData = [
     {
         image: "https://s1.imagehub.cc/images/2024/12/16/4830fb9ff71a01e44b066491e3468888.png",
@@ -90,11 +89,7 @@ const verticalMovieData = [
         type: "剧情",
         duration: "影片时长: 1:56:32",
         releaseDate: "2024年2月10日"
-    }
-];
-
-// 剩余数据，只在需要时加载
-const verticalMovieDataMore = [
+    },
     {
         image: "https://s1.imagehub.cc/images/2024/05/26/80ab593da3c62dd3dff35791e8865fd7.webp",
         title: "我们一起摇太阳",
@@ -257,49 +252,4 @@ const verticalMovieDataMore = [
         duration: "影片时长: 3:04:31",
         releaseDate: "2022年12月16日"
     }
-];
-
-// 懒加载函数 - 当用户点击"查看全部"或滚动到底部时加载更多数据
-function loadMoreMovieData() {
-    // 合并数据
-    verticalMovieData.push(...verticalMovieDataMore);
-    // 清空额外数据数组以释放内存
-    verticalMovieDataMore.length = 0;
-    // 这里可以添加渲染新数据的代码
-    return verticalMovieData;
-}
-
-// 图片懒加载优化
-// 注意：这部分代码已在concert-data.js中定义，不需要重复定义
-// 如果这个文件单独使用，请取消下面代码的注释
-
-/*
-document.addEventListener("DOMContentLoaded", function() {
-    // 使用IntersectionObserver实现图片懒加载
-    if ('IntersectionObserver' in window) {
-        const lazyImageObserver = new IntersectionObserver(function(entries, observer) {
-            entries.forEach(function(entry) {
-                if (entry.isIntersecting) {
-                    const lazyImage = entry.target;
-                    if (lazyImage.dataset.src) {
-                        lazyImage.src = lazyImage.dataset.src;
-                        lazyImage.removeAttribute('data-src');
-                    }
-                    lazyImageObserver.unobserve(lazyImage);
-                }
-            });
-        });
-
-        // 获取所有需要懒加载的图片
-        document.querySelectorAll('.vertical-card img, .schedule-card img').forEach(function(img) {
-            // 将原始src存储到data-src属性
-            if (img.src) {
-                img.dataset.src = img.src;
-                // 设置一个占位图或低质量预览图
-                img.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1 1"%3E%3C/svg%3E';
-                lazyImageObserver.observe(img);
-            }
-        });
-    }
-});
-*/ 
+]; 

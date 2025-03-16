@@ -1,5 +1,4 @@
 // 纵向选项卡内容 - 全部动漫列表
-// 使用分批加载策略，初始只加载前10个数据
 const verticalAnimeData = [
     {
         image: "https://s1.imagehub.cc/images/2025/03/11/0db55824fce28687d9770fec63b614e6.jpg",
@@ -90,12 +89,7 @@ const verticalAnimeData = [
         type: "奇幻",
         episodes: "16话",
         releaseDate: "2024年10月2日"
-    }
-];
-
-// 剩余数据，只在需要时加载
-const verticalAnimeDataMore = [
-    // 这里放置剩余的动漫数据
+    },
     {
         image: "https://s1.imagehub.cc/images/2024/08/19/b68cbf5ff34a36fe57d3ce0d06e4870a.png",
         title: "通往夏天的隧道,再见的出口",
@@ -254,54 +248,89 @@ const verticalAnimeDataMore = [
         title: "白圣女与黑牧师",
         url: "/animation/shiroseijyo",
         country: "日本",
-        type: "爱情",
+        type: "恋爱",
         episodes: "12话",
-        releaseDate: "2023年7月8日"
+        releaseDate: "2023年7月12日"
+    },
+    {
+        image: "https://s1.imagehub.cc/images/2023/07/18/zom100.webp",
+        title: "僵尸百分百",
+        url: "/animation/zom100",
+        country: "日本",
+        type: "喜剧",
+        episodes: "12话",
+        releaseDate: "2023年7月9日"
+    },
+    {
+        image: "https://s1.imagehub.cc/images/2023/07/18/mushokutensei.webp",
+        title: "无职转生Ⅱ Part1",
+        url: "/animation/mushokutensei",
+        country: "日本",
+        type: "奇幻",
+        episodes: "12话",
+        releaseDate: "2023年7月2日"
+    },
+    {
+        image: "https://s1.imagehub.cc/images/2023/09/30/odekake.jpeg",
+        title: "青春期猪头少年不会梦到娇怜外出妹",
+        url: "/film/odekake",
+        country: "日本",
+        type: "剧情",
+        episodes: "1:13:53",
+        releaseDate: "2023年6月23日"
+    },
+    {
+        image: "https://s1.imagehub.cc/images/2023/04/14/a095977c44c9dc5232e57672d3eed48e.webp",
+        title: "我推的孩子",
+        url: "/animation/IchigoProduction",
+        country: "日本",
+        type: "奇幻",
+        episodes: "11话",
+        releaseDate: "2023年4月12日"
+    },
+    {
+        image: "https://s1.imagehub.cc/images/2022/12/11/48127033756a3831706e8eaa72612a48.jpeg",
+        title: "别当欧尼酱了！",
+        url: "/animation/bdonjl",
+        country: "日本",
+        type: "喜剧",
+        episodes: "12话",
+        releaseDate: "2023年1月5日"
+    },
+    {
+        image: "https://s1.imagehub.cc/images/2023/01/04/92834316efdfec96df02ce6049d159be.jpeg",
+        title: "转生王女与天才千金的魔法革命",
+        url: "/animation/TentenKakume",
+        country: "日本",
+        type: "奇幻",
+        episodes: "12话",
+        releaseDate: "2023年1月4日"
+    },
+    {
+        image: "https://s1.imagehub.cc/images/2022/12/04/016fecf9d2293894e6afdad40f8d07cc.webp",
+        title: "铃芽之旅",
+        url: "/film/SuzumenoTojimari",
+        country: "日本",
+        type: "奇幻",
+        episodes: "2:01:28",
+        releaseDate: "2022年11月11日"
+    },
+    {
+        image: "https://s1.imagehub.cc/images/2022/12/04/ab787edbfcdc71970465ac43e1bf36dd.webp",
+        title: "你好世界",
+        url: "/film/HelloWorld",
+        country: "日本",
+        type: "恋爱",
+        episodes: "1:37:43",
+        releaseDate: "2021年6月11日"
+    },
+    {
+        image: "https://s1.imagehub.cc/images/2022/12/04/e50bf5b9866cded55cfd9f4596d71a82.webp",
+        title: "魔女之旅",
+        url: "/animation/mnzl",
+        country: "日本",
+        type: "治愈",
+        episodes: "12话",
+        releaseDate: "2020年10月2日"
     }
-    // 如果还有更多数据，继续添加...
-];
-
-// 懒加载函数 - 当用户点击"查看全部"或滚动到底部时加载更多数据
-function loadMoreAnimeData() {
-    // 合并数据
-    verticalAnimeData.push(...verticalAnimeDataMore);
-    // 清空额外数据数组以释放内存
-    verticalAnimeDataMore.length = 0;
-    // 这里可以添加渲染新数据的代码
-    return verticalAnimeData;
-}
-
-// 图片懒加载优化
-// 注意：这部分代码已在concert-data.js中定义，不需要重复定义
-// 如果这个文件单独使用，请取消下面代码的注释
-
-/*
-document.addEventListener("DOMContentLoaded", function() {
-    // 使用IntersectionObserver实现图片懒加载
-    if ('IntersectionObserver' in window) {
-        const lazyImageObserver = new IntersectionObserver(function(entries, observer) {
-            entries.forEach(function(entry) {
-                if (entry.isIntersecting) {
-                    const lazyImage = entry.target;
-                    if (lazyImage.dataset.src) {
-                        lazyImage.src = lazyImage.dataset.src;
-                        lazyImage.removeAttribute('data-src');
-                    }
-                    lazyImageObserver.unobserve(lazyImage);
-                }
-            });
-        });
-
-        // 获取所有需要懒加载的图片
-        document.querySelectorAll('.vertical-card img, .schedule-card img').forEach(function(img) {
-            // 将原始src存储到data-src属性
-            if (img.src) {
-                img.dataset.src = img.src;
-                // 设置一个占位图或低质量预览图
-                img.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1 1"%3E%3C/svg%3E';
-                lazyImageObserver.observe(img);
-            }
-        });
-    }
-});
-*/ 
+]; 
