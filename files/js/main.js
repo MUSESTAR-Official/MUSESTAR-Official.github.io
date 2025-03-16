@@ -12,6 +12,19 @@ document.addEventListener('DOMContentLoaded', function() {
     initializePage();
 });
 
+// 节流函数 - 限制函数执行频率
+function throttle(func, delay) {
+    let lastCall = 0;
+    return function(...args) {
+        const now = new Date().getTime();
+        if (now - lastCall < delay) {
+            return;
+        }
+        lastCall = now;
+        return func.apply(this, args);
+    };
+}
+
 // 导航栏滚动效果
 function initNavbarScroll() {
     const navbar = document.querySelector('.navbar');
@@ -23,13 +36,16 @@ function initNavbarScroll() {
         navbar.classList.remove('scrolled');
     }
     
-    window.addEventListener('scroll', function() {
+    // 使用节流函数减少滚动事件触发频率
+    const handleScroll = throttle(function() {
         if (window.scrollY > 50) {
             navbar.classList.add('scrolled');
         } else {
             navbar.classList.remove('scrolled');
         }
-    });
+    }, 100); // 100ms的节流延迟
+    
+    window.addEventListener('scroll', handleScroll, { passive: true });
 }
 
 // 轮播图功能
@@ -118,13 +134,16 @@ function initThemeToggle() {
 function initBackToTop() {
     const backToTop = document.querySelector('.back-to-top');
     
-    window.addEventListener('scroll', function() {
+    // 使用节流函数减少滚动事件触发频率
+    const handleScroll = throttle(function() {
         if (window.scrollY > 300) {
             backToTop.classList.add('visible');
         } else {
             backToTop.classList.remove('visible');
         }
-    });
+    }, 100); // 100ms的节流延迟
+    
+    window.addEventListener('scroll', handleScroll, { passive: true });
 
     backToTop.addEventListener('click', function() {
         window.scrollTo({
@@ -440,14 +459,98 @@ function renderVerticalAnime() {
 function initializePage() {
     console.log('页面初始化开始');
     
-    // 渲染横向动漫卡片
-    renderHorizontalAnime();
-    
-    // 渲染纵向动漫卡片
-    renderVerticalAnime();
+    // 渲染横向动漫卡片 - 使用分批加载
+    renderHorizontalAnimeProgressively();
     
     // 强制移除所有阴影
     forceRemoveAllShadows();
     
     console.log('页面初始化完成');
+}
+
+// 分批渲染横向动漫卡片
+function renderHorizontalAnimeProgressively() {
+    const container = document.querySelector('.anime-grid');
+    if (!container) {
+        console.error('找不到横向动漫容器元素');
+        return;
+    }
+    
+    console.log('开始渲染横向动漫卡片');
+    
+    // 清空容器
+    container.innerHTML = '';
+    
+    // 分批加载卡片
+    function loadCardsProgressively(index) {
+        if (index >= horizontalAnimeData.length) {
+            // 所有卡片都已加载完成
+            // 使用事件委托处理鼠标事件
+            setupHorizontalEventDelegation(container);
+            console.log('横向动漫卡片渲染完成');
+            return;
+        }
+        
+        const anime = horizontalAnimeData[index];
+        const animeElement = document.createElement('div');
+        
+        // 创建卡片内容 - 修复标题位置，确保标题在卡片外部
+        animeElement.innerHTML = `
+            <div class="anime-card">
+                <img src="${anime.image}" alt="${anime.title}" loading="lazy">
+                <video src="${anime.video}" loop muted preload="none" style="display: none;"></video>
+                <div class="error-icon" style="display: none;">
+                    <i class="fas fa-exclamation-circle"></i>
+                </div>
+            </div>
+            <div class="anime-title">${anime.title}</div>
+        `;
+        
+        // 添加点击跳转功能
+        if (anime.url) {
+            animeElement.style.cursor = 'pointer';
+            animeElement.addEventListener('click', function() {
+                window.location.href = anime.url;
+            });
+        }
+        
+        // 获取视频和图片元素
+        const video = animeElement.querySelector('video');
+        const img = animeElement.querySelector('img');
+        const errorIcon = animeElement.querySelector('.error-icon');
+        const cardElement = animeElement.querySelector('.anime-card');
+        
+        // 特别处理第五个卡片，确保没有阴影
+        if (index === 4) {
+            animeElement.style.setProperty('box-shadow', 'none', 'important');
+            cardElement.style.setProperty('box-shadow', 'none', 'important');
+        }
+        
+        // 使用事件委托减少事件监听器数量
+        animeElement.dataset.index = index;
+        
+        // 使用动画效果显示卡片
+        animeElement.style.opacity = '0';
+        animeElement.style.transform = 'translateY(20px)';
+        animeElement.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+        
+        // 添加到容器
+        container.appendChild(animeElement);
+        
+        // 使用requestAnimationFrame确保过渡效果生效
+        requestAnimationFrame(() => {
+            setTimeout(() => {
+                animeElement.style.opacity = '1';
+                animeElement.style.transform = 'translateY(0)';
+            }, 10);
+        });
+        
+        // 延迟加载下一个卡片
+        setTimeout(() => {
+            loadCardsProgressively(index + 1);
+        }, 100); // 100ms的延迟
+    }
+    
+    // 开始分批加载
+    loadCardsProgressively(0);
 } 

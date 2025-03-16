@@ -23,6 +23,10 @@ function renderCarousel() {
     carouselContainer.innerHTML = '';
     dotsContainer.innerHTML = '';
     
+    // 使用文档片段减少DOM重绘
+    const slideFragment = document.createDocumentFragment();
+    const dotFragment = document.createDocumentFragment();
+    
     // 使用外部数据填充轮播图
     carouselData.forEach((slide, index) => {
         // 创建轮播图幻灯片
@@ -41,13 +45,17 @@ function renderCarousel() {
             <img src="${slide.image}" alt="${slide.title}">
             <div class="carousel-title">${slide.title}</div>
         `;
-        carouselContainer.appendChild(slideElement);
+        slideFragment.appendChild(slideElement);
         
         // 创建指示点
         const dot = document.createElement('div');
         dot.className = 'carousel-dot' + (index === 0 ? ' active' : '');
-        dotsContainer.appendChild(dot);
+        dotFragment.appendChild(dot);
     });
+    
+    // 一次性添加所有元素到DOM
+    carouselContainer.appendChild(slideFragment);
+    dotsContainer.appendChild(dotFragment);
     
     // 获取更新后的幻灯片和指示点
     const slides = document.querySelectorAll('.carousel-slide');
@@ -104,9 +112,8 @@ function renderCarousel() {
     console.log("轮播图渲染完成");
 }
 
-// 2. 时间表渲染函数
+// 2. 时间表渲染函数 - 优化版本
 function renderScheduleTabs() {
-    console.log("开始渲染时间表选项卡");
     const tabsContainer = document.querySelector('.schedule-tabs-container');
     const contentContainer = document.querySelector('.schedule-content');
     
@@ -115,17 +122,23 @@ function renderScheduleTabs() {
         return;
     }
     
-    console.log("找到容器元素:", tabsContainer, contentContainer);
-    
     // 清空容器
     contentContainer.innerHTML = '';
     
+    // 使用文档片段减少DOM重绘
+    const contentFragment = document.createDocumentFragment();
+    
+    // 预先创建所有日期的内容，但不立即添加到DOM
+    const dayContents = {};
+    
     // 为每个日期创建内容区域
     Object.keys(scheduleData).forEach(day => {
-        console.log(`创建 ${day} 的内容区域`);
         const dayContent = document.createElement('div');
         dayContent.className = `${day}-content`;
         dayContent.style.display = 'none';
+        
+        // 使用文档片段减少DOM重绘
+        const cardFragment = document.createDocumentFragment();
         
         // 添加该日期的所有动漫卡片
         scheduleData[day].forEach(anime => {
@@ -135,7 +148,7 @@ function renderScheduleTabs() {
             // 构建卡片HTML，将话数标签放在图片内部
             animeCard.innerHTML = `
                 <div class="img-container" style="position: relative; width: 100%;">
-                    <img src="${anime.image}" alt="${anime.title}">
+                    <img src="${anime.image}" alt="${anime.title}" loading="lazy">
                     <div class="country-tag">${anime.country || '日本'}</div>
                     <div class="type-tag">${anime.type || '动画'}</div>
                     <div class="episode-count" style="position: absolute; right: 10px; bottom: 10px;">${anime.episodes || '未知'}</div>
@@ -152,48 +165,45 @@ function renderScheduleTabs() {
                 });
             }
             
-            dayContent.appendChild(animeCard);
+            cardFragment.appendChild(animeCard);
         });
         
-        contentContainer.appendChild(dayContent);
+        dayContent.appendChild(cardFragment);
+        dayContents[day] = dayContent;
+        contentFragment.appendChild(dayContent);
     });
     
-    // 设置选项卡点击事件
-    const tabs = tabsContainer.querySelectorAll('.schedule-tab');
-    console.log("找到选项卡:", tabs.length);
+    // 一次性添加所有内容到DOM
+    contentContainer.appendChild(contentFragment);
     
-    tabs.forEach(tab => {
-        tab.addEventListener('click', function() {
-            const day = this.getAttribute('data-day');
-            console.log(`点击了 ${day} 选项卡`);
-            
-            // 更新选项卡样式
-            tabs.forEach(t => {
-                t.classList.remove('active');
-                t.style.backgroundColor = 'var(--card-bg)';
-                t.style.color = 'var(--text-color)';
-            });
-            this.classList.add('active');
-            this.style.backgroundColor = 'var(--hover-color)';
-            this.style.color = 'white';
-            
-            // 更新内容显示
-            const allContents = contentContainer.children;
-            console.log(`找到 ${allContents.length} 个内容区域`);
-            
-            for (let i = 0; i < allContents.length; i++) {
-                allContents[i].style.display = 'none';
-            }
-            
-            // 显示对应日期的内容
-            const dayContent = contentContainer.querySelector(`.${day}-content`);
-            if (dayContent) {
-                console.log(`显示 ${day} 的内容`);
-                dayContent.style.display = 'grid';
-            } else {
-                console.error(`找不到内容: .${day}-content`);
-            }
+    // 设置选项卡点击事件 - 使用事件委托减少事件监听器数量
+    tabsContainer.addEventListener('click', function(e) {
+        const tab = e.target.closest('.schedule-tab');
+        if (!tab) return;
+        
+        const day = tab.getAttribute('data-day');
+        
+        // 更新选项卡样式
+        const tabs = tabsContainer.querySelectorAll('.schedule-tab');
+        tabs.forEach(t => {
+            t.classList.remove('active');
+            t.style.backgroundColor = 'var(--card-bg)';
+            t.style.color = 'var(--text-color)';
         });
+        tab.classList.add('active');
+        tab.style.backgroundColor = 'var(--hover-color)';
+        tab.style.color = 'white';
+        
+        // 更新内容显示 - 使用缓存的引用而不是重复查询DOM
+        Object.values(dayContents).forEach(content => {
+            content.style.display = 'none';
+        });
+        
+        // 显示对应日期的内容
+        const dayContent = dayContents[day];
+        if (dayContent) {
+            dayContent.style.display = 'grid';
+        }
     });
     
     // 默认显示今天的时间表
@@ -212,27 +222,21 @@ function renderScheduleTabs() {
         };
         
         const todayString = dayMap[today];
-        console.log(`今天是 ${todayString}`);
         
         // 找到今天对应的选项卡
         const todayTab = document.querySelector(`.schedule-tab[data-day="${todayString}"]`);
         if (todayTab) {
-            console.log(`找到今天的选项卡`);
             // 设置今天选项卡为激活状态
             todayTab.classList.add('active');
             todayTab.style.backgroundColor = 'var(--hover-color)';
             todayTab.style.color = 'white';
             
             // 显示今天的内容
-            const todayContent = document.querySelector(`.${todayString}-content`);
+            const todayContent = dayContents[todayString];
             if (todayContent) {
-                console.log(`显示今天的内容`);
                 todayContent.style.display = 'grid';
-            } else {
-                console.error(`找不到今天的内容: .${todayString}-content`);
             }
         } else {
-            console.log(`找不到今天的选项卡，默认显示周一`);
             // 如果找不到今天的选项卡，默认显示周一
             const mondayTab = document.querySelector('.schedule-tab[data-day="monday"]');
             if (mondayTab) {
@@ -240,11 +244,9 @@ function renderScheduleTabs() {
                 mondayTab.style.backgroundColor = 'var(--hover-color)';
                 mondayTab.style.color = 'white';
                 
-                const mondayContent = document.querySelector('.monday-content');
+                const mondayContent = dayContents['monday'];
                 if (mondayContent) {
                     mondayContent.style.display = 'grid';
-                } else {
-                    console.error('找不到周一内容: .monday-content');
                 }
             }
         }
@@ -252,7 +254,6 @@ function renderScheduleTabs() {
     
     // 初始化时设置默认选项卡
     setDefaultTab();
-    console.log("时间表渲染完成");
 }
 
 // 3. 渲染动漫列表
@@ -268,6 +269,9 @@ function renderVerticalAnimeSection() {
     // 清空容器
     verticalSection.innerHTML = '';
     
+    // 使用文档片段减少DOM重绘
+    const fragment = document.createDocumentFragment();
+    
     // 使用外部数据填充动漫列表，最多显示10个
     const maxItems = Math.min(verticalAnimeData.length, 10);
     
@@ -279,7 +283,7 @@ function renderVerticalAnimeSection() {
         // 构建卡片HTML，将话数标签放在图片内部
         animeCard.innerHTML = `
             <div class="img-container" style="position: relative; width: 100%;">
-                <img src="${anime.image}" alt="${anime.title}" onerror="this.src='https://s1.imagehub.cc/images/2024/12/08/error-image.jpg';">
+                <img src="${anime.image}" alt="${anime.title}" loading="lazy" onerror="this.src='https://s1.imagehub.cc/images/2024/12/08/error-image.jpg';">
                 <div class="country-tag">${anime.country || '日本'}</div>
                 <div class="type-tag">${anime.type || '动画'}</div>
                 <div class="episode-count" style="position: absolute; right: 10px; bottom: 10px;">${anime.episodes || '未知'}</div>
@@ -296,8 +300,11 @@ function renderVerticalAnimeSection() {
             });
         }
         
-        verticalSection.appendChild(animeCard);
+        fragment.appendChild(animeCard);
     }
+    
+    // 一次性添加所有元素到DOM
+    verticalSection.appendChild(fragment);
     
     console.log("动漫列表渲染完成");
 }
@@ -315,6 +322,9 @@ function renderVerticalMovieSection() {
     // 清空容器
     movieSection.innerHTML = '';
     
+    // 使用文档片段减少DOM重绘
+    const fragment = document.createDocumentFragment();
+    
     // 使用外部数据填充影视列表，最多显示10个
     const maxItems = Math.min(verticalMovieData.length, 10);
     
@@ -326,7 +336,7 @@ function renderVerticalMovieSection() {
         // 构建卡片HTML，将时长标签放在图片内部
         movieCard.innerHTML = `
             <div class="img-container" style="position: relative; width: 100%;">
-                <img src="${movie.image}" alt="${movie.title}" onerror="this.src='https://s1.imagehub.cc/images/2024/12/08/error-image.jpg';">
+                <img src="${movie.image}" alt="${movie.title}" loading="lazy" onerror="this.src='https://s1.imagehub.cc/images/2024/12/08/error-image.jpg';">
                 <div class="country-tag">${movie.country || '美国'}</div>
                 <div class="type-tag">${movie.type || '电影'}</div>
                 <div class="episode-count" style="position: absolute; right: 10px; bottom: 10px;">${movie.duration || '未知'}</div>
@@ -343,8 +353,11 @@ function renderVerticalMovieSection() {
             });
         }
         
-        movieSection.appendChild(movieCard);
+        fragment.appendChild(movieCard);
     }
+    
+    // 一次性添加所有元素到DOM
+    movieSection.appendChild(fragment);
     
     console.log("影视列表渲染完成");
 }
@@ -362,6 +375,9 @@ function renderVerticalConcertSection() {
     // 清空容器
     concertSection.innerHTML = '';
     
+    // 使用文档片段减少DOM重绘
+    const fragment = document.createDocumentFragment();
+    
     // 使用外部数据填充演唱会列表，最多显示10个
     const maxItems = Math.min(verticalConcertData.length, 10);
     
@@ -373,7 +389,7 @@ function renderVerticalConcertSection() {
         // 构建卡片HTML，将时长标签放在图片内部
         concertCard.innerHTML = `
             <div class="img-container" style="position: relative; width: 100%;">
-                <img src="${concert.image}" alt="${concert.title}" onerror="this.src='https://s1.imagehub.cc/images/2024/12/08/error-image.jpg';">
+                <img src="${concert.image}" alt="${concert.title}" loading="lazy" onerror="this.src='https://s1.imagehub.cc/images/2024/12/08/error-image.jpg';">
                 <div class="country-tag">${concert.country || '日本'}</div>
                 <div class="type-tag">${concert.type || '演唱会'}</div>
                 <div class="episode-count" style="position: absolute; right: 10px; bottom: 10px;">${concert.duration || '未知'}</div>
@@ -390,26 +406,29 @@ function renderVerticalConcertSection() {
             });
         }
         
-        concertSection.appendChild(concertCard);
+        fragment.appendChild(concertCard);
     }
+    
+    // 一次性添加所有元素到DOM
+    concertSection.appendChild(fragment);
     
     console.log("演唱会列表渲染完成");
 }
 
-// 页面加载完成后执行渲染
-document.addEventListener('DOMContentLoaded', function() {
-    // 渲染轮播图
-    renderCarousel();
-    
-    // 渲染时间表
-    renderScheduleTabs();
-    
-    // 渲染动漫列表
-    renderVerticalAnimeSection();
-    
-    // 渲染影视列表
-    renderVerticalMovieSection();
-    
-    // 渲染演唱会列表
-    renderVerticalConcertSection();
-}); 
+// 页面加载完成后执行渲染 - 现在由懒加载控制，不再自动执行所有渲染
+// document.addEventListener('DOMContentLoaded', function() {
+//     // 渲染轮播图
+//     renderCarousel();
+//     
+//     // 渲染时间表
+//     renderScheduleTabs();
+//     
+//     // 渲染动漫列表
+//     renderVerticalAnimeSection();
+//     
+//     // 渲染影视列表
+//     renderVerticalMovieSection();
+//     
+//     // 渲染演唱会列表
+//     renderVerticalConcertSection();
+// }); 

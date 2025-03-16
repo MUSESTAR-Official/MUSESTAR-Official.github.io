@@ -181,6 +181,290 @@
     <script src="files/js/vertical-concert-data.js"></script>
     <script src="files/js/announcement-data.js"></script>
     
+    <!-- 添加懒加载功能 -->
+    <script>
+        // 懒加载观察器
+        document.addEventListener('DOMContentLoaded', function() {
+            // 创建交叉观察器实例
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    // 如果元素进入视口
+                    if (entry.isIntersecting) {
+                        const container = entry.target;
+                        
+                        // 根据容器类型加载不同内容
+                        if (container.classList.contains('vertical-section-container')) {
+                            // 延迟加载垂直部分 - 改为分批加载
+                            const sectionId = container.querySelector('.vertical-section').id;
+                            if (sectionId === 'movie-section') {
+                                renderVerticalSectionProgressively(sectionId, verticalMovieData);
+                            } else if (sectionId === 'concert-section') {
+                                renderVerticalSectionProgressively(sectionId, verticalConcertData);
+                            } else {
+                                renderVerticalSectionProgressively(null, verticalAnimeData);
+                            }
+                        } else if (container.classList.contains('schedule-section')) {
+                            // 延迟加载时间表 - 改为分批加载
+                            renderScheduleTabsProgressively();
+                        }
+                        
+                        // 停止观察已加载的元素
+                        observer.unobserve(container);
+                    }
+                });
+            }, {
+                root: null, // 使用视口作为根
+                rootMargin: '100px', // 提前100px开始加载
+                threshold: 0.1 // 当10%的元素可见时触发
+            });
+            
+            // 开始观察各个容器
+            document.querySelectorAll('.vertical-section-container, .schedule-section').forEach(container => {
+                observer.observe(container);
+            });
+        });
+        
+        // 分批渲染垂直部分的函数
+        function renderVerticalSectionProgressively(sectionId, data) {
+            const container = sectionId ? 
+                document.getElementById(sectionId) : 
+                document.querySelector('.vertical-section');
+            
+            if (!container) {
+                console.error('找不到垂直部分容器元素');
+                return;
+            }
+            
+            // 清空容器
+            container.innerHTML = '';
+            
+            // 使用外部数据填充列表，最多显示10个
+            const maxItems = Math.min(data.length, 10);
+            
+            // 分批加载卡片
+            function loadCardsProgressively(index) {
+                if (index >= maxItems) {
+                    return; // 所有卡片都已加载完成
+                }
+                
+                const item = data[index];
+                const card = document.createElement('div');
+                card.className = 'vertical-card';
+                
+                // 构建卡片HTML
+                card.innerHTML = `
+                    <div class="img-container" style="position: relative; width: 100%;">
+                        <img src="${item.image}" alt="${item.title}" loading="lazy" onerror="this.src='https://s1.imagehub.cc/images/2024/12/08/error-image.jpg';">
+                        <div class="country-tag">${item.country || '日本'}</div>
+                        <div class="type-tag">${item.type || (sectionId === 'movie-section' ? '电影' : (sectionId === 'concert-section' ? '演唱会' : '动画'))}</div>
+                        <div class="episode-count" style="position: absolute; right: 10px; bottom: 10px;">${item.episodes || item.duration || '未知'}</div>
+                    </div>
+                    <div class="title">${item.title}</div>
+                    <div class="release-date">${item.releaseDate || '2024'}</div>
+                `;
+                
+                // 添加点击跳转功能
+                if (item.url) {
+                    card.style.cursor = 'pointer';
+                    card.addEventListener('click', function() {
+                        window.location.href = item.url;
+                    });
+                }
+                
+                // 添加到容器
+                container.appendChild(card);
+                
+                // 使用动画效果显示卡片
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+                
+                // 使用requestAnimationFrame确保过渡效果生效
+                requestAnimationFrame(() => {
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }, 10);
+                });
+                
+                // 延迟加载下一个卡片
+                setTimeout(() => {
+                    loadCardsProgressively(index + 1);
+                }, 50); // 50ms的延迟
+            }
+            
+            // 开始分批加载
+            loadCardsProgressively(0);
+        }
+        
+        // 分批渲染时间表选项卡的函数
+        function renderScheduleTabsProgressively() {
+            const tabsContainer = document.querySelector('.schedule-tabs-container');
+            const contentContainer = document.querySelector('.schedule-content');
+            
+            if (!tabsContainer || !contentContainer) {
+                console.error('找不到时间表容器元素');
+                return;
+            }
+            
+            // 清空容器
+            contentContainer.innerHTML = '';
+            
+            // 使用文档片段减少DOM重绘
+            const contentFragment = document.createDocumentFragment();
+            
+            // 预先创建所有日期的内容，但不立即添加到DOM
+            const dayContents = {};
+            
+            // 获取所有日期
+            const days = Object.keys(scheduleData);
+            
+            // 设置选项卡点击事件 - 使用事件委托减少事件监听器数量
+            tabsContainer.addEventListener('click', function(e) {
+                const tab = e.target.closest('.schedule-tab');
+                if (!tab) return;
+                
+                const day = tab.getAttribute('data-day');
+                
+                // 更新选项卡样式
+                const tabs = tabsContainer.querySelectorAll('.schedule-tab');
+                tabs.forEach(t => {
+                    t.classList.remove('active');
+                    t.style.backgroundColor = 'var(--card-bg)';
+                    t.style.color = 'var(--text-color)';
+                });
+                tab.classList.add('active');
+                tab.style.backgroundColor = 'var(--hover-color)';
+                tab.style.color = 'white';
+                
+                // 更新内容显示 - 使用缓存的引用而不是重复查询DOM
+                Object.values(dayContents).forEach(content => {
+                    content.style.display = 'none';
+                });
+                
+                // 显示对应日期的内容
+                const dayContent = dayContents[day];
+                if (dayContent) {
+                    dayContent.style.display = 'grid';
+                } else {
+                    // 如果内容尚未加载，则加载它
+                    loadDayContent(day, contentContainer, dayContents);
+                }
+            });
+            
+            // 默认显示今天的时间表
+            function setDefaultTab() {
+                // 获取今天是周几（0是周日，1是周一，以此类推）
+                const today = new Date().getDay();
+                // 将JS的日期转换为我们的数据格式
+                const dayMap = {
+                    0: 'sunday',
+                    1: 'monday',
+                    2: 'tuesday',
+                    3: 'wednesday',
+                    4: 'thursday',
+                    5: 'friday',
+                    6: 'saturday'
+                };
+                
+                const todayString = dayMap[today];
+                
+                // 找到今天对应的选项卡
+                const todayTab = document.querySelector(`.schedule-tab[data-day="${todayString}"]`);
+                if (todayTab) {
+                    // 设置今天选项卡为激活状态
+                    todayTab.classList.add('active');
+                    todayTab.style.backgroundColor = 'var(--hover-color)';
+                    todayTab.style.color = 'white';
+                    
+                    // 加载并显示今天的内容
+                    loadDayContent(todayString, contentContainer, dayContents, true);
+                } else {
+                    // 如果找不到今天的选项卡，默认显示周一
+                    const mondayTab = document.querySelector('.schedule-tab[data-day="monday"]');
+                    if (mondayTab) {
+                        mondayTab.classList.add('active');
+                        mondayTab.style.backgroundColor = 'var(--hover-color)';
+                        mondayTab.style.color = 'white';
+                        
+                        // 加载并显示周一的内容
+                        loadDayContent('monday', contentContainer, dayContents, true);
+                    }
+                }
+            }
+            
+            // 分批加载每个日期的内容
+            function loadDaysProgressively(index) {
+                if (index >= days.length) {
+                    // 所有日期都已加载完成，设置默认选项卡
+                    setDefaultTab();
+                    return;
+                }
+                
+                const day = days[index];
+                
+                // 加载当前日期的内容，但不显示
+                loadDayContent(day, contentContainer, dayContents, false);
+                
+                // 延迟加载下一个日期的内容
+                setTimeout(() => {
+                    loadDaysProgressively(index + 1);
+                }, 100); // 100ms的延迟
+            }
+            
+            // 开始分批加载
+            loadDaysProgressively(0);
+        }
+        
+        // 加载特定日期的内容
+        function loadDayContent(day, contentContainer, dayContents, shouldDisplay) {
+            // 创建内容区域
+            const dayContent = document.createElement('div');
+            dayContent.className = `${day}-content`;
+            dayContent.style.display = shouldDisplay ? 'grid' : 'none';
+            
+            // 使用文档片段减少DOM重绘
+            const cardFragment = document.createDocumentFragment();
+            
+            // 添加该日期的所有动漫卡片
+            scheduleData[day].forEach(anime => {
+                const animeCard = document.createElement('div');
+                animeCard.className = 'schedule-card';
+                
+                // 构建卡片HTML，将话数标签放在图片内部
+                animeCard.innerHTML = `
+                    <div class="img-container" style="position: relative; width: 100%;">
+                        <img src="${anime.image}" alt="${anime.title}" loading="lazy">
+                        <div class="country-tag">${anime.country || '日本'}</div>
+                        <div class="type-tag">${anime.type || '动画'}</div>
+                        <div class="episode-count" style="position: absolute; right: 10px; bottom: 10px;">${anime.episodes || '未知'}</div>
+                    </div>
+                    <div class="title">${anime.title}</div>
+                    <div class="time">${anime.time}</div>
+                `;
+                
+                // 添加点击跳转功能
+                if (anime.url) {
+                    animeCard.style.cursor = 'pointer';
+                    animeCard.addEventListener('click', function() {
+                        window.location.href = anime.url;
+                    });
+                }
+                
+                cardFragment.appendChild(animeCard);
+            });
+            
+            // 一次性添加所有卡片到内容区域
+            dayContent.appendChild(cardFragment);
+            
+            // 将内容区域添加到容器
+            contentContainer.appendChild(dayContent);
+            
+            // 缓存内容区域的引用
+            dayContents[day] = dayContent;
+        }
+    </script>
+    
     <!-- 引入主脚本和内容渲染器 -->
     <script src="files/js/main.js"></script>
     <script src="files/js/content-renderer.js"></script>
@@ -192,7 +476,155 @@
             // 滚动监听功能已移至main.js，此处不再重复实现
             // 回到顶部按钮功能已移至main.js，此处不再重复实现
             // 公告功能已移至main.js，此处不再重复实现
+            
+            // 只立即加载首屏内容 - 使用分批加载
+            renderCarouselProgressively();
+            
+            // 其他内容通过懒加载实现
         });
+        
+        // 分批渲染轮播图
+        function renderCarouselProgressively() {
+            console.log("开始渲染轮播图");
+            const carouselContainer = document.querySelector('.carousel-container');
+            const dotsContainer = document.querySelector('.carousel-dots');
+            const prevBtn = document.querySelector('.carousel-btn.prev');
+            const nextBtn = document.querySelector('.carousel-btn.next');
+            
+            if (!carouselContainer || !dotsContainer) {
+                console.error('找不到轮播图容器元素');
+                return;
+            }
+            
+            // 清空轮播图容器
+            carouselContainer.innerHTML = '';
+            dotsContainer.innerHTML = '';
+            
+            // 创建立即播放按钮
+            const playBtn = document.createElement('button');
+            playBtn.className = 'carousel-play-btn';
+            playBtn.innerHTML = '<i class="fas fa-play"></i> 立即播放';
+            playBtn.style.opacity = '0';
+            playBtn.style.transform = 'translateY(20px)';
+            playBtn.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            document.querySelector('.carousel').appendChild(playBtn);
+            
+            // 分批加载轮播图幻灯片
+            function loadSlidesProgressively(index) {
+                if (index >= carouselData.length) {
+                    // 所有幻灯片都已加载完成
+                    initializeCarousel();
+                    
+                    // 显示立即播放按钮
+                    setTimeout(() => {
+                        playBtn.style.opacity = '1';
+                        playBtn.style.transform = 'translateY(0)';
+                    }, 500);
+                    
+                    console.log("轮播图渲染完成");
+                    return;
+                }
+                
+                const slide = carouselData[index];
+                
+                // 创建轮播图幻灯片
+                const slideElement = document.createElement('div');
+                slideElement.className = 'carousel-slide';
+                slideElement.style.opacity = '0';
+                slideElement.style.transition = 'opacity 0.5s ease';
+                
+                // 添加点击跳转功能
+                if (slide.url) {
+                    slideElement.style.cursor = 'pointer';
+                    slideElement.addEventListener('click', function() {
+                        window.location.href = slide.url;
+                    });
+                }
+                
+                slideElement.innerHTML = `
+                    <img src="${slide.image}" alt="${slide.title}">
+                    <div class="carousel-title">${slide.title}</div>
+                `;
+                carouselContainer.appendChild(slideElement);
+                
+                // 创建指示点
+                const dot = document.createElement('div');
+                dot.className = 'carousel-dot' + (index === 0 ? ' active' : '');
+                dot.style.opacity = '0';
+                dot.style.transition = 'opacity 0.5s ease';
+                dotsContainer.appendChild(dot);
+                
+                // 使用requestAnimationFrame确保过渡效果生效
+                requestAnimationFrame(() => {
+                    setTimeout(() => {
+                        slideElement.style.opacity = '1';
+                        dot.style.opacity = '1';
+                    }, 10);
+                });
+                
+                // 延迟加载下一个幻灯片
+                setTimeout(() => {
+                    loadSlidesProgressively(index + 1);
+                }, 100); // 100ms的延迟
+            }
+            
+            // 初始化轮播图功能
+            function initializeCarousel() {
+                const slides = document.querySelectorAll('.carousel-slide');
+                const dots = document.querySelectorAll('.carousel-dot');
+                
+                let currentSlide = 0;
+                const slideCount = slides.length;
+            
+                function updateCarousel() {
+                    carouselContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
+                    // 更新指示点状态
+                    dots.forEach((dot, index) => {
+                        dot.classList.toggle('active', index === currentSlide);
+                    });
+                    
+                    // 更新立即播放按钮的链接
+                    if (carouselData[currentSlide] && carouselData[currentSlide].url) {
+                        playBtn.onclick = function() {
+                            window.location.href = carouselData[currentSlide].url;
+                        };
+                    }
+                }
+            
+                function nextSlide() {
+                    currentSlide = (currentSlide + 1) % slideCount;
+                    updateCarousel();
+                }
+            
+                function prevSlide() {
+                    currentSlide = (currentSlide - 1 + slideCount) % slideCount;
+                    updateCarousel();
+                }
+            
+                // 添加按钮点击事件
+                if (prevBtn && nextBtn) {
+                    nextBtn.addEventListener('click', nextSlide);
+                    prevBtn.addEventListener('click', prevSlide);
+                }
+            
+                // 添加指示点点击事件
+                dots.forEach((dot, index) => {
+                    dot.addEventListener('click', () => {
+                        currentSlide = index;
+                        updateCarousel();
+                    });
+                });
+                
+                // 初始化立即播放按钮
+                updateCarousel();
+            
+                // 自动轮播
+                setInterval(nextSlide, 5000);
+            }
+            
+            // 开始分批加载
+            loadSlidesProgressively(0);
+        }
     </script>
 
 </body>
