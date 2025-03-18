@@ -55,6 +55,45 @@
             gap: 1.5rem;
         }
         
+        /* 添加选择列表样式 */
+        .select-container {
+            position: relative;
+            width: 100%;
+        }
+        
+        .select-container select {
+            width: 100%;
+            padding: 1rem;
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.4);
+            color: #333;
+            font-weight: bold;
+            font-size: 1.2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 15px rgba(31, 38, 135, 0.1);
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .select-container select:hover {
+            background-color: rgba(255, 255, 255, 0.6);
+            box-shadow: 0 8px 25px rgba(31, 38, 135, 0.15);
+        }
+        
+        .select-container::after {
+            content: '▼';
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #333;
+            pointer-events: none;
+            font-size: 0.8rem;
+        }
+        
         .btn {
             display: block;
             padding: 1rem;
@@ -68,12 +107,49 @@
             transition: all 0.3s ease;
             border: 1px solid rgba(255, 255, 255, 0.2);
             box-shadow: 0 4px 15px rgba(31, 38, 135, 0.1);
+            cursor: pointer;
         }
         
         .btn:hover {
             transform: translateY(-5px);
             background-color: rgba(255, 255, 255, 0.6);
             box-shadow: 0 8px 25px rgba(31, 38, 135, 0.15);
+        }
+        
+        /* 添加文件列表样式 */
+        .file-list {
+            margin-top: 1rem;
+            padding: 1rem;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            display: none;
+        }
+        
+        .file-list.show {
+            display: block;
+        }
+        
+        .file-item {
+            padding: 0.5rem;
+            margin: 0.5rem 0;
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .file-item:hover {
+            background-color: rgba(255, 255, 255, 0.4);
+            transform: translateX(5px);
+        }
+        
+        .file-item a {
+            color: #333;
+            text-decoration: none;
+            display: block;
+        }
+        
+        .file-item a:hover {
+            text-decoration: underline;
         }
         
         /* 底部样式 */
@@ -266,7 +342,34 @@
     <div class="container">
         <h1>MUSE A Level工具箱</h1>
         <div class="btn-container">
-            <a href="https://qualifications.pearson.com/en/support/support-topics/exams/past-papers.html?Qualification-Family=International-Advanced-Level" class="btn">真题/答案</a>
+            <div class="select-container">
+                <select id="subjectSelect">
+                    <option value="" disabled selected>选择科目</option>
+                    <option value="physics">物理</option>
+                    <!-- 后续可以添加更多科目 -->
+                </select>
+            </div>
+            <div class="select-container">
+                <select id="yearSelect">
+                    <option value="" disabled selected>选择年份</option>
+                    <option value="2022-10">2022年10月</option>
+                    <!-- 后续可以添加更多年份 -->
+                </select>
+            </div>
+            <div class="select-container">
+                <select id="typeSelect">
+                    <option value="" disabled selected>选择类型</option>
+                    <option value="paper">试卷</option>
+                    <option value="answer">答案</option>
+                    <option value="report">评卷报告</option>
+                </select>
+            </div>
+            <button class="btn" id="showPapers">显示文件</button>
+        </div>
+        <div class="file-list" id="fileList">
+            <!-- 文件列表将在这里动态显示 -->
+        </div>
+        <div style="margin-top: 1.5rem;">
             <a href="https://qualifications.pearson.com/content/demo/en/support/support-topics/results-certification/converting-marks-points-and-grades.html?QualFamily=International%20A%20Level#gcstep1" class="btn">转换分数线</a>
         </div>
         <div style="text-align: center; margin-top: 2rem; font-size: 0.8rem; color: rgba(255, 255, 255, 0.8);">MUSECloud代理尚未部署</div>
@@ -318,9 +421,131 @@
             setTimeout(showRuntime, 1000);
         }
         
-        // 等待DOM加载完成后启动运行时间计算
+        // 文件数据结构
+        const fileData = {
+            physics: {
+                "2022-10": {
+                    paper: [
+                        {
+                            name: "物理 单元1 (WPH11) 试卷",
+                            path: "/alevel/International Advanced Level-Physics (2018) (Current)-October 2022.pastpapers/Question-paper/Questionpaper-Unit1(WPH11)-October2022.pdf"
+                        },
+                        {
+                            name: "物理 单元2 (WPH12) 试卷",
+                            path: "/alevel/International Advanced Level-Physics (2018) (Current)-October 2022.pastpapers/Question-paper/Questionpaper-Unit2(WPH12)-October2022.pdf"
+                        },
+                        {
+                            name: "物理 单元3 (WPH13) 试卷",
+                            path: "/alevel/International Advanced Level-Physics (2018) (Current)-October 2022.pastpapers/Question-paper/Questionpaper-Unit3(WPH13)-October2022.pdf"
+                        },
+                        {
+                            name: "物理 单元4 (WPH14) 试卷",
+                            path: "/alevel/International Advanced Level-Physics (2018) (Current)-October 2022.pastpapers/Question-paper/Questionpaper-Unit4(WPH14)-October2022.pdf"
+                        },
+                        {
+                            name: "物理 单元5 (WPH15) 试卷",
+                            path: "/alevel/International Advanced Level-Physics (2018) (Current)-October 2022.pastpapers/Question-paper/Questionpaper-Unit5(WPH15)-October2022.pdf"
+                        },
+                        {
+                            name: "物理 单元6 (WPH16) 试卷",
+                            path: "/alevel/International Advanced Level-Physics (2018) (Current)-October 2022.pastpapers/Question-paper/Questionpaper-Unit6(WPH16)-October2022.pdf"
+                        }
+                    ],
+                    answer: [
+                        {
+                            name: "物理 单元1 (WPH11) 答案",
+                            path: "/alevel/International Advanced Level-Physics (2018) (Current)-October 2022.pastpapers/Mark-scheme/Markscheme-Unit1(WPH11)-October2022.pdf"
+                        },
+                        {
+                            name: "物理 单元2 (WPH12) 答案",
+                            path: "/alevel/International Advanced Level-Physics (2018) (Current)-October 2022.pastpapers/Mark-scheme/Markscheme-Unit2(WPH12)-October2022.pdf"
+                        },
+                        {
+                            name: "物理 单元3 (WPH13) 答案",
+                            path: "/alevel/International Advanced Level-Physics (2018) (Current)-October 2022.pastpapers/Mark-scheme/Markscheme-Unit3(WPH13)-October2022.pdf"
+                        },
+                        {
+                            name: "物理 单元4 (WPH14) 答案",
+                            path: "/alevel/International Advanced Level-Physics (2018) (Current)-October 2022.pastpapers/Mark-scheme/Markscheme-Unit4(WPH14)-October2022.pdf"
+                        },
+                        {
+                            name: "物理 单元5 (WPH15) 答案",
+                            path: "/alevel/International Advanced Level-Physics (2018) (Current)-October 2022.pastpapers/Mark-scheme/Markscheme-Unit5(WPH15)-October2022.pdf"
+                        },
+                        {
+                            name: "物理 单元6 (WPH16) 答案",
+                            path: "/alevel/International Advanced Level-Physics (2018) (Current)-October 2022.pastpapers/Mark-scheme/Markscheme-Unit6(WPH16)-October2022.pdf"
+                        }
+                    ],
+                    report: [
+                        {
+                            name: "物理 单元1 (WPH11) 评卷报告",
+                            path: "/alevel/International Advanced Level-Physics (2018) (Current)-October 2022.pastpapers/Examiner-report/Examinerreport-Unit1(WPH11)-October2022.pdf"
+                        },
+                        {
+                            name: "物理 单元2 (WPH12) 评卷报告",
+                            path: "/alevel/International Advanced Level-Physics (2018) (Current)-October 2022.pastpapers/Examiner-report/Examinerreport-Unit2(WPH12)-October2022.pdf"
+                        },
+                        {
+                            name: "物理 单元3 (WPH13) 评卷报告",
+                            path: "/alevel/International Advanced Level-Physics (2018) (Current)-October 2022.pastpapers/Examiner-report/Examinerreport-Unit3(WPH13)-October2022.pdf"
+                        },
+                        {
+                            name: "物理 单元4 (WPH14) 评卷报告",
+                            path: "/alevel/International Advanced Level-Physics (2018) (Current)-October 2022.pastpapers/Examiner-report/Examinerreport-Unit4(WPH14)-October2022.pdf"
+                        },
+                        {
+                            name: "物理 单元5 (WPH15) 评卷报告",
+                            path: "/alevel/International Advanced Level-Physics (2018) (Current)-October 2022.pastpapers/Examiner-report/Examinerreport-Unit5(WPH15)-October2022.pdf"
+                        },
+                        {
+                            name: "物理 单元6 (WPH16) 评卷报告",
+                            path: "/alevel/International Advanced Level-Physics (2018) (Current)-October 2022.pastpapers/Examiner-report/Examinerreport-Unit6(WPH16)-October2022.pdf"
+                        }
+                    ]
+                }
+            }
+            // 后续可以添加更多科目和年份
+        };
+        
+        // 显示文件列表函数
+        function showFiles() {
+            const subject = document.getElementById('subjectSelect').value;
+            const year = document.getElementById('yearSelect').value;
+            const type = document.getElementById('typeSelect').value;
+            const fileList = document.getElementById('fileList');
+            
+            if (!subject || !year || !type) {
+                alert('请先选择科目、年份和类型');
+                return;
+            }
+            
+            if (fileData[subject] && fileData[subject][year] && fileData[subject][year][type]) {
+                const files = fileData[subject][year][type];
+                let html = '';
+                
+                files.forEach(file => {
+                    html += `
+                        <div class="file-item">
+                            <a href="${file.path}" target="_blank">${file.name}</a>
+                        </div>
+                    `;
+                });
+                
+                fileList.innerHTML = html;
+                fileList.classList.add('show');
+            } else {
+                fileList.innerHTML = '<div class="file-item">暂无相关文件</div>';
+                fileList.classList.add('show');
+            }
+        }
+        
+        // 等待DOM加载完成后初始化
         document.addEventListener('DOMContentLoaded', function() {
             showRuntime();
+            
+            // 添加按钮点击事件
+            document.getElementById('showPapers').addEventListener('click', showFiles);
         });
     </script>
 </body>
