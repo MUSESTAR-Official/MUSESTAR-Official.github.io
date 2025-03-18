@@ -346,14 +346,20 @@
                 <select id="subjectSelect">
                     <option value="" disabled selected>选择科目</option>
                     <option value="physics">物理</option>
-                    <!-- 后续可以添加更多科目 -->
+                    <option value="chemistry">化学</option>
+                    <option value="economics">经济学</option>
+                    <option value="accounting">会计</option>
                 </select>
             </div>
             <div class="select-container">
+                <label for="yearSelect">年份</label>
                 <select id="yearSelect">
-                    <option value="" disabled selected>选择年份</option>
+                    <option value="">请选择</option>
+                    <option value="2023-10">2023年10月</option>
                     <option value="2022-10">2022年10月</option>
-                    <!-- 后续可以添加更多年份 -->
+                    <option value="2021-10">2021年10月</option>
+                    <option value="2020-01">2020年1月</option>
+                    <option value="2019-01">2019年1月</option>
                 </select>
             </div>
             <div class="select-container">
@@ -504,8 +510,373 @@
                         }
                     ]
                 }
+            },
+            chemistry: {
+                "2022-10": {
+                    paper: [
+                        {
+                            name: "化学 单元1 (WCH11) 试卷",
+                            path: "/alevel/International Advanced Level-Chemistry (2018) (Current)-October 2022.pastpapers/Question-paper/Questionpaper-Unit1(WCH11)-October2022.pdf"
+                        },
+                        {
+                            name: "化学 单元2 (WCH12) 试卷",
+                            path: "/alevel/International Advanced Level-Chemistry (2018) (Current)-October 2022.pastpapers/Question-paper/Questionpaper-Unit2(WCH12)-October2022.pdf"
+                        },
+                        {
+                            name: "化学 单元3 (WCH13) 试卷",
+                            path: "/alevel/International Advanced Level-Chemistry (2018) (Current)-October 2022.pastpapers/Question-paper/Questionpaper-Unit3(WCH13)-October2022.pdf"
+                        },
+                        {
+                            name: "化学 单元4 (WCH14) 试卷",
+                            path: "/alevel/International Advanced Level-Chemistry (2018) (Current)-October 2022.pastpapers/Question-paper/Questionpaper-Unit4(WCH14)-October2022.pdf"
+                        },
+                        {
+                            name: "化学 单元5 (WCH15) 试卷",
+                            path: "/alevel/International Advanced Level-Chemistry (2018) (Current)-October 2022.pastpapers/Question-paper/Questionpaper-Unit5(WCH15)-October2022.pdf"
+                        },
+                        {
+                            name: "化学 单元6 (WCH16) 试卷",
+                            path: "/alevel/International Advanced Level-Chemistry (2018) (Current)-October 2022.pastpapers/Question-paper/Questionpaper-Unit6(WCH16)-October2022.pdf"
+                        }
+                    ],
+                    answer: [
+                        {
+                            name: "化学 单元1 (WCH11) 答案",
+                            path: "/alevel/International Advanced Level-Chemistry (2018) (Current)-October 2022.pastpapers/Mark-scheme/Markscheme-Unit1(WCH11)-October2022.pdf"
+                        },
+                        {
+                            name: "化学 单元2 (WCH12) 答案",
+                            path: "/alevel/International Advanced Level-Chemistry (2018) (Current)-October 2022.pastpapers/Mark-scheme/Markscheme-Unit2(WCH12)-October2022.pdf"
+                        },
+                        {
+                            name: "化学 单元3 (WCH13) 答案",
+                            path: "/alevel/International Advanced Level-Chemistry (2018) (Current)-October 2022.pastpapers/Mark-scheme/Markscheme-Unit3(WCH13)-October2022.pdf"
+                        },
+                        {
+                            name: "化学 单元4 (WCH14) 答案",
+                            path: "/alevel/International Advanced Level-Chemistry (2018) (Current)-October 2022.pastpapers/Mark-scheme/Markscheme-Unit4(WCH14)-October2022.pdf"
+                        },
+                        {
+                            name: "化学 单元5 (WCH15) 答案",
+                            path: "/alevel/International Advanced Level-Chemistry (2018) (Current)-October 2022.pastpapers/Mark-scheme/Markscheme-Unit5(WCH15)-October2022.pdf"
+                        },
+                        {
+                            name: "化学 单元6 (WCH16) 答案",
+                            path: "/alevel/International Advanced Level-Chemistry (2018) (Current)-October 2022.pastpapers/Mark-scheme/Markscheme-Unit6(WCH16)-October2022.pdf"
+                        }
+                    ],
+                    report: [
+                        {
+                            name: "化学 单元1 (WCH11) 评卷报告",
+                            path: "/alevel/International Advanced Level-Chemistry (2018) (Current)-October 2022.pastpapers/Examiner-report/Examinerreport-Unit1(WCH11)-October2022.pdf"
+                        },
+                        {
+                            name: "化学 单元2 (WCH12) 评卷报告",
+                            path: "/alevel/International Advanced Level-Chemistry (2018) (Current)-October 2022.pastpapers/Examiner-report/Examinerreport-Unit2(WCH12)-October2022.pdf"
+                        },
+                        {
+                            name: "化学 单元3 (WCH13) 评卷报告",
+                            path: "/alevel/International Advanced Level-Chemistry (2018) (Current)-October 2022.pastpapers/Examiner-report/Examinerreport-Unit3(WCH13)-October2022.pdf"
+                        },
+                        {
+                            name: "化学 单元4 (WCH14) 评卷报告",
+                            path: "/alevel/International Advanced Level-Chemistry (2018) (Current)-October 2022.pastpapers/Examiner-report/Examinerreport-Unit4(WCH14)-October2022.pdf"
+                        },
+                        {
+                            name: "化学 单元5 (WCH15) 评卷报告",
+                            path: "/alevel/International Advanced Level-Chemistry (2018) (Current)-October 2022.pastpapers/Examiner-report/Examinerreport-Unit5(WCH15)-October2022.pdf"
+                        },
+                        {
+                            name: "化学 单元6 (WCH16) 评卷报告",
+                            path: "/alevel/International Advanced Level-Chemistry (2018) (Current)-October 2022.pastpapers/Examiner-report/Examinerreport-Unit6(WCH16)-October2022.pdf"
+                        }
+                    ]
+                },
+                "2021-10": {
+                    paper: [
+                        {
+                            name: "化学 单元1 试卷",
+                            path: "/alevel/International Advanced Level-Chemistry (2018) (Current)-October 2021.pastpapers/Question-paper/Questionpaper-Unit1-October2021.pdf"
+                        },
+                        {
+                            name: "化学 单元2 试卷",
+                            path: "/alevel/International Advanced Level-Chemistry (2018) (Current)-October 2021.pastpapers/Question-paper/Questionpaper-Unit2-October2021.pdf"
+                        }
+                    ],
+                    answer: [
+                        {
+                            name: "化学 单元1 答案",
+                            path: "/alevel/International Advanced Level-Chemistry (2018) (Current)-October 2021.pastpapers/Mark-scheme/Markscheme-Unit1-October2021.pdf"
+                        },
+                        {
+                            name: "化学 单元2 答案",
+                            path: "/alevel/International Advanced Level-Chemistry (2018) (Current)-October 2021.pastpapers/Mark-scheme/Markscheme-Unit2-October2021.pdf"
+                        }
+                    ],
+                    report: [
+                        {
+                            name: "化学 单元1 评卷报告",
+                            path: "/alevel/International Advanced Level-Chemistry (2018) (Current)-October 2021.pastpapers/Examiner-report/Examinerreport-Unit1-October2021.pdf"
+                        },
+                        {
+                            name: "化学 单元2 评卷报告",
+                            path: "/alevel/International Advanced Level-Chemistry (2018) (Current)-October 2021.pastpapers/Examiner-report/Examinerreport-Unit2-October2021.pdf"
+                        }
+                    ]
+                },
+                "2020-01": {
+                    paper: [
+                        {
+                            name: "化学 单元1 (WCH11) 试卷",
+                            path: "/alevel/International Advanced Level-Chemistry (2018) (Current)-January 2020.pastpapers/Question-paper/Questionpaper-Unit1(WCH11)-January2020.pdf"
+                        },
+                        {
+                            name: "化学 单元2 (WCH12) 试卷",
+                            path: "/alevel/International Advanced Level-Chemistry (2018) (Current)-January 2020.pastpapers/Question-paper/Questionpaper-Unit2(WCH12)-January2020.pdf"
+                        },
+                        {
+                            name: "化学 单元3 (WCH13) 试卷",
+                            path: "/alevel/International Advanced Level-Chemistry (2018) (Current)-January 2020.pastpapers/Question-paper/Questionpaper-Unit3(WCH13)-January2020.pdf"
+                        },
+                        {
+                            name: "化学 单元4 (WCH14) 试卷",
+                            path: "/alevel/International Advanced Level-Chemistry (2018) (Current)-January 2020.pastpapers/Question-paper/Questionpaper-Unit4(WCH14)-January2020.pdf"
+                        }
+                    ],
+                    answer: [
+                        {
+                            name: "化学 单元1 (WCH11) 答案",
+                            path: "/alevel/International Advanced Level-Chemistry (2018) (Current)-January 2020.pastpapers/Mark-scheme/Markscheme-Unit1(WCH11)-January2020.pdf"
+                        },
+                        {
+                            name: "化学 单元2 (WCH12) 答案",
+                            path: "/alevel/International Advanced Level-Chemistry (2018) (Current)-January 2020.pastpapers/Mark-scheme/Markscheme-Unit2(WCH12)-January2020.pdf"
+                        },
+                        {
+                            name: "化学 单元3 (WCH13) 答案",
+                            path: "/alevel/International Advanced Level-Chemistry (2018) (Current)-January 2020.pastpapers/Mark-scheme/Markscheme-Unit3(WCH13)-January2020.pdf"
+                        },
+                        {
+                            name: "化学 单元4 (WCH14) 答案",
+                            path: "/alevel/International Advanced Level-Chemistry (2018) (Current)-January 2020.pastpapers/Mark-scheme/Markscheme-Unit4(WCH14)-January2020.pdf"
+                        }
+                    ],
+                    report: [
+                        {
+                            name: "化学 单元1 (WCH11) 评卷报告",
+                            path: "/alevel/International Advanced Level-Chemistry (2018) (Current)-January 2020.pastpapers/Examiner-report/Examinerreport-Unit1(WCH11)-January2020.pdf"
+                        },
+                        {
+                            name: "化学 单元2 (WCH12) 评卷报告",
+                            path: "/alevel/International Advanced Level-Chemistry (2018) (Current)-January 2020.pastpapers/Examiner-report/Examinerreport-Unit2(WCH12)-January2020.pdf"
+                        },
+                        {
+                            name: "化学 单元3 (WCH13) 评卷报告",
+                            path: "/alevel/International Advanced Level-Chemistry (2018) (Current)-January 2020.pastpapers/Examiner-report/Examinerreport-Unit3(WCH13)-January2020.pdf"
+                        },
+                        {
+                            name: "化学 单元4 (WCH14) 评卷报告",
+                            path: "/alevel/International Advanced Level-Chemistry (2018) (Current)-January 2020.pastpapers/Examiner-report/Examinerreport-Unit4(WCH14)-January2020.pdf"
+                        }
+                    ]
+                },
+                "2019-01": {
+                    paper: [
+                        {
+                            name: "化学 单元1 试卷",
+                            path: "/alevel/International Advanced Level-Chemistry (2018) (Current)-January 2019.pastpapers/Question-paper/Questionpaper-Unit1-January2019.pdf"
+                        }
+                    ],
+                    answer: [
+                        {
+                            name: "化学 单元1 答案",
+                            path: "/alevel/International Advanced Level-Chemistry (2018) (Current)-January 2019.pastpapers/Mark-scheme/Markscheme-Unit1-January2019.pdf"
+                        }
+                    ],
+                    report: [
+                        {
+                            name: "化学 单元1 评卷报告",
+                            path: "/alevel/International Advanced Level-Chemistry (2018) (Current)-January 2019.pastpapers/Examiner-report/Examinerreport-Unit1-January2019.pdf"
+                        }
+                    ]
+                }
+            },
+            economics: {
+                "2023-10": {
+                    paper: [
+                        {
+                            name: "经济学 单元1 (WEC11) 试卷",
+                            path: "/alevel/International Advanced Level-Economics (2018) (Current)-October 2023.pastpapers/Question-paper/Questionpaper-Unit1(WEC11)-October2023.pdf"
+                        },
+                        {
+                            name: "经济学 单元2 (WEC12) 试卷",
+                            path: "/alevel/International Advanced Level-Economics (2018) (Current)-October 2023.pastpapers/Question-paper/Questionpaper-Unit2(WEC12)-October2023.pdf"
+                        },
+                        {
+                            name: "经济学 单元3 (WEC13) 试卷",
+                            path: "/alevel/International Advanced Level-Economics (2018) (Current)-October 2023.pastpapers/Question-paper/Questionpaper-Unit3(WEC13)-October2023.pdf"
+                        },
+                        {
+                            name: "经济学 单元4 (WEC14) 试卷",
+                            path: "/alevel/International Advanced Level-Economics (2018) (Current)-October 2023.pastpapers/Question-paper/Questionpaper-Unit4(WEC14)-October2023.pdf"
+                        }
+                    ],
+                    answer: [
+                        {
+                            name: "经济学 单元1 (WEC11) 答案",
+                            path: "/alevel/International Advanced Level-Economics (2018) (Current)-October 2023.pastpapers/Mark-scheme/Markscheme-Unit1(WEC11)-October2023.pdf"
+                        },
+                        {
+                            name: "经济学 单元2 (WEC12) 答案",
+                            path: "/alevel/International Advanced Level-Economics (2018) (Current)-October 2023.pastpapers/Mark-scheme/Markscheme-Unit2(WEC12)-October2023.pdf"
+                        },
+                        {
+                            name: "经济学 单元3 (WEC13) 答案",
+                            path: "/alevel/International Advanced Level-Economics (2018) (Current)-October 2023.pastpapers/Mark-scheme/Markscheme-Unit3(WEC13)-October2023.pdf"
+                        },
+                        {
+                            name: "经济学 单元4 (WEC14) 答案",
+                            path: "/alevel/International Advanced Level-Economics (2018) (Current)-October 2023.pastpapers/Mark-scheme/Markscheme-Unit4(WEC14)-October2023.pdf"
+                        }
+                    ],
+                    report: [
+                        {
+                            name: "经济学 单元1 (WEC11) 评卷报告",
+                            path: "/alevel/International Advanced Level-Economics (2018) (Current)-October 2023.pastpapers/Examiner-report/Examinerreport-Unit1(WEC11)-October2023.pdf"
+                        },
+                        {
+                            name: "经济学 单元2 (WEC12) 评卷报告",
+                            path: "/alevel/International Advanced Level-Economics (2018) (Current)-October 2023.pastpapers/Examiner-report/Examinerreport-Unit2(WEC12)-October2023.pdf"
+                        },
+                        {
+                            name: "经济学 单元3 (WEC13) 评卷报告",
+                            path: "/alevel/International Advanced Level-Economics (2018) (Current)-October 2023.pastpapers/Examiner-report/Examinerreport-Unit3(WEC13)-October2023.pdf"
+                        },
+                        {
+                            name: "经济学 单元4 (WEC14) 评卷报告",
+                            path: "/alevel/International Advanced Level-Economics (2018) (Current)-October 2023.pastpapers/Examiner-report/Examinerreport-Unit4(WEC14)-October2023.pdf"
+                        }
+                    ]
+                },
+                "2019-01": {
+                    paper: [
+                        {
+                            name: "经济学 单元1 试卷",
+                            path: "/alevel/International Advanced Level-Economics (2018) (Current)-January 2019.pastpapers/Question-paper/Questionpaper-Unit1-January2019.pdf"
+                        }
+                    ],
+                    answer: [
+                        {
+                            name: "经济学 单元1 答案",
+                            path: "/alevel/International Advanced Level-Economics (2018) (Current)-January 2019.pastpapers/Mark-scheme/Markscheme-Unit1-January2019.pdf"
+                        }
+                    ],
+                    report: [
+                        {
+                            name: "经济学 单元1 评卷报告",
+                            path: "/alevel/International Advanced Level-Economics (2018) (Current)-January 2019.pastpapers/Examiner-report/Examinerreport-Unit1-January2019.pdf"
+                        }
+                    ]
+                }
+            },
+            accounting: {
+                "2019-01": {
+                    paper: [
+                        {
+                            name: "会计 Paper 1 试卷",
+                            path: "/alevel/International Advanced Level-Accounting (2015) (Current)-January 2019.pastpapers/Question-paper/Questionpaper-Paper1-January2019.pdf"
+                        },
+                        {
+                            name: "会计 单元2 试卷",
+                            path: "/alevel/International Advanced Level-Accounting (2015) (Current)-January 2019.pastpapers/Question-paper/Questionpaper-Unit2-January2019.pdf"
+                        }
+                    ],
+                    answer: [
+                        {
+                            name: "会计 Paper 1 答案",
+                            path: "/alevel/International Advanced Level-Accounting (2015) (Current)-January 2019.pastpapers/Mark-scheme/Markscheme-Paper1-January2019.pdf"
+                        },
+                        {
+                            name: "会计 单元2 答案",
+                            path: "/alevel/International Advanced Level-Accounting (2015) (Current)-January 2019.pastpapers/Mark-scheme/Markscheme-Unit2-January2019.pdf"
+                        }
+                    ],
+                    report: [
+                        {
+                            name: "会计 Paper 1 评卷报告",
+                            path: "/alevel/International Advanced Level-Accounting (2015) (Current)-January 2019.pastpapers/Examiner-report/Examinerreport-Paper1-January2019.pdf"
+                        },
+                        {
+                            name: "会计 单元2 评卷报告",
+                            path: "/alevel/International Advanced Level-Accounting (2015) (Current)-January 2019.pastpapers/Examiner-report/Examinerreport-Unit2-January2019.pdf"
+                        }
+                    ]
+                },
+                "2022-10": {
+                    paper: [
+                        {
+                            name: "会计 单元1 (WAC11) 试卷",
+                            path: "/alevel/International Advanced Level-Accounting (2015) (Current)-October 2022.pastpapers/Question-paper/Questionpaper-Unit1(WAC11)-October2022.pdf"
+                        },
+                        {
+                            name: "会计 单元2 (WAC12) 试卷",
+                            path: "/alevel/International Advanced Level-Accounting (2015) (Current)-October 2022.pastpapers/Question-paper/Questionpaper-Unit2(WAC12)-October2022.pdf"
+                        }
+                    ],
+                    answer: [
+                        {
+                            name: "会计 单元1 (WAC11) 答案",
+                            path: "/alevel/International Advanced Level-Accounting (2015) (Current)-October 2022.pastpapers/Mark-scheme/Markscheme-Unit1(WAC11)-October2022.pdf"
+                        },
+                        {
+                            name: "会计 单元2 (WAC12) 答案",
+                            path: "/alevel/International Advanced Level-Accounting (2015) (Current)-October 2022.pastpapers/Mark-scheme/Markscheme-Unit2(WAC12)-October2022.pdf"
+                        }
+                    ],
+                    report: [
+                        {
+                            name: "会计 单元1 (WAC11) 评卷报告",
+                            path: "/alevel/International Advanced Level-Accounting (2015) (Current)-October 2022.pastpapers/Examiner-report/Examinerreport-Unit1(WAC11)-October2022.pdf"
+                        },
+                        {
+                            name: "会计 单元2 (WAC12) 评卷报告",
+                            path: "/alevel/International Advanced Level-Accounting (2015) (Current)-October 2022.pastpapers/Examiner-report/Examinerreport-Unit2(WAC12)-October2022.pdf"
+                        }
+                    ]
+                },
+                "2023-10": {
+                    paper: [
+                        {
+                            name: "会计 单元1 (WAC11) 试卷",
+                            path: "/alevel/International Advanced Level-Accounting (2015) (Current)-October 2023.pastpapers/Question-paper/Questionpaper-Unit1(WAC11)-October2023.pdf"
+                        },
+                        {
+                            name: "会计 单元2 (WAC12) 试卷",
+                            path: "/alevel/International Advanced Level-Accounting (2015) (Current)-October 2023.pastpapers/Question-paper/Questionpaper-Unit2(WAC12)-October2023.pdf"
+                        }
+                    ],
+                    answer: [
+                        {
+                            name: "会计 单元1 (WAC11) 答案",
+                            path: "/alevel/International Advanced Level-Accounting (2015) (Current)-October 2023.pastpapers/Mark-scheme/Markscheme-Unit1(WAC11)-October2023.pdf"
+                        },
+                        {
+                            name: "会计 单元2 (WAC12) 答案",
+                            path: "/alevel/International Advanced Level-Accounting (2015) (Current)-October 2023.pastpapers/Mark-scheme/Markscheme-Unit2(WAC12)-October2023.pdf"
+                        }
+                    ],
+                    report: [
+                        {
+                            name: "会计 单元1 (WAC11) 评卷报告",
+                            path: "/alevel/International Advanced Level-Accounting (2015) (Current)-October 2023.pastpapers/Examiner-report/Examinerreport-Unit1(WAC11)-October2023.pdf"
+                        },
+                        {
+                            name: "会计 单元2 (WAC12) 评卷报告",
+                            path: "/alevel/International Advanced Level-Accounting (2015) (Current)-October 2023.pastpapers/Examiner-report/Examinerreport-Unit2(WAC12)-October2023.pdf"
+                        }
+                    ]
+                }
             }
-            // 后续可以添加更多科目和年份
         };
         
         // 显示文件列表函数
@@ -520,6 +891,7 @@
                 return;
             }
             
+            // 显示文件列表或显示暂无文件
             if (fileData[subject] && fileData[subject][year] && fileData[subject][year][type]) {
                 const files = fileData[subject][year][type];
                 let html = '';
