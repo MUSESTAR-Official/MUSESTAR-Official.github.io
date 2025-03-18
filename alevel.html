@@ -80,26 +80,19 @@
             bottom: 0;
             padding: 0.5rem;
             z-index: 10;
+            text-align: center;
         }
         
-        .foot {
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            background-color: rgba(255, 255, 255, 0.15);
-            border-radius: 10px;
-            padding: 0.75rem;
-            box-shadow: 0 4px 15px rgba(31, 38, 135, 0.1);
+        .footer-content {
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 0.5rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            max-width: 900px;
-            margin: 0 auto;
+            padding: 0.5rem 0;
         }
         
         .footer-logo {
-            max-width: 100px;
+            max-width: 80px;
             opacity: 0;
             transition: opacity 0.5s ease;
         }
@@ -107,12 +100,6 @@
         .footer-logo img {
             width: 100%;
             height: auto;
-        }
-        
-        .footer-divider {
-            width: 80%;
-            height: 1px;
-            background-color: rgba(255, 255, 255, 0.3);
         }
         
         .footer-links {
@@ -127,6 +114,7 @@
             text-decoration: none;
             font-size: 0.8rem;
             transition: all 0.3s ease;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
         }
         
         .footer-links a:hover {
@@ -137,6 +125,7 @@
         .footer-runtime {
             color: #fff;
             font-size: 0.8rem;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
         }
         
         .brand {
@@ -169,10 +158,6 @@
             .btn {
                 font-size: 1.1rem;
                 padding: 0.9rem;
-            }
-            
-            .foot {
-                padding: 0.6rem;
             }
             
             .footer-logo {
@@ -217,10 +202,6 @@
             .btn {
                 font-size: 1.3rem;
             }
-            
-            .foot {
-                max-width: 1000px;
-            }
         }
         
         /* 添加横屏模式适配 */
@@ -240,14 +221,6 @@
             
             .btn {
                 padding: 0.7rem;
-            }
-            
-            .footer {
-                padding: 0.3rem;
-            }
-            
-            .foot {
-                padding: 0.5rem;
             }
             
             .footer-logo {
@@ -275,6 +248,14 @@
                 font-size: 0.9rem;
                 padding: 0.7rem;
             }
+            
+            .footer-logo {
+                max-width: 70px;
+            }
+            
+            .footer-links a, .footer-runtime {
+                font-size: 0.7rem;
+            }
         }
     </style>
 </head>
@@ -289,8 +270,55 @@
     </div>
     
     <!-- 添加底部 -->
-    <footer class="footer"></footer>
-    <script src="files/js/modern-footer.js"></script>
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="https://s1.imagehub.cc/images/2024/01/13/d0469ae970a9dac3b9e56aa223193e34.png" alt="MUSESTAR Logo" onerror="this.src='https://s1.imagehub.cc/images/2025/03/14/75aca0f31bd08308fa150301c0ec6589.png'; console.error('底栏logo加载失败');" onload="this.parentElement.style.opacity='1'">
+            </div>
+            <div class="footer-links">
+                <a href="https://musestar.cc/">© 2025 MUSESTAR</a>
+                <a href="https://icp.gov.moe/?keyword=20226956" target="_blank">萌ICP备20226956号</a>
+                <a href="https://stats.uptimerobot.com/NJ9gBiMZ7D" target="_blank">缪斯星服务状态</a>
+                <a href="mailto:admin@musestar.cc" target="_blank">联系邮箱admin@musestar.cc</a>
+            </div>
+            <div class="footer-runtime">
+                本站已运行 <span class="brand" id="runtime"></span>
+            </div>
+        </div>
+    </footer>
     
+    <script>
+        // 运行时间计算函数
+        function showRuntime() {
+            const startDate = new Date("04/25/2022 00:00:00");
+            const currentDate = new Date();
+            const timeDiff = currentDate.getTime() - startDate.getTime();
+            const dayUnit = 24 * 60 * 60 * 1000;
+            
+            const totalDays = timeDiff / dayUnit;
+            const days = Math.floor(totalDays);
+            
+            const hoursFraction = (totalDays - days) * 24;
+            const hours = Math.floor(hoursFraction);
+            
+            const minutesFraction = (hoursFraction - hours) * 60;
+            const minutes = Math.floor(minutesFraction);
+            
+            const secondsFraction = (minutesFraction - minutes) * 60;
+            const seconds = Math.floor(secondsFraction);
+            
+            const runtimeElement = document.getElementById('runtime');
+            if (runtimeElement) {
+                runtimeElement.textContent = days + "天" + hours + "小时" + minutes + "分" + seconds + "秒";
+            }
+            
+            setTimeout(showRuntime, 1000);
+        }
+        
+        // 等待DOM加载完成后启动运行时间计算
+        document.addEventListener('DOMContentLoaded', function() {
+            showRuntime();
+        });
+    </script>
 </body>
 </html>
