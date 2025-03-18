@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MUSE A Level工具箱</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(120deg, #8fd3f4 0%, #a78bfa 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-attachment: fixed;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 500px;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            background-color: rgba(255, 255, 255, 0.25);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            margin: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        h1 {
+            text-align: center;
+            color: #fff;
+            margin-bottom: 2rem;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            font-size: 2.5rem;
+        }
+        
+        .btn-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .btn {
+            display: block;
+            padding: 1rem;
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.4);
+            color: #333;
+            text-decoration: none;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 15px rgba(31, 38, 135, 0.1);
+        }
+        
+        .btn:hover {
+            transform: translateY(-5px);
+            background-color: rgba(255, 255, 255, 0.6);
+            box-shadow: 0 8px 25px rgba(31, 38, 135, 0.15);
+        }
+        
+        /* 底部样式 */
+        .footer {
+            width: 100%;
+            position: fixed;
+            bottom: 0;
+            padding: 0.5rem;
+            z-index: 10;
+        }
+        
+        .foot {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            background-color: rgba(255, 255, 255, 0.15);
+            border-radius: 10px;
+            padding: 0.75rem;
+            box-shadow: 0 4px 15px rgba(31, 38, 135, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .footer-logo {
+            max-width: 100px;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        
+        .footer-logo img {
+            width: 100%;
+            height: auto;
+        }
+        
+        .footer-divider {
+            width: 80%;
+            height: 1px;
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+        
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.75rem;
+        }
+        
+        .footer-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            text-decoration: underline;
+            opacity: 0.9;
+        }
+        
+        .footer-runtime {
+            color: #fff;
+            font-size: 0.8rem;
+        }
+        
+        .brand {
+            font-weight: bold;
+        }
+        
+        @media (max-width: 500px) {
+            .container {
+                width: 95%;
+                padding: 1.5rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.5rem;
+            }
+        }
+        
+        /* 添加更多媒体查询以适配不同设备 */
+        @media (max-width: 768px) {
+            .container {
+                max-width: 90%;
+            }
+            
+            .btn {
+                font-size: 1.1rem;
+                padding: 0.9rem;
+            }
+            
+            .foot {
+                padding: 0.6rem;
+            }
+            
+            .footer-logo {
+                max-width: 80px;
+            }
+        }
+        
+        @media (max-width: 375px) {
+            .container {
+                width: 92%;
+                padding: 1.2rem;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .btn {
+                font-size: 1rem;
+                padding: 0.8rem;
+            }
+            
+            .footer-logo {
+                max-width: 70px;
+            }
+            
+            .footer-links a, .footer-runtime {
+                font-size: 0.7rem;
+            }
+        }
+        
+        @media (min-width: 1200px) {
+            .container {
+                max-width: 550px;
+            }
+            
+            h1 {
+                font-size: 2.8rem;
+            }
+            
+            .btn {
+                font-size: 1.3rem;
+            }
+            
+            .foot {
+                max-width: 1000px;
+            }
+        }
+        
+        /* 添加横屏模式适配 */
+        @media (max-height: 600px) and (orientation: landscape) {
+            .container {
+                padding: 1.2rem;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+                margin-bottom: 1rem;
+            }
+            
+            .btn-container {
+                gap: 0.8rem;
+            }
+            
+            .btn {
+                padding: 0.7rem;
+            }
+            
+            .footer {
+                padding: 0.3rem;
+            }
+            
+            .foot {
+                padding: 0.5rem;
+            }
+            
+            .footer-logo {
+                max-width: 60px;
+            }
+        }
+        
+        /* 处理极小屏幕 */
+        @media (max-width: 320px) {
+            .container {
+                width: 95%;
+                padding: 1rem;
+            }
+            
+            h1 {
+                font-size: 1.6rem;
+                margin-bottom: 1rem;
+            }
+            
+            .btn-container {
+                gap: 1rem;
+            }
+            
+            .btn {
+                font-size: 0.9rem;
+                padding: 0.7rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>MUSE A Level工具箱</h1>
+        <div class="btn-container">
+            <a href="https://alevel.musestar.cc/en/support/support-topics/exams/past-papers.html?Qualification-Family=International-Advanced-Level" class="btn">真题/答案</a>
+            <a href="https://alevel.musestar.cc/content/demo/en/support/support-topics/results-certification/converting-marks-points-and-grades.html?QualFamily=International%20A%20Level#gcstep1" class="btn">一分一段线</a>
+        </div>
+        <div style="text-align: center; margin-top: 2rem; font-size: 0.8rem; color: rgba(255, 255, 255, 0.8);">网站页面由MUSECloud加速</div>
+    </div>
+    
+    <!-- 添加底部 -->
+    <footer class="footer"></footer>
+    
+    <script>
+        // 等待DOM加载完成
+        document.addEventListener('DOMContentLoaded', function() {
+            // 获取footer元素
+            const footer = document.querySelector('.footer');
+            
+            // 创建底栏内容
+            const footerContent = document.createElement('div');
+            footerContent.className = 'foot';
+            
+            // 添加logo
+            const logoDiv = document.createElement('div');
+            logoDiv.className = 'footer-logo';
+            const logoImg = document.createElement('img');
+            logoImg.src = 'https://s1.imagehub.cc/images/2024/01/13/d0469ae970a9dac3b9e56aa223193e34.png';
+            logoImg.alt = 'MUSESTAR Logo';
+            
+            // 确保图片加载完成后再显示
+            logoImg.onload = function() {
+                logoDiv.style.opacity = '1';
+            };
+            
+            // 添加加载错误处理
+            logoImg.onerror = function() {
+                console.error('底栏logo加载失败');
+                // 尝试使用备用图片
+                this.src = 'https://s1.imagehub.cc/images/2025/03/14/75aca0f31bd08308fa150301c0ec6589.png';
+            };
+            
+            logoDiv.appendChild(logoImg);
+            footerContent.appendChild(logoDiv);
+            
+            // 添加分隔线
+            const divider1 = document.createElement('div');
+            divider1.className = 'footer-divider';
+            footerContent.appendChild(divider1);
+            
+            // 添加链接区域
+            const linksDiv = document.createElement('div');
+            linksDiv.className = 'footer-links';
+            
+            // 添加版权链接
+            const copyrightLink = document.createElement('a');
+            copyrightLink.href = 'https://musestar.cc/';
+            copyrightLink.innerHTML = '© ' + new Date().getFullYear() + ' MUSESTAR';
+            linksDiv.appendChild(copyrightLink);
+            
+            // 添加ICP备案链接
+            const icpLink = document.createElement('a');
+            icpLink.href = 'https://icp.gov.moe/?keyword=20226956';
+            icpLink.target = '_blank';
+            icpLink.textContent = '萌ICP备20226956号';
+            linksDiv.appendChild(icpLink);
+            
+            // 添加服务状态链接
+            const statusLink = document.createElement('a');
+            statusLink.href = 'https://stats.uptimerobot.com/NJ9gBiMZ7D';
+            statusLink.target = '_blank';
+            statusLink.textContent = '缪斯星服务状态';
+            linksDiv.appendChild(statusLink);
+            
+            // 添加邮箱链接
+            const emailLink = document.createElement('a');
+            emailLink.href = 'mailto:admin@musestar.cc';
+            emailLink.target = '_blank';
+            emailLink.textContent = '联系邮箱admin@musestar.cc';
+            linksDiv.appendChild(emailLink);
+            
+            footerContent.appendChild(linksDiv);
+            
+            // 添加运行时间
+            const runtimeDiv = document.createElement('div');
+            runtimeDiv.className = 'footer-runtime';
+            runtimeDiv.innerHTML = '本站已运行 <span class="brand" id="runtime"></span>';
+            footerContent.appendChild(runtimeDiv);
+            
+            // 将内容添加到footer
+            footer.appendChild(footerContent);
+            
+            // 运行时间计算函数
+            function showRuntime() {
+                const startDate = new Date("04/25/2022 00:00:00");
+                const currentDate = new Date();
+                const timeDiff = currentDate.getTime() - startDate.getTime();
+                const dayUnit = 24 * 60 * 60 * 1000;
+                
+                const totalDays = timeDiff / dayUnit;
+                const days = Math.floor(totalDays);
+                
+                const hoursFraction = (totalDays - days) * 24;
+                const hours = Math.floor(hoursFraction);
+                
+                const minutesFraction = (hoursFraction - hours) * 60;
+                const minutes = Math.floor(minutesFraction);
+                
+                const secondsFraction = (minutesFraction - minutes) * 60;
+                const seconds = Math.floor(secondsFraction);
+                
+                const runtimeElement = document.getElementById('runtime');
+                if (runtimeElement) {
+                    runtimeElement.textContent = days + "天" + hours + "小时" + minutes + "分" + seconds + "秒";
+                }
+                
+                setTimeout(showRuntime, 1000);
+            }
+            
+            // 启动运行时间计算
+            showRuntime();
+        });
+    </script>
+</body>
+</html>

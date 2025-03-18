@@ -67,53 +67,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     footerContent.appendChild(linksDiv);
     
-    // 添加分隔线
-    const divider2 = document.createElement('div');
-    divider2.className = 'footer-divider';
-    footerContent.appendChild(divider2);
-    
-    // 添加社交媒体链接
-    const socialDiv = document.createElement('div');
-    socialDiv.className = 'footer-social';
-    
-    // 添加微博图标
-    const weiboLink = document.createElement('a');
-    weiboLink.href = '#';
-    weiboLink.title = '微博';
-    const weiboIcon = document.createElement('i');
-    weiboIcon.className = 'fab fa-weibo';
-    weiboLink.appendChild(weiboIcon);
-    socialDiv.appendChild(weiboLink);
-    
-    // 添加微信图标
-    const wechatLink = document.createElement('a');
-    wechatLink.href = '#';
-    wechatLink.title = '微信';
-    const wechatIcon = document.createElement('i');
-    wechatIcon.className = 'fab fa-weixin';
-    wechatLink.appendChild(wechatIcon);
-    socialDiv.appendChild(wechatLink);
-    
-    // 添加QQ图标
-    const qqLink = document.createElement('a');
-    qqLink.href = '#';
-    qqLink.title = 'QQ';
-    const qqIcon = document.createElement('i');
-    qqIcon.className = 'fab fa-qq';
-    qqLink.appendChild(qqIcon);
-    socialDiv.appendChild(qqLink);
-    
-    // 添加GitHub图标
-    const githubLink = document.createElement('a');
-    githubLink.href = '#';
-    githubLink.title = 'GitHub';
-    const githubIcon = document.createElement('i');
-    githubIcon.className = 'fab fa-github';
-    githubLink.appendChild(githubIcon);
-    socialDiv.appendChild(githubLink);
-    
-    footerContent.appendChild(socialDiv);
-    
     // 添加运行时间
     const runtimeDiv = document.createElement('div');
     runtimeDiv.className = 'footer-runtime';
