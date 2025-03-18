@@ -21,7 +21,9 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
             background-attachment: fixed;
+            padding-bottom: 120px; /* 添加底部内边距，为footer留出空间 */
         }
         
         .container {
@@ -34,11 +36,9 @@
             padding: 2rem;
             box-shadow: 0 8px 32px rgba(31, 38, 135, 0.2);
             border: 1px solid rgba(255, 255, 255, 0.18);
-            margin: 0;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            margin: 0; /* 重置外边距 */
+            position: relative;
+            top: -60px; /* 向上偏移，考虑到底部页脚的空间 */
         }
         
         h1 {
@@ -136,6 +136,9 @@
             padding: 0.5rem;
             z-index: 10;
             text-align: center;
+            background-color: rgba(0, 0, 0, 0.1); /* 添加半透明背景 */
+            backdrop-filter: blur(5px); /* 添加模糊效果 */
+            -webkit-backdrop-filter: blur(5px);
         }
         
         .footer-content {
@@ -191,6 +194,8 @@
             .container {
                 width: 95%;
                 padding: 1.5rem;
+                margin: 0; /* 重置外边距 */
+                top: -75px; /* 在小屏幕上调整偏移量 */
             }
             
             h1 {
@@ -201,6 +206,10 @@
                 flex-direction: column;
                 align-items: center;
                 gap: 0.5rem;
+            }
+            
+            body {
+                padding-bottom: 150px; /* 在移动端增加更多底部内边距 */
             }
         }
         
@@ -263,6 +272,7 @@
         @media (max-height: 600px) and (orientation: landscape) {
             .container {
                 padding: 1.2rem;
+                top: -30px; /* 横屏模式下减小偏移量 */
             }
             
             h1 {
@@ -288,6 +298,8 @@
             .container {
                 width: 95%;
                 padding: 1rem;
+                margin: 0; /* 重置外边距 */
+                top: -90px; /* 在极小屏幕上调整偏移量 */
             }
             
             h1 {
@@ -310,6 +322,10 @@
             
             .footer-links a, .footer-runtime {
                 font-size: 0.7rem;
+            }
+            
+            body {
+                padding-bottom: 180px; /* 在极小屏幕上增加更多底部内边距 */
             }
         }
     </style>
