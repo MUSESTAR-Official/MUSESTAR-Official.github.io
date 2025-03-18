@@ -68,12 +68,64 @@
             transition: all 0.3s ease;
             border: 1px solid rgba(255, 255, 255, 0.2);
             box-shadow: 0 4px 15px rgba(31, 38, 135, 0.1);
+            cursor: pointer;
         }
         
         .btn:hover {
             transform: translateY(-5px);
             background-color: rgba(255, 255, 255, 0.6);
             box-shadow: 0 8px 25px rgba(31, 38, 135, 0.15);
+        }
+        
+        /* 科目选择框样式 */
+        .subject-selector {
+            margin-bottom: 1rem;
+            position: relative;
+        }
+        
+        .subject-selector select {
+            width: 100%;
+            padding: 0.8rem;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background-color: rgba(255, 255, 255, 0.4);
+            color: #333;
+            font-size: 1rem;
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            cursor: pointer;
+            outline: none;
+            box-shadow: 0 4px 15px rgba(31, 38, 135, 0.1);
+        }
+        
+        .subject-selector select:focus {
+            background-color: rgba(255, 255, 255, 0.6);
+            box-shadow: 0 8px 25px rgba(31, 38, 135, 0.15);
+        }
+        
+        .subject-selector::after {
+            content: '▼';
+            position: absolute;
+            top: 50%;
+            right: 15px;
+            transform: translateY(-50%);
+            color: #333;
+            pointer-events: none;
+            font-size: 0.8rem;
+        }
+        
+        .paper-panel {
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            padding: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .paper-panel h3 {
+            color: #333;
+            margin-bottom: 0.8rem;
+            text-align: center;
         }
         
         /* 底部样式 */
@@ -266,10 +318,26 @@
     <div class="container">
         <h1>MUSE A Level工具箱</h1>
         <div class="btn-container">
-            <a href="https://qualifications.pearson.com/en/support/support-topics/exams/past-papers.html?Qualification-Family=International-Advanced-Level" class="btn">真题/答案</a>
-            <a href="https://qualifications.pearson.com/content/demo/en/support/support-topics/results-certification/converting-marks-points-and-grades.html?QualFamily=International%20A%20Level#gcstep1" class="btn">转换分数线</a>
+            <div class="paper-panel">
+                <h3>真题/答案/报告</h3>
+                <div class="subject-selector">
+                    <select id="subject-select">
+                        <option value="">请选择科目</option>
+                        <option value="accounting">Accounting (会计)</option>
+                        <option value="chemistry">Chemistry (化学)</option>
+                        <option value="economics">Economics (经济)</option>
+                        <option value="mathematics">Mathematics (数学)</option>
+                        <option value="physics">Physics (物理)</option>
+                    </select>
+                </div>
+                <div style="display: flex; gap: 1rem;">
+                    <button id="get-papers" class="btn" style="flex: 1;">代理获取</button>
+                    <button id="official-papers" class="btn" style="flex: 1;">官方获取</button>
+                </div>
+            </div>
+            <a href="https://qualifications.pearson.com/content/demo/en/support/support-topics/results-certification/converting-marks-points-and-grades.html?QualFamily=International%20A%20Level#gcstep1" class="btn">官方分数线转换</a>
         </div>
-        <div style="text-align: center; margin-top: 2rem; font-size: 0.8rem; color: rgba(255, 255, 255, 0.8);">MUSECloud代理尚未部署</div>
+        <div style="text-align: center; margin-top: 2rem; font-size: 0.8rem; color: rgba(255, 255, 255, 0.8);">部分化学、会计、经济由MUSECloud代理</div>
     </div>
     
     <!-- 添加底部 -->
@@ -318,9 +386,58 @@
             setTimeout(showRuntime, 1000);
         }
         
-        // 等待DOM加载完成后启动运行时间计算
+        // 等待DOM加载完成后启动运行时间计算及初始化按钮事件
         document.addEventListener('DOMContentLoaded', function() {
             showRuntime();
+            
+            // 添加获取真题按钮的点击事件
+            const getPapersBtn = document.getElementById('get-papers');
+            const officialPapersBtn = document.getElementById('official-papers');
+            const subjectSelect = document.getElementById('subject-select');
+            
+            getPapersBtn.addEventListener('click', function() {
+                const selectedSubject = subjectSelect.value;
+                if (selectedSubject) {
+                    // 科目对应的URL映射
+                    const subjectUrls = {
+                        'accounting': 'https://save.musestar.cc/ALevel/%E4%BC%9A%E8%AE%A1',
+                        'chemistry': 'https://save.musestar.cc/ALevel/%E5%8C%96%E5%AD%A6',
+                        'economics': 'https://save.musestar.cc/ALevel/%E7%BB%8F%E6%B5%8E',
+                        'mathematics': 'https://alevelclouds.com/past-papers/Edexcel/maths/',
+                        'physics': 'https://alevelclouds.com/past-papers/Edexcel/physics/'
+                    };
+                    
+                    // 获取对应URL并跳转
+                    const url = subjectUrls[selectedSubject];
+                    if (url) {
+                        window.location.href = url;
+                    }
+                } else {
+                    alert('请先选择一个科目');
+                }
+            });
+            
+            officialPapersBtn.addEventListener('click', function() {
+                const selectedSubject = subjectSelect.value;
+                if (selectedSubject) {
+                    // 科目对应的官方URL映射
+                    const officialUrls = {
+                        'accounting': 'https://qualifications.pearson.com/en/support/support-topics/exams/past-papers.html?Qualification-Family=International-Advanced-Level&Qualification-Subject=Accounting%20(2015)&Status=Pearson-UK:Status%2FLive&Specification-Code=Pearson-UK:Specification-Code%2Fial-accounting',
+                        'chemistry': 'https://qualifications.pearson.com/en/support/support-topics/exams/past-papers.html?Qualification-Family=International-Advanced-Level&Qualification-Subject=Chemistry%20(2018)&Status=Pearson-UK:Status%2FLive&Specification-Code=Pearson-UK:Specification-Code%2Fial18-chemistry',
+                        'economics': 'https://qualifications.pearson.com/en/support/support-topics/exams/past-papers.html?Qualification-Family=International-Advanced-Level&Qualification-Subject=Economics%20(2018)&Status=Pearson-UK:Status%2FLive&Specification-Code=Pearson-UK:Specification-Code%2Fial18-economics',
+                        'mathematics': 'https://qualifications.pearson.com/en/support/support-topics/exams/past-papers.html?Qualification-Family=International-Advanced-Level&Qualification-Subject=Mathematics%20(2018)&Status=Pearson-UK:Status%2FLive&Specification-Code=Pearson-UK:Specification-Code%2Fial18-mathematics',
+                        'physics': 'https://qualifications.pearson.com/en/support/support-topics/exams/past-papers.html?Qualification-Family=International-Advanced-Level&Qualification-Subject=Physics%20(2018)&Status=Pearson-UK:Status%2FLive&Specification-Code=Pearson-UK:Specification-Code%2Fial18-physics'
+                    };
+                    
+                    // 获取对应URL并跳转
+                    const url = officialUrls[selectedSubject];
+                    if (url) {
+                        window.location.href = url;
+                    }
+                } else {
+                    alert('请先选择一个科目');
+                }
+            });
         });
     </script>
 </body>
