@@ -1,8 +1,32 @@
 // main.js - 主要功能脚本
 // 包含所有UI交互和渲染逻辑
 
+// 设置默认主题为黑色模式
+document.documentElement.setAttribute('data-theme', 'dark');
+
 // 页面加载完成后执行
 document.addEventListener('DOMContentLoaded', function() {
+    // 从本地存储加载主题设置
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        
+        // 同步所有主题切换按钮的图标
+        if (savedTheme === 'light') {
+            const themeToggleIcon = document.querySelector('.theme-toggle i');
+            if (themeToggleIcon) {
+                themeToggleIcon.classList.remove('fa-moon');
+                themeToggleIcon.classList.add('fa-sun');
+            }
+            
+            const mobileThemeToggleIcon = document.querySelector('.mobile-theme-toggle i');
+            if (mobileThemeToggleIcon) {
+                mobileThemeToggleIcon.classList.remove('fa-moon');
+                mobileThemeToggleIcon.classList.add('fa-sun');
+            }
+        }
+    }
+
     // 初始化所有功能
     initNavbarScroll();
     initCarousel();
@@ -10,6 +34,9 @@ document.addEventListener('DOMContentLoaded', function() {
     initBackToTop();
     initAnnouncement();
     initializePage();
+    initMobileThemeToggle();
+    initMobileView();
+    updateThemeToggle();
 });
 
 // 节流函数 - 限制函数执行频率
@@ -51,10 +78,16 @@ function initNavbarScroll() {
 // 轮播图功能
 function initCarousel() {
     const carousel = document.querySelector('.carousel-container');
+    // 如果没有轮播图容器，则退出函数
+    if (!carousel) return;
+    
     const slides = document.querySelectorAll('.carousel-slide');
     const dots = document.querySelectorAll('.carousel-dot');
     const prevBtn = document.querySelector('.carousel-btn.prev');
     const nextBtn = document.querySelector('.carousel-btn.next');
+    
+    // 如果没有幻灯片，则退出函数
+    if (slides.length === 0) return;
     
     let currentSlide = 0;
     const slideCount = slides.length;
@@ -78,8 +111,10 @@ function initCarousel() {
     }
 
     // 添加按钮点击事件
-    nextBtn.addEventListener('click', nextSlide);
-    prevBtn.addEventListener('click', prevSlide);
+    if (prevBtn && nextBtn) {
+        nextBtn.addEventListener('click', nextSlide);
+        prevBtn.addEventListener('click', prevSlide);
+    }
 
     // 添加指示点点击事件
     dots.forEach((dot, index) => {
@@ -95,6 +130,9 @@ function initCarousel() {
 
 // 主题切换功能
 function initThemeToggle() {
+    // 设置默认主题为暗色模式
+    document.documentElement.setAttribute('data-theme', 'dark');
+    
     const themeToggle = document.querySelector('.theme-toggle');
     const icon = themeToggle.querySelector('i');
     const htmlElement = document.documentElement;
@@ -459,11 +497,15 @@ function renderVerticalAnime() {
 function initializePage() {
     console.log('页面初始化开始');
     
-    // 渲染横向动漫卡片 - 使用分批加载
-    renderHorizontalAnimeProgressively();
-    
-    // 强制移除所有阴影
-    forceRemoveAllShadows();
+    // 检查页面是否包含横向动漫卡片容器
+    const animeGridContainer = document.querySelector('.anime-grid');
+    if (animeGridContainer) {
+        // 渲染横向动漫卡片 - 使用分批加载
+        renderHorizontalAnimeProgressively();
+        
+        // 强制移除所有阴影
+        forceRemoveAllShadows();
+    }
     
     console.log('页面初始化完成');
 }
@@ -553,4 +595,93 @@ function renderHorizontalAnimeProgressively() {
     
     // 开始分批加载
     loadCardsProgressively(0);
+}
+
+// 移动端主题切换功能
+function initMobileThemeToggle() {
+    const mobileThemeToggle = document.querySelector('.mobile-theme-toggle');
+    if (mobileThemeToggle) {
+        const mobileThemeToggleIcon = mobileThemeToggle.querySelector('i');
+        mobileThemeToggle.addEventListener('click', function() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            if (currentTheme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'light');
+                mobileThemeToggleIcon.classList.remove('fa-moon');
+                mobileThemeToggleIcon.classList.add('fa-sun');
+                // 同步更新顶部主题切换按钮
+                const themeToggleIcon = document.querySelector('.theme-toggle i');
+                if (themeToggleIcon) {
+                    themeToggleIcon.classList.remove('fa-moon');
+                    themeToggleIcon.classList.add('fa-sun');
+                }
+                localStorage.setItem('theme', 'light');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                mobileThemeToggleIcon.classList.remove('fa-sun');
+                mobileThemeToggleIcon.classList.add('fa-moon');
+                // 同步更新顶部主题切换按钮
+                const themeToggleIcon = document.querySelector('.theme-toggle i');
+                if (themeToggleIcon) {
+                    themeToggleIcon.classList.remove('fa-sun');
+                    themeToggleIcon.classList.add('fa-moon');
+                }
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+    }
+}
+
+// 窗口大小监听，动态添加移动视图类
+function initMobileView() {
+    // 检测移动设备或小屏幕
+    function handleWindowResize() {
+        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        const isSmallScreen = window.innerWidth < 768;
+        
+        if (isMobile || isSmallScreen) {
+            document.body.classList.add('mobile-view');
+        } else {
+            document.body.classList.remove('mobile-view');
+        }
+    }
+    
+    // 初始调用一次
+    handleWindowResize();
+    
+    // 添加窗口大小改变事件监听
+    window.addEventListener('resize', handleWindowResize);
+}
+
+// 更新主题切换按钮功能，使其同步更新移动端按钮
+function updateThemeToggle() {
+    const themeToggle = document.querySelector('.theme-toggle');
+    if (themeToggle) {
+        const themeToggleIcon = themeToggle.querySelector('i');
+        themeToggle.addEventListener('click', function() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            if (currentTheme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'light');
+                themeToggleIcon.classList.remove('fa-moon');
+                themeToggleIcon.classList.add('fa-sun');
+                // 同步更新移动端主题切换按钮
+                const mobileThemeToggleIcon = document.querySelector('.mobile-theme-toggle i');
+                if (mobileThemeToggleIcon) {
+                    mobileThemeToggleIcon.classList.remove('fa-moon');
+                    mobileThemeToggleIcon.classList.add('fa-sun');
+                }
+                localStorage.setItem('theme', 'light');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                themeToggleIcon.classList.remove('fa-sun');
+                themeToggleIcon.classList.add('fa-moon');
+                // 同步更新移动端主题切换按钮
+                const mobileThemeToggleIcon = document.querySelector('.mobile-theme-toggle i');
+                if (mobileThemeToggleIcon) {
+                    mobileThemeToggleIcon.classList.remove('fa-sun');
+                    mobileThemeToggleIcon.classList.add('fa-moon');
+                }
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+    }
 } 

@@ -12,6 +12,27 @@
     <script>
         // 设置默认主题为黑色模式
         document.documentElement.setAttribute('data-theme', 'dark');
+        
+        // 检测移动设备或小屏幕
+        (function() {
+            var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+            var isSmallScreen = window.innerWidth < 768;
+            if (isMobile || isSmallScreen) {
+                document.addEventListener('DOMContentLoaded', function() {
+                    document.body.classList.add('mobile-view');
+                });
+            }
+            
+            // 添加窗口大小改变监听
+            window.addEventListener('resize', function() {
+                var isSmallScreen = window.innerWidth < 768;
+                if (isSmallScreen) {
+                    document.body.classList.add('mobile-view');
+                } else {
+                    document.body.classList.remove('mobile-view');
+                }
+            });
+        })();
     </script>
     <style>
         /* AI导航页面特定样式 */
@@ -258,6 +279,31 @@
         <i class="fas fa-arrow-up"></i>
     </div>
 
+    <!-- 移动端底部导航栏 -->
+    <div class="mobile-navbar">
+        <a href="index" class="mobile-nav-item">
+            <i class="fas fa-home"></i>
+            <span>首页</span>
+        </a>
+        <a href="animation" class="mobile-nav-item">
+            <i class="fas fa-play"></i>
+            <span>动漫</span>
+        </a>
+        <a href="movie" class="mobile-nav-item">
+            <i class="fas fa-film"></i>
+            <span>影视</span>
+        </a>
+        <a href="musestar" class="mobile-nav-item">
+            <i class="fas fa-star"></i>
+            <span>官方</span>
+        </a>
+    </div>
+
+    <!-- 移动端主题切换按钮 -->
+    <div class="mobile-theme-toggle">
+        <i class="fas fa-moon"></i>
+    </div>
+
     <!-- 添加底栏 -->
     <footer class="footer">
         <!-- 底栏内容将由modern-footer.js生成 -->
@@ -266,229 +312,198 @@
     <!-- 引入底栏脚本 -->
     <script src="files/js/modern-footer.js"></script>
 
+    <script src="files/js/main.js"></script>
+
     <!-- AI工具数据 -->
     <script>
-        // AI工具数据
-        const aiTools = [
-            {
-                name: "DeepSeek",
-                logo: "https://www.deepseek.com/favicon.ico",
-                type: "AI聊天",
-                category: "chat",
-                description: "DeepSeek AI是一家专注于开源大语言模型的人工智能公司，提供多语言能力、代码理解与生成，以及专业领域问答能力。",
-                tags: ["大语言模型", "开源", "代码生成"],
-                url: "https://www.deepseek.com/"
-            },
-            {
-                name: "豆包",
-                logo: "https://www.doubao.com/favicon.ico",
-                type: "AI聊天",
-                category: "chat",
-                description: "字节跳动旗下的AI助手，支持多模态交互，能够理解图像、文字，提供专业回答和创意内容生成。",
-                tags: ["国产AI", "多模态", "创意写作"],
-                url: "https://www.doubao.com/"
-            },
-            {
-                name: "秘塔AI搜索",
-                logo: "https://metaso.cn/favicon.ico",
-                type: "AI搜索",
-                category: "other",
-                description: "基于AI技术的搜索引擎，为用户提供直接答案而非链接列表，支持学术论文、专业知识等的精准检索。",
-                tags: ["AI搜索", "信息检索", "学术检索"],
-                url: "https://metaso.cn/"
-            },
-            {
-                name: "通义千问",
-                logo: "https://qianwen.aliyun.com/favicon.ico",
-                type: "AI聊天",
-                category: "chat",
-                description: "阿里巴巴旗下的大语言模型，提供对话能力、内容创作、知识问答，支持多模态理解，专注中文语境。",
-                tags: ["国产AI", "阿里巴巴", "多模态"],
-                url: "https://qianwen.aliyun.com/"
-            },
-            {
-                name: "ChatGPT",
-                logo: "https://chat.openai.com/favicon.ico",
-                type: "AI聊天",
-                category: "chat",
-                description: "OpenAI开发的对话式人工智能，能够理解和生成人类语言，回答问题并提供各种任务的帮助。",
-                tags: ["对话", "问答", "写作辅助"],
-                url: "https://chat.openai.com/"
-            },
-            {
-                name: "Claude",
-                logo: "https://claude.ai/favicon.ico",
-                type: "AI聊天",
-                category: "chat",
-                description: "Anthropic公司开发的对话式AI助手，专注于有帮助、无害和诚实的回答，支持超长上下文。",
-                tags: ["对话", "超长上下文", "文档分析"],
-                url: "https://claude.ai/"
-            },
-            {
-                name: "Gemini",
-                logo: "https://gemini.google.com/favicon.ico",
-                type: "AI聊天",
-                category: "chat",
-                description: "Google推出的多模态AI模型，支持文本、图像、视频等多种输入，理解力和创造力强大。",
-                tags: ["多模态", "Google", "综合能力"],
-                url: "https://gemini.google.com/"
-            },
-            {
-                name: "腾讯元宝",
-                logo: "https://hunyuan.tencent.com/favicon.ico",
-                type: "AI聊天",
-                category: "chat",
-                description: "腾讯推出的大型语言模型，能够进行自然对话、内容创作、知识问答，并具备多轮对话能力。",
-                tags: ["国产AI", "腾讯", "内容创作"],
-                url: "https://hunyuan.tencent.com/bot/chat"
-            },
-            {
-                name: "Grok",
-                logo: "https://grok.x.ai/favicon.ico",
-                type: "AI聊天",
-                category: "chat",
-                description: "X (前Twitter)旗下的AI助手，由xAI开发，特点是实时网络访问和幽默风格的回答。",
-                tags: ["实时信息", "幽默风格", "X公司"],
-                url: "https://grok.x.ai/"
-            },
-            {
-                name: "文心一言",
-                logo: "https://yiyan.baidu.com/favicon.ico",
-                type: "AI聊天",
-                category: "chat",
-                description: "百度推出的大型语言模型，提供对话、创作、绘画等功能，专注于中文内容理解与生成。",
-                tags: ["国产AI", "中文优化", "多功能"],
-                url: "https://yiyan.baidu.com/"
-            },
-            {
-                name: "GitHub Copilot",
-                logo: "https://github.com/favicon.ico",
-                type: "AI编程",
-                category: "coding",
-                description: "由GitHub和OpenAI开发的AI编程助手，能够根据上下文生成代码建议，提高开发效率。",
-                tags: ["代码生成", "编程辅助", "开发工具"],
-                url: "https://github.com/features/copilot"
-            },
-            {
-                name: "New Bing",
-                logo: "https://www.bing.com/favicon.ico",
-                type: "AI搜索",
-                category: "other",
-                description: "微软基于GPT模型增强的必应搜索引擎，结合网络搜索和AI对话能力，提供更智能的搜索体验。",
-                tags: ["搜索引擎", "微软", "实时信息"],
-                url: "https://www.bing.com/new"
-            },
-            {
-                name: "Cursor",
-                logo: "https://cursor.sh/favicon.ico",
-                type: "AI编程",
-                category: "coding",
-                description: "基于AI的代码编辑器，内置强大的代码生成和理解能力，可帮助开发者更快地编写和理解代码。",
-                tags: ["代码编辑器", "编程辅助", "AI集成"],
-                url: "https://cursor.sh/"
-            },
-            {
-                name: "Microsoft Copilot",
-                logo: "https://copilot.microsoft.com/favicon.ico",
-                type: "AI聊天",
-                category: "chat",
-                description: "微软推出的AI助手，集成于Windows、Edge浏览器和Office应用，提供智能搜索、内容创作和日常工作辅助。",
-                tags: ["微软", "生产力工具", "Office集成"],
-                url: "https://copilot.microsoft.com/"
-            }
-        ];
-
-        // 渲染AI工具卡片
-        function renderAICards(category = 'all') {
-            const aiGrid = document.getElementById('aiGrid');
-            aiGrid.innerHTML = '';
-
-            const filteredTools = category === 'all' 
-                ? aiTools 
-                : aiTools.filter(tool => tool.category === category);
-
-            filteredTools.forEach(tool => {
-                const card = document.createElement('div');
-                card.className = 'ai-card';
-                card.innerHTML = `
-                    <div class="ai-card-header">
-                        <img src="${tool.logo}" alt="${tool.name}" class="ai-logo">
-                        <div>
-                            <div class="ai-name">${tool.name}</div>
-                            <div class="ai-type">${tool.type}</div>
-                        </div>
-                    </div>
-                    <div class="ai-card-body">
-                        <p class="ai-description">${tool.description}</p>
-                        <div class="ai-tags">
-                            ${tool.tags.map(tag => `<span class="ai-tag">${tag}</span>`).join('')}
-                        </div>
-                    </div>
-                    <div class="ai-card-footer">
-                        <a href="${tool.url}" target="_blank" class="ai-link">
-                            <i class="fas fa-external-link-alt"></i> 访问网站
-                        </a>
-                    </div>
-                `;
-                aiGrid.appendChild(card);
-            });
-        }
-
-        // 初始渲染
+        // 确保移动视图设置正确
         document.addEventListener('DOMContentLoaded', function() {
-            renderAICards();
+            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+            const isSmallScreen = window.innerWidth < 768;
+            if (isMobile || isSmallScreen) {
+                document.body.classList.add('mobile-view');
+            }
+            
+            // 原有代码继续保留
+            // AI工具数据
+            const aiTools = [
+                {
+                    name: "DeepSeek",
+                    logo: "https://www.deepseek.com/favicon.ico",
+                    type: "AI聊天",
+                    category: "chat",
+                    description: "DeepSeek AI是一家专注于开源大语言模型的人工智能公司，提供多语言能力、代码理解与生成，以及专业领域问答能力。",
+                    tags: ["大语言模型", "开源", "代码生成"],
+                    url: "https://www.deepseek.com/"
+                },
+                {
+                    name: "豆包",
+                    logo: "https://www.doubao.com/favicon.ico",
+                    type: "AI聊天",
+                    category: "chat",
+                    description: "字节跳动旗下的AI助手，支持多模态交互，能够理解图像、文字，提供专业回答和创意内容生成。",
+                    tags: ["国产AI", "多模态", "创意写作"],
+                    url: "https://www.doubao.com/"
+                },
+                {
+                    name: "秘塔AI搜索",
+                    logo: "https://metaso.cn/favicon.ico",
+                    type: "AI搜索",
+                    category: "other",
+                    description: "基于AI技术的搜索引擎，为用户提供直接答案而非链接列表，支持学术论文、专业知识等的精准检索。",
+                    tags: ["AI搜索", "信息检索", "学术检索"],
+                    url: "https://metaso.cn/"
+                },
+                {
+                    name: "通义千问",
+                    logo: "https://qianwen.aliyun.com/favicon.ico",
+                    type: "AI聊天",
+                    category: "chat",
+                    description: "阿里巴巴旗下的大语言模型，提供对话能力、内容创作、知识问答，支持多模态理解，专注中文语境。",
+                    tags: ["国产AI", "阿里巴巴", "多模态"],
+                    url: "https://qianwen.aliyun.com/"
+                },
+                {
+                    name: "ChatGPT",
+                    logo: "https://chat.openai.com/favicon.ico",
+                    type: "AI聊天",
+                    category: "chat",
+                    description: "OpenAI开发的对话式人工智能，能够理解和生成人类语言，回答问题并提供各种任务的帮助。",
+                    tags: ["对话", "问答", "写作辅助"],
+                    url: "https://chat.openai.com/"
+                },
+                {
+                    name: "Claude",
+                    logo: "https://claude.ai/favicon.ico",
+                    type: "AI聊天",
+                    category: "chat",
+                    description: "Anthropic公司开发的对话式AI助手，专注于有帮助、无害和诚实的回答，支持超长上下文。",
+                    tags: ["对话", "超长上下文", "文档分析"],
+                    url: "https://claude.ai/"
+                },
+                {
+                    name: "Gemini",
+                    logo: "https://gemini.google.com/favicon.ico",
+                    type: "AI聊天",
+                    category: "chat",
+                    description: "Google推出的多模态AI模型，支持文本、图像、视频等多种输入，理解力和创造力强大。",
+                    tags: ["多模态", "Google", "综合能力"],
+                    url: "https://gemini.google.com/"
+                },
+                {
+                    name: "腾讯元宝",
+                    logo: "https://hunyuan.tencent.com/favicon.ico",
+                    type: "AI聊天",
+                    category: "chat",
+                    description: "腾讯推出的大型语言模型，能够进行自然对话、内容创作、知识问答，并具备多轮对话能力。",
+                    tags: ["国产AI", "腾讯", "内容创作"],
+                    url: "https://hunyuan.tencent.com/bot/chat"
+                },
+                {
+                    name: "Grok",
+                    logo: "https://grok.x.ai/favicon.ico",
+                    type: "AI聊天",
+                    category: "chat",
+                    description: "X (前Twitter)旗下的AI助手，由xAI开发，特点是实时网络访问和幽默风格的回答。",
+                    tags: ["实时信息", "幽默风格", "X公司"],
+                    url: "https://grok.x.ai/"
+                },
+                {
+                    name: "文心一言",
+                    logo: "https://yiyan.baidu.com/favicon.ico",
+                    type: "AI聊天",
+                    category: "chat",
+                    description: "百度推出的大型语言模型，提供对话、创作、绘画等功能，专注于中文内容理解与生成。",
+                    tags: ["国产AI", "中文优化", "多功能"],
+                    url: "https://yiyan.baidu.com/"
+                },
+                {
+                    name: "GitHub Copilot",
+                    logo: "https://github.com/favicon.ico",
+                    type: "AI编程",
+                    category: "coding",
+                    description: "由GitHub和OpenAI开发的AI编程助手，能够根据上下文生成代码建议，提高开发效率。",
+                    tags: ["代码生成", "编程辅助", "开发工具"],
+                    url: "https://github.com/features/copilot"
+                },
+                {
+                    name: "New Bing",
+                    logo: "https://www.bing.com/favicon.ico",
+                    type: "AI搜索",
+                    category: "other",
+                    description: "微软基于GPT模型增强的必应搜索引擎，结合网络搜索和AI对话能力，提供更智能的搜索体验。",
+                    tags: ["搜索引擎", "微软", "实时信息"],
+                    url: "https://www.bing.com/new"
+                },
+                {
+                    name: "Cursor",
+                    logo: "https://cursor.sh/favicon.ico",
+                    type: "AI编程",
+                    category: "coding",
+                    description: "基于AI的代码编辑器，内置强大的代码生成和理解能力，可帮助开发者更快地编写和理解代码。",
+                    tags: ["代码编辑器", "编程辅助", "AI集成"],
+                    url: "https://cursor.sh/"
+                },
+                {
+                    name: "Microsoft Copilot",
+                    logo: "https://copilot.microsoft.com/favicon.ico",
+                    type: "AI聊天",
+                    category: "chat",
+                    description: "微软推出的AI助手，集成于Windows、Edge浏览器和Office应用，提供智能搜索、内容创作和日常工作辅助。",
+                    tags: ["微软", "生产力工具", "Office集成"],
+                    url: "https://copilot.microsoft.com/"
+                }
+            ];
 
-            // 类别筛选
-            const categoryBtns = document.querySelectorAll('.category-btn');
-            categoryBtns.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    categoryBtns.forEach(b => b.classList.remove('active'));
-                    this.classList.add('active');
-                    renderAICards(this.dataset.category);
+            // 渲染AI工具卡片
+            function renderAICards(category = 'all') {
+                const aiGrid = document.getElementById('aiGrid');
+                aiGrid.innerHTML = '';
+
+                const filteredTools = category === 'all' 
+                    ? aiTools 
+                    : aiTools.filter(tool => tool.category === category);
+
+                filteredTools.forEach(tool => {
+                    const card = document.createElement('div');
+                    card.className = 'ai-card';
+                    card.innerHTML = `
+                        <div class="ai-card-header">
+                            <img src="${tool.logo}" alt="${tool.name}" class="ai-logo">
+                            <div>
+                                <div class="ai-name">${tool.name}</div>
+                                <div class="ai-type">${tool.type}</div>
+                            </div>
+                        </div>
+                        <div class="ai-card-body">
+                            <p class="ai-description">${tool.description}</p>
+                            <div class="ai-tags">
+                                ${tool.tags.map(tag => `<span class="ai-tag">${tag}</span>`).join('')}
+                            </div>
+                        </div>
+                        <div class="ai-card-footer">
+                            <a href="${tool.url}" target="_blank" class="ai-link">
+                                <i class="fas fa-external-link-alt"></i> 访问网站
+                            </a>
+                        </div>
+                    `;
+                    aiGrid.appendChild(card);
                 });
-            });
+            }
 
-            // 主题切换
-            const themeToggle = document.querySelector('.theme-toggle');
-            const moonIcon = '<i class="fas fa-moon"></i>';
-            const sunIcon = '<i class="fas fa-sun"></i>';
+            // 初始渲染
+            document.addEventListener('DOMContentLoaded', function() {
+                renderAICards();
 
-            themeToggle.addEventListener('click', function() {
-                const currentTheme = document.documentElement.getAttribute('data-theme');
-                if (currentTheme === 'dark') {
-                    document.documentElement.setAttribute('data-theme', 'light');
-                    themeToggle.innerHTML = sunIcon;
-                } else {
-                    document.documentElement.setAttribute('data-theme', 'dark');
-                    themeToggle.innerHTML = moonIcon;
-                }
-            });
-
-            // 回到顶部按钮
-            const backToTop = document.querySelector('.back-to-top');
-            window.addEventListener('scroll', function() {
-                if (window.pageYOffset > 300) {
-                    backToTop.classList.add('visible');
-                } else {
-                    backToTop.classList.remove('visible');
-                }
-            });
-
-            backToTop.addEventListener('click', function() {
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
+                // 类别筛选
+                const categoryBtns = document.querySelectorAll('.category-btn');
+                categoryBtns.forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        categoryBtns.forEach(b => b.classList.remove('active'));
+                        this.classList.add('active');
+                        renderAICards(this.dataset.category);
+                    });
                 });
-            });
-
-            // 导航栏滚动效果
-            const navbar = document.querySelector('.navbar');
-            window.addEventListener('scroll', function() {
-                if (window.pageYOffset > 50) {
-                    navbar.classList.add('scrolled');
-                } else {
-                    navbar.classList.remove('scrolled');
-                }
             });
         });
     </script>

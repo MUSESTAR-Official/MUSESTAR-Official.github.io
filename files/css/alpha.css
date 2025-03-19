@@ -860,26 +860,26 @@ body {
 /* 回到顶部按钮样式 */
 .back-to-top {
 	position: fixed;
-	bottom: 30px;
-	right: 30px;
-	background: linear-gradient(to right, var(--gradient-start), var(--gradient-middle));
-	width: 40px;
-	height: 40px;
+	right: 20px;
+	bottom: 20px;
+	width: 45px;
+	height: 45px;
+	background: var(--gradient-middle);
 	border-radius: 50%;
 	display: flex;
-	align-items: center;
 	justify-content: center;
+	align-items: center;
 	cursor: pointer;
 	opacity: 0;
-	visibility: hidden;
-	transition: all 0.3s ease-in-out;
+	transform: translateY(20px);
+	transition: opacity 0.3s ease, transform 0.3s ease;
 	z-index: 1000;
 	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 .back-to-top.visible {
 	opacity: 1;
-	visibility: visible;
+	transform: translateY(0);
 }
 
 .back-to-top i {
@@ -1453,4 +1453,162 @@ body {
 .schedule-card:hover .episode-count {
     background: linear-gradient(to right, var(--gradient-start), rgba(0, 0, 0, 0.5));
     color: white;
+}
+
+/* 移动端底部导航栏样式 */
+.mobile-navbar {
+	display: none; /* 默认隐藏 */
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: var(--card-bg);
+	box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+	padding: 10px 0;
+	z-index: 1000;
+	justify-content: space-around;
+	border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="dark"] .mobile-navbar {
+	border-top: 1px solid rgba(255, 255, 255, 0.05);
+	box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.mobile-nav-item {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	color: var(--text-color);
+	text-decoration: none;
+	padding: 5px 0;
+	transition: all 0.3s;
+	width: 25%;
+	text-align: center;
+}
+
+.mobile-nav-item i {
+	font-size: 20px;
+	margin-bottom: 4px;
+}
+
+.mobile-nav-item span {
+	font-size: 12px;
+}
+
+.mobile-nav-item:hover,
+.mobile-nav-item:active {
+	color: var(--hover-color);
+}
+
+/* 移动端主题切换按钮 */
+.mobile-theme-toggle {
+	position: fixed;
+	right: 20px;
+	bottom: 100px; /* 调整位置，确保在回到顶部按钮的下方 */
+	width: 45px;
+	height: 45px;
+	background: var(--card-bg);
+	border-radius: 50%;
+	display: none; /* 默认隐藏 */
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+	z-index: 1000;
+	transition: all 0.3s ease;
+}
+
+.mobile-theme-toggle:hover {
+	transform: scale(1.1);
+}
+
+.mobile-theme-toggle i {
+	font-size: 1.2rem;
+	color: var(--text-color);
+}
+
+.mobile-view .navbar {
+	display: none;
+}
+
+.mobile-view .mobile-navbar {
+	display: flex;
+}
+
+.mobile-view .mobile-theme-toggle {
+	display: flex; /* 在移动端显示 */
+	bottom: 100px; /* 确保与回到顶部按钮保持一定距离且与底部导航栏有足够距离 */
+}
+
+.mobile-view .main-content {
+	margin-top: 0;
+}
+
+.mobile-view .back-to-top {
+	bottom: 160px; /* 调整位置，确保在移动端主题切换按钮的上方 */
+}
+
+.mobile-view .announcement {
+	bottom: 100px; /* 调整公告区域的位置，避免与底部导航栏重叠 */
+}
+
+@media (max-width: 768px) {
+	/* 已有的移动设备样式 */
+	/* ... */
+	
+	/* 增加移动视图样式 */
+	.mobile-view .carousel {
+		margin-top: 0;
+	}
+	
+	.mobile-view .carousel-title {
+		font-size: 1.2rem;
+	}
+	
+	.mobile-view .carousel-btn {
+		display: none;
+	}
+	
+	.mobile-view .carousel-btn.prev {
+		display: none;
+	}
+	
+	.mobile-view .carousel-play-btn {
+		display: none;
+	}
+	
+	.mobile-view .carousel-dots {
+		display: none;
+	}
+	
+	.mobile-view .footer {
+		margin-bottom: 60px;
+	}
+}
+
+@media (max-width: 480px) {
+	/* 已有的小屏幕设备样式 */
+	/* ... */
+	
+	/* 增加小屏幕移动视图样式 */
+	.mobile-view .carousel {
+		height: 200px;
+	}
+	
+	.mobile-view .carousel-title {
+		font-size: 1rem;
+	}
+	
+	.mobile-view .carousel-play-btn {
+		display: none;
+	}
+	
+	.mobile-view .mobile-nav-item i {
+		font-size: 1.2rem;
+	}
+	
+	.mobile-view .mobile-nav-item span {
+		font-size: 0.8rem;
+	}
 }

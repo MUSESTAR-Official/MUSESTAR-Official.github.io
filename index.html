@@ -8,16 +8,6 @@
     <meta name="description" content="𝐌𝐔𝐒𝐄𝐒𝐓𝐀𝐑缪斯星正在持续收集动漫番剧、电影、剧集等，给您免费播放网站中的最好体验！ฅ^≧ω≦^ฅ">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="/files/css/alpha.css">
-    <script>
-        // 检测移动设备或小屏幕并重定向
-        (function() {
-            var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-            var isSmallScreen = window.innerWidth < 768;
-            if (isMobile || isSmallScreen) {
-                window.location.href = 'oldindex';
-            }
-        })();
-    </script>
         <!-- Clarity tracking code for https://musestar.cc/ -->
         <script>
             (function (c, l, a, r, i, t, y) {
@@ -32,10 +22,30 @@
             })(window, document, "clarity", "script", "fvlvixulu7");
         </script>    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-        
-    <!-- 设置默认主题为黑色模式 -->
     <script>
+        // 设置默认主题为黑色模式
         document.documentElement.setAttribute('data-theme', 'dark');
+        
+        // 检测移动设备或小屏幕
+        (function() {
+            var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+            var isSmallScreen = window.innerWidth < 768;
+            if (isMobile || isSmallScreen) {
+                document.addEventListener('DOMContentLoaded', function() {
+                    document.body.classList.add('mobile-view');
+                });
+            }
+            
+            // 添加窗口大小改变监听
+            window.addEventListener('resize', function() {
+                var isSmallScreen = window.innerWidth < 768;
+                if (isSmallScreen) {
+                    document.body.classList.add('mobile-view');
+                } else {
+                    document.body.classList.remove('mobile-view');
+                }
+            });
+        })();
     </script>
 </head>
 <body>
@@ -153,6 +163,31 @@
     <!-- 回到顶部按钮 -->
     <div class="back-to-top">
         <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- 移动端底部导航栏 -->
+    <div class="mobile-navbar">
+        <a href="index" class="mobile-nav-item">
+            <i class="fas fa-home"></i>
+            <span>首页</span>
+        </a>
+        <a href="animation" class="mobile-nav-item">
+            <i class="fas fa-play"></i>
+            <span>动漫</span>
+        </a>
+        <a href="movie" class="mobile-nav-item">
+            <i class="fas fa-film"></i>
+            <span>影视</span>
+        </a>
+        <a href="musestar" class="mobile-nav-item">
+            <i class="fas fa-star"></i>
+            <span>官方</span>
+        </a>
+    </div>
+
+    <!-- 移动端主题切换按钮 -->
+    <div class="mobile-theme-toggle">
+        <i class="fas fa-moon"></i>
     </div>
 
     <!-- 公告区域 -->
@@ -472,12 +507,14 @@
     <!-- 添加主要功能脚本 -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // 主题切换功能已移至main.js，此处不再重复实现
-            // 滚动监听功能已移至main.js，此处不再重复实现
-            // 回到顶部按钮功能已移至main.js，此处不再重复实现
-            // 公告功能已移至main.js，此处不再重复实现
+            // 确保移动视图设置正确
+            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+            const isSmallScreen = window.innerWidth < 768;
+            if (isMobile || isSmallScreen) {
+                document.body.classList.add('mobile-view');
+            }
             
-            // 只立即加载首屏内容 - 使用分批加载
+            // 立即加载首屏内容 - 使用分批加载
             renderCarouselProgressively();
             
             // 其他内容通过懒加载实现
