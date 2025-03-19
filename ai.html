@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>AI工具导航 - 缪斯星官方</title>
+    <meta name="keywords" content="AI导航,AI工具,人工智能,AI合集,ChatGPT,大模型,AIGC,缪斯星">
+    <meta name="description" content="缪斯星AI导航页为您提供最新、最全面的AI工具资源导航。涵盖AI聊天、AI绘画、AI写作、AI音频、AI视频等多种类型工具，助您快速找到适合的AI应用。">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/files/css/alpha.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script>
+        // 检测移动设备或小屏幕并重定向
+        (function() {
+            var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+            var isSmallScreen = window.innerWidth < 768;
+            if (isMobile || isSmallScreen) {
+                window.location.href = 'oldindex';
+            }
+        })();
+    </script>
+    <script>
+        // 设置默认主题为黑色模式
+        document.documentElement.setAttribute('data-theme', 'dark');
+    </script>
+    <style>
+        /* AI导航页面特定样式 */
+        .ai-container {
+            max-width: 1200px;
+            margin: 100px auto 50px;
+            padding: 0 20px;
+        }
+
+        .ai-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .ai-title {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+        }
+
+        .ai-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .ai-categories {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+            overflow-x: auto;
+            padding: 10px 0;
+            scrollbar-width: thin;
+        }
+
+        .ai-categories::-webkit-scrollbar {
+            height: 5px;
+        }
+
+        .ai-categories::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        
+        .ai-categories::-webkit-scrollbar-thumb {
+            background: var(--accent-color);
+            border-radius: 10px;
+        }
+
+        .category-btn {
+            background: rgba(125, 95, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(125, 95, 255, 0.2);
+            color: var(--text-color);
+            padding: 8px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.3s;
+        }
+
+        .category-btn:hover, .category-btn.active {
+            background: linear-gradient(90deg, var(--gradient-start), var(--gradient-middle));
+            color: white;
+            border-color: transparent;
+        }
+
+        .ai-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        .ai-card {
+            background: rgba(45, 45, 45, 0.5);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .ai-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 7px 20px rgba(0, 0, 0, 0.3) !important;
+            border-color: rgba(125, 95, 255, 0.3);
+        }
+
+        .ai-card-header {
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .ai-logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            object-fit: cover;
+            margin-right: 15px;
+        }
+
+        .ai-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 3px;
+        }
+
+        .ai-type {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .ai-card-body {
+            padding: 15px 20px;
+            flex-grow: 1;
+        }
+
+        .ai-description {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 15px;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            height: 63px;
+        }
+
+        .ai-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+
+        .ai-tag {
+            padding: 3px 10px;
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: 4px;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .ai-card-footer {
+            padding: 15px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .ai-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--accent-color);
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .ai-link:hover {
+            color: var(--gradient-middle);
+        }
+
+        /* 响应式调整 */
+        @media (max-width: 768px) {
+            .ai-grid {
+                grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            }
+        }
+
+        [data-theme="light"] .ai-card {
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        [data-theme="light"] .ai-card-header,
+        [data-theme="light"] .ai-card-footer {
+            border-color: rgba(0, 0, 0, 0.05);
+        }
+
+        [data-theme="light"] .ai-tag {
+            background: rgba(0, 0, 0, 0.05);
+        }
+    </style>
+</head>
+<body>
+    <!-- 顶部导航栏 -->
+    <div class="navbar">
+        <div class="nav-left">
+            <div class="logo-container">
+                <img src="https://s1.imagehub.cc/images/2025/03/14/75aca0f31bd08308fa150301c0ec6589.png" alt="Logo" class="logo">
+            </div>
+            <div class="nav-links">
+                <a href="animation">缪斯星动漫</a>
+                <a href="movie">缪斯星影视</a>
+                <a href="musestar">缪斯星官方</a>
+            </div>
+        </div>
+        <div class="nav-right">
+            <div class="search-container">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" class="search-input" placeholder="搜索AI工具..." id="aiSearch">
+            </div>
+            <div class="user-avatar">
+                <i class="fas fa-user"></i>
+            </div>
+            <button class="theme-toggle" type="button" aria-label="切换主题">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- 主要内容区域 -->
+    <div class="main-content">
+        <div class="ai-container">
+            <div class="ai-header">
+                <h1 class="ai-title">AI工具导航</h1>
+                <p class="ai-subtitle">精选全球优质AI工具，涵盖AI聊天、AI绘画、AI写作、AI音频、AI视频等多种类型，助您快速找到适合的AI应用</p>
+            </div>
+
+            <div class="ai-categories">
+                <button class="category-btn active" data-category="all">全部</button>
+                <button class="category-btn" data-category="chat">AI聊天</button>
+                <button class="category-btn" data-category="coding">AI编程</button>
+                <button class="category-btn" data-category="other">AI搜索</button>
+            </div>
+
+            <div class="ai-grid" id="aiGrid">
+                <!-- AI卡片将通过JavaScript动态生成 -->
+            </div>
+        </div>
+    </div>
+
+    <!-- 回到顶部按钮 -->
+    <div class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- 添加底栏 -->
+    <footer class="footer">
+        <!-- 底栏内容将由modern-footer.js生成 -->
+    </footer>
+
+    <!-- 引入底栏脚本 -->
+    <script src="files/js/modern-footer.js"></script>
+
+    <!-- AI工具数据 -->
+    <script>
+        // AI工具数据
+        const aiTools = [
+            {
+                name: "DeepSeek",
+                logo: "https://www.deepseek.com/favicon.ico",
+                type: "AI聊天",
+                category: "chat",
+                description: "DeepSeek AI是一家专注于开源大语言模型的人工智能公司，提供多语言能力、代码理解与生成，以及专业领域问答能力。",
+                tags: ["大语言模型", "开源", "代码生成"],
+                url: "https://www.deepseek.com/"
+            },
+            {
+                name: "豆包",
+                logo: "https://www.doubao.com/favicon.ico",
+                type: "AI聊天",
+                category: "chat",
+                description: "字节跳动旗下的AI助手，支持多模态交互，能够理解图像、文字，提供专业回答和创意内容生成。",
+                tags: ["国产AI", "多模态", "创意写作"],
+                url: "https://www.doubao.com/"
+            },
+            {
+                name: "秘塔AI搜索",
+                logo: "https://metaso.cn/favicon.ico",
+                type: "AI搜索",
+                category: "other",
+                description: "基于AI技术的搜索引擎，为用户提供直接答案而非链接列表，支持学术论文、专业知识等的精准检索。",
+                tags: ["AI搜索", "信息检索", "学术检索"],
+                url: "https://metaso.cn/"
+            },
+            {
+                name: "通义千问",
+                logo: "https://qianwen.aliyun.com/favicon.ico",
+                type: "AI聊天",
+                category: "chat",
+                description: "阿里巴巴旗下的大语言模型，提供对话能力、内容创作、知识问答，支持多模态理解，专注中文语境。",
+                tags: ["国产AI", "阿里巴巴", "多模态"],
+                url: "https://qianwen.aliyun.com/"
+            },
+            {
+                name: "ChatGPT",
+                logo: "https://chat.openai.com/favicon.ico",
+                type: "AI聊天",
+                category: "chat",
+                description: "OpenAI开发的对话式人工智能，能够理解和生成人类语言，回答问题并提供各种任务的帮助。",
+                tags: ["对话", "问答", "写作辅助"],
+                url: "https://chat.openai.com/"
+            },
+            {
+                name: "Claude",
+                logo: "https://claude.ai/favicon.ico",
+                type: "AI聊天",
+                category: "chat",
+                description: "Anthropic公司开发的对话式AI助手，专注于有帮助、无害和诚实的回答，支持超长上下文。",
+                tags: ["对话", "超长上下文", "文档分析"],
+                url: "https://claude.ai/"
+            },
+            {
+                name: "Gemini",
+                logo: "https://gemini.google.com/favicon.ico",
+                type: "AI聊天",
+                category: "chat",
+                description: "Google推出的多模态AI模型，支持文本、图像、视频等多种输入，理解力和创造力强大。",
+                tags: ["多模态", "Google", "综合能力"],
+                url: "https://gemini.google.com/"
+            },
+            {
+                name: "腾讯元宝",
+                logo: "https://hunyuan.tencent.com/favicon.ico",
+                type: "AI聊天",
+                category: "chat",
+                description: "腾讯推出的大型语言模型，能够进行自然对话、内容创作、知识问答，并具备多轮对话能力。",
+                tags: ["国产AI", "腾讯", "内容创作"],
+                url: "https://hunyuan.tencent.com/bot/chat"
+            },
+            {
+                name: "Grok",
+                logo: "https://grok.x.ai/favicon.ico",
+                type: "AI聊天",
+                category: "chat",
+                description: "X (前Twitter)旗下的AI助手，由xAI开发，特点是实时网络访问和幽默风格的回答。",
+                tags: ["实时信息", "幽默风格", "X公司"],
+                url: "https://grok.x.ai/"
+            },
+            {
+                name: "文心一言",
+                logo: "https://yiyan.baidu.com/favicon.ico",
+                type: "AI聊天",
+                category: "chat",
+                description: "百度推出的大型语言模型，提供对话、创作、绘画等功能，专注于中文内容理解与生成。",
+                tags: ["国产AI", "中文优化", "多功能"],
+                url: "https://yiyan.baidu.com/"
+            },
+            {
+                name: "GitHub Copilot",
+                logo: "https://github.com/favicon.ico",
+                type: "AI编程",
+                category: "coding",
+                description: "由GitHub和OpenAI开发的AI编程助手，能够根据上下文生成代码建议，提高开发效率。",
+                tags: ["代码生成", "编程辅助", "开发工具"],
+                url: "https://github.com/features/copilot"
+            },
+            {
+                name: "New Bing",
+                logo: "https://www.bing.com/favicon.ico",
+                type: "AI搜索",
+                category: "other",
+                description: "微软基于GPT模型增强的必应搜索引擎，结合网络搜索和AI对话能力，提供更智能的搜索体验。",
+                tags: ["搜索引擎", "微软", "实时信息"],
+                url: "https://www.bing.com/new"
+            },
+            {
+                name: "Cursor",
+                logo: "https://cursor.sh/favicon.ico",
+                type: "AI编程",
+                category: "coding",
+                description: "基于AI的代码编辑器，内置强大的代码生成和理解能力，可帮助开发者更快地编写和理解代码。",
+                tags: ["代码编辑器", "编程辅助", "AI集成"],
+                url: "https://cursor.sh/"
+            },
+            {
+                name: "Microsoft Copilot",
+                logo: "https://copilot.microsoft.com/favicon.ico",
+                type: "AI聊天",
+                category: "chat",
+                description: "微软推出的AI助手，集成于Windows、Edge浏览器和Office应用，提供智能搜索、内容创作和日常工作辅助。",
+                tags: ["微软", "生产力工具", "Office集成"],
+                url: "https://copilot.microsoft.com/"
+            }
+        ];
+
+        // 渲染AI工具卡片
+        function renderAICards(category = 'all') {
+            const aiGrid = document.getElementById('aiGrid');
+            aiGrid.innerHTML = '';
+
+            const filteredTools = category === 'all' 
+                ? aiTools 
+                : aiTools.filter(tool => tool.category === category);
+
+            filteredTools.forEach(tool => {
+                const card = document.createElement('div');
+                card.className = 'ai-card';
+                card.innerHTML = `
+                    <div class="ai-card-header">
+                        <img src="${tool.logo}" alt="${tool.name}" class="ai-logo">
+                        <div>
+                            <div class="ai-name">${tool.name}</div>
+                            <div class="ai-type">${tool.type}</div>
+                        </div>
+                    </div>
+                    <div class="ai-card-body">
+                        <p class="ai-description">${tool.description}</p>
+                        <div class="ai-tags">
+                            ${tool.tags.map(tag => `<span class="ai-tag">${tag}</span>`).join('')}
+                        </div>
+                    </div>
+                    <div class="ai-card-footer">
+                        <a href="${tool.url}" target="_blank" class="ai-link">
+                            <i class="fas fa-external-link-alt"></i> 访问网站
+                        </a>
+                    </div>
+                `;
+                aiGrid.appendChild(card);
+            });
+        }
+
+        // 初始渲染
+        document.addEventListener('DOMContentLoaded', function() {
+            renderAICards();
+
+            // 类别筛选
+            const categoryBtns = document.querySelectorAll('.category-btn');
+            categoryBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    categoryBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    renderAICards(this.dataset.category);
+                });
+            });
+
+            // 搜索功能
+            const searchInput = document.getElementById('aiSearch');
+            searchInput.addEventListener('input', function() {
+                const query = this.value.toLowerCase();
+                const aiCards = document.querySelectorAll('.ai-card');
+
+                aiCards.forEach(card => {
+                    const name = card.querySelector('.ai-name').textContent.toLowerCase();
+                    const description = card.querySelector('.ai-description').textContent.toLowerCase();
+                    const type = card.querySelector('.ai-type').textContent.toLowerCase();
+                    const tags = Array.from(card.querySelectorAll('.ai-tag')).map(tag => tag.textContent.toLowerCase());
+
+                    const isMatch = 
+                        name.includes(query) || 
+                        description.includes(query) || 
+                        type.includes(query) || 
+                        tags.some(tag => tag.includes(query));
+
+                    card.style.display = isMatch ? 'flex' : 'none';
+                });
+            });
+
+            // 主题切换
+            const themeToggle = document.querySelector('.theme-toggle');
+            const moonIcon = '<i class="fas fa-moon"></i>';
+            const sunIcon = '<i class="fas fa-sun"></i>';
+
+            themeToggle.addEventListener('click', function() {
+                const currentTheme = document.documentElement.getAttribute('data-theme');
+                if (currentTheme === 'dark') {
+                    document.documentElement.setAttribute('data-theme', 'light');
+                    themeToggle.innerHTML = sunIcon;
+                } else {
+                    document.documentElement.setAttribute('data-theme', 'dark');
+                    themeToggle.innerHTML = moonIcon;
+                }
+            });
+
+            // 回到顶部按钮
+            const backToTop = document.querySelector('.back-to-top');
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 300) {
+                    backToTop.classList.add('visible');
+                } else {
+                    backToTop.classList.remove('visible');
+                }
+            });
+
+            backToTop.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+
+            // 导航栏滚动效果
+            const navbar = document.querySelector('.navbar');
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
