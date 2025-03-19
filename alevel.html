@@ -7,182 +7,13 @@
     <meta name="keywords" content="A Level,International A Level,真题,答案,下载,分数线,缪斯星,MUSESTAR">
     <meta name="description" content="缪斯星International A Level工具箱">
     <link rel="shortcut icon" href="/files/ico/alevel.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/files/css/alpha.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
-        :root {
-            --bg-color: #f0f2f5;
-            --text-color: #333;
-            --card-bg: white;
-            --card-shadow: rgba(0, 0, 0, 0.1);
-            --hover-color: #7d5fff;
-            --base-font-size: 16px;
-            --primary-color: #1a1a1a;
-            --secondary-color: #252525;
-            --accent-color: #7d5fff;
-            --text-secondary: #b3b3b3;
-            --gradient-start: #7d5fff;
-            --gradient-middle: #a55eea;
-            --gradient-end: #cd84f1;
-        }
-
-        [data-theme="dark"] {
-            --bg-color: #1a1a1a;
-            --text-color: #ffffff;
-            --card-bg: #2d2d2d;
-            --card-shadow: rgba(0, 0, 0, 0.3);
-            --hover-color: #a55eea;
-            --accent-color: #7d5fff;
-            --gradient-start: #7d5fff;
-            --gradient-middle: #a55eea;
-            --gradient-end: #cd84f1;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
-        }
-        
-        body {
-            background: var(--bg-color);
-            min-height: 100vh;
-            color: var(--text-color);
-            transition: all 0.3s ease;
-            font-size: var(--base-font-size);
-            line-height: 1.5;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            overflow-x: hidden;
-        }
-        
-        /* 顶部导航栏 */
-        .navbar {
-            background: transparent;
-            padding: 10px 40px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            transition: all 0.3s;
-            width: 100%;
-            transform: translateZ(0);
-            -webkit-transform: translateZ(0);
-            -ms-transform: translateZ(0);
-            will-change: transform, background;
-        }
-
-        .navbar.scrolled {
-            background: var(--card-bg);
-            box-shadow: 0 2px 4px var(--card-shadow);
-            padding: 8px 40px;
-        }
-
-        .nav-left {
-            display: flex;
-            align-items: center;
-        }
-
-        .logo-container {
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-radius: 8px;
-            padding: 3px 10px;
-            display: flex;
-            align-items: center;
-            transition: all 0.3s;
-            margin-right: 20px;
-        }
-
-        .navbar.scrolled .logo-container {
-            background: rgba(255, 255, 255, 0.9);
-        }
-
-        [data-theme="dark"] .navbar.scrolled .logo-container {
-            background: rgba(0, 0, 0, 0.3);
-        }
-
-        .logo {
-            width: 100px;
-            height: 35px;
-            object-fit: contain;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 30px;
-        }
-
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            font-size: 16px;
-            font-weight: 500;
-            transition: all 0.3s;
-        }
-
-        .navbar.scrolled .nav-links a {
-            color: var(--text-color);
-        }
-
-        [data-theme="dark"] .navbar.scrolled .nav-links a {
-            color: white;
-        }
-
-        .nav-links a:hover {
-            color: var(--hover-color);
-        }
-
-        .nav-right {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .theme-toggle {
-            background: rgba(255, 255, 255, 0.2);
-            border: none;
-            width: 35px;
-            height: 35px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s;
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
-        }
-
-        .theme-toggle i {
-            color: white;
-            font-size: 16px;
-            transition: all 0.3s;
-        }
-
-        .theme-toggle:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: scale(1.05);
-        }
-        
-        /* 主要内容区域 */
-        .main-content {
-            max-width: 100%;
-            padding-top: 80px;
-            width: 100%;
-            position: relative;
-            z-index: 1;
-            will-change: transform;
-        }
-        
+        /* A Level页面特定样式 */
         .alevel-container {
             max-width: 1200px;
-            margin: 20px auto 50px;
+            margin: 100px auto 50px;
             padding: 0 20px;
         }
         
@@ -208,7 +39,6 @@
             margin: 0 auto;
         }
         
-        /* 卡片容器 */
         .tool-cards {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -353,123 +183,8 @@
             text-align: center;
         }
         
-        /* 底部样式 */
-        .footer {
-            width: 100%;
-            margin-top: auto;
-            padding: 20px;
-            text-align: center;
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            position: relative;
-        }
-        
-        .footer::before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
-        }
-        
-        .footer-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 15px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .footer-logo {
-            transition: all 0.3s;
-            max-width: 80px;
-        }
-        
-        .footer-logo img {
-            width: 100%;
-            height: auto;
-            opacity: 0;
-            transition: opacity 0.5s ease, transform 0.3s ease;
-        }
-        
-        .footer-logo img.loaded {
-            opacity: 1;
-        }
-        
-        .footer-links {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-        }
-        
-        .footer-links a {
-            color: var(--text-color);
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: all 0.3s;
-        }
-        
-        .footer-links a:hover {
-            color: var(--hover-color);
-            text-decoration: underline;
-        }
-        
-        .footer-runtime {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-        }
-        
-        .brand {
-            font-weight: bold;
-        }
-        
-        .back-to-top {
-            position: fixed;
-            bottom: -50px;
-            right: 30px;
-            width: 40px;
-            height: 40px;
-            background: var(--gradient-start);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s;
-            opacity: 0;
-            z-index: 99;
-        }
-        
-        .back-to-top.visible {
-            bottom: 30px;
-            opacity: 1;
-        }
-        
-        .back-to-top:hover {
-            transform: translateY(-5px);
-            background: var(--gradient-middle);
-        }
-        
-        /* 响应式设计 */
+        /* 响应式调整 */
         @media (max-width: 768px) {
-            .navbar {
-                padding: 10px 20px;
-            }
-            
-            .navbar.scrolled {
-                padding: 8px 20px;
-            }
-            
-            .nav-links {
-                display: none;
-            }
-            
             .alevel-title {
                 font-size: 2rem;
             }
@@ -485,11 +200,6 @@
             
             .subject-selector select {
                 padding: 10px;
-            }
-            
-            .footer-links {
-                flex-direction: column;
-                gap: 10px;
             }
         }
         
@@ -584,7 +294,7 @@
                         <p style="margin-bottom:15px; color: var(--text-secondary);">官方International A Level分数线转换工具，可查看各科目分数与等级的对应关系</p>
                         <div class="btn-group">
                             <a href="https://qualifications.pearson.com/content/demo/en/support/support-topics/results-certification/converting-marks-points-and-grades.html?QualFamily=International%20A%20Level#gcstep1" class="btn" target="_blank">
-                                <i class="fas fa-chart-line"></i>官方分数线转换
+                                <i class="fas fa-chart-line"></i>官方获取
                             </a>
                         </div>
                     </div>
@@ -600,54 +310,14 @@
     
     <!-- 添加底部 -->
     <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-logo">
-                <img src="https://s1.imagehub.cc/images/2024/01/13/d0469ae970a9dac3b9e56aa223193e34.png" alt="MUSESTAR Logo" onerror="this.src='https://s1.imagehub.cc/images/2025/03/14/75aca0f31bd08308fa150301c0ec6589.png'; console.error('底栏logo加载失败');" onload="this.parentElement.querySelector('img').classList.add('loaded')">
-            </div>
-            <div class="footer-links">
-                <a href="https://musestar.cc/">© <script> document.write('' + (new Date()).getFullYear()) </script> MUSESTAR</a>
-                <a href="https://icp.gov.moe/?keyword=20226956" target="_blank">萌ICP备20226956号</a>
-                <a href="https://stats.uptimerobot.com/NJ9gBiMZ7D" target="_blank">缪斯星服务状态</a>
-                <a href="mailto:admin@musestar.cc" target="_blank">联系邮箱admin@musestar.cc</a>
-            </div>
-            <div class="footer-runtime">
-                本站已运行 <span class="brand" id="runtime"></span>
-            </div>
-        </div>
     </footer>
     
+    <!-- 引入底栏脚本 -->
+    <script src="/files/js/modern-footer.js"></script>
+    
     <script>
-        // 运行时间计算函数
-        function showRuntime() {
-            const startDate = new Date("04/25/2022 00:00:00");
-            const currentDate = new Date();
-            const timeDiff = currentDate.getTime() - startDate.getTime();
-            const dayUnit = 24 * 60 * 60 * 1000;
-            
-            const totalDays = timeDiff / dayUnit;
-            const days = Math.floor(totalDays);
-            
-            const hoursFraction = (totalDays - days) * 24;
-            const hours = Math.floor(hoursFraction);
-            
-            const minutesFraction = (hoursFraction - hours) * 60;
-            const minutes = Math.floor(minutesFraction);
-            
-            const secondsFraction = (minutesFraction - minutes) * 60;
-            const seconds = Math.floor(secondsFraction);
-            
-            const runtimeElement = document.getElementById('runtime');
-            if (runtimeElement) {
-                runtimeElement.textContent = days + "天" + hours + "小时" + minutes + "分" + seconds + "秒";
-            }
-            
-            setTimeout(showRuntime, 1000);
-        }
-        
-        // 等待DOM加载完成后启动运行时间计算及初始化按钮事件
+        // 等待DOM加载完成后初始化按钮事件
         document.addEventListener('DOMContentLoaded', function() {
-            showRuntime();
-            
             // 添加获取真题按钮的点击事件
             const getPapersBtn = document.getElementById('get-papers');
             const officialPapersBtn = document.getElementById('official-papers');
