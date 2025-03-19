@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <title>MUSE AI工具箱</title>
     <meta name="keywords" content="AI导航,AI工具,AI合集,缪斯星,MUSESTAR">
-    <meta name="description" content="缪斯星AI工具箱为您提供最新、最全面的AI工具资源导航。涵盖聊天、搜索、编程、绘图、音频、视频等多种类型工具，助您快速找到适合的AI应用。">
+    <meta name="description" content="缪斯星AI工具箱为您提供最新、最全面的AI工具资源导航。涵盖对话、搜索、编程、绘图、视频、音频等多种类型工具，助您快速找到适合的AI应用。">
     <link rel="shortcut icon" href="/files/ico/ai.ico" type="image/x-icon" />
     <link rel="stylesheet" href="/files/css/alpha.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -258,14 +258,17 @@
         <div class="ai-container">
             <div class="ai-header">
                 <h1 class="ai-title">MUSE AI工具箱</h1>
-                <p class="ai-subtitle">精选全球优质AI工具，涵盖聊天、搜索、编程、绘图、音频、视频等多种类型，助您快速找到适合的AI应用</p>
+                <p class="ai-subtitle">精选全球优质AI工具，涵盖对话、搜索、编程、绘图、视频、音频等多种类型，助您快速找到适合的AI应用</p>
             </div>
 
             <div class="ai-categories">
                 <button class="category-btn active" data-category="all">全部</button>
-                <button class="category-btn" data-category="chat">AI聊天</button>
-                <button class="category-btn" data-category="coding">AI编程</button>
+                <button class="category-btn" data-category="chat">AI对话</button>
                 <button class="category-btn" data-category="other">AI搜索</button>
+                <button class="category-btn" data-category="coding">AI编程</button>
+                <button class="category-btn" data-category="image">AI绘图</button>
+                <button class="category-btn" data-category="video">AI视频</button>
+                <button class="category-btn" data-category="audio">AI音频</button>
             </div>
 
             <div class="ai-grid" id="aiGrid">
@@ -322,7 +325,7 @@
                 {
                     name: "DeepSeek",
                     logo: "https://www.deepseek.com/favicon.ico",
-                    type: "AI聊天",
+                    type: "AI对话",
                     category: "chat",
                     description: "DeepSeek AI是一家专注于开源大语言模型的人工智能公司，提供多语言能力、代码理解与生成，以及专业领域问答能力。",
                     tags: ["大语言模型", "开源", "代码生成"],
@@ -331,7 +334,7 @@
                 {
                     name: "豆包",
                     logo: "https://s1.imagehub.cc/images/2025/03/19/0bf244faddd497a58d91e163398baf48.png",
-                    type: "AI聊天",
+                    type: "AI对话",
                     category: "chat",
                     description: "字节跳动旗下的AI助手，支持多模态交互，能够理解图像、文字，提供专业回答和创意内容生成。",
                     tags: ["国产AI", "多模态", "创意写作"],
@@ -349,7 +352,7 @@
                 {
                     name: "通义千问",
                     logo: "https://s1.imagehub.cc/images/2025/03/19/cb3ab50c4d008f3c6f21ab4601e88248.png",
-                    type: "AI聊天",
+                    type: "AI对话",
                     category: "chat",
                     description: "阿里巴巴旗下的大语言模型，提供对话能力、内容创作、知识问答，支持多模态理解，专注中文语境。",
                     tags: ["国产AI", "阿里巴巴", "多模态"],
@@ -358,7 +361,7 @@
                 {
                     name: "ChatGPT",
                     logo: "https://s1.imagehub.cc/images/2025/03/19/6a6abbb7d61cd52a2add9ad382e1f777.png",
-                    type: "AI聊天",
+                    type: "AI对话",
                     category: "chat",
                     description: "OpenAI开发的对话式人工智能，能够理解和生成人类语言，回答问题并提供各种任务的帮助。",
                     tags: ["对话", "问答", "写作辅助"],
@@ -367,7 +370,7 @@
                 {
                     name: "Claude",
                     logo: "https://s1.imagehub.cc/images/2025/03/19/32454d4854162b6abeaaeed18b7bd5ca.png",
-                    type: "AI聊天",
+                    type: "AI对话",
                     category: "chat",
                     description: "Anthropic公司开发的对话式AI助手，专注于有帮助、无害和诚实的回答，支持超长上下文。",
                     tags: ["对话", "超长上下文", "文档分析"],
@@ -376,7 +379,7 @@
                 {
                     name: "Gemini",
                     logo: "https://s1.imagehub.cc/images/2025/03/19/25b5adb72fd0164aeee23a82e59ba0d3.webp",
-                    type: "AI聊天",
+                    type: "AI对话",
                     category: "chat",
                     description: "Google推出的多模态AI模型，支持文本、图像、视频等多种输入，理解力和创造力强大。",
                     tags: ["多模态", "Google", "综合能力"],
@@ -385,7 +388,7 @@
                 {
                     name: "腾讯元宝",
                     logo: "https://s1.imagehub.cc/images/2025/03/19/3dceab852f46ad96749c38fbed4d1dce.png",
-                    type: "AI聊天",
+                    type: "AI对话",
                     category: "chat",
                     description: "腾讯推出的大型语言模型，能够进行自然对话、内容创作、知识问答，并具备多轮对话能力。",
                     tags: ["国产AI", "腾讯", "内容创作"],
@@ -394,7 +397,7 @@
                 {
                     name: "Grok",
                     logo: "https://s1.imagehub.cc/images/2025/03/19/09d94f98659c550ea0855419f8c527a5.png",
-                    type: "AI聊天",
+                    type: "AI对话",
                     category: "chat",
                     description: "X (前Twitter)旗下的AI助手，由xAI开发，特点是实时网络访问和幽默风格的回答。",
                     tags: ["实时信息", "幽默风格", "X公司"],
@@ -403,9 +406,9 @@
                 {
                     name: "文心一言",
                     logo: "https://s1.imagehub.cc/images/2025/03/19/7d3dfaed6e04a728fb11057f70173a4f.png",
-                    type: "AI聊天",
+                    type: "AI对话",
                     category: "chat",
-                    description: "百度推出的大型语言模型，提供对话、创作、绘画等功能，专注于中文内容理解与生成。",
+                    description: "百度推出的大型语言模型，提供对话、创作、绘图等功能，专注于中文内容理解与生成。",
                     tags: ["国产AI", "中文优化", "多功能"],
                     url: "https://yiyan.baidu.com/"
                 },
@@ -439,11 +442,56 @@
                 {
                     name: "Microsoft Copilot",
                     logo: "https://s1.imagehub.cc/images/2025/03/19/06086c13b7556033566f3581f8cb9bc4.png",
-                    type: "AI聊天",
+                    type: "AI对话",
                     category: "chat",
                     description: "微软推出的AI助手，集成于Windows、Edge浏览器和Office应用，提供智能搜索、内容创作和日常工作辅助。",
                     tags: ["微软", "生产力工具", "Office集成"],
                     url: "https://copilot.microsoft.com/"
+                },
+                {
+                    name: "Suno",
+                    logo: "https://s1.imagehub.cc/images/2025/03/19/81bdaea7933d97f11e23a5ec40ff059f.png",
+                    type: "AI音频",
+                    category: "audio",
+                    description: "AI音乐生成工具，可根据文本提示创作完整的歌曲，包括歌词、旋律和伴奏，支持多种音乐风格。",
+                    tags: ["AI音乐", "音频生成", "创意工具"],
+                    url: "https://suno.com/"
+                },
+                {
+                    name: "Sora",
+                    logo: "https://s1.imagehub.cc/images/2025/03/19/0e2beb84a447580518e9b95277661eca.png",
+                    type: "AI视频",
+                    category: "video",
+                    description: "OpenAI推出的文本生成视频模型，能根据文本描述创建逼真、高质量的视频内容，具有出色的视觉质量和物理场景理解能力。",
+                    tags: ["视频生成", "OpenAI", "文本转视频"],
+                    url: "https://openai.com/sora"
+                },
+                {
+                    name: "Viggle",
+                    logo: "https://s1.imagehub.cc/images/2025/03/19/592f64f27e0db9f9d12117df3151d32e.png",
+                    type: "AI视频",
+                    category: "video",
+                    description: "AI视频生成工具，可根据文本提示快速创建高质量的短视频内容，支持多种风格和场景，适用于营销、教育和社交媒体内容创作。",
+                    tags: ["视频生成", "短视频", "内容创作"],
+                    url: "https://viggle.ai/"
+                },
+                {
+                    name: "通义万相",
+                    logo: "https://s1.imagehub.cc/images/2025/03/19/cb3ab50c4d008f3c6f21ab4601e88248.png",
+                    type: "AI绘图/视频",
+                    category: "image",
+                    description: "阿里巴巴推出的多模态创意工具，不仅能生成高质量的AI绘图作品，还支持文本到视频的生成，为创作者提供全方位的视觉内容解决方案。",
+                    tags: ["国产AI", "阿里巴巴", "图像视频生成"],
+                    url: "https://tongyi.aliyun.com/wanxiang/"
+                },
+                {
+                    name: "腾讯混元AI视频",
+                    logo: "https://s1.imagehub.cc/images/2025/03/19/a7479469f44af3e0258f9efef161d047.png",
+                    type: "AI视频",
+                    category: "video",
+                    description: "腾讯推出的AI视频生成工具，基于混元大模型，能够通过文本描述生成丰富多样的视频内容，适用于创意制作和内容创作。",
+                    tags: ["国产AI", "腾讯", "视频生成"],
+                    url: "https://video.hunyuan.tencent.com/"
                 }
             ];
 
@@ -452,9 +500,19 @@
                 const aiGrid = document.getElementById('aiGrid');
                 aiGrid.innerHTML = '';
 
-                const filteredTools = category === 'all' 
-                    ? aiTools 
-                    : aiTools.filter(tool => tool.category === category);
+                let filteredTools = [];
+                
+                if (category === 'all') {
+                    filteredTools = aiTools;
+                } else {
+                    // 特殊处理通义万相，使其在image和video分类中都显示
+                    aiTools.forEach(tool => {
+                        if (tool.category === category || 
+                            (tool.name === "通义万相" && (category === "image" || category === "video"))) {
+                            filteredTools.push(tool);
+                        }
+                    });
+                }
 
                 filteredTools.forEach(tool => {
                     const card = document.createElement('div');
