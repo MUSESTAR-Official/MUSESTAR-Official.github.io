@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <title>MUSE A Level工具箱</title>
     <meta name="keywords" content="A Level,International A Level,真题,答案,下载,分数线,缪斯星,MUSESTAR">
-    <meta name="description" content="缪斯星International A Level工具箱">
+    <meta name="description" content="缪斯星A Level工具箱为您提供International A Level课程的真题、答案、考试报告以及成绩转换等工具。">
     <link rel="shortcut icon" href="/files/ico/alevel.ico" type="image/x-icon" />
     <link rel="stylesheet" href="/files/css/alpha.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -384,10 +384,10 @@
                         'physics': 'https://alevelclouds.com/past-papers/Edexcel/physics/'
                     };
                     
-                    // 获取对应URL并跳转
+                    // 获取对应URL并在新标签页中打开
                     const url = subjectUrls[selectedSubject];
                     if (url) {
-                        window.location.href = url;
+                        window.open(url, '_blank');
                     }
                 } else {
                     alert('请先选择一个科目');
@@ -406,10 +406,10 @@
                         'physics': 'https://qualifications.pearson.com/en/support/support-topics/exams/past-papers.html?Qualification-Family=International-Advanced-Level&Qualification-Subject=Physics%20(2018)&Status=Pearson-UK:Status%2FLive&Specification-Code=Pearson-UK:Specification-Code%2Fial18-physics'
                     };
                     
-                    // 获取对应URL并跳转
+                    // 获取对应URL并在新标签页中打开
                     const url = officialUrls[selectedSubject];
                     if (url) {
-                        window.location.href = url;
+                        window.open(url, '_blank');
                     }
                 } else {
                     alert('请先选择一个科目');
