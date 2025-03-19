@@ -236,13 +236,6 @@
             </div>
         </div>
         <div class="nav-right">
-            <div class="search-container">
-                <i class="fas fa-search search-icon"></i>
-                <input type="text" class="search-input" placeholder="搜索AI工具..." id="aiSearch">
-            </div>
-            <div class="user-avatar">
-                <i class="fas fa-user"></i>
-            </div>
             <button class="theme-toggle" type="button" aria-label="切换主题">
                 <i class="fas fa-moon"></i>
             </button>
@@ -462,28 +455,6 @@
                     categoryBtns.forEach(b => b.classList.remove('active'));
                     this.classList.add('active');
                     renderAICards(this.dataset.category);
-                });
-            });
-
-            // 搜索功能
-            const searchInput = document.getElementById('aiSearch');
-            searchInput.addEventListener('input', function() {
-                const query = this.value.toLowerCase();
-                const aiCards = document.querySelectorAll('.ai-card');
-
-                aiCards.forEach(card => {
-                    const name = card.querySelector('.ai-name').textContent.toLowerCase();
-                    const description = card.querySelector('.ai-description').textContent.toLowerCase();
-                    const type = card.querySelector('.ai-type').textContent.toLowerCase();
-                    const tags = Array.from(card.querySelectorAll('.ai-tag')).map(tag => tag.textContent.toLowerCase());
-
-                    const isMatch = 
-                        name.includes(query) || 
-                        description.includes(query) || 
-                        type.includes(query) || 
-                        tags.some(tag => tag.includes(query));
-
-                    card.style.display = isMatch ? 'flex' : 'none';
                 });
             });
 
