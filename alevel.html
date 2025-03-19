@@ -365,15 +365,6 @@
     <script src="/files/js/main.js"></script>
     
     <script>
-        // 确保移动视图设置正确
-        document.addEventListener('DOMContentLoaded', function() {
-            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-            const isSmallScreen = window.innerWidth < 768;
-            if (isMobile || isSmallScreen) {
-                document.body.classList.add('mobile-view');
-            }
-        });
-
         // 等待DOM加载完成后初始化按钮事件
         document.addEventListener('DOMContentLoaded', function() {
             // 添加获取真题按钮的点击事件

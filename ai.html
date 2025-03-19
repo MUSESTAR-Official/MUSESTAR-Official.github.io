@@ -316,15 +316,7 @@
 
     <!-- AI工具数据 -->
     <script>
-        // 确保移动视图设置正确
         document.addEventListener('DOMContentLoaded', function() {
-            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-            const isSmallScreen = window.innerWidth < 768;
-            if (isMobile || isSmallScreen) {
-                document.body.classList.add('mobile-view');
-            }
-            
-            // 原有代码继续保留
             // AI工具数据
             const aiTools = [
                 {
@@ -338,7 +330,7 @@
                 },
                 {
                     name: "豆包",
-                    logo: "https://www.doubao.com/favicon.ico",
+                    logo: "https://s1.imagehub.cc/images/2025/03/19/0bf244faddd497a58d91e163398baf48.png",
                     type: "AI聊天",
                     category: "chat",
                     description: "字节跳动旗下的AI助手，支持多模态交互，能够理解图像、文字，提供专业回答和创意内容生成。",
@@ -356,7 +348,7 @@
                 },
                 {
                     name: "通义千问",
-                    logo: "https://qianwen.aliyun.com/favicon.ico",
+                    logo: "https://s1.imagehub.cc/images/2025/03/19/cb3ab50c4d008f3c6f21ab4601e88248.png",
                     type: "AI聊天",
                     category: "chat",
                     description: "阿里巴巴旗下的大语言模型，提供对话能力、内容创作、知识问答，支持多模态理解，专注中文语境。",
@@ -365,7 +357,7 @@
                 },
                 {
                     name: "ChatGPT",
-                    logo: "https://chat.openai.com/favicon.ico",
+                    logo: "https://s1.imagehub.cc/images/2025/03/19/6a6abbb7d61cd52a2add9ad382e1f777.png",
                     type: "AI聊天",
                     category: "chat",
                     description: "OpenAI开发的对话式人工智能，能够理解和生成人类语言，回答问题并提供各种任务的帮助。",
@@ -374,7 +366,7 @@
                 },
                 {
                     name: "Claude",
-                    logo: "https://claude.ai/favicon.ico",
+                    logo: "https://s1.imagehub.cc/images/2025/03/19/32454d4854162b6abeaaeed18b7bd5ca.png",
                     type: "AI聊天",
                     category: "chat",
                     description: "Anthropic公司开发的对话式AI助手，专注于有帮助、无害和诚实的回答，支持超长上下文。",
@@ -383,7 +375,7 @@
                 },
                 {
                     name: "Gemini",
-                    logo: "https://gemini.google.com/favicon.ico",
+                    logo: "https://s1.imagehub.cc/images/2025/03/19/25b5adb72fd0164aeee23a82e59ba0d3.webp",
                     type: "AI聊天",
                     category: "chat",
                     description: "Google推出的多模态AI模型，支持文本、图像、视频等多种输入，理解力和创造力强大。",
@@ -392,7 +384,7 @@
                 },
                 {
                     name: "腾讯元宝",
-                    logo: "https://hunyuan.tencent.com/favicon.ico",
+                    logo: "https://s1.imagehub.cc/images/2025/03/19/3dceab852f46ad96749c38fbed4d1dce.png",
                     type: "AI聊天",
                     category: "chat",
                     description: "腾讯推出的大型语言模型，能够进行自然对话、内容创作、知识问答，并具备多轮对话能力。",
@@ -401,7 +393,7 @@
                 },
                 {
                     name: "Grok",
-                    logo: "https://grok.x.ai/favicon.ico",
+                    logo: "https://s1.imagehub.cc/images/2025/03/19/09d94f98659c550ea0855419f8c527a5.png",
                     type: "AI聊天",
                     category: "chat",
                     description: "X (前Twitter)旗下的AI助手，由xAI开发，特点是实时网络访问和幽默风格的回答。",
@@ -410,7 +402,7 @@
                 },
                 {
                     name: "文心一言",
-                    logo: "https://yiyan.baidu.com/favicon.ico",
+                    logo: "https://s1.imagehub.cc/images/2025/03/19/7d3dfaed6e04a728fb11057f70173a4f.png",
                     type: "AI聊天",
                     category: "chat",
                     description: "百度推出的大型语言模型，提供对话、创作、绘画等功能，专注于中文内容理解与生成。",
@@ -446,7 +438,7 @@
                 },
                 {
                     name: "Microsoft Copilot",
-                    logo: "https://copilot.microsoft.com/favicon.ico",
+                    logo: "https://s1.imagehub.cc/images/2025/03/19/06086c13b7556033566f3581f8cb9bc4.png",
                     type: "AI聊天",
                     category: "chat",
                     description: "微软推出的AI助手，集成于Windows、Edge浏览器和Office应用，提供智能搜索、内容创作和日常工作辅助。",
@@ -492,17 +484,15 @@
             }
 
             // 初始渲染
-            document.addEventListener('DOMContentLoaded', function() {
-                renderAICards();
+            renderAICards();
 
-                // 类别筛选
-                const categoryBtns = document.querySelectorAll('.category-btn');
-                categoryBtns.forEach(btn => {
-                    btn.addEventListener('click', function() {
-                        categoryBtns.forEach(b => b.classList.remove('active'));
-                        this.classList.add('active');
-                        renderAICards(this.dataset.category);
-                    });
+            // 类别筛选
+            const categoryBtns = document.querySelectorAll('.category-btn');
+            categoryBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    categoryBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    renderAICards(this.dataset.category);
                 });
             });
         });
