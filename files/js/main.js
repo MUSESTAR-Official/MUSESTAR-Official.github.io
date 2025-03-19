@@ -130,41 +130,70 @@ function initCarousel() {
 
 // 主题切换功能
 function initThemeToggle() {
-    // 设置默认主题为暗色模式
-    document.documentElement.setAttribute('data-theme', 'dark');
-    
+    // 获取元素和初始状态
     const themeToggle = document.querySelector('.theme-toggle');
-    const icon = themeToggle.querySelector('i');
+    const mobileThemeToggle = document.querySelector('.mobile-theme-toggle');
     const htmlElement = document.documentElement;
-
+    
+    if (!themeToggle) return;
+    
     // 检查本地存储中的主题设置，默认为dark
     const currentTheme = localStorage.getItem('theme') || 'dark';
     htmlElement.setAttribute('data-theme', currentTheme);
-    updateIcon(currentTheme);
-
-    themeToggle.addEventListener('click', (e) => {
+    
+    // 初始化图标状态
+    updateAllThemeIcons(currentTheme);
+    
+    // 桌面版主题切换按钮事件
+    themeToggle.addEventListener('click', function(e) {
         // 阻止事件默认行为和冒泡
         e.preventDefault();
         e.stopPropagation();
         
+        toggleTheme();
+        
+        return false; // 阻止默认行为
+    });
+    
+    // 移动版主题切换按钮事件
+    if (mobileThemeToggle) {
+        mobileThemeToggle.addEventListener('click', function() {
+            toggleTheme();
+        });
+    }
+    
+    // 统一切换主题的函数
+    function toggleTheme() {
         const currentTheme = htmlElement.getAttribute('data-theme');
         const newTheme = currentTheme === 'light' ? 'dark' : 'light';
         
+        // 更新主题
         htmlElement.setAttribute('data-theme', newTheme);
         localStorage.setItem('theme', newTheme);
-        updateIcon(newTheme);
+        
+        // 更新所有图标
+        updateAllThemeIcons(newTheme);
         
         // 强制重新应用样式，添加过渡效果
         document.body.classList.add('theme-transition');
         setTimeout(function() {
             document.body.classList.remove('theme-transition');
         }, 300);
+    }
+    
+    // 统一更新所有主题图标
+    function updateAllThemeIcons(theme) {
+        // 更新桌面版图标
+        const themeToggleIcon = themeToggle.querySelector('i');
+        if (themeToggleIcon) {
+            themeToggleIcon.className = theme === 'light' ? 'fas fa-sun' : 'fas fa-moon';
+        }
         
-        return false; // 阻止默认行为
-    });
-
-    function updateIcon(theme) {
-        icon.className = theme === 'light' ? 'fas fa-sun' : 'fas fa-moon';
+        // 更新移动版图标
+        const mobileThemeToggleIcon = mobileThemeToggle ? mobileThemeToggle.querySelector('i') : null;
+        if (mobileThemeToggleIcon) {
+            mobileThemeToggleIcon.className = theme === 'light' ? 'fas fa-sun' : 'fas fa-moon';
+        }
     }
 }
 
@@ -599,35 +628,17 @@ function renderHorizontalAnimeProgressively() {
 
 // 移动端主题切换功能
 function initMobileThemeToggle() {
+    // 此函数不再单独处理点击事件，只负责创建移动端主题切换按钮
+    // 实际的点击处理已移至initThemeToggle函数中统一处理
     const mobileThemeToggle = document.querySelector('.mobile-theme-toggle');
     if (mobileThemeToggle) {
+        // 确保移动版按钮的初始状态与当前主题一致
+        const currentTheme = document.documentElement.getAttribute('data-theme');
         const mobileThemeToggleIcon = mobileThemeToggle.querySelector('i');
-        mobileThemeToggle.addEventListener('click', function() {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
-            if (currentTheme === 'dark') {
-                document.documentElement.setAttribute('data-theme', 'light');
-                mobileThemeToggleIcon.classList.remove('fa-moon');
-                mobileThemeToggleIcon.classList.add('fa-sun');
-                // 同步更新顶部主题切换按钮
-                const themeToggleIcon = document.querySelector('.theme-toggle i');
-                if (themeToggleIcon) {
-                    themeToggleIcon.classList.remove('fa-moon');
-                    themeToggleIcon.classList.add('fa-sun');
-                }
-                localStorage.setItem('theme', 'light');
-            } else {
-                document.documentElement.setAttribute('data-theme', 'dark');
-                mobileThemeToggleIcon.classList.remove('fa-sun');
-                mobileThemeToggleIcon.classList.add('fa-moon');
-                // 同步更新顶部主题切换按钮
-                const themeToggleIcon = document.querySelector('.theme-toggle i');
-                if (themeToggleIcon) {
-                    themeToggleIcon.classList.remove('fa-sun');
-                    themeToggleIcon.classList.add('fa-moon');
-                }
-                localStorage.setItem('theme', 'dark');
-            }
-        });
+        if (mobileThemeToggleIcon && currentTheme === 'light') {
+            mobileThemeToggleIcon.classList.remove('fa-moon');
+            mobileThemeToggleIcon.classList.add('fa-sun');
+        }
     }
 }
 
@@ -652,36 +663,29 @@ function initMobileView() {
     window.addEventListener('resize', handleWindowResize);
 }
 
-// 更新主题切换按钮功能，使其同步更新移动端按钮
+// 更新主题切换按钮功能，不再添加新的事件监听器
 function updateThemeToggle() {
+    // 此函数仅用于初始化时同步图标状态，不再添加事件监听器
     const themeToggle = document.querySelector('.theme-toggle');
-    if (themeToggle) {
-        const themeToggleIcon = themeToggle.querySelector('i');
-        themeToggle.addEventListener('click', function() {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
-            if (currentTheme === 'dark') {
-                document.documentElement.setAttribute('data-theme', 'light');
-                themeToggleIcon.classList.remove('fa-moon');
-                themeToggleIcon.classList.add('fa-sun');
-                // 同步更新移动端主题切换按钮
-                const mobileThemeToggleIcon = document.querySelector('.mobile-theme-toggle i');
-                if (mobileThemeToggleIcon) {
-                    mobileThemeToggleIcon.classList.remove('fa-moon');
-                    mobileThemeToggleIcon.classList.add('fa-sun');
-                }
-                localStorage.setItem('theme', 'light');
-            } else {
-                document.documentElement.setAttribute('data-theme', 'dark');
-                themeToggleIcon.classList.remove('fa-sun');
-                themeToggleIcon.classList.add('fa-moon');
-                // 同步更新移动端主题切换按钮
-                const mobileThemeToggleIcon = document.querySelector('.mobile-theme-toggle i');
-                if (mobileThemeToggleIcon) {
-                    mobileThemeToggleIcon.classList.remove('fa-sun');
-                    mobileThemeToggleIcon.classList.add('fa-moon');
-                }
-                localStorage.setItem('theme', 'dark');
+    const mobileThemeToggle = document.querySelector('.mobile-theme-toggle');
+    
+    if (themeToggle || mobileThemeToggle) {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        
+        // 更新桌面版图标
+        if (themeToggle) {
+            const themeToggleIcon = themeToggle.querySelector('i');
+            if (themeToggleIcon) {
+                themeToggleIcon.className = currentTheme === 'light' ? 'fas fa-sun' : 'fas fa-moon';
             }
-        });
+        }
+        
+        // 更新移动版图标
+        if (mobileThemeToggle) {
+            const mobileThemeToggleIcon = mobileThemeToggle.querySelector('i');
+            if (mobileThemeToggleIcon) {
+                mobileThemeToggleIcon.className = currentTheme === 'light' ? 'fas fa-sun' : 'fas fa-moon';
+            }
+        }
     }
 } 
