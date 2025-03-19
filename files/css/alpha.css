@@ -862,6 +862,11 @@ body {
 	transition: all 0.3s ease-in-out;
 }
 
+/* 浅色主题下的用户图标颜色 */
+[data-theme="light"] .user-avatar i {
+	color: #333; /* 深色文字颜色 */
+}
+
 .user-avatar:hover {
 	background: linear-gradient(to right, var(--gradient-middle), var(--gradient-end));
 	transform: translateY(-2px);
