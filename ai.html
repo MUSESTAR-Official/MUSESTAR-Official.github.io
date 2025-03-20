@@ -54,7 +54,15 @@
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .title-icon {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
         }
 
         .ai-subtitle {
@@ -257,7 +265,10 @@
     <div class="main-content">
         <div class="ai-container">
             <div class="ai-header">
-                <h1 class="ai-title">MUSE AI工具箱</h1>
+                <h1 class="ai-title">
+                    <img src="/files/ico/ai.ico" alt="MUSE AI" class="title-icon">
+                    MUSE AI工具箱
+                </h1>
                 <p class="ai-subtitle">精选全球优质AI工具，涵盖对话、搜索、编程、绘图、视频、音频等多种类型，助您快速找到适合的AI应用</p>
             </div>
 

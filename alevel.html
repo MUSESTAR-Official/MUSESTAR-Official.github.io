@@ -54,7 +54,15 @@
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .title-icon {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
         }
         
         .alevel-subtitle {
@@ -275,7 +283,10 @@
     <div class="main-content">
         <div class="alevel-container">
             <div class="alevel-header">
-                <h1 class="alevel-title">MUSE A Level工具箱</h1>
+                <h1 class="alevel-title">
+                    <img src="/files/ico/alevel.ico" alt="MUSE A Level" class="title-icon">
+                    MUSE A Level工具箱
+                </h1>
                 <p class="alevel-subtitle">提供International A Level课程的真题、答案、考试报告以及成绩转换等工具</p>
             </div>
             
