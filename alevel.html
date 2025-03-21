@@ -136,7 +136,7 @@
             padding: 12px 15px;
             border-radius: 10px;
             border: 1px solid rgba(255, 255, 255, 0.2);
-            background-color: rgba(255, 255, 255, 0.2);
+            background-color: rgba(30, 30, 30, 0.7);
             color: var(--text-color);
             font-size: 1rem;
             appearance: none;
@@ -149,16 +149,17 @@
         
         [data-theme="light"] .subject-selector select {
             border: 1px solid rgba(0, 0, 0, 0.1);
-            background-color: rgba(0, 0, 0, 0.05);
+            background-color: rgba(255, 255, 255, 0.8);
+            color: #333;
         }
         
         .subject-selector select:focus {
-            background-color: rgba(255, 255, 255, 0.3);
+            background-color: rgba(50, 50, 50, 0.9);
             border-color: var(--accent-color);
         }
         
         [data-theme="light"] .subject-selector select:focus {
-            background-color: rgba(0, 0, 0, 0.1);
+            background-color: rgba(255, 255, 255, 1);
         }
         
         .subject-selector::after {
@@ -256,6 +257,16 @@
             .btn {
                 width: 100%;
             }
+        }
+        
+        .subject-selector select option {
+            background-color: #1e1e1e;
+            color: #ffffff;
+        }
+        
+        [data-theme="light"] .subject-selector select option {
+            background-color: #ffffff;
+            color: #333333;
         }
     </style>
 </head>
