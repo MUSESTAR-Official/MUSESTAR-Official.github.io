@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<!--
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇─────▇▇▇▇▇▇▇▇▇▇────────▇▇▇▇───────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───────────────▇▇▇▇▇▇▇▇▇
+▇▇▇▇─────▇▇▇▇▇▇▇▇▇▇─────▇▇▇▇▇▇▇▇▇▇▇▇──────▇▇▇▇▇──────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───────────────▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇─────▇▇▇─────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇────▇▇▇▇▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────▇▇▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇────▇▇▇▇▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇─────▇▇▇▇▇▇─────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇─▇▇─▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇─────▇▇▇▇▇▇──▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇──────▇▇▇▇───▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇─────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇──▇───▇▇▇▇──▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──────────▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇──▇────▇▇▇──▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──────────▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇──▇▇───▇▇───▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇─────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇──▇▇───▇▇──▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇─▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇──▇▇▇──────▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇─▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇──▇▇▇─────▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇─▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇──▇▇▇▇────▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇▇──▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇──▇▇▇▇───▇▇▇▇▇──▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────▇▇▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇
+▇▇▇▇▇───▇▇▇▇▇──▇▇▇▇────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇─────────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇──────────────▇▇▇▇▇▇▇▇
+▇▇▇▇──────▇▇▇─▇▇▇────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇─────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────────────▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇────────────────▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇───▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
+-->
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Clarity tracking code for https://musestar.cc/ --><script>    (function(c,l,a,r,i,t,y){        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i+"?ref=bwt";        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);    })(window, document, "clarity", "script", "fvlvixulu7");</script>
+    <title>缪斯星动漫</title>
+    <link rel="icon" href="/favicon.ico" type="image/gif" sizes="16x16">
+    <meta name="keywords" content="动漫,番剧,在线观看,高清,下载,缪斯星,MUSESTAR">
+    <meta name="description" content="">    
+    <style>
+        body {
+            background-image: url('');
+        }
+    </style>
+    <link href="/files/css/museplay.css" rel="stylesheet" type="text/css">
+    <script src="/files/DPlayer.js"></script>
+    
+    <!-- 动态数据配置脚本 -->
+    <script src="/files/js/animeConfig.js"></script>
+</head>
+<body>
+    <div class="video-container">
+        <div id="dplayer"></div>
+    </div>
+    <div class="info-container">
+        <h1 id="animeTitle"></h1>
+        <div class="divider">
+            <div class="divider-line"></div>
+            <div class="divider-inner"></div>
+            <div class="divider-line"></div>
+        </div>
+        <div class="options">
+            <a href="/" class="option-btn">缪斯星首页</a>
+            <div class="vertical-divider"></div>
+            <a href="/animation" class="option-btn highlight">缪斯星动漫</a>
+            <div class="vertical-divider"></div>
+            <a href="/movie" class="option-btn">缪斯星影视</a>
+            <div class="vertical-divider"></div>
+            <a href="https://video.musestar.cc/" class="option-btn">缪斯星搜索</a>
+            <div class="vertical-divider"></div>
+            <a href="/musestar" class="option-btn">缪斯星官方</a>
+        </div>
+        <h2>集数选择</h2>
+        <div class="divider">
+            <div class="divider-line"></div>
+            <div class="divider-inner"></div>
+            <div class="divider-line"></div>
+        </div>
+        <div class="episode-navigator">
+            <a id="prevEpisodeBtn" class="nav-btn">&lt; 上一集</a>
+            <span id="currentEpisodeText" class="current-episode">当前集数</span>
+            <a id="nextEpisodeBtn" class="nav-btn">下一集 &gt;</a>
+        </div>
+        <div class="episode-selector" id="episodeContainer">
+            <!-- 集数将由JavaScript动态生成 -->
+        </div>
+        <h2>动漫介绍</h2>
+        <div class="divider">
+            <div class="divider-line"></div>
+            <div class="divider-inner"></div>
+            <div class="divider-line"></div>
+        </div>
+        <p class="synopsis" id="animeSynopsis"></p>
+        <h2>本集下载</h2>
+        <div class="divider">
+            <div class="divider-line"></div>
+            <div class="divider-inner"></div>
+            <div class="divider-line"></div>
+        </div>
+        <div class="download-container">
+            <p id="downloadLinkOD" class="download-link"></p>
+            <button class="btn copy-btn" onclick="copyDownloadLinkOD()">复制MUSEOD源下载链接</button>
+            <a id="directDownloadOD" class="btn" download>直接下载MUSEOD源</a>
+        </div>
+        <div class="magnet-container">
+            <p id="magnetLink" class="magnet-link"></p>
+            <button class="btn copy-btn" onclick="copyMagnetLink()">复制磁力链接</button>
+            <a id="magnetHref" class="btn">磁力下载</a>
+        </div>
+        <div class="download-container">
+            <p id="downloadLinkDT" class="download-link"></p>
+            <button class="btn copy-btn" onclick="copyDownloadLinkDT()">复制MUSEDT源下载链接</button>
+            <a id="directDownloadDT" class="btn" download>直接下载MUSEDT源</a>
+        </div>
+        <h2>评论区</h2>
+        <div class="divider">
+            <div class="divider-line"></div>
+            <div class="divider-inner"></div>
+            <div class="divider-line"></div>
+        </div>
+        <div id="tcomment"></div>
+        <script src="https://data.musestar.cc/twikoo.js"></script>
+        <script>
+        twikoo.init({
+          envId: 'https://comments.musestar.cc', 
+          el: '#tcomment', 
+          path: window.location.pathname + window.location.search,
+        })
+        </script>        
+        <div class="footer">
+            <img width="150" src="https://s1.imagehub.cc/images/2024/01/13/d0469ae970a9dac3b9e56aa223193e34.png" alt="Footer Image">
+            <br>
+            <img width="350" src="https://moe-counter.yumetsuki.moe/@musestar?name=musestar&theme=asoul&padding=10&offset=0&scale=1&pixelated=1&darkmode=auto" alt="Visitor Counter">
+            <div class="divider">
+                <div class="divider-line"></div>
+                <div class="divider-inner"></div>
+                <div class="divider-line"></div>
+            </div>
+            <script type="text/javascript" src="/files/under.js"></script>
+        </div>
+    </div>
+    
+    <!-- 动态加载页面脚本 -->
+    <script>
+        // 从URL查询参数中获取动漫ID和集数
+        function parseUrlParams() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const animeId = urlParams.get('id');
+            const episode = urlParams.get('e');
+            
+            return { animeId, episode };
+        }
+        
+        // 初始化页面内容
+        function initPage() {
+            // 解析URL参数
+            const urlInfo = parseUrlParams();
+            if (!urlInfo.animeId || !urlInfo.episode) return;
+            
+            // 从配置中获取当前动漫信息
+            const animeInfo = animeConfig[urlInfo.animeId];
+            if (!animeInfo) return;
+            
+            // 设置页面标题和meta信息
+            document.title = `${animeInfo.title} 第${parseInt(urlInfo.episode)}集ฅ^≧ω≦^ฅ缪斯星动漫`;
+            document.querySelector('meta[name="keywords"]').content = animeInfo.keywords + ',动漫,番剧,在线观看,高清,下载,缪斯星,MUSESTAR';
+            document.querySelector('meta[name="description"]').content = animeInfo.synopsis;
+            
+            // 设置背景图片
+            if (animeInfo.backgroundImage) {
+                document.body.style.backgroundImage = `url('${animeInfo.backgroundImage}')`;
+            }
+            
+            // 更新页面内容
+            document.getElementById('animeTitle').textContent = `${animeInfo.title} 第${parseInt(urlInfo.episode)}集`;
+            document.getElementById('animeSynopsis').textContent = animeInfo.synopsis;
+            
+            // 设置当前集数显示
+            const episodeNum = parseInt(urlInfo.episode);
+            document.getElementById('currentEpisodeText').textContent = `第${episodeNum}集 / 共${animeInfo.totalEpisodes}集`;
+            
+            // 设置上一集和下一集按钮
+            const prevEpisodeBtn = document.getElementById('prevEpisodeBtn');
+            const nextEpisodeBtn = document.getElementById('nextEpisodeBtn');
+            
+            if (episodeNum > 1) {
+                const prevEpisode = (episodeNum - 1).toString().padStart(2, '0');
+                prevEpisodeBtn.href = `aniplay?id=${urlInfo.animeId}&e=${prevEpisode}`;
+                prevEpisodeBtn.classList.remove('disabled');
+            } else {
+                prevEpisodeBtn.classList.add('disabled');
+                prevEpisodeBtn.removeAttribute('href');
+            }
+            
+            if (episodeNum < animeInfo.totalEpisodes) {
+                const nextEpisode = (episodeNum + 1).toString().padStart(2, '0');
+                nextEpisodeBtn.href = `aniplay?id=${urlInfo.animeId}&e=${nextEpisode}`;
+                nextEpisodeBtn.classList.remove('disabled');
+            } else {
+                nextEpisodeBtn.classList.add('disabled');
+                nextEpisodeBtn.removeAttribute('href');
+            }
+            
+            // 生成集数选择器
+            const episodeContainer = document.getElementById('episodeContainer');
+            episodeContainer.innerHTML = ''; // 清空容器
+            
+            // 添加第三方播放源
+            const thirdPartyLink = document.createElement('a');
+            thirdPartyLink.href = `https://video.musestar.cc/index.php/vod/search.html?wd=${encodeURIComponent(animeInfo.searchKeyword)}`;
+            thirdPartyLink.className = 'episode-btn';
+            thirdPartyLink.textContent = '第三方播放源';
+            episodeContainer.appendChild(thirdPartyLink);
+            
+            // 添加各集链接
+            for (let i = 1; i <= animeInfo.totalEpisodes; i++) {
+                const episodeLink = document.createElement('a');
+                const episodeNum = i.toString().padStart(2, '0');
+                episodeLink.href = `aniplay?id=${urlInfo.animeId}&e=${episodeNum}`;
+                episodeLink.className = 'episode-btn';
+                if (episodeNum === urlInfo.episode) {
+                    episodeLink.className += ' current';
+                }
+                episodeLink.textContent = `第${i}集`;
+                episodeContainer.appendChild(episodeLink);
+            }
+            
+            // 设置下载链接
+            const currentEpisodeInfo = animeInfo.episodes[urlInfo.episode];
+            if (currentEpisodeInfo) {
+                // MUSEOD源
+                document.getElementById('downloadLinkOD').textContent = currentEpisodeInfo.linkOD;
+                document.getElementById('directDownloadOD').href = currentEpisodeInfo.linkOD;
+                
+                // 磁力链接
+                document.getElementById('magnetLink').textContent = currentEpisodeInfo.magnetLink;
+                document.getElementById('magnetHref').href = currentEpisodeInfo.magnetLink;
+                
+                // MUSEDT源
+                document.getElementById('downloadLinkDT').textContent = currentEpisodeInfo.linkDT;
+                document.getElementById('directDownloadDT').href = currentEpisodeInfo.linkDT;
+            }
+            
+            // 初始化播放器
+            initPlayer(animeInfo, currentEpisodeInfo, urlInfo);
+        }
+        
+        // 初始化播放器
+        function initPlayer(animeInfo, episodeInfo, urlInfo) {
+            if (!episodeInfo) return;
+            
+            var dp = new DPlayer({
+                container: document.getElementById('dplayer'),
+                airplay: true,
+                preload: 'auto',
+                logo: "",
+                autoplay: true,
+                volume: 1.0,
+                video: {
+                    pic: animeInfo.thumbnailUrl || '',
+                    quality: [
+                        {
+                            name: 'MUSEOD源',
+                            url: episodeInfo.linkOD,
+                        }, 
+                        {
+                            name: 'MUSEDT源',
+                            url: episodeInfo.linkDT,
+                        }, 
+                    ],
+                    defaultQuality: 0,
+                },
+            });
+
+            const videoKey = `${animeInfo.title}_${urlInfo.episode}_progress`;
+            
+            const savedTime = localStorage.getItem(videoKey);
+            if (savedTime) {
+                dp.seek(parseFloat(savedTime));
+            }
+            
+            setInterval(() => {
+                if (!dp.video.paused) {
+                    localStorage.setItem(videoKey, dp.video.currentTime);
+                }
+            }, 1000);
+            
+            dp.on('ended', () => {
+                localStorage.removeItem(videoKey);
+                
+                // 播放结束时，如果有下一集，自动跳转到下一集
+                const currentEpisode = parseInt(urlInfo.episode);
+                if (currentEpisode < animeInfo.totalEpisodes) {
+                    const nextEpisode = (currentEpisode + 1).toString().padStart(2, '0');
+                    window.location.href = `aniplay?id=${urlInfo.animeId}&e=${nextEpisode}`;
+                }
+            });
+        }
+        
+        // 复制下载链接函数
+        function copyDownloadLinkOD() {
+            const text = document.getElementById('downloadLinkOD').textContent;
+            navigator.clipboard.writeText(text).then(() => {
+                alert('已复制MUSEOD源下载链接到剪贴板');
+            });
+        }
+        
+        function copyDownloadLinkDT() {
+            const text = document.getElementById('downloadLinkDT').textContent;
+            navigator.clipboard.writeText(text).then(() => {
+                alert('已复制MUSEDT源下载链接到剪贴板');
+            });
+        }
+        
+        function copyMagnetLink() {
+            const text = document.getElementById('magnetLink').textContent;
+            navigator.clipboard.writeText(text).then(() => {
+                alert('已复制磁力链接到剪贴板');
+            });
+        }
+        
+        // 等待配置加载完成后初始化页面
+        if (typeof animeConfig !== 'undefined') {
+            initPage();
+        } else {
+            window.addEventListener('animeConfigLoaded', initPage);
+        }
+    </script>
+</body>
+</html>
