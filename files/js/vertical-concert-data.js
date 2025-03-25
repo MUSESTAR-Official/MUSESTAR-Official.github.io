@@ -5,9 +5,18 @@ const verticalConcertData = [
         title: "V.W.P 3rd ONE-MAN LIVE「現象III-神椿市探訪中-」",
         url: "/teleplay/VWP/2025",
         country: "日本",
-        type: "全息演唱会",
+        type: "演唱会",
         duration: "",
         releaseDate: "2025年3月27日"
+    },
+    {
+        image: "https://s1.imagehub.cc/images/2025/03/25/0b76fbf5157f970c9136d123e42351f1.jpg",
+        title: "御伽噺(染) ver1.35_Alternative Feat. KAMITSUBAKI PHILHARMONIC ORCHESTRA",
+        url: "/teleplay/KAMITSUBAKI/2025",
+        country: "日本",
+        type: "舞台剧",
+        duration: "",
+        releaseDate: "2025年3月22日"
     },
     {
         image: "https://s1.imagehub.cc/images/2025/02/19/db998a5b32cef3f3a1d3ed648ccd5196.jpg",
@@ -23,7 +32,7 @@ const verticalConcertData = [
         title: "明透 1st ONE-MAN LIVE「RAY」",
         url: "/teleplay/ASU/2024",
         country: "日本",
-        type: "全息演唱会",
+        type: "演唱会",
         duration: "",
         releaseDate: "2024年12月28日"
     },
@@ -41,7 +50,7 @@ const verticalConcertData = [
         title: "花譜 4th ONE-MAN LIVE「怪歌（再）」",
         url: "/teleplay/KAF/2024",
         country: "日本",
-        type: "全息演唱会",
+        type: "演唱会",
         duration: "",
         releaseDate: "2024年11月3日"
     },
@@ -50,7 +59,7 @@ const verticalConcertData = [
         title: "V.W.P 2nd ONE-MAN LIVE「現象Ⅱ （再）」",
         url: "/teleplay/VWP/2024",
         country: "日本",
-        type: "全息演唱会",
+        type: "演唱会",
         duration: "",
         releaseDate: "2024年11月2日"
     },
@@ -59,25 +68,16 @@ const verticalConcertData = [
         title: "洛天依「歌行宇宙·无限共鸣」",
         url: "/teleplay/LTYWXGM2024",
         country: "中国",
-        type: "全息演唱会",
+        type: "演唱会",
         duration: "",
         releaseDate: "2024年10月5日"
-    },
-    {
-        image: "https://s1.imagehub.cc/images/2024/09/15/fc0d5b23e477d9973dbc3898181baccf.png",
-        title: "冰火歌会2024漫游季",
-        url: "/teleplay/BHGH2024",
-        country: "中国",
-        type: "虚拟演唱会",
-        duration: "",
-        releaseDate: "2024年9月15日"
     },
     {
         image: "https://s1.imagehub.cc/images/2025/01/07/1558dd061de8b9f33e1b2430193855d3.jpg",
         title: "花譜・理芽「Singularity Live Vol.3」",
         url: "/teleplay/KAF/KAF-RIM2024",
         country: "日本",
-        type: "全息演唱会",
+        type: "演唱会",
         duration: "",
         releaseDate: "2024年9月14日"
     },
