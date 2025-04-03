@@ -1,6 +1,65 @@
 // 纵向选项卡内容 - 全部动漫列表
 const verticalAnimeData = [
     {
+        image: "https://s1.imagehub.cc/images/2025/04/03/faf893c3df1b0b2c08781d1bfd4be400.jpg",
+        title: "莉可丽丝 朋友是时间小偷",
+        url: "/animation/lycoris-recoil/01",
+        country: "日本",
+        type: "剧情",
+        episodes: "总话数: 6",
+        releaseDate: "2025年4月6日"
+    },
+
+    {
+        image: "https://s1.imagehub.cc/images/2025/04/03/dd5ac8febddf1d5fd870b153d062ceda.jpg",
+        title: "赛马娘 芦毛灰姑娘 Part.1",
+        url: "/animation/cinderellagray/01",
+        country: "日本",
+        type: "剧情",
+        episodes: "总话数: 13",
+        releaseDate: "2025年4月6日"
+    },
+
+    {
+        image: "https://s1.imagehub.cc/images/2025/04/03/c99aad2b8692c8f48097b62f2399f580.jpg",
+        title: "[NSFW] 快藏起来！玛琪娜同学!!",
+        url: "/animation/makinasan/01",
+        country: "日本",
+        type: "恋爱",
+        episodes: "总话数: 12",
+        releaseDate: "2025年4月6日"
+    },
+
+    {
+        image: "https://s1.imagehub.cc/images/2025/04/03/8d449a1c7848a6e398bdb18c58a33ddb.jpg",
+        title: "打了300年的史莱姆，不知不觉就练到了满级 第二季",
+        url: "/animation/slime300/01",
+        country: "日本",
+        type: "奇幻",
+        episodes: "总话数: 12",
+        releaseDate: "2025年4月5日"
+    },
+
+    {
+        image: "https://s1.imagehub.cc/images/2025/04/03/a6e912b9f4afdf218c1b4143a8c7658c.jpg",
+        title: "[NSFW] 鹰峰同学请穿上衣服",
+        url: "/animation/takaminesan/01",
+        country: "日本",
+        type: "奇幻",
+        episodes: "总话数: 12",
+        releaseDate: "2025年4月2日"
+    },
+
+    {
+        image: "https://s1.imagehub.cc/images/2025/04/03/2fa3b3d3edfd3d6dbe4e2c8b3f324aa9.jpg",
+        title: "直至魔女消逝",
+        url: "/animation/arumajo/01",
+        country: "日本",
+        type: "奇幻",
+        episodes: "总话数: 12",
+        releaseDate: "2025年4月1日"
+    },
+    {
         image: "https://s1.imagehub.cc/images/2025/03/11/0db55824fce28687d9770fec63b614e6.jpg",
         title: "孤独摇滚！ 剧场总集篇 Re:",
         url: "/film/bocchirocks",
@@ -35,59 +94,5 @@ const verticalAnimeData = [
         type: "喜剧",
         episodes: "12话",
         releaseDate: "2025年1月12日"
-    },
-    {
-        image: "https://s1.imagehub.cc/images/2024/12/16/d6fe24d2d22818bff757b88a6926353c.jpg",
-        title: "我独自升级 第二季",
-        url: "/animation/SoloLeveling2/01",
-        country: "日本",
-        type: "奇幻",
-        episodes: "13话",
-        releaseDate: "2025年1月4日"
-    },
-    {
-        image: "https://s1.imagehub.cc/images/2024/12/08/4448e7557b33850ac40959b8ac720130.jpg",
-        title: "BanG Dream! Ave Mujica",
-        url: "/animation/AveMujica/01",
-        country: "日本",
-        type: "音乐",
-        episodes: "13话",
-        releaseDate: "2025年1月2日"
-    },
-    {
-        image: "https://s1.imagehub.cc/images/2024/10/01/0065636f82a0d5f286d9f3ccec7b823d.jpg",
-        title: "精灵幻想记 第二季",
-        url: "/animation/SeireiGensouki2/01",
-        country: "日本",
-        type: "奇幻",
-        episodes: "12话",
-        releaseDate: "2024年10月8日"
-    },
-    {
-        image: "https://s1.imagehub.cc/images/2024/10/07/a730387be806bf403a862b060a106fed.jpg",
-        title: "死神 千年血战篇 -相克谭-",
-        url: "/animation/bleach3/27",
-        country: "日本",
-        type: "战斗",
-        episodes: "13话",
-        releaseDate: "2024年10月5日"
-    },
-    {
-        image: "https://s1.imagehub.cc/images/2024/10/05/722b48cfc6e2dc3a6176e240bfe38c4d.png",
-        title: "盒中之海",
-        url: "/film/hzzh",
-        country: "中国",
-        type: "奇幻",
-        episodes: "2:09:31",
-        releaseDate: "2024年10月3日"
-    },
-    {
-        image: "https://s1.imagehub.cc/images/2024/08/18/69a776cb5468e12bb38866b0f7332b0d.jpg",
-        title: "Re:从零开始的异世界生活 第三季",
-        url: "/animation/re0s3/01",
-        country: "日本",
-        type: "奇幻",
-        episodes: "16话",
-        releaseDate: "2024年10月2日"
     },
 ]; 
