@@ -1,6 +1,11 @@
 // 轮播图数据
 const carouselData = [
     {
+        image: "https://s1.imagehub.cc/images/2025/04/05/f98110c5b4eb149f9e5733b75395e13c.png",
+        title: "打了300年的史莱姆，不知不觉就练到了满级 第二季",
+        url: "/animation/slime300/01"
+    },
+    {
         image: "https://s1.imagehub.cc/images/2025/04/03/39801ddb94cb853c2fd06a9b48a2e5cb.webp",
         title: "BanG Dream! Ave Mujica",
         url: "/animation/AveMujica/01"
