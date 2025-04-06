@@ -1,6 +1,24 @@
 // 纵向选项卡内容 - 全部影视列表
 const verticalMovieData = [
     {
+        image: "https://s1.imagehub.cc/images/2025/04/06/ae2d7211620c4b8994a01feb89151d9a.jpg",
+        title: "我的世界大电影",
+        url: "/film/minecraft",
+        country: "美国",
+        type: "奇幻",
+        duration: "影片时长: 1:34:04",
+        releaseDate: "2025年4月4日"
+    },
+    {
+        image: "https://s1.imagehub.cc/images/2025/04/03/90e1ea2bfa418bf98c2412c5143d8152.jpg",
+        title: "误杀3",
+        url: "/film/wusha3",
+        country: "中国",
+        type: "犯罪",
+        duration: "影片时长: 1:49:36",
+        releaseDate: "2024年12月28日"
+    },
+    {
         image: "https://s1.imagehub.cc/images/2024/12/16/4830fb9ff71a01e44b066491e3468888.png",
         title: "鱿鱼游戏 第二季",
         url: "/teleplay/SquidGame2/01",
@@ -71,23 +89,5 @@ const verticalMovieData = [
         type: "犯罪",
         duration: "影片时长: 2:14:00",
         releaseDate: "2024年3月1日"
-    },
-    {
-        image: "https://s1.imagehub.cc/images/2024/02/15/fadac74cbd0dff1825d7e446d46e1fe9.jpeg",
-        title: "第二十条",
-        url: "/film/Article20",
-        country: "中国",
-        type: "剧情",
-        duration: "影片时长: 2:23:23",
-        releaseDate: "2024年2月10日"
-    },
-    {
-        image: "https://s1.imagehub.cc/images/2024/02/15/00afacb70f62c5edbcefb9da52f6d553.jpeg",
-        title: "飞驰人生2",
-        url: "/film/Pegasus2",
-        country: "中国",
-        type: "剧情",
-        duration: "影片时长: 1:56:32",
-        releaseDate: "2024年2月10日"
     },
 ]; 
