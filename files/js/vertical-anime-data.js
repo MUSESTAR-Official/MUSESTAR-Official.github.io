@@ -7,7 +7,7 @@ const verticalAnimeData = [
         country: "日本",
         type: "剧情",
         episodes: "总话数: 6",
-        releaseDate: "2025年4月6日"
+        releaseDate: "2025年4月16日"
     },
 
     {

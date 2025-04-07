@@ -2,13 +2,13 @@
 const scheduleData = {
     monday: [
         {
-            image: " ",
-            title: "今天没有哦",
-            time: "更新时间: ",
-            url: "/animation",
+            image: "https://s1.imagehub.cc/images/2025/04/03/c99aad2b8692c8f48097b62f2399f580.jpg",
+            title: "[NSFW] 快藏起来！玛琪娜同学!!",
+            time: "更新时间: 00:20~",
+            url: "/animation/makinasan/01",
             country: "日本",
-            type: "类型",
-            episodes: "总话数："
+            type: "恋爱",
+            episodes: "总话数: 12"
         },
     ],
     tuesday: [
@@ -80,18 +80,9 @@ const scheduleData = {
             image: "https://s1.imagehub.cc/images/2025/04/03/dd5ac8febddf1d5fd870b153d062ceda.jpg",
             title: "赛马娘 芦毛灰姑娘 Part.1",
             time: "更新时间: 15:30~",
-            url: "/animation/makinasan/01",
+            url: "/animation/cinderellagray/01",
             country: "日本",
             type: "剧情",
-            episodes: "总话数: 12"
-        },
-        {
-            image: "https://s1.imagehub.cc/images/2025/04/03/c99aad2b8692c8f48097b62f2399f580.jpg",
-            title: "[NSFW] 快藏起来！玛琪娜同学!!",
-            time: "更新时间: 24:20~",
-            url: "/animation/makinasan/01",
-            country: "日本",
-            type: "恋爱",
             episodes: "总话数: 12"
         },
     ]
