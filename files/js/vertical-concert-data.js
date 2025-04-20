@@ -1,6 +1,15 @@
 // 纵向选项卡内容 - 全部演唱会列表
 const verticalConcertData = [
     {
+        image: "https://s1.imagehub.cc/images/2025/04/20/0811d5aa41d81fa8a93485dfce68e2cd.jpg",
+        title: "花譜 3rd ONE-MAN LIVE「不可解参(狂)」in 日本武道館",
+        url: "/teleplay/KAF/2022",
+        country: "日本",
+        type: "演唱会",
+        duration: "",
+        releaseDate: "2025年8月24日"
+    },
+    {
         image: "https://s1.imagehub.cc/images/2025/02/13/1b2217f14c1a5ff6006ad887fb84db67.jpg",
         title: "V.W.P 3rd ONE-MAN LIVE「現象III-神椿市探訪中-」",
         url: "/teleplay/VWP/2025",
