@@ -5,27 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>我是主办的爹</title>
     <style>
-        body {
+        html, body {
             margin: 0;
             padding: 0;
-            height: 100vh;
-            width: 100vw;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             background-color: #000;
-            overflow: hidden;
             font-family: 'Arial', sans-serif;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+            width: 100%;
+            min-height: 100vh;
+            color: #fff;
+            overflow-x: hidden;
+            overflow-y: auto; /* 允许垂直滚动 */
         }
         
         .container {
-            position: absolute;
-            top: 0;
-            left: 0;
+            position: relative; /* 从绝对定位改为相对定位 */
             width: 100%;
-            height: 100%;
+            min-height: 100vh;
             display: flex;
             flex-direction: column; 
             justify-content: center;
@@ -111,6 +108,12 @@
         
         /* 手机响应式设计 */
         @media (max-width: 480px) {
+            /* 添加手机端上下留白 */
+            .container {
+                padding: 25px 10px; /* 增加上下内边距 */
+                height: auto; /* 允许高度自动调整 */
+            }
+            
             #main-text {
                 font-size: 25vh;
                 white-space: normal; 
@@ -127,6 +130,18 @@
             @media (orientation: portrait) {
                 .container {
                     flex-direction: column; 
+                    justify-content: space-around; /* 改为空间分布，增加留白 */
+                    padding: 40px 10px; /* 增加竖屏模式的上下内边距 */
+                }
+                
+                .logo-container {
+                    margin-top: 30px; /* 顶部增加间距 */
+                    margin-bottom: 25px; /* 增加与文字的间距 */
+                }
+                
+                #text-container {
+                    flex: 0 0 auto; /* 不要自动拉伸 */
+                    margin-bottom: 30px; /* 底部增加间距 */
                 }
                 
                 #main-text {
@@ -138,26 +153,32 @@
                     font-size: 28vw; 
                     line-height: 1;
                     transform: rotate(180deg); 
-                    max-height: 80vh;
+                    max-height: none; /* 移除高度限制，允许完整显示 */
                     -webkit-text-stroke: 1.5px currentColor;
                     text-shadow: 0 0 10px rgba(255, 0, 255, 0.8),
                                  0 0 20px rgba(255, 0, 255, 0.6);
-                }
-                
-                .logo-container {
-                    margin-bottom: 15px; 
                 }
             }
             
             /* 当屏幕是横屏时 */
             @media (orientation: landscape) {
+                .container {
+                    padding: 20px 15px; /* 横屏模式增加内边距 */
+                }
+                
                 #main-text {
                     font-size: 18vh; 
                     -webkit-text-stroke: 1.5px currentColor;
+                    margin: 15px 0; /* 增加上下边距 */
                 }
                 
                 .logo {
                     width: 300px; 
+                }
+                
+                .logo-container {
+                    margin-top: 15px; /* 增加顶部间距 */
+                    margin-bottom: 20px;
                 }
             }
         }
@@ -191,7 +212,7 @@
                 textElement.style.textOrientation = 'upright';
                 textElement.style.transform = 'rotate(180deg)';
                 textElement.style.fontSize = '28vw'; 
-                textElement.style.maxHeight = '80vh'; 
+                textElement.style.maxHeight = 'none'; // 移除高度限制，允许内容完全显示
             } else if (isMobile && !isPortrait) {
                 // 手机横屏模式
                 textElement.style.writingMode = 'horizontal-tb';
@@ -205,22 +226,22 @@
                 textElement.style.transform = 'none';
             }
             
-            // 确保文字不会溢出容器
-            const containerRect = container.getBoundingClientRect();
-            const textRect = textElement.getBoundingClientRect();
+            // 确保文字不会过大
+            const viewportWidth = window.innerWidth;
             
             if (isPortrait && isMobile) {
-                // 竖屏手机检查高度是否溢出
-                if (textRect.height > containerRect.height * 0.95) {
+                // 竖屏手机调整大小
+                const maxWidth = viewportWidth * 0.9;
+                if (textElement.scrollWidth > maxWidth) {
                     const currentSize = parseFloat(window.getComputedStyle(textElement).fontSize);
-                    const ratio = containerRect.height * 0.95 / textRect.height;
+                    const ratio = maxWidth / textElement.scrollWidth;
                     textElement.style.fontSize = (currentSize * ratio) + 'px';
                 }
             } else {
                 // 其他情况检查宽度是否溢出
-                if (textRect.width > containerRect.width * 0.95) {
+                if (textElement.scrollWidth > container.offsetWidth * 0.95) {
                     const currentSize = parseFloat(window.getComputedStyle(textElement).fontSize);
-                    const ratio = containerRect.width * 0.95 / textRect.width;
+                    const ratio = container.offsetWidth * 0.95 / textElement.scrollWidth;
                     textElement.style.fontSize = (currentSize * ratio) + 'px';
                 }
             }
