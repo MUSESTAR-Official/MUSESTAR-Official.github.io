@@ -16,11 +16,11 @@
             min-height: 100vh;
             color: #fff;
             overflow-x: hidden;
-            overflow-y: auto; /* 允许垂直滚动 */
+            overflow-y: auto; 
         }
         
         .container {
-            position: relative; /* 从绝对定位改为相对定位 */
+            position: relative; 
             width: 100%;
             min-height: 100vh;
             display: flex;
@@ -108,10 +108,9 @@
         
         /* 手机响应式设计 */
         @media (max-width: 480px) {
-            /* 添加手机端上下留白 */
             .container {
-                padding: 25px 10px; /* 增加上下内边距 */
-                height: auto; /* 允许高度自动调整 */
+                padding: 25px 10px; 
+                height: auto; 
             }
             
             #main-text {
@@ -130,18 +129,18 @@
             @media (orientation: portrait) {
                 .container {
                     flex-direction: column; 
-                    justify-content: space-around; /* 改为空间分布，增加留白 */
-                    padding: 40px 10px; /* 增加竖屏模式的上下内边距 */
+                    justify-content: space-around; 
+                    padding: 40px 10px; 
                 }
                 
                 .logo-container {
-                    margin-top: 30px; /* 顶部增加间距 */
-                    margin-bottom: 25px; /* 增加与文字的间距 */
+                    margin-top: 30px; 
+                    margin-bottom: 25px; 
                 }
                 
                 #text-container {
-                    flex: 0 0 auto; /* 不要自动拉伸 */
-                    margin-bottom: 30px; /* 底部增加间距 */
+                    flex: 0 0 auto; 
+                    margin-bottom: 30px; 
                 }
                 
                 #main-text {
@@ -153,7 +152,7 @@
                     font-size: 28vw; 
                     line-height: 1;
                     transform: rotate(180deg); 
-                    max-height: none; /* 移除高度限制，允许完整显示 */
+                    max-height: none; 
                     -webkit-text-stroke: 1.5px currentColor;
                     text-shadow: 0 0 10px rgba(255, 0, 255, 0.8),
                                  0 0 20px rgba(255, 0, 255, 0.6);
@@ -163,13 +162,13 @@
             /* 当屏幕是横屏时 */
             @media (orientation: landscape) {
                 .container {
-                    padding: 20px 15px; /* 横屏模式增加内边距 */
+                    padding: 20px 15px; 
                 }
                 
                 #main-text {
                     font-size: 18vh; 
                     -webkit-text-stroke: 1.5px currentColor;
-                    margin: 15px 0; /* 增加上下边距 */
+                    margin: 15px 0; 
                 }
                 
                 .logo {
@@ -177,7 +176,7 @@
                 }
                 
                 .logo-container {
-                    margin-top: 15px; /* 增加顶部间距 */
+                    margin-top: 15px; 
                     margin-bottom: 20px;
                 }
             }
@@ -212,7 +211,7 @@
                 textElement.style.textOrientation = 'upright';
                 textElement.style.transform = 'rotate(180deg)';
                 textElement.style.fontSize = '28vw'; 
-                textElement.style.maxHeight = 'none'; // 移除高度限制，允许内容完全显示
+                textElement.style.maxHeight = 'none'; 
             } else if (isMobile && !isPortrait) {
                 // 手机横屏模式
                 textElement.style.writingMode = 'horizontal-tb';
