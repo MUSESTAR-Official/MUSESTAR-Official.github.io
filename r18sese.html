@@ -27,7 +27,7 @@
             width: 100%;
             height: 100%;
             display: flex;
-            flex-direction: column; /* 更改为列式布局 */
+            flex-direction: column; 
             justify-content: center;
             align-items: center;
             padding: 10px;
@@ -40,42 +40,39 @@
             justify-content: center;
             align-items: center;
             position: relative;
-            margin-top: 20px; /* 添加顶部间距，为logo留出空间 */
+            margin-top: 20px; 
         }
         
         #main-text {
-            font-size: 15vw; /* 桌面端基础大小 */
-            font-weight: 900; /* 增加字体粗细 */
+            font-size: 15vw; 
+            font-weight: 900; 
             text-align: center;
             color: #fff;
-            /* 减少模糊的阴影 */
             text-shadow: 0 0 8px rgba(255, 0, 255, 0.7),
                          0 0 15px rgba(255, 0, 255, 0.5);
             animation: colorChange 2s infinite, pulsate 0.5s infinite alternate;
             white-space: nowrap;
             padding: 10px;
-            letter-spacing: 0.05em; /* 增加字间距提高清晰度 */
-            /* 提高渲染质量 */
+            letter-spacing: 0.05em; 
             transform-style: preserve-3d;
             backface-visibility: hidden;
-            /* 提高文字边缘清晰度 */
             -webkit-text-stroke: 1px currentColor;
         }
         
         /* Logo样式 */
         .logo-container {
-            position: relative; /* 改为相对定位 */
-            margin-bottom: 20px; /* 添加底部间距 */
+            position: relative; 
+            margin-bottom: 20px; 
             z-index: 10;
             text-align: center;
-            width: 100%; /* 使容器宽度100%以便缩放控制 */
+            width: 100%; 
             display: flex;
             justify-content: center;
         }
         
         .logo {
-            width: 500px; /* 桌面端大小 */
-            max-width: 95%; /* 最大宽度不超过容器的95% */
+            width: 500px; 
+            max-width: 95%; 
             height: auto;
             animation: logoGlow 3s infinite alternate;
         }
@@ -98,70 +95,69 @@
         
         @keyframes pulsate {
             from { transform: scale(1); opacity: 1; }
-            to { transform: scale(1.02); opacity: 0.95; } /* 减少缩放和透明度变化，提高清晰度 */
+            to { transform: scale(1.02); opacity: 0.95; } 
         }
         
         /* 平板响应式设计 */
         @media (max-width: 768px) {
             #main-text {
-                font-size: 22vw; /* 增大字体 */
+                font-size: 22vw; 
             }
             
             .logo {
-                max-width: 90%; /* 控制最大宽度 */
+                max-width: 90%; 
             }
         }
         
         /* 手机响应式设计 */
         @media (max-width: 480px) {
             #main-text {
-                font-size: 25vh; /* 增大手机字体 */
-                white-space: normal; /* 允许文本换行 */
+                font-size: 25vh;
+                white-space: normal; 
                 line-height: 1.2;
-                -webkit-text-stroke: 1.5px currentColor; /* 增加描边粗细提高清晰度 */
+                -webkit-text-stroke: 1.5px currentColor; 
             }
             
             .logo {
-                max-width: 95%; /* 让logo在手机上更大 */
-                width: 400px; /* 固定值增大 */
+                max-width: 95%; 
+                width: 400px; 
             }
             
             /* 当屏幕是竖屏时 */
             @media (orientation: portrait) {
                 .container {
-                    flex-direction: column; /* 确保竖屏时为列式布局 */
+                    flex-direction: column; 
                 }
                 
                 #main-text {
                     display: flex;
-                    flex-direction: column; /* 文字竖排显示 */
-                    writing-mode: vertical-rl; /* 使文字竖直排列 */
-                    text-orientation: upright; /* 保持字符正向 */
-                    white-space: nowrap; /* 防止文字自动换行 */
-                    font-size: 28vw; /* 增大字体 */
+                    flex-direction: column;
+                    writing-mode: vertical-rl; 
+                    text-orientation: upright; 
+                    white-space: nowrap; 
+                    font-size: 28vw; 
                     line-height: 1;
-                    transform: rotate(180deg); /* 使文字方向正确 */
-                    max-height: 80vh; /* 调整文字高度 */
-                    /* 增强移动设备上的文本渲染 */
+                    transform: rotate(180deg); 
+                    max-height: 80vh;
                     -webkit-text-stroke: 1.5px currentColor;
                     text-shadow: 0 0 10px rgba(255, 0, 255, 0.8),
-                                 0 0 20px rgba(255, 0, 255, 0.6); /* 增强文字发光效果 */
+                                 0 0 20px rgba(255, 0, 255, 0.6);
                 }
                 
                 .logo-container {
-                    margin-bottom: 15px; /* 增加间距 */
+                    margin-bottom: 15px; 
                 }
             }
             
             /* 当屏幕是横屏时 */
             @media (orientation: landscape) {
                 #main-text {
-                    font-size: 18vh; /* 增大横屏字体 */
+                    font-size: 18vh; 
                     -webkit-text-stroke: 1.5px currentColor;
                 }
                 
                 .logo {
-                    width: 300px; /* 横屏手机尺寸调整 */
+                    width: 300px; 
                 }
             }
         }
@@ -169,7 +165,6 @@
 </head>
 <body>
     <div class="container">
-        <!-- Logo容器移至container内部，放在文字前面 -->
         <div class="logo-container">
             <img src="https://s1.imagehub.cc/images/2025/05/04/6378fe98dee08f57143ec368c35391a4.png" alt="Logo" class="logo">
         </div>
@@ -195,14 +190,14 @@
                 textElement.style.writingMode = 'vertical-rl';
                 textElement.style.textOrientation = 'upright';
                 textElement.style.transform = 'rotate(180deg)';
-                textElement.style.fontSize = '28vw'; // 增大字体
-                textElement.style.maxHeight = '80vh'; // 调整文字高度
+                textElement.style.fontSize = '28vw'; 
+                textElement.style.maxHeight = '80vh'; 
             } else if (isMobile && !isPortrait) {
                 // 手机横屏模式
                 textElement.style.writingMode = 'horizontal-tb';
                 textElement.style.textOrientation = 'mixed';
                 textElement.style.transform = 'none';
-                textElement.style.fontSize = '18vh'; // 增大字体
+                textElement.style.fontSize = '18vh'; 
             } else {
                 // 非手机设备
                 textElement.style.writingMode = 'horizontal-tb';
