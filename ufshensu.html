@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>我是主办的爹</title>
+        <!-- Clarity tracking code for https://musestar.cc/ -->
+        <script>
+            (function (c, l, a, r, i, t, y) {
+                c[a] = c[a] || function () {
+                    (c[a].q = c[a].q || []).push(arguments)
+                };
+                t = l.createElement(r);
+                t.async = 1;
+                t.src = "https://www.clarity.ms/tag/" + i + "?ref=bwt";
+                y = l.getElementsByTagName(r)[0];
+                y.parentNode.insertBefore(t, y);
+            })(window, document, "clarity", "script", "fvlvixulu7");
+        </script>    
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            font-family: 'Arial', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            width: 100%;
+            min-height: 100vh;
+            color: #fff;
+            overflow-x: hidden;
+            overflow-y: auto; 
+        }
+        
+        .container {
+            position: relative; 
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column; 
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        
+        #text-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            margin-top: 20px; 
+        }
+        
+        #main-text {
+            font-size: 15vw; 
+            font-weight: 900; 
+            text-align: center;
+            color: #fff;
+            text-shadow: 0 0 8px rgba(255, 0, 255, 0.7),
+                         0 0 15px rgba(255, 0, 255, 0.5);
+            animation: colorChange 2s infinite, pulsate 0.5s infinite alternate;
+            white-space: nowrap;
+            padding: 10px;
+            letter-spacing: 0.05em; 
+            transform-style: preserve-3d;
+            backface-visibility: hidden;
+            -webkit-text-stroke: 1px currentColor;
+        }
+        
+        /* Logo样式 */
+        .logo-container {
+            position: relative; 
+            margin-bottom: 20px; 
+            z-index: 10;
+            text-align: center;
+            width: 100%; 
+            display: flex;
+            justify-content: center;
+        }
+        
+        .logo {
+            width: 500px; 
+            max-width: 95%; 
+            height: auto;
+            animation: logoGlow 3s infinite alternate;
+        }
+        
+        @keyframes logoGlow {
+            from { filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.6)); }
+            to { filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.9)); }
+        }
+        
+        @keyframes colorChange {
+            0% { color: #ff0000; text-shadow: 0 0 3px #ff0000, 0 0 10px rgba(255, 0, 0, 0.7); -webkit-text-stroke: 1px #ff0000; }
+            14% { color: #ff7f00; text-shadow: 0 0 3px #ff7f00, 0 0 10px rgba(255, 127, 0, 0.7); -webkit-text-stroke: 1px #ff7f00; }
+            28% { color: #ffff00; text-shadow: 0 0 3px #ffff00, 0 0 10px rgba(255, 255, 0, 0.7); -webkit-text-stroke: 1px #ffff00; }
+            42% { color: #00ff00; text-shadow: 0 0 3px #00ff00, 0 0 10px rgba(0, 255, 0, 0.7); -webkit-text-stroke: 1px #00ff00; }
+            57% { color: #0000ff; text-shadow: 0 0 3px #0000ff, 0 0 10px rgba(0, 0, 255, 0.7); -webkit-text-stroke: 1px #0000ff; }
+            71% { color: #4b0082; text-shadow: 0 0 3px #4b0082, 0 0 10px rgba(75, 0, 130, 0.7); -webkit-text-stroke: 1px #4b0082; }
+            85% { color: #9400d3; text-shadow: 0 0 3px #9400d3, 0 0 10px rgba(148, 0, 211, 0.7); -webkit-text-stroke: 1px #9400d3; }
+            100% { color: #ff0000; text-shadow: 0 0 3px #ff0000, 0 0 10px rgba(255, 0, 0, 0.7); -webkit-text-stroke: 1px #ff0000; }
+        }
+        
+        @keyframes pulsate {
+            from { transform: scale(1); opacity: 1; }
+            to { transform: scale(1.02); opacity: 0.95; } 
+        }
+        
+        /* 平板响应式设计 */
+        @media (max-width: 768px) {
+            #main-text {
+                font-size: 22vw; 
+            }
+            
+            .logo {
+                max-width: 90%; 
+            }
+        }
+        
+        /* 手机响应式设计 */
+        @media (max-width: 480px) {
+            .container {
+                padding: 25px 10px; 
+                height: auto; 
+            }
+            
+            #main-text {
+                font-size: 25vh;
+                white-space: normal; 
+                line-height: 1.2;
+                -webkit-text-stroke: 1.5px currentColor; 
+            }
+            
+            .logo {
+                max-width: 95%; 
+                width: 400px; 
+            }
+            
+            /* 当屏幕是竖屏时 */
+            @media (orientation: portrait) {
+                .container {
+                    flex-direction: column; 
+                    justify-content: space-around; 
+                    padding: 40px 10px; 
+                }
+                
+                .logo-container {
+                    margin-top: 30px; 
+                    margin-bottom: 25px; 
+                }
+                
+                #text-container {
+                    flex: 0 0 auto; 
+                    margin-bottom: 30px; 
+                }
+                
+                #main-text {
+                    display: flex;
+                    flex-direction: column;
+                    writing-mode: vertical-rl; 
+                    text-orientation: upright; 
+                    white-space: nowrap; 
+                    font-size: 28vw; 
+                    line-height: 1;
+                    transform: rotate(180deg); 
+                    max-height: none; 
+                    -webkit-text-stroke: 1.5px currentColor;
+                    text-shadow: 0 0 10px rgba(255, 0, 255, 0.8),
+                                 0 0 20px rgba(255, 0, 255, 0.6);
+                }
+            }
+            
+            /* 当屏幕是横屏时 */
+            @media (orientation: landscape) {
+                .container {
+                    padding: 20px 15px; 
+                }
+                
+                #main-text {
+                    font-size: 18vh; 
+                    -webkit-text-stroke: 1.5px currentColor;
+                    margin: 15px 0; 
+                }
+                
+                .logo {
+                    width: 300px; 
+                }
+                
+                .logo-container {
+                    margin-top: 15px; 
+                    margin-bottom: 20px;
+                }
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo-container">
+            <img src="https://s1.imagehub.cc/images/2025/05/04/6378fe98dee08f57143ec368c35391a4.png" alt="Logo" class="logo">
+        </div>
+        
+        <div id="text-container">
+            <div id="main-text">我是主办的爹</div>
+        </div>
+    </div>
+
+    <script>
+        // 确保文字大小适应屏幕
+        function adjustFontSize() {
+            const textElement = document.getElementById('main-text');
+            const container = document.getElementById('text-container');
+            const isPortrait = window.innerHeight > window.innerWidth;
+            const isMobile = window.innerWidth <= 480;
+            
+            // 重置样式以便重新计算
+            textElement.style.fontSize = '';
+            
+            if (isMobile && isPortrait) {
+                // 在手机竖屏模式下设置竖排文字
+                textElement.style.writingMode = 'vertical-rl';
+                textElement.style.textOrientation = 'upright';
+                textElement.style.transform = 'rotate(180deg)';
+                textElement.style.fontSize = '28vw'; 
+                textElement.style.maxHeight = 'none'; 
+            } else if (isMobile && !isPortrait) {
+                // 手机横屏模式
+                textElement.style.writingMode = 'horizontal-tb';
+                textElement.style.textOrientation = 'mixed';
+                textElement.style.transform = 'none';
+                textElement.style.fontSize = '18vh'; 
+            } else {
+                // 非手机设备
+                textElement.style.writingMode = 'horizontal-tb';
+                textElement.style.textOrientation = 'mixed';
+                textElement.style.transform = 'none';
+            }
+            
+            // 确保文字不会过大
+            const viewportWidth = window.innerWidth;
+            
+            if (isPortrait && isMobile) {
+                // 竖屏手机调整大小
+                const maxWidth = viewportWidth * 0.9;
+                if (textElement.scrollWidth > maxWidth) {
+                    const currentSize = parseFloat(window.getComputedStyle(textElement).fontSize);
+                    const ratio = maxWidth / textElement.scrollWidth;
+                    textElement.style.fontSize = (currentSize * ratio) + 'px';
+                }
+            } else {
+                // 其他情况检查宽度是否溢出
+                if (textElement.scrollWidth > container.offsetWidth * 0.95) {
+                    const currentSize = parseFloat(window.getComputedStyle(textElement).fontSize);
+                    const ratio = container.offsetWidth * 0.95 / textElement.scrollWidth;
+                    textElement.style.fontSize = (currentSize * ratio) + 'px';
+                }
+            }
+        }
+        
+        // 调整图片大小以避免溢出
+        function adjustLogoSize() {
+            const logo = document.querySelector('.logo');
+            const container = document.querySelector('.logo-container');
+            const containerWidth = container.offsetWidth;
+            
+            // 确保logo不超过容器宽度的95%
+            if (logo.offsetWidth > containerWidth * 0.95) {
+                logo.style.width = (containerWidth * 0.95) + 'px';
+            }
+        }
+        
+        window.addEventListener('load', function() {
+            adjustFontSize();
+            adjustLogoSize();
+        });
+        window.addEventListener('resize', function() {
+            adjustFontSize();
+            adjustLogoSize();
+        });
+        window.addEventListener('orientationchange', function() {
+            adjustFontSize();
+            adjustLogoSize();
+        });
+    </script>
+</body>
+</html>
